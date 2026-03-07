@@ -42,7 +42,7 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       verses = await response.json();
     } catch (error) {
-      status.textContent = 'Data layer placeholder: processed verse data is not present yet. Add reference/hebrew-bible/processed/verses.json to activate reader content.';
+      status.textContent = 'Unable to load Scripture text right now. Please refresh and verify the verse data file is available.';
       bookSelect.innerHTML = '';
       chapterSelect.innerHTML = '';
       bookSelect.append(createOption('', 'No data loaded', true));
