@@ -20,10 +20,11 @@ Then open:
 
 ## Publish to a `.github.io` address
 
-This repo now includes a GitHub Actions workflow that deploys the static files to **GitHub Pages** whenever you push to `main`.
+This repo now includes a GitHub Actions workflow that deploys the static files to **GitHub Pages** whenever you push to `main` or `work` (the branch currently used in this repo).
 
 - workflow file: [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
 - in GitHub, set **Settings → Pages → Source** to **GitHub Actions**
+- ensure your default branch is included in the workflow trigger (`main` or `work`) so deployment jobs actually run
 
 Your live URL depends on your repo name:
 
