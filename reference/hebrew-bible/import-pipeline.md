@@ -19,9 +19,10 @@ Supported JSON shapes:
 
 For all supported shapes, the adapter:
 - preserves source traversal order,
-- emits verse-level objects,
 - preserves source chapter and verse numbering,
-- does not synthesize morphology/lemma/Strong's data.
+- does not remap Hebrew numbering into English numbering,
+- carries through optional source fields (`transliteration`, `morphology`, `lemma`, `strongs`) when present,
+- stores unmodeled source fields in `sourceExtras` for traceability.
 
 ## Normalized verse schema used by importer
 
@@ -33,50 +34,44 @@ For all supported shapes, the adapter:
   "bookHebrew": "בראשית",
   "bookEnglish": "Genesis",
   "canonicalOrder": 1,
+  "bookSlug": "genesis",
   "chapter": 1,
   "verse": 1,
   "hebrew": "בְּרֵאשִׁית ...",
+  "text": "בְּרֵאשִׁית ...",
   "transliteration": null,
   "morphology": null,
   "lemma": null,
   "strongs": null,
-  "notes": []
+  "notes": [],
+  "sourceExtras": {}
 }
 ```
 
-## Manifest integration
-
-- The importer reads `reference/hebrew-bible/source-manifest.json`.
-- `source.shortName` is used as the normalized `source` field when available.
-- If `source.shortName` is missing, importer falls back to the raw filename stem.
-
 ## Validation
 
-Importer validates:
-- required fields (`id`, `source`, `book`, `chapter`, `verse`, `hebrew`),
-- duplicate IDs,
-- missing chapter/verse,
-- empty Hebrew text.
+Importer fails hard on malformed or incomplete imports and reports diagnostics for:
 
-Warnings are emitted for unresolved:
-- `bookHebrew`,
-- `bookEnglish`,
-- `canonicalOrder`.
-
-Any validation errors fail the import.
+- required field presence (`id`, `source`, `book`, `chapter`, `verse`, `hebrew`),
+- duplicate verse IDs,
+- missing or invalid chapter/verse references,
+- empty Hebrew verse text,
+- malformed records,
+- unresolved `bookHebrew` / `bookEnglish` / `canonicalOrder` (warnings).
 
 ## Outputs
 
 On successful import:
-- `reference/hebrew-bible/processed/verses.json`
-- `reference/hebrew-bible/processed/import-summary.json`
-- `reference/hebrew-bible/processed/books/*.json`
 
-`import-summary.json` includes source metadata, adapter details, counts, per-book totals, and warnings.
+- `reference/hebrew-bible/processed/verses.json` (master verse list)
+- `reference/hebrew-bible/processed/books.json` (book index)
+- `reference/hebrew-bible/processed/books/<book-slug>.json` (per-book payload with chapter grouping)
+- `reference/hebrew-bible/processed/import-summary.json` (totals + diagnostics)
 
-## Assumptions and limitations
+Per-book files contain book metadata and chapter-grouped verses to support static-site lazy loading.
+
+## Notes
 
 - Import currently supports only JSON source files.
 - Input must be exactly one active non-hidden file in `raw/`.
-- Book metadata is resolved from recognized canonical English names/aliases.
-- Unknown book names are retained in output but canonical metadata fields may remain `null` and are reported.
+- Unknown book names are preserved, with canonical metadata warnings.

@@ -42,19 +42,19 @@ function normalizeFlatVerseArray(rows, sourceId, warnings) {
       throw new Error(`Verse row at index ${idx} is not an object.`);
     }
 
-    const book = row.book || row.bookEnglish || row.book_name || row.b;
-    const chapter = toNumber(row.chapter ?? row.c);
-    const verse = toNumber(row.verse ?? row.v);
+    const book = row.book || row.bookEnglish || row.book_name || row.bookName || row.b;
+    const chapter = toNumber(row.chapter ?? row.c ?? row.chapterNumber);
+    const verse = toNumber(row.verse ?? row.v ?? row.verseNumber);
     const hebrew = row.hebrew || row.text || row.h;
 
-    const note = row.note || row.notes;
     return buildVerse({
       sourceId,
       book,
       chapter,
       verse,
       hebrew,
-      note,
+      note: row.note || row.notes,
+      sourceFields: row,
       warnings,
       context: `rows[${idx}]`
     });
@@ -69,7 +69,7 @@ function normalizeNestedBooks(books, sourceId, warnings) {
       throw new Error(`books[${bookIdx}] is not an object.`);
     }
 
-    const bookName = bookNode.name || bookNode.book || bookNode.bookEnglish;
+    const bookName = bookNode.name || bookNode.book || bookNode.bookEnglish || bookNode.bookName;
     if (!Array.isArray(bookNode.chapters)) {
       throw new Error(`books[${bookIdx}] is missing chapters[].`);
     }
@@ -98,8 +98,9 @@ function normalizeNestedBooks(books, sourceId, warnings) {
             book: bookName,
             chapter,
             verse: toNumber(verseNode.number ?? verseNode.verse ?? verseIdx + 1),
-            hebrew: verseNode.hebrew || verseNode.text,
+            hebrew: verseNode.hebrew || verseNode.text || verseNode.h,
             note: verseNode.note || verseNode.notes,
+            sourceFields: verseNode,
             warnings,
             context: `books[${bookIdx}].chapters[${chapterIdx}].verses[${verseIdx}]`
           })
@@ -111,7 +112,7 @@ function normalizeNestedBooks(books, sourceId, warnings) {
   return verses;
 }
 
-function buildVerse({ sourceId, book, chapter, verse, hebrew, note, warnings, context }) {
+function buildVerse({ sourceId, book, chapter, verse, hebrew, note, sourceFields, warnings, context }) {
   const bookMetadata = resolveBookMetadata(book);
 
   if (!bookMetadata) {
@@ -119,6 +120,7 @@ function buildVerse({ sourceId, book, chapter, verse, hebrew, note, warnings, co
   }
 
   const normalizedBook = bookMetadata?.book || (typeof book === 'string' ? book.trim() : null);
+  const sourceExtras = extractSourceExtras(sourceFields);
 
   return {
     id: makeVerseId(normalizedBook, chapter, verse),
@@ -130,12 +132,52 @@ function buildVerse({ sourceId, book, chapter, verse, hebrew, note, warnings, co
     chapter,
     verse,
     hebrew: typeof hebrew === 'string' ? hebrew.trim() : null,
-    transliteration: null,
-    morphology: null,
-    lemma: null,
-    strongs: null,
-    notes: normalizeNotes(note)
+    transliteration: sourceFields?.transliteration ?? null,
+    morphology: sourceFields?.morphology ?? null,
+    lemma: sourceFields?.lemma ?? null,
+    strongs: sourceFields?.strongs ?? null,
+    notes: normalizeNotes(note),
+    sourceExtras: Object.keys(sourceExtras).length > 0 ? sourceExtras : undefined
   };
+}
+
+function extractSourceExtras(sourceFields) {
+  if (!sourceFields || typeof sourceFields !== 'object') {
+    return {};
+  }
+
+  const known = new Set([
+    'id',
+    'source',
+    'book',
+    'bookEnglish',
+    'bookHebrew',
+    'book_name',
+    'bookName',
+    'bookSlug',
+    'b',
+    'chapter',
+    'chapterNumber',
+    'c',
+    'verse',
+    'verseNumber',
+    'v',
+    'number',
+    'hebrew',
+    'text',
+    'h',
+    'note',
+    'notes',
+    'transliteration',
+    'morphology',
+    'lemma',
+    'strongs',
+    'canonicalOrder',
+    'text',
+    'sourceExtras'
+  ]);
+
+  return Object.fromEntries(Object.entries(sourceFields).filter(([key]) => !known.has(key)));
 }
 
 function normalizeNotes(note) {

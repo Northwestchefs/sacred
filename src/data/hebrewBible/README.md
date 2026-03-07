@@ -2,7 +2,12 @@
 
 This module provides a browser-safe data-access layer for Sacred's normalized Hebrew Bible data.
 
-It is designed for static hosting (including GitHub Pages) and reads from:
+It is designed for static hosting (including GitHub Pages) and prefers book-level processed files:
+
+- `reference/hebrew-bible/processed/books.json`
+- `reference/hebrew-bible/processed/books/<book-slug>.json`
+
+If book-level files are unavailable, it falls back to:
 
 - `reference/hebrew-bible/processed/verses.json`
 
@@ -28,57 +33,21 @@ All functions are async and exported from `index.js`.
 - `getAllVerses()`
 - `warmCache()`
 
-The module also exports `createHebrewBibleDataLayer(options)` for custom loaders (for tests, alternate paths, or custom `fetch`).
+The module also exports `createHebrewBibleDataLayer(options)` for custom loaders.
 
 ## Data assumptions and guarantees
 
-- Source chapter/verse numbering is preserved as imported.
+- Source chapter/verse numbering is preserved exactly as imported.
 - Hebrew text is returned exactly as stored in processed data.
 - Optional fields are passed through unchanged when present.
 - No synthetic morphology/transliteration fields are added.
 
-## Identifier matching
-
-Book identifiers support:
-
-- canonical order number (`1`, `2`, ...)
-- normalized slug (`genesis`)
-- book labels from data fields (`book`, `bookEnglish`, `bookHebrew`)
-
-Matching is intentionally simple and deterministic.
-
 ## Static-site behavior
 
-By default, the layer fetches:
+Default fetch order:
 
-- `reference/hebrew-bible/processed/verses.json`
+1. `reference/hebrew-bible/processed/books.json`
+2. `reference/hebrew-bible/processed/books/<book-slug>.json` (lazy per book)
+3. fallback to `reference/hebrew-bible/processed/verses.json`
 
 Use `createHebrewBibleDataLayer({ basePath: '/sacred' })` when your app is served from a subpath.
-
-## Example
-
-```js
-import {
-  getAllBooks,
-  getBook,
-  getChaptersForBook,
-  getVerses,
-  getVerse,
-} from './src/data/hebrewBible/index.js';
-
-const books = await getAllBooks();
-const genesis = await getBook('genesis');
-const chapters = await getChaptersForBook('Genesis');
-const genesisOne = await getVerses('genesis', 1);
-const genesisOneOne = await getVerse(1, 1, 1); // canonical order 1, chapter 1, verse 1
-```
-
-## Future extension points
-
-This layout keeps room for additional reader services without changing the basic API shape:
-
-- verse mapping to translations
-- commentary/document overlays
-- morphology/lemma indexes
-- search indexes
-- per-book metadata enrichment

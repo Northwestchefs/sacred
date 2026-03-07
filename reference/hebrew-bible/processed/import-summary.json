@@ -1,0 +1,27 @@
+{
+  "sourceFile": "bootstrap sample (no canonical raw source file committed)",
+  "sourceFormat": ".json",
+  "sourceId": "OSHB/WLC",
+  "adapter": "parse-json",
+  "detectedStructure": "array-of-verse-objects",
+  "totals": {
+    "books": 1,
+    "chapters": 1,
+    "verses": 5
+  },
+  "warnings": [
+    "Processed output currently reflects the repository sample only because no canonical full raw source file exists in reference/hebrew-bible/raw/."
+  ],
+  "errors": [],
+  "diagnostics": {
+    "emptyVerseTextCount": 0,
+    "duplicateIdCount": 0,
+    "malformedRecordCount": 0,
+    "missingOrInvalidReferenceCount": 0
+  },
+  "byBook": {
+    "Genesis": 5
+  },
+  "generatedAt": "2026-03-07T21:42:59.383Z",
+  "dryRun": false
+}

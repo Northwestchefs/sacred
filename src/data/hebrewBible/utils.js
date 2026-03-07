@@ -1,4 +1,6 @@
 const DEFAULT_VERSES_PATH = 'reference/hebrew-bible/processed/verses.json';
+const DEFAULT_BOOKS_INDEX_PATH = 'reference/hebrew-bible/processed/books.json';
+const DEFAULT_BOOKS_BASE_PATH = 'reference/hebrew-bible/processed/books';
 
 function normalizeSlug(value) {
   return String(value ?? '')
@@ -57,6 +59,8 @@ function sortByCanonicalOrderThenLabel(items) {
 }
 
 export {
+  DEFAULT_BOOKS_BASE_PATH,
+  DEFAULT_BOOKS_INDEX_PATH,
   DEFAULT_VERSES_PATH,
   dedupe,
   joinBasePath,
