@@ -4,6 +4,8 @@ function createReaderState(initialState = {}) {
     chapters: [],
     selectedBookSlug: null,
     selectedChapter: null,
+    selectedVerse: null,
+    searchResults: [],
     loading: false,
     error: null,
     ...initialState,

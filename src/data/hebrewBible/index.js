@@ -42,7 +42,7 @@ function createHebrewBibleDataLayer(options = {}) {
 
       state.verses = parsed.map((verse) => ({
         ...verse,
-        __bookSlug: normalizeSlug(verse.bookSlug || verse.bookEnglish || verse.book || verse.bookHebrew),
+        bookSlug: normalizeSlug(verse.bookSlug || verse.bookEnglish || verse.book || verse.bookHebrew),
       }));
 
       state.bookIndex = buildBooksIndex(state.verses);
@@ -95,6 +95,11 @@ function createHebrewBibleDataLayer(options = {}) {
     return getVersesForBookAndChapter(state.verses, book.slug, chapterNumber);
   }
 
+  async function getAllVerses() {
+    await ensureLoaded();
+    return state.verses.map((verse) => ({ ...verse }));
+  }
+
   async function getVerse(bookIdentifier, chapterNumber, verseNumber) {
     await ensureLoaded();
     const book = resolveBookIdentifier(state.bookIndex, bookIdentifier);
@@ -116,6 +121,7 @@ function createHebrewBibleDataLayer(options = {}) {
     getChaptersForBook,
     getVerse,
     getVerses,
+    getAllVerses,
     warmCache,
   };
 }
@@ -127,6 +133,7 @@ const getBook = (...args) => defaultHebrewBibleDataLayer.getBook(...args);
 const getChaptersForBook = (...args) => defaultHebrewBibleDataLayer.getChaptersForBook(...args);
 const getVerses = (...args) => defaultHebrewBibleDataLayer.getVerses(...args);
 const getVerse = (...args) => defaultHebrewBibleDataLayer.getVerse(...args);
+const getAllVerses = (...args) => defaultHebrewBibleDataLayer.getAllVerses(...args);
 const warmCache = (...args) => defaultHebrewBibleDataLayer.warmCache(...args);
 
 export {
@@ -136,5 +143,6 @@ export {
   getChaptersForBook,
   getVerse,
   getVerses,
+  getAllVerses,
   warmCache,
 };

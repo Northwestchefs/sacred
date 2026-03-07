@@ -25,6 +25,30 @@
           <label for="chapter-select">Chapter</label>
           <select id="chapter-select" name="chapter" disabled></select>
         </div>
+        <div class="control-field">
+          <label for="verse-input">Jump to verse</label>
+          <input id="verse-input" name="verse" type="number" min="1" inputmode="numeric" placeholder="e.g. 1" />
+        </div>
+      </section>
+
+      <section class="reader-search" aria-label="Search and direct navigation">
+        <form id="reference-form" class="search-form">
+          <label for="reference-input">Go to reference</label>
+          <div class="search-row">
+            <input id="reference-input" name="reference" type="text" placeholder="Genesis 1:1 or Bereshit 1:1" autocomplete="off" />
+            <button type="submit">Go</button>
+          </div>
+        </form>
+
+        <form id="search-form" class="search-form">
+          <label for="search-input">Search verse text</label>
+          <div class="search-row">
+            <input id="search-input" name="search" type="search" placeholder="Enter a Hebrew phrase or reference" autocomplete="off" />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+
+        <ul id="search-results" class="search-results" aria-live="polite"></ul>
       </section>
 
       <p id="reader-status" class="reader-status" role="status" aria-live="polite"></p>

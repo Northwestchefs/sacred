@@ -16,3 +16,6 @@ Features included in this first UI:
 - optional deep-link query params (for example `?book=genesis&chapter=1`)
 
 The page uses the reader data layer in [`src/data/hebrewBible/`](src/data/hebrewBible/) and is designed to remain static-host friendly.
+
+
+Additional features now include a first search/navigation layer (reference parsing, verse jump, and Hebrew text lookup) documented in `src/search/hebrewBible/README.md`.
