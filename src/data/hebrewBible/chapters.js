@@ -4,7 +4,7 @@ function getChaptersForBookFromVerses(verses, bookSlug) {
   const chapterMap = new Map();
 
   for (const verse of verses) {
-    if (verse.__bookSlug !== bookSlug) {
+    if (verse.bookSlug !== bookSlug) {
       continue;
     }
 

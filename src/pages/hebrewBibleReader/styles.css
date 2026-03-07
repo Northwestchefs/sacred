@@ -7,6 +7,7 @@
   --border: #ddd5c8;
   --accent: #7b5c2f;
   --error: #8a2130;
+  --focus: #7c5322;
 }
 
 * {
@@ -15,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: "Noto Serif", "Times New Roman", Georgia, serif;
+  font-family: 'Noto Serif', 'Times New Roman', Georgia, serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -47,7 +48,8 @@ body {
   line-height: 1.5;
 }
 
-.reader-controls {
+.reader-controls,
+.reader-search {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 0.75rem;
@@ -57,7 +59,12 @@ body {
   border-radius: 0.75rem;
 }
 
-.control-field {
+.reader-search {
+  grid-template-columns: 1fr;
+}
+
+.control-field,
+.search-form {
   display: grid;
   gap: 0.35rem;
 }
@@ -67,13 +74,61 @@ label {
   color: var(--muted);
 }
 
-select {
+select,
+input,
+button {
   padding: 0.6rem 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
   background: #ffffff;
   color: var(--text);
   font: inherit;
+}
+
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+select:focus-visible,
+input:focus-visible,
+button:focus-visible,
+.result-button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.result-button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #fff;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.result-reference {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.result-text {
+  text-align: right;
+  font-size: 1.1rem;
 }
 
 .reader-status {
@@ -119,6 +174,10 @@ select {
   gap: 0.9rem;
   padding: 0.85rem 0;
   border-bottom: 1px solid var(--border);
+}
+
+.verse-row--target {
+  background: #fff8e9;
 }
 
 .verse-row:last-child {

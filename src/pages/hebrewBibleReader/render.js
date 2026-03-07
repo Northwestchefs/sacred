@@ -63,12 +63,17 @@ function getHebrewText(verse) {
   return verse.hebrew ?? verse.textHebrew ?? verse.text ?? '';
 }
 
-function renderVerses(listElement, verses) {
+function renderVerses(listElement, verses, highlightedVerse = null) {
   listElement.innerHTML = '';
 
   for (const verse of verses) {
     const verseElement = document.createElement('li');
     verseElement.className = 'verse-row';
+    verseElement.dataset.verse = String(verse.verse);
+
+    if (highlightedVerse && Number(verse.verse) === Number(highlightedVerse)) {
+      verseElement.classList.add('verse-row--target');
+    }
 
     const verseNumber = document.createElement('span');
     verseNumber.className = 'verse-number';
@@ -85,6 +90,38 @@ function renderVerses(listElement, verses) {
   }
 }
 
+function renderSearchResults(listElement, results) {
+  listElement.innerHTML = '';
+
+  if (!results.length) {
+    return;
+  }
+
+  for (const result of results) {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'result-button';
+    button.dataset.book = result.bookSlug;
+    button.dataset.chapter = String(result.chapter);
+    button.dataset.verse = String(result.verse || '');
+
+    const ref = document.createElement('span');
+    ref.className = 'result-reference';
+    ref.textContent = `${result.bookEnglish || result.bookSlug} ${result.chapter}:${result.verse}`;
+
+    const text = document.createElement('span');
+    text.className = 'result-text';
+    text.dir = 'rtl';
+    text.lang = 'he';
+    text.textContent = result.text;
+
+    button.append(ref, text);
+    item.appendChild(button);
+    listElement.appendChild(item);
+  }
+}
+
 function renderStatus(statusElement, message, kind = 'neutral') {
   statusElement.textContent = message || '';
   statusElement.dataset.kind = kind;
@@ -94,5 +131,6 @@ export {
   renderBookOptions,
   renderChapterOptions,
   renderVerses,
+  renderSearchResults,
   renderStatus,
 };

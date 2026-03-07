@@ -8,13 +8,13 @@ function getVersesForBookAndChapter(verses, bookSlug, chapterNumber) {
   }
 
   return verses
-    .filter((verse) => verse.__bookSlug === bookSlug && safeParseInteger(verse.chapter) === chapter)
+    .filter((verse) => verse.bookSlug === bookSlug && safeParseInteger(verse.chapter) === chapter)
     .sort((a, b) => {
       const aVerse = safeParseInteger(a.verse) ?? Number.MAX_SAFE_INTEGER;
       const bVerse = safeParseInteger(b.verse) ?? Number.MAX_SAFE_INTEGER;
       return aVerse - bVerse;
     })
-    .map(({ __bookSlug, ...verse }) => verse);
+    .map(({ bookSlug, ...verse }) => verse);
 }
 
 function getVerseByReference(verses, bookSlug, chapterNumber, verseNumber) {
@@ -27,7 +27,7 @@ function getVerseByReference(verses, bookSlug, chapterNumber, verseNumber) {
 
   const match = verses.find(
     (candidate) =>
-      candidate.__bookSlug === bookSlug
+      candidate.bookSlug === bookSlug
       && safeParseInteger(candidate.chapter) === chapter
       && safeParseInteger(candidate.verse) === verse
   );
@@ -36,7 +36,7 @@ function getVerseByReference(verses, bookSlug, chapterNumber, verseNumber) {
     return null;
   }
 
-  const { __bookSlug, ...output } = match;
+  const { bookSlug, ...output } = match;
   return output;
 }
 

@@ -25,6 +25,7 @@ All functions are async and exported from `index.js`.
 - `getChaptersForBook(bookIdentifier)`
 - `getVerses(bookIdentifier, chapterNumber)`
 - `getVerse(bookIdentifier, chapterNumber, verseNumber)`
+- `getAllVerses()`
 - `warmCache()`
 
 The module also exports `createHebrewBibleDataLayer(options)` for custom loaders (for tests, alternate paths, or custom `fetch`).
