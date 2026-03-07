@@ -8,15 +8,19 @@
   </head>
   <body>
     <main class="reader-page">
-      <header class="reader-header">
+      <header class="reader-header surface-card">
         <p class="reader-kicker">Sacred Texts</p>
         <h1>Hebrew Bible Reader</h1>
         <p class="reader-subtitle">
-          Read the Hebrew text by canonical book and chapter. Numbering and source order are preserved.
+          A calm place for focused reading, chapter study, and meditative exploration of the Hebrew text.
         </p>
+        <div class="reader-header-meta">
+          <p id="current-reference" class="current-reference">Ready to begin</p>
+          <p id="chapter-progress" class="chapter-progress">0 / 0 verses visible</p>
+        </div>
       </header>
 
-      <section class="reader-controls" aria-label="Reading controls">
+      <section class="reader-controls surface-card" aria-label="Reading controls">
         <div class="control-field">
           <label for="book-select">Book</label>
           <select id="book-select" name="book"></select>
@@ -31,7 +35,7 @@
         </div>
       </section>
 
-      <section class="reader-search" aria-label="Search and direct navigation">
+      <section class="reader-search surface-card" aria-label="Search and direct navigation">
         <form id="reference-form" class="search-form">
           <label for="reference-input">Go to reference</label>
           <div class="search-row">
@@ -51,11 +55,34 @@
         <ul id="search-results" class="search-results" aria-live="polite"></ul>
       </section>
 
-      <p id="reader-status" class="reader-status" role="status" aria-live="polite"></p>
+      <section class="reader-layout">
+        <aside class="study-sidebar surface-card" aria-label="Study settings and prompts">
+          <h2>Study settings</h2>
+          <div class="control-field">
+            <label for="font-scale">Text size</label>
+            <input id="font-scale" type="range" min="100" max="170" value="118" step="2" />
+          </div>
+          <div class="control-field">
+            <label for="line-height">Line spacing</label>
+            <input id="line-height" type="range" min="160" max="240" value="180" step="5" />
+          </div>
+          <div class="toggles">
+            <label><input id="toggle-verse-numbers" type="checkbox" checked /> Show verse numbers</label>
+            <label><input id="toggle-zen-mode" type="checkbox" /> Zen mode</label>
+          </div>
 
-      <section class="reader-body" aria-label="Hebrew chapter reading">
-        <div class="future-slot" aria-hidden="true">Future slot: commentary and cross references</div>
-        <ol id="verses-list" class="verses-list"></ol>
+          <h2>Study prompts</h2>
+          <ul class="study-prompts">
+            <li>What key word repeats in this chapter?</li>
+            <li>Where does the text change tone or rhythm?</li>
+            <li>What single verse should you revisit today?</li>
+          </ul>
+        </aside>
+
+        <section class="reader-main surface-card" aria-label="Hebrew chapter reading">
+          <p id="reader-status" class="reader-status" role="status" aria-live="polite"></p>
+          <ol id="verses-list" class="verses-list"></ol>
+        </section>
       </section>
     </main>
 

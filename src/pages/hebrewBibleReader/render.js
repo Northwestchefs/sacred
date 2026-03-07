@@ -85,7 +85,13 @@ function renderVerses(listElement, verses, highlightedVerse = null) {
     verseText.setAttribute('lang', 'he');
     verseText.textContent = getHebrewText(verse);
 
-    verseElement.append(verseNumber, verseText);
+    const copyButton = document.createElement('button');
+    copyButton.type = 'button';
+    copyButton.className = 'verse-copy-button';
+    copyButton.dataset.copyVerse = String(verse.verse);
+    copyButton.textContent = 'Copy';
+
+    verseElement.append(verseNumber, verseText, copyButton);
     listElement.appendChild(verseElement);
   }
 }
@@ -127,10 +133,35 @@ function renderStatus(statusElement, message, kind = 'neutral') {
   statusElement.dataset.kind = kind;
 }
 
+function updateHeaderMeta({
+  referenceElement,
+  progressElement,
+  reference,
+  currentVerse = null,
+  verseCount = 0,
+}) {
+  referenceElement.textContent = reference || 'Ready to begin';
+
+  if (!verseCount) {
+    progressElement.textContent = '0 / 0 verses visible';
+    return;
+  }
+
+  const current = Number(currentVerse) || 0;
+
+  if (!current) {
+    progressElement.textContent = `${verseCount} verses in this chapter`;
+    return;
+  }
+
+  progressElement.textContent = `Verse ${current} of ${verseCount}`;
+}
+
 export {
   renderBookOptions,
   renderChapterOptions,
   renderVerses,
   renderSearchResults,
   renderStatus,
+  updateHeaderMeta,
 };

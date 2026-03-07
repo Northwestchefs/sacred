@@ -1,8 +1,17 @@
 import { createHebrewBibleDataLayer } from '../../data/hebrewBible/index.js';
 import { bindControls } from './controls.js';
-import { renderBookOptions, renderChapterOptions, renderSearchResults, renderStatus, renderVerses } from './render.js';
+import {
+  renderBookOptions,
+  renderChapterOptions,
+  renderSearchResults,
+  renderStatus,
+  renderVerses,
+  updateHeaderMeta,
+} from './render.js';
 import { createReaderState } from './state.js';
 import { buildSearchIndex, runSearchQuery } from '../../search/hebrewBible/index.js';
+
+const READER_PREFERENCES_KEY = 'sacred.hebrewBible.preferences';
 
 function safeParsePositiveInteger(value) {
   const numeric = Number(value);
@@ -75,6 +84,56 @@ function focusVerse(versesList, verseNumber) {
   }
 }
 
+function loadReaderPreferences() {
+  try {
+    const raw = window.localStorage.getItem(READER_PREFERENCES_KEY);
+
+    if (!raw) {
+      return {
+        fontScale: 118,
+        lineHeight: 180,
+        showVerseNumbers: true,
+        zenMode: false,
+      };
+    }
+
+    const parsed = JSON.parse(raw);
+
+    return {
+      fontScale: Number(parsed.fontScale) || 118,
+      lineHeight: Number(parsed.lineHeight) || 180,
+      showVerseNumbers: parsed.showVerseNumbers !== false,
+      zenMode: Boolean(parsed.zenMode),
+    };
+  } catch {
+    return {
+      fontScale: 118,
+      lineHeight: 180,
+      showVerseNumbers: true,
+      zenMode: false,
+    };
+  }
+}
+
+function saveReaderPreferences(preferences) {
+  window.localStorage.setItem(READER_PREFERENCES_KEY, JSON.stringify(preferences));
+}
+
+function getCurrentReferenceLabel(nextState) {
+  if (!nextState.selectedBookSlug || !nextState.selectedChapter) {
+    return 'Ready to begin';
+  }
+
+  const book = nextState.books.find((item) => item.slug === nextState.selectedBookSlug);
+  const bookName = book?.bookEnglish || book?.book || nextState.selectedBookSlug;
+
+  if (nextState.selectedVerse) {
+    return `${bookName} ${nextState.selectedChapter}:${nextState.selectedVerse}`;
+  }
+
+  return `${bookName} ${nextState.selectedChapter}`;
+}
+
 async function initializeReaderPage() {
   const bookSelect = document.querySelector('#book-select');
   const chapterSelect = document.querySelector('#chapter-select');
@@ -86,18 +145,51 @@ async function initializeReaderPage() {
   const searchResultsList = document.querySelector('#search-results');
   const versesList = document.querySelector('#verses-list');
   const statusElement = document.querySelector('#reader-status');
+  const currentReferenceElement = document.querySelector('#current-reference');
+  const chapterProgressElement = document.querySelector('#chapter-progress');
+  const fontScaleInput = document.querySelector('#font-scale');
+  const lineHeightInput = document.querySelector('#line-height');
+  const showVerseNumbersInput = document.querySelector('#toggle-verse-numbers');
+  const zenModeInput = document.querySelector('#toggle-zen-mode');
 
   const state = createReaderState();
   const dataLayer = createHebrewBibleDataLayer({
     basePath: inferBasePathFromLocation(),
   });
   const deepLink = getDeepLinkState();
+  const readerPreferences = loadReaderPreferences();
 
+  let currentChapterVerses = [];
   let searchIndex = null;
+
+  function applyPreferences() {
+    document.documentElement.style.setProperty('--verse-size', `${readerPreferences.fontScale / 100}rem`);
+    document.documentElement.style.setProperty('--verse-leading', `${readerPreferences.lineHeight / 100}`);
+    document.body.classList.toggle('hide-verse-numbers', !readerPreferences.showVerseNumbers);
+    document.body.classList.toggle('zen-mode', readerPreferences.zenMode);
+
+    fontScaleInput.value = String(readerPreferences.fontScale);
+    lineHeightInput.value = String(readerPreferences.lineHeight);
+    showVerseNumbersInput.checked = readerPreferences.showVerseNumbers;
+    zenModeInput.checked = readerPreferences.zenMode;
+  }
+
+  function updateHeader(nextState) {
+    updateHeaderMeta({
+      referenceElement: currentReferenceElement,
+      progressElement: chapterProgressElement,
+      reference: getCurrentReferenceLabel(nextState),
+      currentVerse: nextState.selectedVerse,
+      verseCount: currentChapterVerses.length,
+    });
+  }
+
+  applyPreferences();
 
   state.subscribe((nextState) => {
     renderBookOptions(bookSelect, nextState.books, nextState.selectedBookSlug);
     renderChapterOptions(chapterSelect, nextState.chapters, nextState.selectedChapter);
+    updateHeader(nextState);
   });
 
   bindControls({
@@ -127,6 +219,30 @@ async function initializeReaderPage() {
     },
   });
 
+  fontScaleInput.addEventListener('input', () => {
+    readerPreferences.fontScale = Number(fontScaleInput.value);
+    applyPreferences();
+    saveReaderPreferences(readerPreferences);
+  });
+
+  lineHeightInput.addEventListener('input', () => {
+    readerPreferences.lineHeight = Number(lineHeightInput.value);
+    applyPreferences();
+    saveReaderPreferences(readerPreferences);
+  });
+
+  showVerseNumbersInput.addEventListener('change', () => {
+    readerPreferences.showVerseNumbers = showVerseNumbersInput.checked;
+    applyPreferences();
+    saveReaderPreferences(readerPreferences);
+  });
+
+  zenModeInput.addEventListener('change', () => {
+    readerPreferences.zenMode = zenModeInput.checked;
+    applyPreferences();
+    saveReaderPreferences(readerPreferences);
+  });
+
   searchResultsList.addEventListener('click', async (event) => {
     const button = event.target.closest('button[data-book][data-chapter]');
 
@@ -139,6 +255,32 @@ async function initializeReaderPage() {
       chapterOverride: safeParsePositiveInteger(button.dataset.chapter),
       verseOverride: safeParsePositiveInteger(button.dataset.verse),
     });
+  });
+
+  versesList.addEventListener('click', async (event) => {
+    const button = event.target.closest('button[data-copy-verse]');
+
+    if (!button) {
+      return;
+    }
+
+    const verseNumber = safeParsePositiveInteger(button.dataset.copyVerse);
+    const verse = currentChapterVerses.find((item) => Number(item.verse) === verseNumber);
+
+    if (!verse) {
+      return;
+    }
+
+    const activeState = state.getState();
+    const text = verse.hebrew ?? verse.textHebrew ?? verse.text ?? '';
+    const reference = `${activeState.selectedBookSlug} ${activeState.selectedChapter}:${verseNumber}`;
+
+    try {
+      await window.navigator.clipboard.writeText(`${reference}\n${text}`);
+      renderStatus(statusElement, `Copied ${reference}.`);
+    } catch {
+      renderStatus(statusElement, 'Copy is unavailable in this browser context.', 'warning');
+    }
   });
 
   async function applyBookSelection(bookSlug, options = {}) {
@@ -155,6 +297,7 @@ async function initializeReaderPage() {
       error: null,
     });
 
+    currentChapterVerses = [];
     renderStatus(statusElement, 'Loading chapters…');
     renderVerses(versesList, []);
 
@@ -202,8 +345,10 @@ async function initializeReaderPage() {
     const verseOverride = options.verseOverride ?? null;
 
     if (!activeState.selectedBookSlug || !chapter) {
+      currentChapterVerses = [];
       renderVerses(versesList, []);
       renderStatus(statusElement, 'Select a book and chapter to begin reading.');
+      updateHeader(state.getState());
       return;
     }
 
@@ -220,6 +365,7 @@ async function initializeReaderPage() {
       const verses = await dataLayer.getVerses(activeState.selectedBookSlug, chapter);
       const targetVerse = verseOverride && verses.some((verse) => Number(verse.verse) === Number(verseOverride)) ? verseOverride : null;
 
+      currentChapterVerses = verses;
       renderVerses(versesList, verses, targetVerse);
       renderStatus(statusElement, verses.length ? '' : 'No verses were found for this chapter.', verses.length ? 'neutral' : 'warning');
 
@@ -241,6 +387,7 @@ async function initializeReaderPage() {
         error,
       });
 
+      currentChapterVerses = [];
       renderVerses(versesList, []);
       renderStatus(statusElement, `Unable to load verses: ${error.message}`, 'error');
     }
@@ -267,8 +414,8 @@ async function initializeReaderPage() {
       return;
     }
 
-    const verses = await dataLayer.getVerses(activeState.selectedBookSlug, activeState.selectedChapter);
-    renderVerses(versesList, verses, verse);
+    currentChapterVerses = await dataLayer.getVerses(activeState.selectedBookSlug, activeState.selectedChapter);
+    renderVerses(versesList, currentChapterVerses, verse);
     state.setState({ selectedVerse: verse });
     focusVerse(versesList, verse);
     renderStatus(statusElement, `Moved to verse ${activeState.selectedChapter}:${verse}.`);
