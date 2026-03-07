@@ -15,7 +15,11 @@ function formatReference(book, chapter, verse) {
   return label;
 }
 
-function runSearchQuery({ query, books, searchIndex }) {
+function runSearchQuery({ query, books, searchIndex, options = {} }) {
+  const {
+    searchScope = 'all',
+    selectedBookSlug = null,
+  } = options;
   const trimmed = String(query ?? '').trim();
 
   if (!trimmed) {
@@ -53,13 +57,18 @@ function runSearchQuery({ query, books, searchIndex }) {
     }
   }
 
-  const textResults = searchHebrewText(searchIndex, trimmed);
+  const scopedBookSlug = searchScope === 'current' ? selectedBookSlug : null;
+
+  const textResults = searchHebrewText(searchIndex, trimmed, {
+    bookSlug: scopedBookSlug,
+  });
 
   return {
     referenceResult,
     textResults,
+    searchedBookSlug: scopedBookSlug,
     message: !referenceResult && textResults.length === 0
-      ? 'No matching reference or verse text was found.'
+      ? (scopedBookSlug ? 'No matching reference or verse text was found in the current book.' : 'No matching reference or verse text was found.')
       : '',
   };
 }

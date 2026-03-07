@@ -51,8 +51,16 @@
             <input id="search-input" name="search" type="search" placeholder="Enter a Hebrew phrase or reference" autocomplete="off" />
             <button type="submit">Search</button>
           </div>
+          <div class="search-row search-row--meta">
+            <label for="search-scope">Search scope</label>
+            <select id="search-scope" name="scope">
+              <option value="all">All books</option>
+              <option value="current">Current book</option>
+            </select>
+          </div>
         </form>
 
+        <p id="search-summary" class="search-summary" aria-live="polite"></p>
         <ul id="search-results" class="search-results" aria-live="polite"></ul>
       </section>
 
@@ -70,6 +78,12 @@
           <div class="toggles">
             <label><input id="toggle-verse-numbers" type="checkbox" checked /> Show verse numbers</label>
             <label><input id="toggle-zen-mode" type="checkbox" /> Zen mode</label>
+          </div>
+
+          <h2>Text navigation</h2>
+          <div class="chapter-nav" role="group" aria-label="Move through chapters">
+            <button id="previous-chapter" type="button">← Previous chapter</button>
+            <button id="next-chapter" type="button">Next chapter →</button>
           </div>
 
           <h2>Study prompts</h2>

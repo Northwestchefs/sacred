@@ -51,7 +51,11 @@ function hasVerse(index, bookSlug, chapter, verse) {
   return index.byBook.get(bookSlug)?.verseMap.has(`${chapter}:${verse}`) ?? false;
 }
 
-function searchHebrewText(index, query, maxResults = 40) {
+function searchHebrewText(index, query, options = {}) {
+  const {
+    maxResults = 40,
+    bookSlug = null,
+  } = options;
   const trimmed = String(query ?? '').trim();
 
   if (!trimmed) {
@@ -64,6 +68,9 @@ function searchHebrewText(index, query, maxResults = 40) {
   const matches = [];
 
   for (const verse of index.verses) {
+    if (bookSlug && verse.bookSlug !== bookSlug) {
+      continue;
+    }
     const text = getHebrewText(verse);
     const haystack = isHebrewQuery ? normalizeHebrew(text) : text.toLowerCase();
 
