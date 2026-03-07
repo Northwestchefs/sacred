@@ -245,6 +245,12 @@ button:focus-visible,
   font-size: 1.1rem;
 }
 
+.result-translation {
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.45;
+}
+
 .reader-header {
   position: relative;
 }
@@ -319,6 +325,19 @@ button:focus-visible,
   font-size: var(--verse-size);
   line-height: var(--verse-leading);
   text-align: right;
+}
+
+.verse-text-group {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.verse-translation {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--muted);
+  text-align: left;
 }
 
 .verse-copy-button {
