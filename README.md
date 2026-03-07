@@ -49,6 +49,6 @@ The reader page includes:
 - Hebrew verse rendering with right-to-left layout
 - status messaging for loading/empty/error states
 - optional deep-link query params (for example `?book=genesis&chapter=1`)
-- search/navigation helpers (reference parsing, verse jump, and Hebrew text lookup)
+- search/navigation helpers (reference parsing, verse jump, Hebrew text lookup, scope filtering, and chapter step controls)
 
 The reader uses the data layer in [`src/data/hebrewBible/`](src/data/hebrewBible/) and is designed to remain static-host friendly.

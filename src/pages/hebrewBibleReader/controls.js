@@ -6,11 +6,17 @@ function bindControls({
   referenceInput,
   searchForm,
   searchInput,
+  searchScopeSelect,
+  previousChapterButton,
+  nextChapterButton,
   onBookChange,
   onChapterChange,
   onVerseJump,
   onReferenceSubmit,
   onSearchSubmit,
+  onSearchScopeChange,
+  onPreviousChapter,
+  onNextChapter,
 }) {
   bookSelect.addEventListener('change', () => {
     onBookChange(bookSelect.value || null);
@@ -39,6 +45,24 @@ function bindControls({
     event.preventDefault();
     onSearchSubmit(searchInput.value);
   });
+
+  if (searchScopeSelect && onSearchScopeChange) {
+    searchScopeSelect.addEventListener('change', () => {
+      onSearchScopeChange(searchScopeSelect.value);
+    });
+  }
+
+  if (previousChapterButton && onPreviousChapter) {
+    previousChapterButton.addEventListener('click', () => {
+      onPreviousChapter();
+    });
+  }
+
+  if (nextChapterButton && onNextChapter) {
+    nextChapterButton.addEventListener('click', () => {
+      onNextChapter();
+    });
+  }
 }
 
 export {

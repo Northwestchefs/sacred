@@ -128,6 +128,30 @@ function renderSearchResults(listElement, results) {
   }
 }
 
+function renderSearchSummary(summaryElement, payload = {}) {
+  if (!summaryElement) {
+    return;
+  }
+
+  const {
+    query = '',
+    totalResults = 0,
+    scopeLabel = 'all books',
+  } = payload;
+
+  if (!query) {
+    summaryElement.textContent = '';
+    return;
+  }
+
+  if (!totalResults) {
+    summaryElement.textContent = `No text matches for “${query}” in ${scopeLabel}.`;
+    return;
+  }
+
+  summaryElement.textContent = `${totalResults} text match${totalResults === 1 ? '' : 'es'} for “${query}” in ${scopeLabel}.`;
+}
+
 function renderStatus(statusElement, message, kind = 'neutral') {
   statusElement.textContent = message || '';
   statusElement.dataset.kind = kind;
@@ -157,11 +181,33 @@ function updateHeaderMeta({
   progressElement.textContent = `Verse ${current} of ${verseCount}`;
 }
 
+function updateChapterNav({
+  previousButton,
+  nextButton,
+  selectedChapter,
+  availableChapters,
+}) {
+  const chapterNumbers = (availableChapters || []).map((entry) => entry.chapter).sort((a, b) => a - b);
+  const currentIndex = chapterNumbers.indexOf(selectedChapter);
+  const hasPrevious = currentIndex > 0;
+  const hasNext = currentIndex >= 0 && currentIndex < chapterNumbers.length - 1;
+
+  if (previousButton) {
+    previousButton.disabled = !hasPrevious;
+  }
+
+  if (nextButton) {
+    nextButton.disabled = !hasNext;
+  }
+}
+
 export {
   renderBookOptions,
   renderChapterOptions,
   renderVerses,
   renderSearchResults,
+  renderSearchSummary,
   renderStatus,
   updateHeaderMeta,
+  updateChapterNav,
 };

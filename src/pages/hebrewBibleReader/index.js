@@ -4,8 +4,10 @@ import {
   renderBookOptions,
   renderChapterOptions,
   renderSearchResults,
+  renderSearchSummary,
   renderStatus,
   renderVerses,
+  updateChapterNav,
   updateHeaderMeta,
 } from './render.js';
 import { createReaderState } from './state.js';
@@ -143,6 +145,7 @@ async function initializeReaderPage() {
   const searchForm = document.querySelector('#search-form');
   const searchInput = document.querySelector('#search-input');
   const searchResultsList = document.querySelector('#search-results');
+  const searchSummaryElement = document.querySelector('#search-summary');
   const versesList = document.querySelector('#verses-list');
   const statusElement = document.querySelector('#reader-status');
   const currentReferenceElement = document.querySelector('#current-reference');
@@ -151,6 +154,9 @@ async function initializeReaderPage() {
   const lineHeightInput = document.querySelector('#line-height');
   const showVerseNumbersInput = document.querySelector('#toggle-verse-numbers');
   const zenModeInput = document.querySelector('#toggle-zen-mode');
+  const searchScopeSelect = document.querySelector('#search-scope');
+  const previousChapterButton = document.querySelector('#previous-chapter');
+  const nextChapterButton = document.querySelector('#next-chapter');
 
   const state = createReaderState();
   const dataLayer = createHebrewBibleDataLayer({
@@ -161,6 +167,7 @@ async function initializeReaderPage() {
 
   let currentChapterVerses = [];
   let searchIndex = null;
+  let currentSearchScope = 'all';
 
   function applyPreferences() {
     document.documentElement.style.setProperty('--verse-size', `${readerPreferences.fontScale / 100}rem`);
@@ -190,6 +197,12 @@ async function initializeReaderPage() {
     renderBookOptions(bookSelect, nextState.books, nextState.selectedBookSlug);
     renderChapterOptions(chapterSelect, nextState.chapters, nextState.selectedChapter);
     updateHeader(nextState);
+    updateChapterNav({
+      previousButton: previousChapterButton,
+      nextButton: nextChapterButton,
+      selectedChapter: nextState.selectedChapter,
+      availableChapters: nextState.chapters,
+    });
   });
 
   bindControls({
@@ -200,6 +213,9 @@ async function initializeReaderPage() {
     referenceInput,
     searchForm,
     searchInput,
+    searchScopeSelect,
+    previousChapterButton,
+    nextChapterButton,
     onBookChange: async (bookSlug) => {
       await applyBookSelection(bookSlug, {
         autoSelectChapter: true,
@@ -216,6 +232,15 @@ async function initializeReaderPage() {
     },
     onSearchSubmit: async (query) => {
       await navigateByQuery(query, { preferReferenceOnly: false });
+    },
+    onSearchScopeChange: (scope) => {
+      currentSearchScope = scope === 'current' ? 'current' : 'all';
+    },
+    onPreviousChapter: async () => {
+      await navigateRelativeChapter(-1);
+    },
+    onNextChapter: async () => {
+      await navigateRelativeChapter(1);
     },
   });
 
@@ -256,6 +281,37 @@ async function initializeReaderPage() {
       verseOverride: safeParsePositiveInteger(button.dataset.verse),
     });
   });
+
+
+  function getAdjacentChapterOffset(offset) {
+    const activeState = state.getState();
+    const chapters = activeState.chapters || [];
+    const current = activeState.selectedChapter;
+
+    if (!current || !chapters.length) {
+      return null;
+    }
+
+    const chapterNumbers = chapters.map((item) => item.chapter).sort((a, b) => a - b);
+    const index = chapterNumbers.indexOf(current);
+
+    if (index < 0) {
+      return null;
+    }
+
+    return chapterNumbers[index + offset] || null;
+  }
+
+  async function navigateRelativeChapter(offset) {
+    const targetChapter = getAdjacentChapterOffset(offset);
+
+    if (!targetChapter) {
+      return;
+    }
+
+    await applyChapterSelection(targetChapter);
+    chapterSelect.value = String(targetChapter);
+  }
 
   versesList.addEventListener('click', async (event) => {
     const button = event.target.closest('button[data-copy-verse]');
@@ -423,15 +479,25 @@ async function initializeReaderPage() {
   }
 
   async function navigateByQuery(query, options) {
+    const activeState = state.getState();
     const result = runSearchQuery({
       query,
-      books: state.getState().books,
+      books: activeState.books,
       searchIndex,
+      options: {
+        searchScope: currentSearchScope,
+        selectedBookSlug: activeState.selectedBookSlug,
+      },
     });
 
     if (result.referenceResult?.type === 'error') {
       renderStatus(statusElement, result.referenceResult.message, 'warning');
       renderSearchResults(searchResultsList, result.textResults);
+      renderSearchSummary(searchSummaryElement, {
+        query,
+        totalResults: result.textResults.length,
+        scopeLabel: result.searchedBookSlug ? 'the current book' : 'all books',
+      });
       return;
     }
 
@@ -444,11 +510,17 @@ async function initializeReaderPage() {
 
       if (options.preferReferenceOnly) {
         renderSearchResults(searchResultsList, []);
+        renderSearchSummary(searchSummaryElement, { query: '', totalResults: 0 });
         return;
       }
     }
 
     renderSearchResults(searchResultsList, result.textResults);
+    renderSearchSummary(searchSummaryElement, {
+      query,
+      totalResults: result.textResults.length,
+      scopeLabel: result.searchedBookSlug ? 'the current book' : 'all books',
+    });
 
     if (result.message) {
       renderStatus(statusElement, result.message, 'warning');
