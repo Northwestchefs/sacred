@@ -8,6 +8,8 @@ function createReaderState(initialState = {}) {
     searchResults: [],
     loading: false,
     error: null,
+    displayMode: 'parallel',
+    chapterDiagnostics: null,
     ...initialState,
   };
 

@@ -9,6 +9,7 @@ function bindControls({
   searchScopeSelect,
   previousChapterButton,
   nextChapterButton,
+  displayModeSelect,
   onBookChange,
   onChapterChange,
   onVerseJump,
@@ -17,6 +18,7 @@ function bindControls({
   onSearchScopeChange,
   onPreviousChapter,
   onNextChapter,
+  onDisplayModeChange,
 }) {
   bookSelect.addEventListener('change', () => {
     onBookChange(bookSelect.value || null);
@@ -61,6 +63,12 @@ function bindControls({
   if (nextChapterButton && onNextChapter) {
     nextChapterButton.addEventListener('click', () => {
       onNextChapter();
+    });
+  }
+
+  if (displayModeSelect && onDisplayModeChange) {
+    displayModeSelect.addEventListener('change', () => {
+      onDisplayModeChange(displayModeSelect.value);
     });
   }
 }

@@ -35,6 +35,14 @@
           <label for="verse-input">Jump to verse</label>
           <input id="verse-input" name="verse" type="number" min="1" inputmode="numeric" placeholder="e.g. 1" />
         </div>
+        <div class="control-field">
+          <label for="display-mode-select">Display</label>
+          <select id="display-mode-select" name="display-mode">
+            <option value="hebrew">Hebrew</option>
+            <option value="english">English (JPS 1917)</option>
+            <option value="parallel" selected>Parallel</option>
+          </select>
+        </div>
       </section>
 
       <section class="reader-search surface-card" aria-label="Search and direct navigation">
@@ -95,7 +103,7 @@
           </ul>
         </aside>
 
-        <section class="reader-main surface-card" aria-label="Hebrew chapter reading">
+        <section class="reader-main surface-card" aria-label="Hebrew and English chapter reading">
           <p id="reader-status" class="reader-status" role="status" aria-live="polite"></p>
           <ol id="verses-list" class="verses-list"></ol>
         </section>

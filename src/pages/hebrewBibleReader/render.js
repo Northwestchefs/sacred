@@ -73,8 +73,19 @@ function getEnglishText(verse) {
   return english === getHebrewText(verse) ? '' : english;
 }
 
-function renderVerses(listElement, verses, highlightedVerse = null) {
+function shouldRenderHebrew(displayMode) {
+  return displayMode === 'hebrew' || displayMode === 'parallel';
+}
+
+function shouldRenderEnglish(displayMode) {
+  return displayMode === 'english' || displayMode === 'parallel';
+}
+
+function renderVerses(listElement, verses, highlightedVerse = null, options = {}) {
   listElement.innerHTML = '';
+
+  const displayMode = options.displayMode || 'parallel';
+  const diagnosticsByVerse = options.diagnosticsByVerse || new Map();
 
   for (const verse of verses) {
     const verseElement = document.createElement('li');
@@ -92,22 +103,34 @@ function renderVerses(listElement, verses, highlightedVerse = null) {
     const verseTextGroup = document.createElement('div');
     verseTextGroup.className = 'verse-text-group';
 
-    const verseText = document.createElement('p');
-    verseText.className = 'verse-text';
-    verseText.setAttribute('dir', 'rtl');
-    verseText.setAttribute('lang', 'he');
-    verseText.textContent = getHebrewText(verse);
+    if (shouldRenderHebrew(displayMode)) {
+      const verseText = document.createElement('p');
+      verseText.className = 'verse-text';
+      verseText.setAttribute('dir', 'rtl');
+      verseText.setAttribute('lang', 'he');
+      verseText.textContent = getHebrewText(verse);
+      verseTextGroup.append(verseText);
+    }
 
-    const englishText = getEnglishText(verse);
-    if (englishText) {
+    if (shouldRenderEnglish(displayMode)) {
+      const englishText = getEnglishText(verse);
       const verseTranslation = document.createElement('p');
       verseTranslation.className = 'verse-translation';
       verseTranslation.setAttribute('dir', 'ltr');
       verseTranslation.setAttribute('lang', 'en');
-      verseTranslation.textContent = englishText;
-      verseTextGroup.append(verseText, verseTranslation);
-    } else {
-      verseTextGroup.append(verseText);
+      verseTranslation.textContent = englishText || '[No English verse for this reference]';
+      if (!englishText) {
+        verseTranslation.classList.add('verse-translation--missing');
+      }
+      verseTextGroup.append(verseTranslation);
+    }
+
+    const mismatch = diagnosticsByVerse.get(Number(verse.verse));
+    if (mismatch) {
+      const diagnostic = document.createElement('p');
+      diagnostic.className = 'verse-diagnostic';
+      diagnostic.textContent = mismatch;
+      verseTextGroup.append(diagnostic);
     }
 
     const copyButton = document.createElement('button');

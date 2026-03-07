@@ -12,6 +12,7 @@ import {
 } from './render.js';
 import { createReaderState } from './state.js';
 import { buildSearchIndex, runSearchQuery } from '../../search/hebrewBible/index.js';
+import { createEnglishBibleDataLayer } from '../../data/englishBible/index.js';
 
 const READER_PREFERENCES_KEY = 'sacred.hebrewBible.preferences';
 
@@ -96,6 +97,7 @@ function loadReaderPreferences() {
         lineHeight: 180,
         showVerseNumbers: true,
         zenMode: false,
+        displayMode: 'parallel',
       };
     }
 
@@ -106,6 +108,7 @@ function loadReaderPreferences() {
       lineHeight: Number(parsed.lineHeight) || 180,
       showVerseNumbers: parsed.showVerseNumbers !== false,
       zenMode: Boolean(parsed.zenMode),
+      displayMode: ['hebrew', 'english', 'parallel'].includes(parsed.displayMode) ? parsed.displayMode : 'parallel',
     };
   } catch {
     return {
@@ -113,6 +116,7 @@ function loadReaderPreferences() {
       lineHeight: 180,
       showVerseNumbers: true,
       zenMode: false,
+      displayMode: 'parallel',
     };
   }
 }
@@ -136,6 +140,49 @@ function getCurrentReferenceLabel(nextState) {
   return `${bookName} ${nextState.selectedChapter}`;
 }
 
+function mergeChapterVerses({ hebrewVerses, englishVerses, bookSlug, chapter }) {
+  const englishByVerse = new Map(
+    (englishVerses || []).map((verse) => [Number(verse.verse), verse])
+  );
+
+  const diagnosticsByVerse = new Map();
+  const merged = (hebrewVerses || []).map((verse) => {
+    const verseNumber = Number(verse.verse);
+    const english = englishByVerse.get(verseNumber);
+
+    if (!english) {
+      diagnosticsByVerse.set(
+        verseNumber,
+        `Numbering mismatch: ${bookSlug} ${chapter}:${verseNumber} exists in Hebrew but is missing in JPS 1917.`
+      );
+    }
+
+    return {
+      ...verse,
+      english: english?.english || null,
+    };
+  });
+
+  for (const englishVerse of englishVerses || []) {
+    const verseNumber = Number(englishVerse.verse);
+    const existsInHebrew = (hebrewVerses || []).some((verse) => Number(verse.verse) === verseNumber);
+
+    if (!existsInHebrew) {
+      diagnosticsByVerse.set(
+        verseNumber,
+        `Numbering mismatch: ${bookSlug} ${chapter}:${verseNumber} exists in JPS 1917 but is missing in Hebrew source.`
+      );
+    }
+  }
+
+  return {
+    verses: merged,
+    diagnosticsByVerse,
+    hasMismatch: diagnosticsByVerse.size > 0,
+  };
+}
+
+
 async function initializeReaderPage() {
   const bookSelect = document.querySelector('#book-select');
   const chapterSelect = document.querySelector('#chapter-select');
@@ -158,13 +205,18 @@ async function initializeReaderPage() {
   const searchScopeSelect = document.querySelector('#search-scope');
   const previousChapterButton = document.querySelector('#previous-chapter');
   const nextChapterButton = document.querySelector('#next-chapter');
+  const displayModeSelect = document.querySelector('#display-mode-select');
 
-  const state = createReaderState();
+  const readerPreferences = loadReaderPreferences();
+  const state = createReaderState({ displayMode: readerPreferences.displayMode });
+  const basePath = inferBasePathFromLocation();
   const dataLayer = createHebrewBibleDataLayer({
-    basePath: inferBasePathFromLocation(),
+    basePath,
+  });
+  const englishDataLayer = createEnglishBibleDataLayer({
+    basePath,
   });
   const deepLink = getDeepLinkState();
-  const readerPreferences = loadReaderPreferences();
 
   let currentChapterVerses = [];
   let searchIndex = null;
@@ -181,6 +233,9 @@ async function initializeReaderPage() {
     showVerseNumbersInput.checked = readerPreferences.showVerseNumbers;
     zenModeInput.checked = readerPreferences.zenMode;
     zenModeExitButton.hidden = !readerPreferences.zenMode;
+    if (displayModeSelect) {
+      displayModeSelect.value = state.getState().displayMode || 'parallel';
+    }
   }
 
   function updateHeader(nextState) {
@@ -218,6 +273,7 @@ async function initializeReaderPage() {
     searchScopeSelect,
     previousChapterButton,
     nextChapterButton,
+    displayModeSelect,
     onBookChange: async (bookSlug) => {
       await applyBookSelection(bookSlug, {
         autoSelectChapter: true,
@@ -243,6 +299,16 @@ async function initializeReaderPage() {
     },
     onNextChapter: async () => {
       await navigateRelativeChapter(1);
+    },
+    onDisplayModeChange: (mode) => {
+      const value = ['hebrew', 'english', 'parallel'].includes(mode) ? mode : 'parallel';
+      state.setState({ displayMode: value });
+      readerPreferences.displayMode = value;
+      saveReaderPreferences(readerPreferences);
+      renderVerses(versesList, currentChapterVerses, state.getState().selectedVerse, {
+        displayMode: value,
+        diagnosticsByVerse: state.getState().chapterDiagnostics?.diagnosticsByVerse || new Map(),
+      });
     },
   });
 
@@ -359,11 +425,12 @@ async function initializeReaderPage() {
       selectedVerse: null,
       chapters: [],
       error: null,
+      chapterDiagnostics: null,
     });
 
     currentChapterVerses = [];
     renderStatus(statusElement, 'Loading chapters…');
-    renderVerses(versesList, []);
+    renderVerses(versesList, [], null, { displayMode: state.getState().displayMode });
 
     try {
       const chapters = await dataLayer.getChaptersForBook(bookSlug);
@@ -410,7 +477,7 @@ async function initializeReaderPage() {
 
     if (!activeState.selectedBookSlug || !chapter) {
       currentChapterVerses = [];
-      renderVerses(versesList, []);
+      renderVerses(versesList, [], null, { displayMode: state.getState().displayMode });
       renderStatus(statusElement, 'Select a book and chapter to begin reading.');
       updateHeader(state.getState());
       return;
@@ -426,17 +493,34 @@ async function initializeReaderPage() {
     renderStatus(statusElement, 'Loading verses…');
 
     try {
-      const verses = await dataLayer.getVerses(activeState.selectedBookSlug, chapter);
+      const hebrewVerses = await dataLayer.getVerses(activeState.selectedBookSlug, chapter);
+      const englishVerses = await englishDataLayer.getChapterVerses(activeState.selectedBookSlug, chapter);
+      const mergedChapter = mergeChapterVerses({
+        hebrewVerses,
+        englishVerses,
+        bookSlug: activeState.selectedBookSlug,
+        chapter,
+      });
+      const verses = mergedChapter.verses;
       const targetVerse = verseOverride && verses.some((verse) => Number(verse.verse) === Number(verseOverride)) ? verseOverride : null;
 
       currentChapterVerses = verses;
-      renderVerses(versesList, verses, targetVerse);
-      renderStatus(statusElement, verses.length ? '' : 'No verses were found for this chapter.', verses.length ? 'neutral' : 'warning');
+      renderVerses(versesList, verses, targetVerse, {
+        displayMode: activeState.displayMode,
+        diagnosticsByVerse: mergedChapter.diagnosticsByVerse,
+      });
+
+      if (mergedChapter.hasMismatch) {
+        renderStatus(statusElement, 'Numbering mismatch detected between Hebrew and JPS 1917 data for this chapter.', 'warning');
+      } else {
+        renderStatus(statusElement, verses.length ? '' : 'No verses were found for this chapter.', verses.length ? 'neutral' : 'warning');
+      }
 
       state.setState({
         loading: false,
         selectedChapter: chapter,
         selectedVerse: targetVerse,
+        chapterDiagnostics: mergedChapter,
       });
 
       if (targetVerse) {
@@ -452,7 +536,7 @@ async function initializeReaderPage() {
       });
 
       currentChapterVerses = [];
-      renderVerses(versesList, []);
+      renderVerses(versesList, [], null, { displayMode: state.getState().displayMode });
       renderStatus(statusElement, `Unable to load verses: ${error.message}`, 'error');
     }
   }
@@ -478,8 +562,10 @@ async function initializeReaderPage() {
       return;
     }
 
-    currentChapterVerses = await dataLayer.getVerses(activeState.selectedBookSlug, activeState.selectedChapter);
-    renderVerses(versesList, currentChapterVerses, verse);
+    renderVerses(versesList, currentChapterVerses, verse, {
+      displayMode: activeState.displayMode,
+      diagnosticsByVerse: activeState.chapterDiagnostics?.diagnosticsByVerse || new Map(),
+    });
     state.setState({ selectedVerse: verse });
     focusVerse(versesList, verse);
     renderStatus(statusElement, `Moved to verse ${activeState.selectedChapter}:${verse}.`);
@@ -538,6 +624,7 @@ async function initializeReaderPage() {
   try {
     renderStatus(statusElement, 'Loading books…');
     const books = await dataLayer.getAllBooks();
+    await englishDataLayer.getBooks();
     const verses = await dataLayer.getAllVerses();
     searchIndex = buildSearchIndex(verses);
     state.setState({ books });

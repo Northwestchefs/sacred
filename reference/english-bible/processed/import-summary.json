@@ -1,0 +1,14 @@
+{
+  "sourceFile": "reference/english-bible/raw/jps1917-sample.json",
+  "sourceId": "JPS 1917",
+  "totals": {
+    "books": 2,
+    "chapters": 2,
+    "verses": 8
+  },
+  "warnings": [],
+  "errors": [],
+  "numberingPolicy": "Preserve source numbering; report mismatches at read time.",
+  "generatedAt": "2026-03-07T23:01:39.658Z",
+  "dryRun": false
+}
