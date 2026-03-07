@@ -18,6 +18,24 @@ Then open:
 - `http://localhost:4173/`
 - `http://localhost:4173/hebrew-bible/index.html`
 
+## Publish to a `.github.io` address
+
+This repo now includes a GitHub Actions workflow that deploys the static files to **GitHub Pages** whenever you push to `main`.
+
+- workflow file: [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
+- in GitHub, set **Settings → Pages → Source** to **GitHub Actions**
+
+Your live URL depends on your repo name:
+
+- If your repo is named `sacred`: `https://northwestchefs.github.io/sacred/`
+- If your repo is named `northwestchefs.github.io`: `https://northwestchefs.github.io/`
+
+If you want a URL like:
+
+- `https://northwestchefs.github.io/sksadventures.github.io/`
+
+then the repository name must be exactly `sksadventures.github.io`.
+
 ## Reference Sources
 
 Source provenance, licensing notes, schemas, and import documentation are maintained under [`reference/hebrew-bible/`](reference/hebrew-bible/).
