@@ -1,0 +1,42 @@
+[
+  {
+    "exampleOnly": true,
+    "id": "genesis-1-1",
+    "source": "unconfirmed-source",
+    "book": "Genesis",
+    "bookHebrew": "בראשית",
+    "bookEnglish": "Genesis",
+    "canonicalOrder": 1,
+    "chapter": 1,
+    "verse": 1,
+    "hebrew": "SCHEMA EXAMPLE ONLY — NOT IMPORTED SOURCE TEXT",
+    "transliteration": null,
+    "morphology": null,
+    "lemma": null,
+    "strongs": null,
+    "notes": [
+      "This object is a scaffold schema example only.",
+      "No production import has been performed."
+    ]
+  },
+  {
+    "exampleOnly": true,
+    "id": "genesis-1-2",
+    "source": "unconfirmed-source",
+    "book": "Genesis",
+    "bookHebrew": "בראשית",
+    "bookEnglish": "Genesis",
+    "canonicalOrder": 1,
+    "chapter": 1,
+    "verse": 2,
+    "hebrew": "SCHEMA EXAMPLE ONLY — PLACEHOLDER CONTENT",
+    "transliteration": null,
+    "morphology": null,
+    "lemma": null,
+    "strongs": null,
+    "notes": [
+      "Use this shape as a normalization contract.",
+      "Preserve source numbering exactly during real import."
+    ]
+  }
+]
