@@ -245,6 +245,27 @@ button:focus-visible,
   font-size: 1.1rem;
 }
 
+.reader-header {
+  position: relative;
+}
+
+.zen-mode-exit {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-strong);
+  color: var(--text);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.zen-mode-exit:hover {
+  border-color: var(--accent);
+}
+
 .reader-status {
   min-height: 1.5rem;
   margin: 0 0 0.5rem;
@@ -321,6 +342,10 @@ body.zen-mode .reader-subtitle,
 body.zen-mode .reader-canonical-note,
 body.zen-mode .reader-header-meta {
   display: none;
+}
+
+body.zen-mode .zen-mode-exit {
+  display: inline-flex;
 }
 
 body.zen-mode .reader-layout {
