@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sacred · Hebrew Bible Reader</title>
+    <link rel="stylesheet" href="../src/pages/hebrewBibleReader/styles.css" />
+  </head>
+  <body>
+    <main class="reader-page">
+      <header class="reader-header">
+        <p class="reader-kicker">Sacred Texts</p>
+        <h1>Hebrew Bible Reader</h1>
+        <p class="reader-subtitle">
+          Read the Hebrew text by canonical book and chapter. Numbering and source order are preserved.
+        </p>
+      </header>
+
+      <section class="reader-controls" aria-label="Reading controls">
+        <div class="control-field">
+          <label for="book-select">Book</label>
+          <select id="book-select" name="book"></select>
+        </div>
+        <div class="control-field">
+          <label for="chapter-select">Chapter</label>
+          <select id="chapter-select" name="chapter" disabled></select>
+        </div>
+      </section>
+
+      <p id="reader-status" class="reader-status" role="status" aria-live="polite"></p>
+
+      <section class="reader-body" aria-label="Hebrew chapter reading">
+        <div class="future-slot" aria-hidden="true">Future slot: commentary and cross references</div>
+        <ol id="verses-list" class="verses-list"></ol>
+      </section>
+    </main>
+
+    <script type="module" src="../src/pages/hebrewBibleReader/index.js"></script>
+  </body>
+</html>
