@@ -63,6 +63,16 @@ function getHebrewText(verse) {
   return verse.hebrew ?? verse.textHebrew ?? verse.text ?? '';
 }
 
+function getEnglishText(verse) {
+  const english = verse.translation ?? verse.english ?? verse.textEnglish ?? verse.text_en ?? '';
+
+  if (!english) {
+    return '';
+  }
+
+  return english === getHebrewText(verse) ? '' : english;
+}
+
 function renderVerses(listElement, verses, highlightedVerse = null) {
   listElement.innerHTML = '';
 
@@ -79,11 +89,26 @@ function renderVerses(listElement, verses, highlightedVerse = null) {
     verseNumber.className = 'verse-number';
     verseNumber.textContent = String(verse.verse);
 
+    const verseTextGroup = document.createElement('div');
+    verseTextGroup.className = 'verse-text-group';
+
     const verseText = document.createElement('p');
     verseText.className = 'verse-text';
     verseText.setAttribute('dir', 'rtl');
     verseText.setAttribute('lang', 'he');
     verseText.textContent = getHebrewText(verse);
+
+    const englishText = getEnglishText(verse);
+    if (englishText) {
+      const verseTranslation = document.createElement('p');
+      verseTranslation.className = 'verse-translation';
+      verseTranslation.setAttribute('dir', 'ltr');
+      verseTranslation.setAttribute('lang', 'en');
+      verseTranslation.textContent = englishText;
+      verseTextGroup.append(verseText, verseTranslation);
+    } else {
+      verseTextGroup.append(verseText);
+    }
 
     const copyButton = document.createElement('button');
     copyButton.type = 'button';
@@ -91,7 +116,7 @@ function renderVerses(listElement, verses, highlightedVerse = null) {
     copyButton.dataset.copyVerse = String(verse.verse);
     copyButton.textContent = 'Copy';
 
-    verseElement.append(verseNumber, verseText, copyButton);
+    verseElement.append(verseNumber, verseTextGroup, copyButton);
     listElement.appendChild(verseElement);
   }
 }
@@ -123,6 +148,16 @@ function renderSearchResults(listElement, results) {
     text.textContent = result.text;
 
     button.append(ref, text);
+
+    const englishText = getEnglishText(result);
+    if (englishText) {
+      const translation = document.createElement('span');
+      translation.className = 'result-translation';
+      translation.dir = 'ltr';
+      translation.lang = 'en';
+      translation.textContent = englishText;
+      button.append(translation);
+    }
     item.appendChild(button);
     listElement.appendChild(item);
   }
