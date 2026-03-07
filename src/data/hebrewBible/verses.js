@@ -36,7 +36,7 @@ function getVerseByReference(verses, bookSlug, chapterNumber, verseNumber) {
     return null;
   }
 
-  const { bookSlug, ...output } = match;
+  const { bookSlug: _bookSlug, ...output } = match;
   return output;
 }
 
