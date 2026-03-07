@@ -210,3 +210,59 @@ select {
     padding: 1.25rem;
   }
 }
+
+.home-search-form {
+  margin-top: 0.8rem;
+}
+
+.search-intro {
+  margin: 0;
+  color: var(--muted);
+}
+
+.home-search-row {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.home-search-row input {
+  flex: 1;
+  min-width: 16rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+}
+
+.home-search-status {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+}
+
+.home-search-results {
+  margin: 0.6rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.home-search-results li {
+  border-bottom: 1px solid #ece7dd;
+  padding-bottom: 0.7rem;
+}
+
+.home-search-results li:last-child {
+  border-bottom: 0;
+}
+
+.home-result-reference {
+  color: var(--accent);
+}
+
+.home-result-text {
+  margin: 0.2rem 0 0;
+}

@@ -28,6 +28,27 @@
         <a class="button" href="hebrew-bible/">Open Hebrew Bible Reader</a>
       </section>
 
+      <section class="card" aria-label="Search Scripture text">
+        <h3>Search by word or phrase</h3>
+        <p class="search-intro">Type a word or phrase to see every matching verse with its location reference.</p>
+        <form id="home-search-form" class="home-search-form">
+          <label for="home-search-input">Search Scripture text</label>
+          <div class="home-search-row">
+            <input
+              id="home-search-input"
+              name="search"
+              type="search"
+              placeholder="Try: light, covenant, peace"
+              autocomplete="off"
+              required
+            />
+            <button class="button" type="submit">Search</button>
+          </div>
+        </form>
+        <p id="home-search-status" class="home-search-status" aria-live="polite"></p>
+        <ol id="home-search-results" class="home-search-results" aria-live="polite"></ol>
+      </section>
+
       <section class="grid" aria-label="What Sacred is for">
         <article class="card">
           <h3>Hebrew Bible study</h3>
