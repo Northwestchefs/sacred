@@ -8,6 +8,9 @@ import {
   joinBasePath,
   normalizeSlug,
 } from './utils.js';
+import { buildTanakhBookCatalog } from './tanakhBooks.js';
+
+const DEFAULT_REMOTE_TEXTS_BASE_URL = 'https://www.sefaria.org/api/texts';
 
 function createHebrewBibleDataLayer(options = {}) {
   const {
@@ -16,6 +19,8 @@ function createHebrewBibleDataLayer(options = {}) {
     versesPath = DEFAULT_VERSES_PATH,
     booksIndexPath = DEFAULT_BOOKS_INDEX_PATH,
     booksBasePath = DEFAULT_BOOKS_BASE_PATH,
+    enableRemoteFallback = true,
+    remoteTextsBaseUrl = DEFAULT_REMOTE_TEXTS_BASE_URL,
   } = options;
 
   const state = {
@@ -25,6 +30,7 @@ function createHebrewBibleDataLayer(options = {}) {
     allVersesCache: null,
     loadPromise: null,
     useBookFiles: false,
+    useRemoteProvider: false,
   };
 
   async function fetchJson(path) {
@@ -95,6 +101,71 @@ function createHebrewBibleDataLayer(options = {}) {
     state.useBookFiles = false;
   }
 
+  function isLikelyBootstrapSample() {
+    if (!Array.isArray(state.books)) {
+      return false;
+    }
+
+    if (state.books.length <= 1) {
+      return true;
+    }
+
+    return Array.isArray(state.allVersesCache) && state.allVersesCache.length <= 10;
+  }
+
+  async function loadUsingRemoteProvider() {
+    const books = buildTanakhBookCatalog();
+
+    const seedVerses = books.map((book) => ({
+      ...book,
+      chapter: 1,
+      verse: 1,
+      hebrew: '__seed__',
+      bookSlug: book.slug,
+    }));
+
+    state.books = books;
+    state.bookIndex = buildBooksIndex(seedVerses);
+    state.bookIndex.books = books;
+    state.useBookFiles = false;
+    state.useRemoteProvider = true;
+    state.allVersesCache = null;
+  }
+
+  function stripMarkup(text) {
+    return String(text ?? '').replace(/<[^>]+>/g, '').trim();
+  }
+
+  async function fetchRemoteBookVerses(book) {
+    const url = `${remoteTextsBaseUrl}/${encodeURIComponent(book.remoteRef || book.bookEnglish || book.book)}?lang=he&context=0&commentary=0&pad=0`;
+    const payload = await fetchJson(url);
+    const chapters = Array.isArray(payload?.he) ? payload.he : [];
+    const normalized = [];
+
+    chapters.forEach((chapterVerses, chapterIndex) => {
+      if (!Array.isArray(chapterVerses)) {
+        return;
+      }
+
+      chapterVerses.forEach((verseText, verseIndex) => {
+        normalized.push({
+          id: `${book.slug}-${chapterIndex + 1}-${verseIndex + 1}`,
+          source: 'sefaria',
+          book: book.book,
+          bookEnglish: book.bookEnglish,
+          bookHebrew: book.bookHebrew,
+          canonicalOrder: book.canonicalOrder,
+          bookSlug: book.slug,
+          chapter: chapterIndex + 1,
+          verse: verseIndex + 1,
+          hebrew: stripMarkup(verseText),
+        });
+      });
+    });
+
+    return normalized;
+  }
+
   async function load() {
     if (state.loadPromise) {
       return state.loadPromise;
@@ -109,6 +180,14 @@ function createHebrewBibleDataLayer(options = {}) {
         await loadUsingBookFiles();
       } catch (_error) {
         await loadUsingVersesFile();
+      }
+
+      if (enableRemoteFallback && isLikelyBootstrapSample()) {
+        try {
+          await loadUsingRemoteProvider();
+        } catch {
+          // Continue with local sample data if remote provider is unavailable.
+        }
       }
 
       return {
@@ -129,6 +208,16 @@ function createHebrewBibleDataLayer(options = {}) {
     await ensureLoaded();
 
     if (!state.useBookFiles) {
+      if (state.useRemoteProvider) {
+        if (state.versesByBook.has(book.slug)) {
+          return state.versesByBook.get(book.slug);
+        }
+
+        const verses = await fetchRemoteBookVerses(book);
+        state.versesByBook.set(book.slug, verses);
+        return verses;
+      }
+
       return state.allVersesCache.filter((verse) => verse.bookSlug === book.slug);
     }
 

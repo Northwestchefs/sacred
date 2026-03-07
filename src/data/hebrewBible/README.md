@@ -11,6 +11,8 @@ If book-level files are unavailable, it falls back to:
 
 - `reference/hebrew-bible/processed/verses.json`
 
+If local processed data looks like a bootstrap sample (for example only Genesis 1:1-5), the layer can also fall back to a remote full-text provider so the reader can browse and search the entire Tanakh.
+
 ## Why this exists
 
 The importer pipeline creates normalized verse-level data. Reader features should not directly parse large JSON files in many places.
