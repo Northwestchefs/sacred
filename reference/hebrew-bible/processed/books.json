@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "genesis",
+    "book": "Genesis",
+    "bookEnglish": "Genesis",
+    "bookHebrew": "בראשית",
+    "canonicalOrder": 1,
+    "chapterCount": 1,
+    "verseCount": 5,
+    "file": "books/genesis.json"
+  }
+]

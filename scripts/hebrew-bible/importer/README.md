@@ -29,28 +29,33 @@ node scripts/hebrew-bible/importer/index.js --dry-run
 When validation passes:
 
 - `reference/hebrew-bible/processed/verses.json`
+- `reference/hebrew-bible/processed/books.json`
+- `reference/hebrew-bible/processed/books/*.json`
 - `reference/hebrew-bible/processed/import-summary.json`
-- `reference/hebrew-bible/processed/books/*.json` (per-book split)
 
 ## Validation checks
 
 - required field presence (`id`, `source`, `book`, `chapter`, `verse`, `hebrew`)
 - duplicate verse IDs
-- missing chapter/verse values
-- empty Hebrew text
+- missing or invalid chapter/verse references
+- empty Hebrew verse text
+- malformed record detection
 - unresolved `bookHebrew`, `bookEnglish`, `canonicalOrder` are reported as warnings
 
 If validation has errors, import exits non-zero and does not report success.
 
+## Reporting
+
+`import-summary.json` includes:
+
+- total books/chapters/verses parsed
+- duplicate and malformed record counts
+- missing/empty verse diagnostics
+- warning and error lists
+- source and adapter metadata
+
 ## Known limitations
 
 - Only `.json` is supported currently.
-- Optional enrichment fields (`transliteration`, `morphology`, `lemma`, `strongs`) are output as `null`.
-- Book metadata resolution currently depends on recognized English book names/aliases.
-
-## Adding future adapters
-
-1. Add adapter module under `adapters/parse-<format>.js`.
-2. Add extension handling in `readSourceByExtension()`.
-3. Add routing in `routeAndParse()`.
-4. Document assumptions and unsupported fields in `reference/hebrew-bible/import-pipeline.md`.
+- Book metadata resolution depends on recognized English book names/aliases.
+- Import expects exactly one active source file in `reference/hebrew-bible/raw/`.

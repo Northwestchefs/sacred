@@ -3,6 +3,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const { parseJsonSource } = require('./adapters/parse-json');
+const { resolveBookMetadata } = require('./lib/book-metadata');
 
 const repoRoot = path.resolve(__dirname, '../../..');
 const sourceDir = path.join(repoRoot, 'reference/hebrew-bible/raw');
@@ -24,23 +25,24 @@ async function main() {
   const sourceId = deriveSourceId(manifest, sourceFile);
   const sourcePayload = await readSourceByExtension(sourceFile, sourceExt);
 
-  const { verses, warnings, detectedStructure } = routeAndParse({
+  const { verses: parsedVerses, warnings: adapterWarnings, detectedStructure } = routeAndParse({
     sourceExt,
     sourcePayload,
     sourceId
   });
 
+  const verses = addComputedFields(parsedVerses);
+  const validation = validateVerses(verses);
+
+  const allWarnings = [...adapterWarnings, ...validation.warnings];
+
   console.log(`Adapter structure detected: ${detectedStructure}`);
   console.log(`Verses parsed: ${verses.length}`);
 
-  const validation = validateVerses(verses);
+  for (const warning of allWarnings) {
+    console.warn(`WARN: ${warning}`);
+  }
 
-  for (const warning of warnings) {
-    console.warn(`WARN: ${warning}`);
-  }
-  for (const warning of validation.warnings) {
-    console.warn(`WARN: ${warning}`);
-  }
   for (const err of validation.errors) {
     console.error(`ERROR: ${err}`);
   }
@@ -49,36 +51,57 @@ async function main() {
     throw new Error(`Validation failed with ${validation.errors.length} error(s).`);
   }
 
-  const byBookStats = getBookStats(verses);
+  const books = buildBooksPayload(verses);
+  const booksIndex = books.map((book) => ({
+    slug: book.slug,
+    book: book.book,
+    bookEnglish: book.bookEnglish,
+    bookHebrew: book.bookHebrew,
+    canonicalOrder: book.canonicalOrder,
+    chapterCount: book.chapterCount,
+    verseCount: book.verseCount,
+    file: `books/${book.slug}.json`
+  }));
+
   const summary = {
     sourceFile: path.relative(repoRoot, sourceFile),
     sourceFormat: sourceExt,
     sourceId,
     adapter: 'parse-json',
     detectedStructure,
-    verseCount: verses.length,
-    warnings: [...warnings, ...validation.warnings],
-    errors: [],
-    byBook: byBookStats,
+    totals: {
+      books: books.length,
+      chapters: validation.chapterCount,
+      verses: verses.length
+    },
+    warnings: allWarnings,
+    errors: validation.errors,
+    diagnostics: {
+      emptyVerseTextCount: validation.emptyVerseTextCount,
+      duplicateIdCount: validation.duplicateIdCount,
+      malformedRecordCount: validation.malformedRecordCount,
+      missingOrInvalidReferenceCount: validation.missingOrInvalidReferenceCount
+    },
+    byBook: Object.fromEntries(books.map((book) => [book.bookEnglish || book.book || book.slug, book.verseCount])),
     generatedAt: new Date().toISOString(),
     dryRun
   };
 
   if (!dryRun) {
-    await fs.mkdir(processedDir, { recursive: true });
-    await fs.writeFile(path.join(processedDir, 'verses.json'), `${JSON.stringify(verses, null, 2)}\n`);
-    await fs.writeFile(
-      path.join(processedDir, 'import-summary.json'),
-      `${JSON.stringify(summary, null, 2)}\n`
-    );
+    await writeProcessedOutput({
+      outDir: processedDir,
+      verses,
+      books,
+      booksIndex,
+      summary
+    });
 
-    await writePerBookFiles(verses, processedDir);
-    console.log('Output files written: verses.json, import-summary.json, books/*.json');
+    console.log('Output files written: verses.json, books.json, import-summary.json, books/*.json');
   } else {
     console.log('Dry-run enabled: no files written.');
   }
 
-  console.log('Import completed successfully.');
+  console.log(`Import completed successfully (${books.length} books, ${validation.chapterCount} chapters, ${verses.length} verses).`);
 }
 
 async function readManifest(filePath) {
@@ -132,42 +155,86 @@ function deriveSourceId(manifest, sourceFile) {
   return path.basename(sourceFile, path.extname(sourceFile));
 }
 
+function normalizeSlug(value) {
+  return String(value ?? '')
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function addComputedFields(verses) {
+  return verses.map((verse) => ({
+    ...verse,
+    bookSlug: normalizeSlug(verse.bookEnglish || verse.book || verse.bookHebrew),
+    text: verse.hebrew
+  }));
+}
+
 function validateVerses(verses) {
   const errors = [];
   const warnings = [];
-  const seenIds = new Set();
+  const seenIds = new Map();
+  const uniqueChapterRefs = new Set();
+
+  let malformedRecordCount = 0;
+  let missingOrInvalidReferenceCount = 0;
+  let emptyVerseTextCount = 0;
+  let duplicateIdCount = 0;
 
   verses.forEach((verse, idx) => {
     const pointer = `verses[${idx}]`;
+
+    if (!verse || typeof verse !== 'object') {
+      malformedRecordCount += 1;
+      errors.push(`${pointer}: record is not an object.`);
+      return;
+    }
+
+    let hasMalformedField = false;
+
     if (!verse.id || typeof verse.id !== 'string') {
+      hasMalformedField = true;
       errors.push(`${pointer}: missing id.`);
     }
 
     if (!verse.source || typeof verse.source !== 'string') {
+      hasMalformedField = true;
       errors.push(`${pointer}: missing source.`);
     }
 
     if (!verse.book || typeof verse.book !== 'string') {
+      hasMalformedField = true;
       errors.push(`${pointer}: missing book.`);
     }
 
-    if (!Number.isInteger(verse.chapter)) {
-      errors.push(`${pointer}: missing chapter.`);
+    if (!Number.isInteger(verse.chapter) || verse.chapter <= 0) {
+      missingOrInvalidReferenceCount += 1;
+      hasMalformedField = true;
+      errors.push(`${pointer}: missing or invalid chapter.`);
     }
 
-    if (!Number.isInteger(verse.verse)) {
-      errors.push(`${pointer}: missing verse.`);
+    if (!Number.isInteger(verse.verse) || verse.verse <= 0) {
+      missingOrInvalidReferenceCount += 1;
+      hasMalformedField = true;
+      errors.push(`${pointer}: missing or invalid verse.`);
     }
 
     if (!verse.hebrew || typeof verse.hebrew !== 'string' || !verse.hebrew.trim()) {
+      emptyVerseTextCount += 1;
+      hasMalformedField = true;
       errors.push(`${pointer}: empty Hebrew text.`);
     }
 
     if (verse.id) {
       if (seenIds.has(verse.id)) {
-        errors.push(`${pointer}: duplicate id "${verse.id}".`);
+        duplicateIdCount += 1;
+        hasMalformedField = true;
+        errors.push(`${pointer}: duplicate id "${verse.id}" (first seen at verses[${seenIds.get(verse.id)}]).`);
+      } else {
+        seenIds.set(verse.id, idx);
       }
-      seenIds.add(verse.id);
     }
 
     if (!verse.bookHebrew) {
@@ -181,38 +248,106 @@ function validateVerses(verses) {
     if (!Number.isInteger(verse.canonicalOrder)) {
       warnings.push(`${pointer}: canonicalOrder unresolved.`);
     }
+
+    if (Number.isInteger(verse.chapter) && Number.isInteger(verse.verse) && verse.bookSlug) {
+      uniqueChapterRefs.add(`${verse.bookSlug}:${verse.chapter}`);
+    }
+
+    if (hasMalformedField) {
+      malformedRecordCount += 1;
+    }
   });
 
-  return { errors, warnings };
+  return {
+    errors,
+    warnings,
+    chapterCount: uniqueChapterRefs.size,
+    malformedRecordCount,
+    missingOrInvalidReferenceCount,
+    emptyVerseTextCount,
+    duplicateIdCount
+  };
 }
 
-function getBookStats(verses) {
-  const stats = {};
+function buildBooksPayload(verses) {
+  const byBook = new Map();
+
   for (const verse of verses) {
-    const key = verse.book || 'Unknown';
-    stats[key] = (stats[key] || 0) + 1;
+    const slug = verse.bookSlug || normalizeSlug(verse.bookEnglish || verse.book || verse.bookHebrew || 'unknown');
+
+    if (!byBook.has(slug)) {
+      const metadata = resolveBookMetadata(verse.bookEnglish || verse.book);
+
+      byBook.set(slug, {
+        slug,
+        book: metadata?.book || verse.book || null,
+        bookEnglish: metadata?.bookEnglish || verse.bookEnglish || verse.book || null,
+        bookHebrew: metadata?.bookHebrew || verse.bookHebrew || null,
+        canonicalOrder: metadata?.canonicalOrder || verse.canonicalOrder || null,
+        chapterCount: 0,
+        verseCount: 0,
+        chapters: {}
+      });
+    }
+
+    const book = byBook.get(slug);
+    const chapterKey = String(verse.chapter);
+
+    if (!book.chapters[chapterKey]) {
+      book.chapters[chapterKey] = [];
+      book.chapterCount += 1;
+    }
+
+    book.chapters[chapterKey].push({ ...verse });
+    book.verseCount += 1;
   }
-  return Object.fromEntries(Object.entries(stats).sort((a, b) => a[0].localeCompare(b[0])));
+
+  const books = [...byBook.values()]
+    .map((book) => {
+      const sortedChapterKeys = Object.keys(book.chapters)
+        .map((value) => Number.parseInt(value, 10))
+        .filter(Number.isInteger)
+        .sort((a, b) => a - b);
+
+      const normalizedChapters = {};
+      sortedChapterKeys.forEach((chapter) => {
+        normalizedChapters[String(chapter)] = book.chapters[String(chapter)]
+          .sort((a, b) => a.verse - b.verse)
+          .map((verse) => ({ ...verse }));
+      });
+
+      return {
+        ...book,
+        chapterCount: sortedChapterKeys.length,
+        chapters: normalizedChapters
+      };
+    })
+    .sort((a, b) => {
+      const aOrder = Number.isInteger(a.canonicalOrder) ? a.canonicalOrder : Number.MAX_SAFE_INTEGER;
+      const bOrder = Number.isInteger(b.canonicalOrder) ? b.canonicalOrder : Number.MAX_SAFE_INTEGER;
+      if (aOrder !== bOrder) {
+        return aOrder - bOrder;
+      }
+
+      return String(a.bookEnglish || a.book || a.slug).localeCompare(String(b.bookEnglish || b.book || b.slug));
+    });
+
+  return books;
 }
 
-async function writePerBookFiles(verses, outDir) {
+async function writeProcessedOutput({ outDir, verses, books, booksIndex, summary }) {
   const booksDir = path.join(outDir, 'books');
   await fs.mkdir(booksDir, { recursive: true });
 
-  const byBook = new Map();
-  for (const verse of verses) {
-    const key = verse.book || 'Unknown';
-    if (!byBook.has(key)) {
-      byBook.set(key, []);
-    }
-    byBook.get(key).push(verse);
-  }
+  await fs.writeFile(path.join(outDir, 'verses.json'), `${JSON.stringify(verses, null, 2)}\n`);
+  await fs.writeFile(path.join(outDir, 'books.json'), `${JSON.stringify(booksIndex, null, 2)}\n`);
+  await fs.writeFile(path.join(outDir, 'import-summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
 
-  for (const [book, bookVerses] of byBook.entries()) {
-    const slug = book.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
-    const outFile = path.join(booksDir, `${slug}.json`);
-    await fs.writeFile(outFile, `${JSON.stringify(bookVerses, null, 2)}\n`);
-  }
+  const writes = books.map((book) =>
+    fs.writeFile(path.join(booksDir, `${book.slug}.json`), `${JSON.stringify(book, null, 2)}\n`)
+  );
+
+  await Promise.all(writes);
 }
 
 main().catch((err) => {
