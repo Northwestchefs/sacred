@@ -19,6 +19,79 @@
     return option;
   }
 
+
+  function getVerseReference(verse) {
+    const bookLabel = verse.bookEnglish || verse.book || verse.bookSlug || 'Unknown';
+    return `${bookLabel} ${verse.chapter}:${verse.verse}`;
+  }
+
+  function normalizeText(value) {
+    return String(value || '').toLowerCase();
+  }
+
+  async function initHomeSearch() {
+    const form = document.getElementById('home-search-form');
+    const input = document.getElementById('home-search-input');
+    const status = document.getElementById('home-search-status');
+    const results = document.getElementById('home-search-results');
+    if (!form || !input || !status || !results) return;
+
+    const source = 'reference/hebrew-bible/processed/verses.json';
+    let verses = [];
+
+    status.textContent = 'Loading searchable text…';
+    try {
+      const response = await fetch(source);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      verses = await response.json();
+      status.textContent = 'Search is ready.';
+    } catch (error) {
+      status.textContent = 'Search data could not be loaded right now. Please refresh and try again.';
+      return;
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const query = input.value.trim();
+      results.innerHTML = '';
+
+      if (!query) {
+        status.textContent = 'Enter a word or phrase to search.';
+        return;
+      }
+
+      const normalizedQuery = normalizeText(query);
+      const matches = verses.filter((verse) => {
+        const searchable = normalizeText(verse.text);
+        return searchable.includes(normalizedQuery);
+      });
+
+      if (!matches.length) {
+        status.textContent = `No results for “${query}”.`;
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+      matches.forEach((verse) => {
+        const item = document.createElement('li');
+
+        const reference = document.createElement('strong');
+        reference.className = 'home-result-reference';
+        reference.textContent = getVerseReference(verse);
+
+        const text = document.createElement('p');
+        text.className = 'home-result-text';
+        text.textContent = verse.text || '';
+
+        item.append(reference, text);
+        fragment.append(item);
+      });
+
+      results.append(fragment);
+      status.textContent = `${matches.length} result${matches.length === 1 ? '' : 's'} found for “${query}”.`;
+    });
+  }
+
   async function initReader() {
     const readerRoot = document.querySelector('[data-reader]');
     if (!readerRoot) return;
@@ -138,4 +211,5 @@
 
   setActiveNav();
   initReader();
+  initHomeSearch();
 })();
