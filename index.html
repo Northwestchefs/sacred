@@ -3,47 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sacred · Text Study</title>
-    <link rel="stylesheet" href="src/pages/site/styles.css" />
+    <title>Sacred</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body>
-    <main class="site-shell">
-      <header class="hero card">
-        <p class="kicker">Sacred Texts</p>
-        <h1>Study the Hebrew Bible with a clean, focused web experience.</h1>
-        <p class="subtitle">
-          Sacred is a lightweight, static-friendly study website for reading Hebrew chapters,
-          searching verse text, and jumping to precise references.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="hebrew-bible/index.html">Open Hebrew Bible Reader</a>
-          <a class="button" href="src/data/hebrewBible/README.md">View data documentation</a>
-        </div>
-      </header>
+  <body data-page="home">
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="brand">Sacred</h1>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a data-nav-key="home" href="./">Home</a>
+          <a data-nav-key="read" href="read/">Read</a>
+          <a data-nav-key="about" href="about/">About</a>
+        </nav>
+      </div>
+    </header>
 
-      <section class="feature-grid" aria-label="Website features">
-        <article class="card">
-          <h2>Reference navigation</h2>
-          <p>Quickly jump using familiar forms like <strong>Genesis 1:1</strong> and continue reading in context.</p>
-        </article>
-        <article class="card">
-          <h2>Hebrew text search</h2>
-          <p>Locate verses by Hebrew words or phrases, with direct links into the chapter reader.</p>
-        </article>
-        <article class="card">
-          <h2>Study-first reading layout</h2>
-          <p>Right-to-left verse display, chapter controls, and optional settings for calmer deep reading.</p>
-        </article>
+    <main class="page-main">
+      <section class="hero card">
+        <p class="kicker">A calm place for study</p>
+        <h2>Sacred</h2>
+        <p>
+          Sacred is building a careful, focused Hebrew Bible reading experience for people who want to study the text with clarity and respect.
+        </p>
+        <a class="button" href="read/">Open Hebrew Bible Reader</a>
       </section>
 
-      <section class="card quick-start" aria-label="Quick start">
-        <h2>Quick start</h2>
-        <ol>
-          <li>Open the Hebrew Bible Reader.</li>
-          <li>Select a book and chapter.</li>
-          <li>Use the search box or jump directly to a verse reference.</li>
-        </ol>
+      <section class="grid" aria-label="What Sacred is for">
+        <article class="card">
+          <h3>Hebrew Bible study</h3>
+          <p>
+            The first version of Sacred is centered on readable chapter study, quiet visual design, and right-to-left Hebrew presentation.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Source numbering preserved</h3>
+          <p>
+            Chapter and verse numbering is intended to remain consistent with the imported source tradition so references remain dependable.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Future study tools</h3>
+          <p>
+            Commentary layers, search workflows, and personal note-taking are planned as future milestones after this MVP foundation.
+          </p>
+        </article>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>Sacred · Minimal tools for careful Hebrew Bible study.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
