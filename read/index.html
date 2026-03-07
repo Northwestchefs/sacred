@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sacred · Hebrew Bible Reader</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body data-page="read">
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="brand">Sacred</h1>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a data-nav-key="home" href="../">Home</a>
+          <a data-nav-key="read" href="./">Read</a>
+          <a data-nav-key="about" href="../about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main" data-reader data-verse-source="../reference/hebrew-bible/processed/verses.json">
+      <section class="card">
+        <p class="kicker">Hebrew Bible Reader</p>
+        <h2>Read by book and chapter</h2>
+        <p>
+          Select a book and chapter to view Hebrew verses. The verse panel is right-to-left and optimized for calm, readable study.
+        </p>
+      </section>
+
+      <section class="reader-layout" aria-label="Reader controls and verses">
+        <article class="card">
+          <h3>Choose text location</h3>
+          <div>
+            <label for="book-select">Book</label>
+            <select id="book-select" name="book" disabled></select>
+          </div>
+          <div>
+            <label for="chapter-select">Chapter</label>
+            <select id="chapter-select" name="chapter" disabled></select>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Verses</h3>
+          <p id="reader-status" class="reader-status" aria-live="polite">Initializing reader…</p>
+          <ol id="verse-list" class="verse-list"></ol>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>Sacred · Minimal tools for careful Hebrew Bible study.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
