@@ -3,8 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sacred · Hebrew Bible Reader</title>
+    <title>Sacred · Reader moved</title>
+    <meta http-equiv="refresh" content="0; url=../hebrew-bible/" />
+    <link rel="canonical" href="../hebrew-bible/" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script>
+      window.location.replace('../hebrew-bible/');
+    </script>
   </head>
   <body data-page="read">
     <header class="site-header">
@@ -12,39 +17,22 @@
         <h1 class="brand">Sacred</h1>
         <nav class="site-nav" aria-label="Primary navigation">
           <a data-nav-key="home" href="../">Home</a>
-          <a data-nav-key="read" href="./">Read</a>
+          <a data-nav-key="read" href="../hebrew-bible/">Read</a>
           <a data-nav-key="about" href="../about/">About</a>
         </nav>
       </div>
     </header>
 
-    <main class="page-main" data-reader data-verse-source="../reference/hebrew-bible/processed/verses.json">
-      <section class="card">
-        <p class="kicker">Hebrew Bible Reader</p>
-        <h2>Read by book and chapter</h2>
+    <main class="page-main">
+      <section class="card" aria-live="polite">
+        <p class="kicker">Legacy path</p>
+        <h2>The reader has moved</h2>
         <p>
-          Select a book and chapter to view Hebrew verses. The verse panel is right-to-left and optimized for calm, readable study.
+          The canonical Hebrew Bible reader is now at <strong>/hebrew-bible/</strong>. You are being redirected automatically.
         </p>
-      </section>
-
-      <section class="reader-layout" aria-label="Reader controls and verses">
-        <article class="card">
-          <h3>Choose text location</h3>
-          <div>
-            <label for="book-select">Book</label>
-            <select id="book-select" name="book" disabled></select>
-          </div>
-          <div>
-            <label for="chapter-select">Chapter</label>
-            <select id="chapter-select" name="chapter" disabled></select>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Verses</h3>
-          <p id="reader-status" class="reader-status" aria-live="polite">Initializing reader…</p>
-          <ol id="verse-list" class="verse-list"></ol>
-        </article>
+        <p>
+          If redirection does not happen, use this link: <a class="button" href="../hebrew-bible/">Open Hebrew Bible Reader</a>
+        </p>
       </section>
     </main>
 
