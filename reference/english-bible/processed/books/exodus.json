@@ -1,0 +1,52 @@
+{
+  "slug": "exodus",
+  "book": "Exodus",
+  "bookEnglish": "Exodus",
+  "bookHebrew": "שמות",
+  "canonicalOrder": 2,
+  "verseCount": 3,
+  "chapters": {
+    "1": [
+      {
+        "id": "exodus-1-1",
+        "source": "JPS 1917",
+        "book": "Exodus",
+        "bookEnglish": "Exodus",
+        "bookHebrew": "שמות",
+        "canonicalOrder": 2,
+        "bookSlug": "exodus",
+        "chapter": 1,
+        "verse": 1,
+        "english": "Now these are the names of the sons of Israel, who came into Egypt with Jacob; every man came with his household:",
+        "text": "Now these are the names of the sons of Israel, who came into Egypt with Jacob; every man came with his household:"
+      },
+      {
+        "id": "exodus-1-2",
+        "source": "JPS 1917",
+        "book": "Exodus",
+        "bookEnglish": "Exodus",
+        "bookHebrew": "שמות",
+        "canonicalOrder": 2,
+        "bookSlug": "exodus",
+        "chapter": 1,
+        "verse": 2,
+        "english": "Reuben, Simeon, Levi, and Judah;",
+        "text": "Reuben, Simeon, Levi, and Judah;"
+      },
+      {
+        "id": "exodus-1-3",
+        "source": "JPS 1917",
+        "book": "Exodus",
+        "bookEnglish": "Exodus",
+        "bookHebrew": "שמות",
+        "canonicalOrder": 2,
+        "bookSlug": "exodus",
+        "chapter": 1,
+        "verse": 3,
+        "english": "Issachar, Zebulun, and Benjamin;",
+        "text": "Issachar, Zebulun, and Benjamin;"
+      }
+    ]
+  },
+  "chapterCount": 1
+}

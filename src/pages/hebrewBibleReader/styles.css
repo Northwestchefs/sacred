@@ -340,6 +340,18 @@ button:focus-visible,
   text-align: left;
 }
 
+
+.verse-translation--missing {
+  color: var(--error);
+  font-style: italic;
+}
+
+.verse-diagnostic {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--error);
+}
+
 .verse-copy-button {
   border: 1px solid transparent;
   color: var(--muted);
@@ -392,7 +404,19 @@ body.zen-mode .reader-page {
     gap: 0.55rem;
   }
 
-  .verse-copy-button {
+  
+.verse-translation--missing {
+  color: var(--error);
+  font-style: italic;
+}
+
+.verse-diagnostic {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--error);
+}
+
+.verse-copy-button {
     grid-column: 2;
     justify-self: end;
   }

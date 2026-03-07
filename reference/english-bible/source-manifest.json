@@ -1,0 +1,53 @@
+{
+  "id": "sacred.english-bible.source-manifest.v1",
+  "project": "Sacred",
+  "category": "english-bible-source",
+  "status": "active",
+  "source": {
+    "name": "The Holy Scriptures: A New Translation (JPS 1917)",
+    "shortName": "JPS 1917",
+    "provider": "Jewish Publication Society",
+    "officialUrl": "https://jps.org/books/the-holy-scriptures-jps-1917/",
+    "documentationUrl": "https://jps.org/about-jps/jps-1917-edition-now-in-the-public-domain/",
+    "downloadUrl": null,
+    "accessedAt": "2026-03-07",
+    "version": "1917",
+    "releaseDate": "1917",
+    "formatsAvailable": [
+      "JSON (normalized for Sacred)",
+      "Text"
+    ],
+    "selectedFormat": "JSON"
+  },
+  "content": {
+    "language": "English",
+    "script": "Latin",
+    "includesText": true,
+    "translationFamily": "JPS",
+    "translationEdition": "1917"
+  },
+  "licensing": {
+    "textLicense": "Public domain",
+    "notes": [
+      "Use JPS 1917 only for this layer.",
+      "Do not mix newer JPS translations into this dataset."
+    ]
+  },
+  "technical": {
+    "verseNumbering": "Preserve source chapter/verse numbering exactly as provided by source layer.",
+    "chapterVerseDifferences": true,
+    "utf8Required": true,
+    "parserNotes": [
+      "Normalize records to bookSlug/chapter/verse.",
+      "Do not fabricate or silently merge numbering mismatches.",
+      "Emit mismatch diagnostics during join against Hebrew layer."
+    ]
+  },
+  "projectUse": {
+    "storeRawIn": "reference/english-bible/raw/",
+    "storeProcessedIn": "reference/english-bible/processed/",
+    "readerReady": true,
+    "importerReady": true
+  },
+  "lastReviewedAt": "2026-03-07"
+}

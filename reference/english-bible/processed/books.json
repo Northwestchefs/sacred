@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "genesis",
+    "book": "Genesis",
+    "bookEnglish": "Genesis",
+    "bookHebrew": "בראשית",
+    "canonicalOrder": 1,
+    "chapterCount": 1,
+    "verseCount": 5,
+    "file": "books/genesis.json"
+  },
+  {
+    "slug": "exodus",
+    "book": "Exodus",
+    "bookEnglish": "Exodus",
+    "bookHebrew": "שמות",
+    "canonicalOrder": 2,
+    "chapterCount": 1,
+    "verseCount": 3,
+    "file": "books/exodus.json"
+  }
+]

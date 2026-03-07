@@ -1,0 +1,33 @@
+{
+  "source": "JPS 1917",
+  "books": [
+    {
+      "book": "Genesis",
+      "chapters": [
+        {
+          "chapter": 1,
+          "verses": [
+            { "verse": 1, "english": "In the beginning God created the heaven and the earth." },
+            { "verse": 2, "english": "Now the earth was unformed and void, and darkness was upon the face of the deep; and the spirit of God hovered over the face of the waters." },
+            { "verse": 3, "english": "And God said: 'Let there be light.' And there was light." },
+            { "verse": 4, "english": "And God saw the light, that it was good; and God divided the light from the darkness." },
+            { "verse": 5, "english": "And God called the light Day, and the darkness He called Night. And there was evening and there was morning, one day." }
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Exodus",
+      "chapters": [
+        {
+          "chapter": 1,
+          "verses": [
+            { "verse": 1, "english": "Now these are the names of the sons of Israel, who came into Egypt with Jacob; every man came with his household:" },
+            { "verse": 2, "english": "Reuben, Simeon, Levi, and Judah;" },
+            { "verse": 3, "english": "Issachar, Zebulun, and Benjamin;" }
+          ]
+        }
+      ]
+    }
+  ]
+}
