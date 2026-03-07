@@ -1,70 +1,82 @@
-# Hebrew Bible Import Pipeline (Scaffold)
+# Hebrew Bible Import Pipeline
 
-## Purpose
+## Current supported source
 
-Define a clean importer foundation that can ingest Hebrew Bible raw source files and produce normalized verse-level JSON for Sacred.
+- Raw input location: `reference/hebrew-bible/raw/`
+- Active parser implementation: `scripts/hebrew-bible/importer/adapters/parse-json.js`
+- Current supported raw format: **JSON** (`.json`)
 
-## Pipeline Overview
+The importer automatically detects the single non-hidden file in `raw/` and routes based on file extension.
 
-1. Read importer configuration and paths.
-2. Load source manifest metadata (if present).
-3. Scan `raw/` for supported source files.
-4. Route each file to a format adapter (currently placeholder adapters only).
-5. Normalize parsed records into the verse contract.
-6. Validate normalized verse objects.
-7. Write outputs and reports to `processed/`.
+## Adapter behavior
 
-## Input Location
+Adapter: `parse-json.js`
 
-- `reference/hebrew-bible/raw/`
+Supported JSON shapes:
+1. `[{ ...verse... }]`
+2. `{ "verses": [{ ...verse... }] }`
+3. `{ "books": [{ "chapters": [{ "verses": [{ ...verse... }] }] }] }`
 
-## Output Location
+For all supported shapes, the adapter:
+- preserves source traversal order,
+- emits verse-level objects,
+- preserves source chapter and verse numbering,
+- does not synthesize morphology/lemma/Strong's data.
 
-- `reference/hebrew-bible/processed/`
-- Scaffold output currently includes `import-report.scaffold.json`.
+## Normalized verse schema used by importer
 
-## Manifest Dependency
+```json
+{
+  "id": "genesis-1-1",
+  "source": "OSHB/WLC",
+  "book": "Genesis",
+  "bookHebrew": "בראשית",
+  "bookEnglish": "Genesis",
+  "canonicalOrder": 1,
+  "chapter": 1,
+  "verse": 1,
+  "hebrew": "בְּרֵאשִׁית ...",
+  "transliteration": null,
+  "morphology": null,
+  "lemma": null,
+  "strongs": null,
+  "notes": []
+}
+```
 
-- Primary manifest: `reference/hebrew-bible/source-manifest.json`
-- Manifest metadata is used for provenance context and import configuration.
-- Importer must still run in scaffold mode if the manifest is temporarily unavailable.
+## Manifest integration
 
-## Normalization Goals
+- The importer reads `reference/hebrew-bible/source-manifest.json`.
+- `source.shortName` is used as the normalized `source` field when available.
+- If `source.shortName` is missing, importer falls back to the raw filename stem.
 
-- Emit one object per source verse.
-- Preserve source chapter and verse numbering exactly.
-- Keep source provenance attached.
-- Use UTF-8 for Hebrew text end-to-end.
-- Keep optional enrichment layers (`morphology`, `lemma`, `strongs`) nullable until implemented.
+## Validation
 
-## Validation Rules
+Importer validates:
+- required fields (`id`, `source`, `book`, `chapter`, `verse`, `hebrew`),
+- duplicate IDs,
+- missing chapter/verse,
+- empty Hebrew text.
 
-Current scaffold validation checks:
+Warnings are emitted for unresolved:
+- `bookHebrew`,
+- `bookEnglish`,
+- `canonicalOrder`.
 
-- `source` is a non-empty string or object.
-- `book` is a non-empty string.
-- `chapter` is a positive integer.
-- `verse` is a positive integer.
-- `hebrew` is a non-empty string.
+Any validation errors fail the import.
 
-Validation returns structured errors for future CLI and CI integration.
+## Outputs
 
-## Future Parser Stages
+On successful import:
+- `reference/hebrew-bible/processed/verses.json`
+- `reference/hebrew-bible/processed/import-summary.json`
+- `reference/hebrew-bible/processed/books/*.json`
 
-- Stage 1: Implement first confirmed source adapter.
-- Stage 2: Parse and normalize verse-level records.
-- Stage 3: Add token-level parsing for morphology/lemma/Strong’s where available.
-- Stage 4: Add regression tests pinned to a specific upstream release.
-- Stage 5: Add separate verse-mapping layers for alternate numbering traditions.
+`import-summary.json` includes source metadata, adapter details, counts, per-book totals, and warnings.
 
-## Verse Numbering Preservation
+## Assumptions and limitations
 
-The importer must keep source numbering exactly as provided by the Hebrew source tradition. If alternate verse mappings are needed for other traditions, those mappings should be stored as separate metadata layers, not by rewriting source chapter/verse references.
-
-## Potential Future Format Adapters
-
-- XML adapter (`.xml`)
-- JSON adapter (`.json`)
-- Plain text adapter (`.txt`)
-
-These adapters should share a normalization contract and validation layer, while keeping parser-specific logic isolated.
+- Import currently supports only JSON source files.
+- Input must be exactly one active non-hidden file in `raw/`.
+- Book metadata is resolved from recognized canonical English names/aliases.
+- Unknown book names are retained in output but canonical metadata fields may remain `null` and are reported.
