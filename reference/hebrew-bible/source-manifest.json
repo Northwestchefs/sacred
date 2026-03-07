@@ -1,0 +1,90 @@
+{
+  "id": "sacred.hebrew-bible.source-manifest.v1",
+  "project": "Sacred",
+  "category": "hebrew-bible-source",
+  "status": "candidate",
+  "source": {
+    "name": "Open Scriptures Hebrew Bible / Westminster Leningrad Codex line",
+    "shortName": "OSHB/WLC",
+    "provider": "Open Scriptures",
+    "officialUrl": null,
+    "documentationUrl": null,
+    "downloadUrl": null,
+    "accessedAt": null,
+    "version": null,
+    "releaseDate": null,
+    "formatsAvailable": [
+      "XML (to be confirmed from official source documentation)",
+      "JSON (to be confirmed from official source documentation)",
+      "Plain text (to be confirmed from official source documentation)"
+    ],
+    "selectedFormat": null
+  },
+  "content": {
+    "textTradition": "Westminster Leningrad Codex line (to be confirmed from official source documentation)",
+    "language": "Biblical Hebrew",
+    "script": "Hebrew",
+    "includesText": true,
+    "includesVowels": null,
+    "includesCantillation": null,
+    "includesMorphology": null,
+    "includesLemma": null,
+    "includesStrongs": null
+  },
+  "licensing": {
+    "textLicense": "Public domain (current understanding; to be confirmed from official source documentation)",
+    "annotationLicense": "CC BY 4.0 for lemma/morphology layers (current understanding; to be confirmed from official source documentation)",
+    "attributionRequired": null,
+    "commercialUse": null,
+    "modificationAllowed": null,
+    "redistributionAllowed": null,
+    "notes": [
+      "Do not treat licensing assumptions as final until upstream license text is recorded.",
+      "Annotation layers must remain separable until license compatibility is confirmed for downstream bundling."
+    ]
+  },
+  "technical": {
+    "verseNumbering": "Preserve source chapter/verse numbering exactly as provided by the selected upstream dataset.",
+    "chapterVerseDifferences": true,
+    "rtlRequired": true,
+    "utf8Required": true,
+    "normalizationNotes": [
+      "Normalization policy for niqqud and cantillation is not yet fixed.",
+      "Keep raw files immutable and record any transformation profile applied to processed outputs."
+    ],
+    "parserNotes": [
+      "Importer should maintain stable verse identifiers tied to source numbering.",
+      "If alternate numbering systems are needed, create explicit mapping metadata rather than mutating source references.",
+      "Do not merge external annotation layers by default; keep attribution and provenance attached per layer."
+    ]
+  },
+  "projectUse": {
+    "intendedUse": [
+      "Canonical source record for Hebrew Bible imports",
+      "Input for importer configuration and validation",
+      "Reference metadata for reader and study tooling"
+    ],
+    "storeRawIn": "reference/hebrew-bible/raw/",
+    "storeProcessedIn": "reference/hebrew-bible/processed/",
+    "readerReady": false,
+    "importerReady": false
+  },
+  "verification": {
+    "officialSourceConfirmed": false,
+    "licenseConfirmed": false,
+    "downloadPathConfirmed": false,
+    "selectedForImport": false,
+    "openQuestions": [
+      "Which exact upstream repository or distribution URL will Sacred pin as canonical?",
+      "What exact release identifier (tag/commit/date) will be used for the first import?",
+      "Which file format should be selected as Sacred's canonical raw format?",
+      "What explicit attribution wording is required for annotation layers, if used?",
+      "How should Hebrew/Jewish to common English Christian verse mapping be represented and versioned?"
+    ]
+  },
+  "lastReviewedAt": "2026-03-07",
+  "notes": [
+    "This manifest is intentionally conservative and avoids unverified claims.",
+    "Update this file before any production import or redistribution of Hebrew Bible source material."
+  ]
+}

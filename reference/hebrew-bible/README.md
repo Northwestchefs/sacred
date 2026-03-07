@@ -14,3 +14,11 @@ This directory is the canonical location for Hebrew Bible source documentation a
 - `processed/`: normalized files transformed for project use (stable structure, consistent encoding, and predictable field naming).
 
 Keep source documentation updated before introducing new text or annotation assets.
+
+## Canonical Source Manifest
+
+- Machine-readable manifest: `source-manifest.json`
+- Human-readable companion: `source-manifest.md`
+
+Use these files as the first reference point before adding or importing any Hebrew Bible source or annotation assets.
+
