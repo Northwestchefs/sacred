@@ -66,6 +66,18 @@ body {
   line-height: 1.5;
 }
 
+
+.reader-canonical-note {
+  margin: 0.65rem 0 0;
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
 .reader-header-meta {
   margin-top: 0.95rem;
   display: flex;
@@ -283,6 +295,7 @@ body.zen-mode .reader-search,
 body.zen-mode .reader-controls,
 body.zen-mode .reader-kicker,
 body.zen-mode .reader-subtitle,
+body.zen-mode .reader-canonical-note,
 body.zen-mode .reader-header-meta {
   display: none;
 }
