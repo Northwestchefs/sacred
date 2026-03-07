@@ -141,19 +141,45 @@ function getCurrentReferenceLabel(nextState) {
 }
 
 function mergeChapterVerses({ hebrewVerses, englishVerses, bookSlug, chapter }) {
-  const englishByVerse = new Map(
-    (englishVerses || []).map((verse) => [Number(verse.verse), verse])
+  const sortedHebrewVerses = [...(hebrewVerses || [])].sort((a, b) => Number(a.verse) - Number(b.verse));
+  const sortedEnglishVerses = [...(englishVerses || [])].sort((a, b) => Number(a.verse) - Number(b.verse));
+
+  const englishByVerse = new Map(sortedEnglishVerses.map((verse) => [Number(verse.verse), verse]));
+  const exactMatchCount = sortedHebrewVerses.reduce(
+    (count, verse) => count + (englishByVerse.has(Number(verse.verse)) ? 1 : 0),
+    0
   );
 
+  const deltaCandidates = [];
+  for (let delta = -10; delta <= 10; delta += 1) {
+    const matched = sortedHebrewVerses.reduce((count, verse) => {
+      const englishVerseNumber = Number(verse.verse) + delta;
+      return count + (englishByVerse.has(englishVerseNumber) ? 1 : 0);
+    }, 0);
+
+    deltaCandidates.push({ delta, matched });
+  }
+
+  const bestDeltaCandidate = deltaCandidates.sort((a, b) => b.matched - a.matched)[0] || { delta: 0, matched: 0 };
+  const useShiftedCorrelation =
+    bestDeltaCandidate.delta !== 0 && bestDeltaCandidate.matched > exactMatchCount && bestDeltaCandidate.matched > 0;
+  const verseDelta = useShiftedCorrelation ? bestDeltaCandidate.delta : 0;
+
   const diagnosticsByVerse = new Map();
-  const merged = (hebrewVerses || []).map((verse) => {
+  const merged = sortedHebrewVerses.map((verse) => {
     const verseNumber = Number(verse.verse);
-    const english = englishByVerse.get(verseNumber);
+    const correlatedEnglishVerseNumber = verseNumber + verseDelta;
+    const english = englishByVerse.get(correlatedEnglishVerseNumber);
 
     if (!english) {
       diagnosticsByVerse.set(
         verseNumber,
         `Numbering mismatch: ${bookSlug} ${chapter}:${verseNumber} exists in Hebrew but is missing in JPS 1917.`
+      );
+    } else if (verseDelta !== 0) {
+      diagnosticsByVerse.set(
+        verseNumber,
+        `Numbering mismatch resolved: ${bookSlug} ${chapter}:${verseNumber} (Hebrew) is correlated to JPS 1917 ${chapter}:${correlatedEnglishVerseNumber}.`
       );
     }
 
@@ -163,9 +189,13 @@ function mergeChapterVerses({ hebrewVerses, englishVerses, bookSlug, chapter }) 
     };
   });
 
-  for (const englishVerse of englishVerses || []) {
+  const matchedEnglishVerseNumbers = new Set(
+    merged.filter((verse) => verse.english).map((verse) => Number(verse.verse) + verseDelta)
+  );
+
+  for (const englishVerse of sortedEnglishVerses) {
     const verseNumber = Number(englishVerse.verse);
-    const existsInHebrew = (hebrewVerses || []).some((verse) => Number(verse.verse) === verseNumber);
+    const existsInHebrew = matchedEnglishVerseNumbers.has(verseNumber);
 
     if (!existsInHebrew) {
       diagnosticsByVerse.set(
