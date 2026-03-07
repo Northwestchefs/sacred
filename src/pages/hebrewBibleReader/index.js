@@ -154,6 +154,7 @@ async function initializeReaderPage() {
   const lineHeightInput = document.querySelector('#line-height');
   const showVerseNumbersInput = document.querySelector('#toggle-verse-numbers');
   const zenModeInput = document.querySelector('#toggle-zen-mode');
+  const zenModeExitButton = document.querySelector('#zen-mode-exit');
   const searchScopeSelect = document.querySelector('#search-scope');
   const previousChapterButton = document.querySelector('#previous-chapter');
   const nextChapterButton = document.querySelector('#next-chapter');
@@ -179,6 +180,7 @@ async function initializeReaderPage() {
     lineHeightInput.value = String(readerPreferences.lineHeight);
     showVerseNumbersInput.checked = readerPreferences.showVerseNumbers;
     zenModeInput.checked = readerPreferences.zenMode;
+    zenModeExitButton.hidden = !readerPreferences.zenMode;
   }
 
   function updateHeader(nextState) {
@@ -264,6 +266,12 @@ async function initializeReaderPage() {
 
   zenModeInput.addEventListener('change', () => {
     readerPreferences.zenMode = zenModeInput.checked;
+    applyPreferences();
+    saveReaderPreferences(readerPreferences);
+  });
+
+  zenModeExitButton.addEventListener('click', () => {
+    readerPreferences.zenMode = false;
     applyPreferences();
     saveReaderPreferences(readerPreferences);
   });
