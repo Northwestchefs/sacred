@@ -43,6 +43,28 @@
     return query ? `hebrew-bible/?${query}` : 'hebrew-bible/';
   }
 
+  async function fetchJsonCandidates(paths) {
+    let lastError = null;
+
+    for (const path of paths) {
+      try {
+        const response = await fetch(path);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (Array.isArray(data) && data.length) {
+          return { data, path };
+        }
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw lastError || new Error('No data source could be loaded.');
+  }
+
   async function initHomeSearch() {
     const form = document.getElementById('home-search-form');
     const input = document.getElementById('home-search-input');
@@ -65,24 +87,33 @@
     const spotlightLink = document.getElementById('home-spotlight-link');
     if (!form || !input || !status || !results) return;
 
-    const source = 'reference/hebrew-bible/processed/verses.json';
-    let verses = [];
+    const readingSourceCandidates = ['reference/hebrew-bible/processed/verses.json'];
+    const searchSourceCandidates = [
+      'reference/english-bible/processed/verses.json',
+      'reference/hebrew-bible/processed/verses.json',
+    ];
+    let readingVerses = [];
+    let searchVerses = [];
 
     status.textContent = 'Loading searchable text…';
     try {
-      const response = await fetch(source);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      verses = await response.json();
+      const [readingData, searchData] = await Promise.all([
+        fetchJsonCandidates(readingSourceCandidates),
+        fetchJsonCandidates(searchSourceCandidates),
+      ]);
+
+      readingVerses = readingData.data;
+      searchVerses = searchData.data;
       status.textContent = 'Search is ready.';
 
       if (statVerseCount) {
-        statVerseCount.textContent = verses.length.toLocaleString();
+        statVerseCount.textContent = readingVerses.length.toLocaleString();
       }
 
       if (statBookCount || statChapterCount) {
         const books = new Set();
         const chapters = new Set();
-        verses.forEach((verse) => {
+        readingVerses.forEach((verse) => {
           const bookKey = verse.bookSlug || verse.bookEnglish || verse.book;
           if (bookKey) books.add(bookKey);
           if (bookKey && verse.chapter) {
@@ -97,7 +128,7 @@
       if (homePassageForm && homeBookSelect && homeChapterSelect) {
         const booksBySlug = new Map();
 
-        verses.forEach((verse) => {
+        readingVerses.forEach((verse) => {
           const slug = verse.bookSlug;
           if (!slug) return;
 
@@ -154,11 +185,12 @@
         });
       }
 
-      if (spotlightReference && spotlightText && spotlightLink && verses.length) {
+      const spotlightVerses = readingVerses.length ? readingVerses : searchVerses;
+      if (spotlightReference && spotlightText && spotlightLink && spotlightVerses.length) {
         const now = new Date();
         const startOfYear = new Date(now.getFullYear(), 0, 0);
         const dayOfYear = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
-        const spotlightVerse = verses[dayOfYear % verses.length];
+        const spotlightVerse = spotlightVerses[dayOfYear % spotlightVerses.length];
 
         spotlightReference.textContent = getVerseReference(spotlightVerse);
         spotlightText.textContent = spotlightVerse.text || '';
@@ -223,7 +255,16 @@
       text.className = 'home-result-text';
       text.textContent = verse.text || '';
 
-      item.append(reference, text);
+      const openLink = document.createElement('a');
+      openLink.className = 'button button-secondary';
+      openLink.href = buildReaderUrl({
+        book: verse.bookSlug,
+        chapter: verse.chapter,
+        verse: verse.verse,
+      });
+      openLink.textContent = 'Open in reader';
+
+      item.append(reference, text, openLink);
       results.append(item);
       updateNavigationState();
     }
@@ -271,7 +312,7 @@
       }
 
       const normalizedQuery = normalizeText(query);
-      matches = verses.filter((verse) => {
+      matches = searchVerses.filter((verse) => {
         const searchable = normalizeText(verse.text);
         return searchable.includes(normalizedQuery);
       });
