@@ -1,3 +1,7 @@
+import { buildTanakhBookCatalog } from '../hebrewBible/tanakhBooks.js';
+
+const DEFAULT_REMOTE_TEXTS_BASE_URL = 'https://www.sefaria.org/api/texts';
+
 function joinBasePath(basePath, path) {
   const normalizedBase = String(basePath || '').replace(/\/+$/, '');
   const normalizedPath = String(path || '').replace(/^\/+/, '');
@@ -15,12 +19,15 @@ function createEnglishBibleDataLayer(options = {}) {
     fetchFn = globalThis.fetch,
     booksIndexPath = 'reference/english-bible/processed/books.json',
     booksBasePath = 'reference/english-bible/processed/books',
+    enableRemoteFallback = true,
+    remoteTextsBaseUrl = DEFAULT_REMOTE_TEXTS_BASE_URL,
   } = options;
 
   const state = {
     books: null,
     chaptersByBook: new Map(),
     loadPromise: null,
+    useRemoteProvider: false,
   };
 
   async function fetchJson(path) {
@@ -45,6 +52,12 @@ function createEnglishBibleDataLayer(options = {}) {
         throw new Error(`Expected an array in ${path}.`);
       }
       state.books = books;
+
+      if (enableRemoteFallback && isLikelyBootstrapSample(books)) {
+        state.books = buildTanakhBookCatalog();
+        state.useRemoteProvider = true;
+      }
+
       return books;
     })();
 
@@ -54,6 +67,60 @@ function createEnglishBibleDataLayer(options = {}) {
   async function getBooks() {
     await ensureLoaded();
     return [...(state.books || [])];
+  }
+
+  function isLikelyBootstrapSample(books) {
+    if (!Array.isArray(books)) {
+      return false;
+    }
+
+    if (books.length <= 2) {
+      return true;
+    }
+
+    const totalChapters = books.reduce((count, book) => count + Number(book.chapterCount || 0), 0);
+    return totalChapters <= 3;
+  }
+
+  function stripMarkup(text) {
+    return String(text ?? '').replace(/<[^>]+>/g, '').trim();
+  }
+
+  async function fetchRemoteBookPayload(bookSlug) {
+    const book = (state.books || []).find((entry) => entry.slug === bookSlug);
+    if (!book) {
+      return { chapters: {} };
+    }
+
+    const url = `${remoteTextsBaseUrl}/${encodeURIComponent(book.remoteRef || book.bookEnglish || book.book)}?lang=en&context=0&commentary=0&pad=0`;
+    const payload = await fetchJson(url);
+    const chapters = Array.isArray(payload?.text) ? payload.text : [];
+    const normalized = {};
+
+    chapters.forEach((chapterVerses, chapterIndex) => {
+      if (!Array.isArray(chapterVerses)) {
+        return;
+      }
+
+      const chapter = chapterIndex + 1;
+      normalized[String(chapter)] = chapterVerses.map((verseText, verseIndex) => ({
+        id: `${book.slug}-${chapter}-${verseIndex + 1}`,
+        source: 'sefaria',
+        book: book.book,
+        bookEnglish: book.bookEnglish,
+        bookHebrew: book.bookHebrew,
+        canonicalOrder: book.canonicalOrder,
+        bookSlug: book.slug,
+        chapter,
+        verse: verseIndex + 1,
+        english: stripMarkup(verseText),
+        text: stripMarkup(verseText),
+      }));
+    });
+
+    return {
+      chapters: normalized,
+    };
   }
 
   async function getChapterVerses(bookSlug, chapterNumber) {
@@ -70,9 +137,16 @@ function createEnglishBibleDataLayer(options = {}) {
         return [];
       }
 
-      const file = String(book.file || `${bookSlug}.json`).replace(/^books\//, '');
-      const path = joinBasePath(basePath, `${booksBasePath}/${file}`);
-      const payload = await fetchJson(path);
+      let payload = null;
+
+      if (state.useRemoteProvider) {
+        payload = await fetchRemoteBookPayload(bookSlug);
+      } else {
+        const file = String(book.file || `${bookSlug}.json`).replace(/^books\//, '');
+        const path = joinBasePath(basePath, `${booksBasePath}/${file}`);
+        payload = await fetchJson(path);
+      }
+
       state.chaptersByBook.set(bookSlug, payload?.chapters || {});
     }
 
