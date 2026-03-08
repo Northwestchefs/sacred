@@ -34,6 +34,10 @@
     const input = document.getElementById('home-search-input');
     const status = document.getElementById('home-search-status');
     const results = document.getElementById('home-search-results');
+    const clearButton = document.getElementById('home-search-clear');
+    const statBookCount = document.getElementById('stat-book-count');
+    const statChapterCount = document.getElementById('stat-chapter-count');
+    const statVerseCount = document.getElementById('stat-verse-count');
     if (!form || !input || !status || !results) return;
 
     const source = 'reference/hebrew-bible/processed/verses.json';
@@ -45,9 +49,49 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       verses = await response.json();
       status.textContent = 'Search is ready.';
+
+      if (statVerseCount) {
+        statVerseCount.textContent = verses.length.toLocaleString();
+      }
+
+      if (statBookCount || statChapterCount) {
+        const books = new Set();
+        const chapters = new Set();
+        verses.forEach((verse) => {
+          const bookKey = verse.bookSlug || verse.bookEnglish || verse.book;
+          if (bookKey) books.add(bookKey);
+          if (bookKey && verse.chapter) {
+            chapters.add(`${bookKey}:${verse.chapter}`);
+          }
+        });
+
+        if (statBookCount) statBookCount.textContent = books.size.toLocaleString();
+        if (statChapterCount) statChapterCount.textContent = chapters.size.toLocaleString();
+      }
     } catch (error) {
       status.textContent = 'Search data could not be loaded right now. Please refresh and try again.';
       return;
+    }
+
+    document.addEventListener('keydown', (event) => {
+      const target = event.target;
+      const isTypingElement =
+        target instanceof HTMLElement &&
+        (target.matches('input, textarea, select') || target.isContentEditable);
+      if (isTypingElement) return;
+      if (event.key === '/') {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+
+    if (clearButton) {
+      clearButton.addEventListener('click', () => {
+        input.value = '';
+        results.innerHTML = '';
+        status.textContent = 'Search is ready.';
+        input.focus();
+      });
     }
 
     form.addEventListener('submit', (event) => {
@@ -66,13 +110,16 @@
         return searchable.includes(normalizedQuery);
       });
 
+      const maxResults = 100;
+      const visibleMatches = matches.slice(0, maxResults);
+
       if (!matches.length) {
         status.textContent = `No results for “${query}”.`;
         return;
       }
 
       const fragment = document.createDocumentFragment();
-      matches.forEach((verse) => {
+      visibleMatches.forEach((verse) => {
         const item = document.createElement('li');
 
         const reference = document.createElement('strong');
@@ -88,7 +135,10 @@
       });
 
       results.append(fragment);
-      status.textContent = `${matches.length} result${matches.length === 1 ? '' : 's'} found for “${query}”.`;
+      status.textContent =
+        matches.length > maxResults
+          ? `${matches.length} results found for “${query}”. Showing first ${maxResults}.`
+          : `${matches.length} result${matches.length === 1 ? '' : 's'} found for “${query}”.`;
     });
   }
 
