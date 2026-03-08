@@ -29,6 +29,20 @@
     return String(value || '').toLowerCase();
   }
 
+  function getBookLabel(verse) {
+    return verse.bookEnglish || verse.book || verse.bookSlug || 'Unknown';
+  }
+
+  function buildReaderUrl({ book, chapter, verse }) {
+    const params = new URLSearchParams();
+    if (book) params.set('book', book);
+    if (chapter) params.set('chapter', String(chapter));
+    if (verse) params.set('verse', String(verse));
+
+    const query = params.toString();
+    return query ? `hebrew-bible/?${query}` : 'hebrew-bible/';
+  }
+
   async function initHomeSearch() {
     const form = document.getElementById('home-search-form');
     const input = document.getElementById('home-search-input');
@@ -42,6 +56,13 @@
     const statBookCount = document.getElementById('stat-book-count');
     const statChapterCount = document.getElementById('stat-chapter-count');
     const statVerseCount = document.getElementById('stat-verse-count');
+    const homePassageForm = document.getElementById('home-passage-form');
+    const homeBookSelect = document.getElementById('home-book-select');
+    const homeChapterSelect = document.getElementById('home-chapter-select');
+    const homeVerseInput = document.getElementById('home-verse-input');
+    const spotlightReference = document.getElementById('home-spotlight-reference');
+    const spotlightText = document.getElementById('home-spotlight-text');
+    const spotlightLink = document.getElementById('home-spotlight-link');
     if (!form || !input || !status || !results) return;
 
     const source = 'reference/hebrew-bible/processed/verses.json';
@@ -71,6 +92,81 @@
 
         if (statBookCount) statBookCount.textContent = books.size.toLocaleString();
         if (statChapterCount) statChapterCount.textContent = chapters.size.toLocaleString();
+      }
+
+      if (homePassageForm && homeBookSelect && homeChapterSelect) {
+        const booksBySlug = new Map();
+
+        verses.forEach((verse) => {
+          const slug = verse.bookSlug;
+          if (!slug) return;
+
+          if (!booksBySlug.has(slug)) {
+            booksBySlug.set(slug, {
+              slug,
+              label: getBookLabel(verse),
+              canonicalOrder: Number(verse.canonicalOrder) || 999,
+              chapters: new Set(),
+            });
+          }
+
+          booksBySlug.get(slug).chapters.add(Number(verse.chapter));
+        });
+
+        const orderedBooks = [...booksBySlug.values()].sort((a, b) => a.canonicalOrder - b.canonicalOrder);
+
+        homeBookSelect.innerHTML = '';
+        homeBookSelect.append(createOption('', 'Select a book', true));
+        orderedBooks.forEach((book) => homeBookSelect.append(createOption(book.slug, book.label)));
+        homeBookSelect.disabled = false;
+
+        const populateHomeChapters = (bookSlug) => {
+          homeChapterSelect.innerHTML = '';
+          const selectedBook = booksBySlug.get(bookSlug);
+          if (!selectedBook) {
+            homeChapterSelect.disabled = true;
+            homeChapterSelect.append(createOption('', 'Select a book first', true));
+            return;
+          }
+
+          homeChapterSelect.disabled = false;
+          homeChapterSelect.append(createOption('', 'Select a chapter', true));
+          [...selectedBook.chapters]
+            .sort((a, b) => a - b)
+            .forEach((chapter) => homeChapterSelect.append(createOption(String(chapter), `Chapter ${chapter}`)));
+        };
+
+        homeBookSelect.addEventListener('change', () => {
+          populateHomeChapters(homeBookSelect.value);
+        });
+
+        homePassageForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          if (!homeBookSelect.value || !homeChapterSelect.value) return;
+
+          const verseValue = Number(homeVerseInput?.value);
+          const verse = Number.isInteger(verseValue) && verseValue > 0 ? verseValue : undefined;
+          window.location.href = buildReaderUrl({
+            book: homeBookSelect.value,
+            chapter: Number(homeChapterSelect.value),
+            verse,
+          });
+        });
+      }
+
+      if (spotlightReference && spotlightText && spotlightLink && verses.length) {
+        const now = new Date();
+        const startOfYear = new Date(now.getFullYear(), 0, 0);
+        const dayOfYear = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
+        const spotlightVerse = verses[dayOfYear % verses.length];
+
+        spotlightReference.textContent = getVerseReference(spotlightVerse);
+        spotlightText.textContent = spotlightVerse.text || '';
+        spotlightLink.href = buildReaderUrl({
+          book: spotlightVerse.bookSlug,
+          chapter: spotlightVerse.chapter,
+          verse: spotlightVerse.verse,
+        });
       }
     } catch (error) {
       status.textContent = 'Search data could not be loaded right now. Please refresh and try again.';
