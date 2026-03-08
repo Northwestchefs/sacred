@@ -25,12 +25,34 @@
         <p>
           Sacred is building a careful, focused Hebrew Bible reading experience for people who want to study the text with clarity and respect.
         </p>
-        <a class="button" href="hebrew-bible/">Open Hebrew Bible Reader</a>
+
+        <div class="hero-actions">
+          <a class="button" href="hebrew-bible/">Open Hebrew Bible Reader</a>
+          <a class="button button-secondary" href="#home-search-form">Search Scripture</a>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Scripture collection stats">
+        <article class="card stat-card">
+          <p class="kicker">Collection size</p>
+          <p id="stat-book-count" class="stat-value">--</p>
+          <p class="stat-label">Books available</p>
+        </article>
+        <article class="card stat-card">
+          <p class="kicker">Reading depth</p>
+          <p id="stat-chapter-count" class="stat-value">--</p>
+          <p class="stat-label">Chapters indexed</p>
+        </article>
+        <article class="card stat-card">
+          <p class="kicker">Searchable text</p>
+          <p id="stat-verse-count" class="stat-value">--</p>
+          <p class="stat-label">Verses ready to explore</p>
+        </article>
       </section>
 
       <section class="card" aria-label="Search Scripture text">
         <h3>Search by word or phrase</h3>
-        <p class="search-intro">Type a word or phrase to see every matching verse with its location reference.</p>
+        <p class="search-intro">Type a word or phrase to see matching verses with location references. Press <kbd>/</kbd> anywhere to jump into search.</p>
         <form id="home-search-form" class="home-search-form">
           <label for="home-search-input">Search Scripture text</label>
           <div class="home-search-row">
@@ -43,6 +65,7 @@
               required
             />
             <button class="button" type="submit">Search</button>
+            <button id="home-search-clear" class="button button-secondary" type="button">Clear</button>
           </div>
         </form>
         <p id="home-search-status" class="home-search-status" aria-live="polite"></p>
