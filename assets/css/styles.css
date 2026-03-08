@@ -340,3 +340,35 @@ kbd {
 .home-search-navigation .button {
   margin-top: 0;
 }
+
+.home-passage-form {
+  margin-top: 0.8rem;
+}
+
+.home-passage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
+}
+
+.home-passage-grid input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  background: #fff;
+}
+
+.spotlight-reference {
+  margin: 0.75rem 0 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.spotlight-text {
+  margin: 0.55rem 0 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--line);
+  color: var(--text);
+}

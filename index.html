@@ -50,6 +50,42 @@
         </article>
       </section>
 
+      <section class="grid" aria-label="Start a reading session">
+        <article class="card">
+          <h3>Open a specific passage</h3>
+          <p class="search-intro">Choose a book and chapter to open the reader at exactly that place.</p>
+          <form id="home-passage-form" class="home-passage-form">
+            <div class="home-passage-grid">
+              <div>
+                <label for="home-book-select">Book</label>
+                <select id="home-book-select" name="book" disabled>
+                  <option value="">Loading books…</option>
+                </select>
+              </div>
+              <div>
+                <label for="home-chapter-select">Chapter</label>
+                <select id="home-chapter-select" name="chapter" disabled>
+                  <option value="">Select a book first</option>
+                </select>
+              </div>
+              <div>
+                <label for="home-verse-input">Verse (optional)</label>
+                <input id="home-verse-input" name="verse" type="number" min="1" inputmode="numeric" placeholder="e.g. 1" />
+              </div>
+            </div>
+            <button class="button" type="submit">Open in reader</button>
+          </form>
+        </article>
+
+        <article class="card" aria-live="polite">
+          <h3>Verse spotlight</h3>
+          <p class="search-intro">A daily verse to begin reflection.</p>
+          <p id="home-spotlight-reference" class="spotlight-reference">Loading…</p>
+          <blockquote id="home-spotlight-text" class="spotlight-text">Preparing today’s passage.</blockquote>
+          <a id="home-spotlight-link" class="button button-secondary" href="hebrew-bible/">Read this passage</a>
+        </article>
+      </section>
+
       <section class="card" aria-label="Search Scripture text">
         <h3>Search by word or phrase</h3>
         <p class="search-intro">Type a word or phrase to see matching verses with location references. Press <kbd>/</kbd> anywhere to jump into search.</p>
