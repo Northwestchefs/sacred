@@ -35,6 +35,10 @@
     const status = document.getElementById('home-search-status');
     const results = document.getElementById('home-search-results');
     const clearButton = document.getElementById('home-search-clear');
+    const navigation = document.getElementById('home-search-navigation');
+    const previousButton = document.getElementById('home-search-previous');
+    const nextButton = document.getElementById('home-search-next');
+    const position = document.getElementById('home-search-position');
     const statBookCount = document.getElementById('stat-book-count');
     const statChapterCount = document.getElementById('stat-chapter-count');
     const statVerseCount = document.getElementById('stat-verse-count');
@@ -85,19 +89,85 @@
       }
     });
 
+    let matches = [];
+    let activeResultIndex = 0;
+
+    function updateNavigationState() {
+      if (!navigation || !previousButton || !nextButton || !position) return;
+      const hasResults = matches.length > 0;
+      navigation.hidden = !hasResults;
+
+      if (!hasResults) {
+        position.textContent = '';
+        previousButton.disabled = true;
+        nextButton.disabled = true;
+        return;
+      }
+
+      position.textContent = `Verse ${activeResultIndex + 1} of ${matches.length}`;
+      previousButton.disabled = matches.length === 1;
+      nextButton.disabled = matches.length === 1;
+    }
+
+    function showActiveResult() {
+      results.innerHTML = '';
+      if (!matches.length) {
+        updateNavigationState();
+        return;
+      }
+
+      const verse = matches[activeResultIndex];
+      const item = document.createElement('li');
+
+      const reference = document.createElement('strong');
+      reference.className = 'home-result-reference';
+      reference.textContent = getVerseReference(verse);
+
+      const text = document.createElement('p');
+      text.className = 'home-result-text';
+      text.textContent = verse.text || '';
+
+      item.append(reference, text);
+      results.append(item);
+      updateNavigationState();
+    }
+
+    function clearSearchResults() {
+      matches = [];
+      activeResultIndex = 0;
+      results.innerHTML = '';
+      updateNavigationState();
+    }
+
     if (clearButton) {
       clearButton.addEventListener('click', () => {
         input.value = '';
-        results.innerHTML = '';
+        clearSearchResults();
         status.textContent = 'Search is ready.';
         input.focus();
+      });
+    }
+
+    if (previousButton) {
+      previousButton.addEventListener('click', () => {
+        if (!matches.length) return;
+        activeResultIndex = (activeResultIndex - 1 + matches.length) % matches.length;
+        showActiveResult();
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        if (!matches.length) return;
+        activeResultIndex = (activeResultIndex + 1) % matches.length;
+        showActiveResult();
       });
     }
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const query = input.value.trim();
-      results.innerHTML = '';
+      clearSearchResults();
 
       if (!query) {
         status.textContent = 'Enter a word or phrase to search.';
@@ -105,40 +175,19 @@
       }
 
       const normalizedQuery = normalizeText(query);
-      const matches = verses.filter((verse) => {
+      matches = verses.filter((verse) => {
         const searchable = normalizeText(verse.text);
         return searchable.includes(normalizedQuery);
       });
-
-      const maxResults = 100;
-      const visibleMatches = matches.slice(0, maxResults);
 
       if (!matches.length) {
         status.textContent = `No results for “${query}”.`;
         return;
       }
 
-      const fragment = document.createDocumentFragment();
-      visibleMatches.forEach((verse) => {
-        const item = document.createElement('li');
-
-        const reference = document.createElement('strong');
-        reference.className = 'home-result-reference';
-        reference.textContent = getVerseReference(verse);
-
-        const text = document.createElement('p');
-        text.className = 'home-result-text';
-        text.textContent = verse.text || '';
-
-        item.append(reference, text);
-        fragment.append(item);
-      });
-
-      results.append(fragment);
-      status.textContent =
-        matches.length > maxResults
-          ? `${matches.length} results found for “${query}”. Showing first ${maxResults}.`
-          : `${matches.length} result${matches.length === 1 ? '' : 's'} found for “${query}”.`;
+      activeResultIndex = 0;
+      showActiveResult();
+      status.textContent = `${matches.length} result${matches.length === 1 ? '' : 's'} found for “${query}”. Use Next and Previous to move through verses.`;
     });
   }
 

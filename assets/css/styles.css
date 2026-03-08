@@ -322,3 +322,21 @@ kbd {
 .home-result-text {
   margin: 0.2rem 0 0;
 }
+
+.home-search-navigation {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.home-search-position {
+  margin: 0;
+  color: var(--muted);
+  min-width: 8.5rem;
+}
+
+.home-search-navigation .button {
+  margin-top: 0;
+}
