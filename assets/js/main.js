@@ -19,6 +19,58 @@
     return option;
   }
 
+  const TANAKH_BOOKS = [
+    ['Genesis', 'בראשית'],
+    ['Exodus', 'שמות'],
+    ['Leviticus', 'ויקרא'],
+    ['Numbers', 'במדבר'],
+    ['Deuteronomy', 'דברים'],
+    ['Joshua', 'יהושע'],
+    ['Judges', 'שופטים'],
+    ['1 Samuel', 'שמואל א׳'],
+    ['2 Samuel', 'שמואל ב׳'],
+    ['1 Kings', 'מלכים א׳'],
+    ['2 Kings', 'מלכים ב׳'],
+    ['Isaiah', 'ישעיהו'],
+    ['Jeremiah', 'ירמיהו'],
+    ['Ezekiel', 'יחזקאל'],
+    ['Hosea', 'הושע'],
+    ['Joel', 'יואל'],
+    ['Amos', 'עמוס'],
+    ['Obadiah', 'עובדיה'],
+    ['Jonah', 'יונה'],
+    ['Micah', 'מיכה'],
+    ['Nahum', 'נחום'],
+    ['Habakkuk', 'חבקוק'],
+    ['Zephaniah', 'צפניה'],
+    ['Haggai', 'חגי'],
+    ['Zechariah', 'זכריה'],
+    ['Malachi', 'מלאכי'],
+    ['Psalms', 'תהילים'],
+    ['Proverbs', 'משלי'],
+    ['Job', 'איוב'],
+    ['Song of Songs', 'שיר השירים'],
+    ['Ruth', 'רות'],
+    ['Lamentations', 'איכה'],
+    ['Ecclesiastes', 'קהלת'],
+    ['Esther', 'אסתר'],
+    ['Daniel', 'דניאל'],
+    ['Ezra', 'עזרא'],
+    ['Nehemiah', 'נחמיה'],
+    ['1 Chronicles', 'דברי הימים א׳'],
+    ['2 Chronicles', 'דברי הימים ב׳'],
+  ];
+
+  const REMOTE_TEXTS_BASE_URL = 'https://www.sefaria.org/api/texts';
+
+  function normalizeSlug(value) {
+    return String(value || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
 
   function getVerseReference(verse) {
     const bookLabel = verse.bookEnglish || verse.book || verse.bookSlug || 'Unknown';
@@ -127,6 +179,19 @@
 
       if (homePassageForm && homeBookSelect && homeChapterSelect) {
         const booksBySlug = new Map();
+        const chapterCountByBookSlug = new Map();
+
+        TANAKH_BOOKS.forEach(([bookEnglish, bookHebrew], index) => {
+          const slug = normalizeSlug(bookEnglish);
+          booksBySlug.set(slug, {
+            slug,
+            label: bookEnglish,
+            bookEnglish,
+            bookHebrew,
+            canonicalOrder: index + 1,
+            chapters: new Set(),
+          });
+        });
 
         readingVerses.forEach((verse) => {
           const slug = verse.bookSlug;
@@ -144,6 +209,23 @@
           booksBySlug.get(slug).chapters.add(Number(verse.chapter));
         });
 
+        async function fetchRemoteChapterCount(book) {
+          if (chapterCountByBookSlug.has(book.slug)) {
+            return chapterCountByBookSlug.get(book.slug);
+          }
+
+          const url = `${REMOTE_TEXTS_BASE_URL}/${encodeURIComponent(book.bookEnglish)}?lang=he&context=0&commentary=0&pad=0`;
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const payload = await response.json();
+          const chapterCount = Array.isArray(payload?.he) ? payload.he.length : 0;
+          chapterCountByBookSlug.set(book.slug, chapterCount);
+          return chapterCount;
+        }
+
         const orderedBooks = [...booksBySlug.values()].sort((a, b) => a.canonicalOrder - b.canonicalOrder);
 
         homeBookSelect.innerHTML = '';
@@ -151,7 +233,7 @@
         orderedBooks.forEach((book) => homeBookSelect.append(createOption(book.slug, book.label)));
         homeBookSelect.disabled = false;
 
-        const populateHomeChapters = (bookSlug) => {
+        const populateHomeChapters = async (bookSlug) => {
           homeChapterSelect.innerHTML = '';
           const selectedBook = booksBySlug.get(bookSlug);
           if (!selectedBook) {
@@ -160,11 +242,34 @@
             return;
           }
 
+          const localChapters = [...selectedBook.chapters].sort((a, b) => a - b);
+          const hasLocalChapters = localChapters.length > 0;
+
           homeChapterSelect.disabled = false;
-          homeChapterSelect.append(createOption('', 'Select a chapter', true));
-          [...selectedBook.chapters]
-            .sort((a, b) => a - b)
-            .forEach((chapter) => homeChapterSelect.append(createOption(String(chapter), `Chapter ${chapter}`)));
+          homeChapterSelect.append(createOption('', hasLocalChapters ? 'Select a chapter' : 'Loading chapters…', true));
+
+          if (hasLocalChapters) {
+            localChapters.forEach((chapter) => homeChapterSelect.append(createOption(String(chapter), `Chapter ${chapter}`)));
+          }
+
+          try {
+            const chapterCount = await fetchRemoteChapterCount(selectedBook);
+            if (homeBookSelect.value !== bookSlug) return;
+
+            if (chapterCount > 0) {
+              homeChapterSelect.innerHTML = '';
+              homeChapterSelect.append(createOption('', 'Select a chapter', true));
+              for (let chapter = 1; chapter <= chapterCount; chapter += 1) {
+                homeChapterSelect.append(createOption(String(chapter), `Chapter ${chapter}`));
+              }
+            }
+          } catch {
+            if (!hasLocalChapters) {
+              homeChapterSelect.innerHTML = '';
+              homeChapterSelect.disabled = true;
+              homeChapterSelect.append(createOption('', 'Unable to load chapters', true));
+            }
+          }
         };
 
         homeBookSelect.addEventListener('change', () => {
