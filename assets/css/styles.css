@@ -117,12 +117,50 @@ a {
 
 .button {
   display: inline-block;
+  border: 1px solid transparent;
+  font: inherit;
   text-decoration: none;
   padding: 0.75rem 1.1rem;
   border-radius: 8px;
   background: var(--accent);
   color: #fff;
   margin-top: 0.8rem;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+  filter: brightness(1.05);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.hero-highlights {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.hero-highlights li {
+  background: var(--accent-soft);
+  border: 1px solid #d4ddeb;
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.9rem;
 }
 
 .grid {
@@ -218,6 +256,31 @@ select {
 .search-intro {
   margin: 0;
   color: var(--muted);
+}
+
+.dataset-stats {
+  margin: 0.9rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.8rem;
+}
+
+.dataset-stats div {
+  border: 1px solid #ece7dd;
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+}
+
+.dataset-stats dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.dataset-stats dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .home-search-row {

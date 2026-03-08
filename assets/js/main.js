@@ -1,4 +1,6 @@
 (function () {
+  const dataCache = new Map();
+
   function setActiveNav() {
     const currentPage = document.body.dataset.page;
     if (!currentPage) return;
@@ -29,21 +31,77 @@
     return String(value || '').toLowerCase();
   }
 
+  function formatNumber(value) {
+    return new Intl.NumberFormat('en-US').format(Number(value) || 0);
+  }
+
+  async function fetchJson(source) {
+    if (dataCache.has(source)) {
+      return dataCache.get(source);
+    }
+
+    const response = await fetch(source);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    dataCache.set(source, payload);
+    return payload;
+  }
+
+  function initSearchShortcut(input) {
+    if (!input) return;
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== '/') return;
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+      event.preventDefault();
+      input.focus();
+    });
+  }
+
+  function initDatasetStats(verses) {
+    const totalVersesEl = document.getElementById('stats-total-verses');
+    const totalBooksEl = document.getElementById('stats-total-books');
+    const totalChaptersEl = document.getElementById('stats-total-chapters');
+    if (!totalVersesEl || !totalBooksEl || !totalChaptersEl) return;
+
+    const uniqueBooks = new Set();
+    const uniqueChapters = new Set();
+
+    verses.forEach((verse) => {
+      const bookLabel = verse.bookSlug || verse.bookEnglish || verse.book;
+      if (bookLabel) uniqueBooks.add(bookLabel);
+      if (bookLabel && Number.isFinite(Number(verse.chapter))) {
+        uniqueChapters.add(`${bookLabel}:${Number(verse.chapter)}`);
+      }
+    });
+
+    totalVersesEl.textContent = formatNumber(verses.length);
+    totalBooksEl.textContent = formatNumber(uniqueBooks.size);
+    totalChaptersEl.textContent = formatNumber(uniqueChapters.size);
+  }
+
   async function initHomeSearch() {
     const form = document.getElementById('home-search-form');
     const input = document.getElementById('home-search-input');
+    const clear = document.getElementById('home-search-clear');
     const status = document.getElementById('home-search-status');
     const results = document.getElementById('home-search-results');
-    if (!form || !input || !status || !results) return;
+    if (!form || !input || !status || !results || !clear) return;
 
     const source = 'reference/hebrew-bible/processed/verses.json';
     let verses = [];
+    let indexedVerses = [];
+    const maxRenderCount = 50;
+
+    initSearchShortcut(input);
 
     status.textContent = 'Loading searchable text…';
     try {
-      const response = await fetch(source);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      verses = await response.json();
+      verses = await fetchJson(source);
+      indexedVerses = verses.map((verse) => ({
+        verse,
+        searchable: normalizeText(verse.text),
+      }));
+      initDatasetStats(verses);
       status.textContent = 'Search is ready.';
     } catch (error) {
       status.textContent = 'Search data could not be loaded right now. Please refresh and try again.';
@@ -61,10 +119,11 @@
       }
 
       const normalizedQuery = normalizeText(query);
-      const matches = verses.filter((verse) => {
-        const searchable = normalizeText(verse.text);
-        return searchable.includes(normalizedQuery);
-      });
+      const startedAt = performance.now();
+      const matches = indexedVerses
+        .filter(({ searchable }) => searchable.includes(normalizedQuery))
+        .map(({ verse }) => verse);
+      const elapsed = Math.round(performance.now() - startedAt);
 
       if (!matches.length) {
         status.textContent = `No results for “${query}”.`;
@@ -72,7 +131,8 @@
       }
 
       const fragment = document.createDocumentFragment();
-      matches.forEach((verse) => {
+      const renderMatches = matches.slice(0, maxRenderCount);
+      renderMatches.forEach((verse) => {
         const item = document.createElement('li');
 
         const reference = document.createElement('strong');
@@ -88,7 +148,17 @@
       });
 
       results.append(fragment);
-      status.textContent = `${matches.length} result${matches.length === 1 ? '' : 's'} found for “${query}”.`;
+      status.textContent = `${formatNumber(matches.length)} result${matches.length === 1 ? '' : 's'} found for “${query}” in ${elapsed}ms.`;
+      if (matches.length > maxRenderCount) {
+        status.textContent += ` Showing first ${maxRenderCount}.`;
+      }
+    });
+
+    clear.addEventListener('click', () => {
+      input.value = '';
+      input.focus();
+      status.textContent = 'Search cleared. Enter a new word or phrase.';
+      results.innerHTML = '';
     });
   }
 
