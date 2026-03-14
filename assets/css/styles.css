@@ -372,3 +372,53 @@ kbd {
   border-left: 3px solid var(--line);
   color: var(--text);
 }
+
+textarea,
+input[type='text'],
+input[type='number'],
+input[type='search'] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  background: #fff;
+}
+
+.tree-of-life {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+}
+
+.tree-node {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+  text-align: center;
+}
+
+.tree-node.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.triplet-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+}
+
+.triplet-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+}
