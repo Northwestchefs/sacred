@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Sacred · Messiah Explorer</title>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=2026.03.14" />
+    <link rel="stylesheet" href="../assets/css/messiah-page.css?v=2026.03.14" />
+  </head>
+  <body data-page="messiah">
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="brand">Sacred</h1>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a data-nav-key="home" href="../">Home</a>
+          <a data-nav-key="read" href="../hebrew-bible/">Read</a>
+          <a data-nav-key="study" href="../sacred-study.html">Study</a>
+          <a data-nav-key="messiah" href="./">Messiah (משיח)</a>
+          <a data-nav-key="mitzvot" href="../mitzvot/">Mitzvot (מצוות)</a>
+          <a data-nav-key="about" href="../about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="card" aria-label="Messiah explorer introduction">
+        <p class="kicker">Dedicated Study Page</p>
+        <h2>Messiah Explorer (משיח)</h2>
+        <p>
+          A focused place to study messianic titles, redemption language, and related verses with Hebrew text, transliterations,
+          gematria, roots, and commentary signal density.
+        </p>
+      </section>
+
+      <section class="messiah-page-layout" aria-label="Messiah study workspace">
+        <article class="card">
+          <h3>Core term explorer</h3>
+          <p>Search by Hebrew term or transliteration to inspect meaning, root letters, and mapped references.</p>
+          <section id="messiah-explorer">
+            <form id="messiah-search-form" class="study-form" aria-label="Messianic term explorer">
+              <label for="messiah-search-input">Search by Hebrew word or transliteration</label>
+              <div class="study-row">
+                <input id="messiah-search-input" type="search" value="משיח" placeholder="משיח or Mashiach" />
+                <button class="button" type="submit">Explore</button>
+              </div>
+            </form>
+
+            <section id="messiah-word-result"></section>
+
+            <section aria-label="Messianic verse lookup">
+              <h4>Verses</h4>
+              <ul id="messiah-verses" class="study-list"></ul>
+            </section>
+          </section>
+        </article>
+
+        <article class="card">
+          <h3>Study themes</h3>
+          <ul class="messiah-theme-list">
+            <li><strong>Kingship:</strong> Covenant continuity, throne language, and governance ideals.</li>
+            <li><strong>Redemption:</strong> Terms tied to rescue, return, healing, and restored relationship.</li>
+            <li><strong>Hope in exile:</strong> Prophetic arcs that sustain identity and future expectation.</li>
+            <li><strong>Sefirot resonance:</strong> Term-level hints to meditate on mercy, justice, beauty, and foundation.</li>
+          </ul>
+          <p>
+            Use the page as a launchpad: explore a term, inspect references, then cross-check in the
+            <a href="../hebrew-bible/">reader</a> and <a href="../sacred-study.html">study dashboard</a>.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>Sacred · Dedicated Messiah explorer.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="../scripts/page-loader.js?v=2026.03.14"></script>
+  </body>
+</html>
