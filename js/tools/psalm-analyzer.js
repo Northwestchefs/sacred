@@ -16,6 +16,45 @@ function detectDivineNames(text = '') {
   return DIVINE_NAMES.filter((name) => text.includes(name));
 }
 
+function textFromVersion(version = {}) {
+  if (Array.isArray(version?.text)) return version.text;
+  if (Array.isArray(version?.chapter)) return version.chapter;
+
+  if (version?.text && typeof version.text === 'object') {
+    if (Array.isArray(version.text.he)) return version.text.he;
+    if (Array.isArray(version.text.en)) return version.text.en;
+  }
+
+  if (version?.chapter && typeof version.chapter === 'object') {
+    if (Array.isArray(version.chapter.he)) return version.chapter.he;
+    if (Array.isArray(version.chapter.en)) return version.chapter.en;
+  }
+
+  return null;
+}
+
+function extractVerses(payload, { language, fallbackKeys = [] }) {
+  for (const key of fallbackKeys) {
+    const candidate = payload?.[key];
+    if (Array.isArray(candidate)) return candidate;
+    if (candidate) return [candidate];
+  }
+
+  const versions = Array.isArray(payload?.versions) ? payload.versions : [];
+  const matchedVersion = versions.find((version) => {
+    const labels = [version?.language, version?.lang, version?.languageFamilyName]
+      .filter(Boolean)
+      .map((value) => String(value).toLowerCase());
+    return labels.some((value) => value.includes(language));
+  });
+
+  const extracted = textFromVersion(matchedVersion || versions[0]);
+  if (Array.isArray(extracted)) return extracted;
+  if (extracted) return [extracted];
+
+  return [];
+}
+
 function toVerseAnalyses(textArray = [], englishArray = []) {
   return textArray.map((hebrewVerse, index) => {
     const verseNumber = index + 1;
@@ -36,8 +75,14 @@ function toVerseAnalyses(textArray = [], englishArray = []) {
 
 export async function analyzePsalm(ref = 'Psalms 23') {
   const payload = await getText(ref);
-  const hebrewVerses = payload?.he || payload?.hebrew || payload?.versions?.[0]?.text?.he || [];
-  const englishVerses = payload?.text || payload?.en || payload?.versions?.[0]?.text?.en || [];
+  const hebrewVerses = extractVerses(payload, {
+    language: 'he',
+    fallbackKeys: ['he', 'hebrew'],
+  });
+  const englishVerses = extractVerses(payload, {
+    language: 'en',
+    fallbackKeys: ['text', 'en', 'english'],
+  });
 
   const normalizedHebrew = Array.isArray(hebrewVerses)
     ? hebrewVerses.map((verse) => flattenText(verse))
