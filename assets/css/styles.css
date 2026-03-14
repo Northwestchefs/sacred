@@ -427,20 +427,20 @@ input[type='search'] {
   margin-top: 0.8rem;
 }
 
-.study-dashboard {
+.study-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   gap: 24px;
   max-width: 1400px;
-  margin: 1rem auto 0;
+  margin: auto;
   padding: 20px;
 }
 
 .panel {
   background: #111;
   border: 1px solid #333;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px;
   color: #f7f6f2;
 }
@@ -564,7 +564,7 @@ input[type='search'] {
 }
 
 @media (max-width: 900px) {
-  .study-dashboard {
+  .study-layout {
     grid-template-columns: 1fr;
   }
 
