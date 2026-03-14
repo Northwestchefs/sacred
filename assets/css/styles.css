@@ -462,3 +462,18 @@ input[type='search'] {
     grid-template-columns: 1fr;
   }
 }
+
+
+@keyframes treeFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+
+#tree-sefirot-nodes g[data-state='highlighted'] text {
+  fill: var(--accent);
+  font-weight: 700;
+}
