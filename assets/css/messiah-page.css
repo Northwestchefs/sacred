@@ -137,3 +137,29 @@
     gap: 0.2rem;
   }
 }
+
+.messiah-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) repeat(4, auto);
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+#messiah-search {
+  background: #10131a;
+  border: 1px solid #39465f;
+  color: #e7edf7;
+  border-radius: 8px;
+  padding: 0.45rem 0.55rem;
+}
+
+.term-card:focus {
+  outline: 2px solid #5f90cf;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .messiah-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
