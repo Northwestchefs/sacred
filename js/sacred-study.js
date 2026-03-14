@@ -11,20 +11,45 @@ import { analyzePsalm } from './tools/psalm-analyzer.js';
 import { generate72Names } from './tools/72names.js';
 import { generate231Gates } from './tools/231gates.js';
 import { analyzeVerse } from '../modules/mystical-pipeline.js';
-import { highlightSefirot } from '../components/tree-of-life.js';
+import { getHebrewLettersFromText, highlightPathsByLetters, highlightSefirot } from '../components/tree-of-life.js';
 
 const NODE_COORDINATES = {
   Keter: [150, 40],
-  Chokhmah: [95, 100],
-  Binah: [205, 100],
-  Chesed: [75, 200],
-  Gevurah: [225, 200],
-  Tiferet: [150, 160],
-  Netzach: [115, 280],
-  Hod: [185, 280],
-  Yesod: [150, 320],
-  Malkhut: [150, 380],
+  Chokhmah: [95, 95],
+  Binah: [205, 95],
+  Chesed: [75, 180],
+  Gevurah: [225, 180],
+  Tiferet: [150, 200],
+  Netzach: [95, 290],
+  Hod: [205, 290],
+  Yesod: [150, 345],
+  Malkhut: [150, 395],
 };
+
+const TREE_PATHS = [
+  { id: 1, letter: 'א', gematria: 1, from: 'Keter', to: 'Chokhmah' },
+  { id: 2, letter: 'ב', gematria: 2, from: 'Keter', to: 'Binah' },
+  { id: 3, letter: 'ג', gematria: 3, from: 'Keter', to: 'Tiferet' },
+  { id: 4, letter: 'ד', gematria: 4, from: 'Keter', to: 'Chesed' },
+  { id: 5, letter: 'ה', gematria: 5, from: 'Keter', to: 'Gevurah' },
+  { id: 6, letter: 'ו', gematria: 6, from: 'Chokhmah', to: 'Binah' },
+  { id: 7, letter: 'ז', gematria: 7, from: 'Chokhmah', to: 'Tiferet' },
+  { id: 8, letter: 'ח', gematria: 8, from: 'Binah', to: 'Tiferet' },
+  { id: 9, letter: 'ט', gematria: 9, from: 'Chokhmah', to: 'Chesed' },
+  { id: 10, letter: 'י', gematria: 10, from: 'Binah', to: 'Gevurah' },
+  { id: 11, letter: 'כ', gematria: 20, from: 'Chesed', to: 'Gevurah' },
+  { id: 12, letter: 'ל', gematria: 30, from: 'Chesed', to: 'Tiferet' },
+  { id: 13, letter: 'מ', gematria: 40, from: 'Gevurah', to: 'Tiferet' },
+  { id: 14, letter: 'נ', gematria: 50, from: 'Chesed', to: 'Netzach' },
+  { id: 15, letter: 'ס', gematria: 60, from: 'Gevurah', to: 'Hod' },
+  { id: 16, letter: 'ע', gematria: 70, from: 'Tiferet', to: 'Netzach' },
+  { id: 17, letter: 'פ', gematria: 80, from: 'Tiferet', to: 'Hod' },
+  { id: 18, letter: 'צ', gematria: 90, from: 'Tiferet', to: 'Yesod' },
+  { id: 19, letter: 'ק', gematria: 100, from: 'Netzach', to: 'Hod' },
+  { id: 20, letter: 'ר', gematria: 200, from: 'Netzach', to: 'Yesod' },
+  { id: 21, letter: 'ש', gematria: 300, from: 'Hod', to: 'Yesod' },
+  { id: 22, letter: 'ת', gematria: 400, from: 'Yesod', to: 'Malkhut' },
+];
 
 async function injectComponent(targetSelector, path) {
   const target = document.querySelector(targetSelector);
@@ -36,18 +61,52 @@ async function injectComponent(targetSelector, path) {
 }
 
 function renderTreeNodes() {
-  const group = document.getElementById('tree-sefirot-nodes');
-  if (!group) return;
+  const nodeGroup = document.getElementById('tree-sefirot-nodes');
+  const pathGroup = document.getElementById('tree-paths');
+  const labelGroup = document.getElementById('tree-path-labels');
+  const tooltip = document.getElementById('tree-path-tooltip');
+  if (!nodeGroup || !pathGroup || !labelGroup) return;
 
-  group.innerHTML = SEFIROT.map((name) => {
+  pathGroup.innerHTML = TREE_PATHS.map((path) => {
+    const [x1, y1] = NODE_COORDINATES[path.from];
+    const [x2, y2] = NODE_COORDINATES[path.to];
+    return `<line class="tree-path" data-path-id="${path.id}" data-letter="${path.letter}" data-gematria="${path.gematria}" data-from="${path.from}" data-to="${path.to}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
+  }).join('');
+
+  labelGroup.innerHTML = TREE_PATHS.map((path) => {
+    const [x1, y1] = NODE_COORDINATES[path.from];
+    const [x2, y2] = NODE_COORDINATES[path.to];
+    const x = (x1 + x2) / 2;
+    const y = (y1 + y2) / 2;
+    const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+    return `<text class="tree-path-letter" x="${x}" y="${y}" transform="rotate(${angle} ${x} ${y})">${path.letter}</text>`;
+  }).join('');
+
+  nodeGroup.innerHTML = SEFIROT.map((name) => {
     const [x, y] = NODE_COORDINATES[name];
     return `
       <g data-sefirah="${name}" data-state="inactive">
-        <circle cx="${x}" cy="${y}" r="18" fill="#f7f6f2" stroke="#2c4a6f" />
-        <text x="${x}" y="${y + 4}" text-anchor="middle" font-size="8">${name}</text>
+        <circle cx="${x}" cy="${y}" r="16" fill="#f7f6f2" stroke="#2c4a6f" />
+        <text x="${x}" y="${y + 4}" text-anchor="middle" font-size="7.5">${name}</text>
       </g>
     `;
   }).join('');
+
+  pathGroup.querySelectorAll('line[data-path-id]').forEach((line) => {
+    line.addEventListener('mouseenter', () => {
+      line.dataset.state = 'hover';
+      if (!tooltip) return;
+      tooltip.hidden = false;
+      tooltip.textContent = `${line.dataset.letter} · Gematria ${line.dataset.gematria} · ${line.dataset.from} ↔ ${line.dataset.to}`;
+    });
+
+    line.addEventListener('mouseleave', () => {
+      line.dataset.state = line.dataset.highlight === 'word-match' ? 'word-match' : 'inactive';
+      if (!tooltip) return;
+      tooltip.hidden = true;
+      tooltip.textContent = '';
+    });
+  });
 }
 
 function initVerseMysticalPipeline() {
@@ -136,6 +195,7 @@ function initVerseMysticalPipeline() {
 
       const sefirahList = [result.sefirot.primarySefirah, ...result.sefirot.secondarySefirot].filter(Boolean);
       highlightSefirot(sefirahList, { animateFlow: true });
+      highlightPathsByLetters(getHebrewLettersFromText(result.verse.hebrew || ''));
 
       status.textContent = `Loaded ${result.verse.reference}. Primary sefirah: ${result.sefirot.primarySefirah} (confidence ${result.sefirot.confidenceScore}).`;
 
@@ -194,6 +254,7 @@ function initGematriaTool() {
       : '<li>No Hebrew letters detected.</li>';
 
     highlightSefirot(mapGematriaToSefirot(gematria), { animateFlow: true });
+    highlightPathsByLetters(getHebrewLettersFromText(text));
   };
 
   form.addEventListener('submit', (event) => {
@@ -218,6 +279,7 @@ function initDivineNameTool() {
     perms.innerHTML =
       analysis.permutations.slice(0, 24).map((item) => `<li>${item}</li>`).join('') || '<li>No permutations.</li>';
     highlightSefirot(mapDivineNameToSefirot(input.value), { animateFlow: true });
+    highlightPathsByLetters(getHebrewLettersFromText(input.value));
   };
 
   form.addEventListener('submit', (event) => {
@@ -261,6 +323,7 @@ function initResonanceTool() {
           .join('');
       }
       highlightSefirot(mapGematriaToSefirot(gematria), { animateFlow: true });
+      highlightPathsByLetters(getHebrewLettersFromText(phrase));
     } catch (error) {
       results.innerHTML = `<li>Unable to perform resonance search: ${error.message}</li>`;
     }
@@ -303,6 +366,7 @@ function initPsalmAnalyzerTool() {
       const divineHighlights = mapDivineNamesToSefirot(rows.flatMap((row) => row.divineNamesDetected));
       const gematriaHighlights = mapGematriaToSefirot(rows[0].gematria);
       highlightSefirot([...new Set([...divineHighlights, ...gematriaHighlights])], { animateFlow: true });
+      highlightPathsByLetters([]);
     } catch (error) {
       results.innerHTML = `<li>Unable to analyze Psalm: ${error.message}</li>`;
     }
@@ -333,6 +397,7 @@ function init72NamesTool() {
 
       if (names[0]?.sefirotAssociation) {
         highlightSefirot([names[0].sefirotAssociation], { animateFlow: true });
+        highlightPathsByLetters(getHebrewLettersFromText(names[0].name));
       }
     } catch (error) {
       results.innerHTML = `<li>Unable to generate the 72 names: ${error.message}</li>`;
@@ -376,6 +441,7 @@ async function initStudyPage() {
   ]);
 
   renderTreeNodes();
+  highlightPathsByLetters([]);
   initVerseMysticalPipeline();
   initGematriaTool();
   initResonanceTool();
@@ -387,6 +453,7 @@ async function initStudyPage() {
 
   document.addEventListener('verse:loaded', (event) => {
     highlightSefirot(event.detail?.sefirahHints || [], { animateFlow: true });
+    highlightPathsByLetters(getHebrewLettersFromText(event.detail?.hebrew || ''));
   });
 }
 

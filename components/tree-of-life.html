@@ -1,13 +1,10 @@
 <section aria-label="Tree of life visualization">
-  <svg class="tree-svg" viewBox="0 0 300 420" role="img" aria-label="Tree of Life with ten sefirot">
-    <g class="tree-lines" stroke="#9aa7b6" stroke-width="2" fill="none">
-      <path d="M150 40 L95 100 L150 160 L205 100 Z" />
-      <path d="M95 100 L75 200 L115 280 L150 350" />
-      <path d="M205 100 L225 200 L185 280 L150 350" />
-      <path d="M75 200 L225 200" />
-      <path d="M115 280 L185 280" />
-    </g>
+  <svg class="tree-svg" viewBox="0 0 300 420" role="img" aria-label="Tree of Life with ten sefirot and twenty-two paths">
+    <g id="tree-paths"></g>
+    <g id="tree-path-labels"></g>
     <g id="tree-sefirot-nodes"></g>
   </svg>
+  <div id="tree-path-tooltip" class="tree-tooltip" role="status" aria-live="polite" hidden></div>
   <p id="tree-active-sefirot" class="reader-status">Active sefirot: none</p>
+  <p id="tree-active-paths" class="reader-status">Active paths: none</p>
 </section>
