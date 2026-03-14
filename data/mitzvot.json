@@ -2538,5 +2538,465 @@
     "torahSource": "Leviticus 23:36",
     "description": "Hold a sacred assembly and rest on the eighth-day festival of Shemini Atzeret.",
     "notes": "Distinct closing festival day"
+  },
+  {
+    "id": 255,
+    "title": "Do Not Perform Forbidden Work on Shemini Atzeret",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:36",
+    "description": "Refrain from prohibited labor on Shemini Atzeret.",
+    "notes": "Festival labor prohibition for the eighth day"
+  },
+  {
+    "id": 256,
+    "title": "Offer a Fire-Offering on Shemini Atzeret",
+    "hebrew": "והקרבתם אשה לה׳",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:36",
+    "description": "Bring the designated festival offering on Shemini Atzeret.",
+    "notes": "Linked to musaf service of the day"
+  },
+  {
+    "id": 257,
+    "title": "Rest on the First Day of Passover",
+    "hebrew": "ביום הראשון מקרא קדש יהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:7",
+    "description": "Observe sacred rest and assembly on the first day of Passover.",
+    "notes": "Yom Tov observance for Pesach opening day"
+  },
+  {
+    "id": 258,
+    "title": "Do Not Perform Forbidden Work on the First Day of Passover",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:7",
+    "description": "Refrain from prohibited labor on the first day of Passover.",
+    "notes": "Festival labor prohibition"
+  },
+  {
+    "id": 259,
+    "title": "Bring the Omer Offering",
+    "hebrew": "והבאתם את עמר ראשית קצירכם",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:10",
+    "description": "Bring the first barley sheaf offering at the start of the grain harvest.",
+    "notes": "Marks beginning of the Omer count era"
+  },
+  {
+    "id": 260,
+    "title": "Do Not Eat New Grain Before the Omer",
+    "hebrew": "ולחם וקלי וכרמל לא תאכלו",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:14",
+    "description": "Do not eat from the new grain crop before the Omer offering.",
+    "notes": "Known as the prohibition of chadash"
+  },
+  {
+    "id": 261,
+    "title": "Count Seven Complete Weeks of the Omer",
+    "hebrew": "וספרתם לכם... שבע שבתות תמימת תהיינה",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:15",
+    "description": "Count forty-nine days from the Omer offering until Shavuot.",
+    "notes": "Daily mitzvah of sefirat ha-omer"
+  },
+  {
+    "id": 262,
+    "title": "Rest on Shavuot",
+    "hebrew": "וקראתם בעצם היום הזה מקרא קדש יהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:21",
+    "description": "Hold a sacred assembly and rest on Shavuot.",
+    "notes": "Yom Tov observance for Shavuot"
+  },
+  {
+    "id": 263,
+    "title": "Do Not Perform Forbidden Work on Shavuot",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:21",
+    "description": "Refrain from prohibited labor on Shavuot.",
+    "notes": "Festival labor prohibition"
+  },
+  {
+    "id": 264,
+    "title": "Leave the Corner of the Field for the Poor",
+    "hebrew": "ובקצרכם את קציר ארצכם לא תכלה פאת שדך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:22",
+    "description": "Leave peah, the corner of the field, for those in need.",
+    "notes": "Agricultural charity obligation"
+  },
+  {
+    "id": 265,
+    "title": "Do Not Gather Every Last Gleaning",
+    "hebrew": "ולקט קצירך לא תלקט",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:22",
+    "description": "Do not collect all gleanings; leave them for the poor and stranger.",
+    "notes": "Supports dignity through access to food"
+  },
+  {
+    "id": 266,
+    "title": "Rest on Rosh Hashanah",
+    "hebrew": "בחדש השביעי באחד לחדש יהיה לכם שבתון",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:24",
+    "description": "Observe sacred rest on the first day of the seventh month.",
+    "notes": "Yom Tov observance of Rosh Hashanah"
+  },
+  {
+    "id": 267,
+    "title": "Do Not Perform Forbidden Work on Rosh Hashanah",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:25",
+    "description": "Refrain from prohibited labor on Rosh Hashanah.",
+    "notes": "Festival labor prohibition"
+  },
+  {
+    "id": 268,
+    "title": "Offer the Day’s Festival Sacrifice on Rosh Hashanah",
+    "hebrew": "והקרבתם אשה לה׳",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:25",
+    "description": "Bring the designated offering of Rosh Hashanah.",
+    "notes": "Temple service of the new year day"
+  },
+  {
+    "id": 269,
+    "title": "Rest on Yom Kippur",
+    "hebrew": "שבת שבתון הוא לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:32",
+    "description": "Observe complete rest on Yom Kippur.",
+    "notes": "Most solemn sacred rest day"
+  },
+  {
+    "id": 270,
+    "title": "Do Not Perform Forbidden Work on Yom Kippur",
+    "hebrew": "כל מלאכה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:31",
+    "description": "Refrain from prohibited labor on Yom Kippur.",
+    "notes": "Labor prohibition alongside fasting"
+  },
+  {
+    "id": 271,
+    "title": "Do Not Eat on Yom Kippur",
+    "hebrew": "כי כל הנפש אשר לא תענה",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:29",
+    "description": "Abstain from eating and drinking as part of Yom Kippur affliction.",
+    "notes": "Central fast-day prohibition"
+  },
+  {
+    "id": 272,
+    "title": "Rest on the First Day of Sukkot (Festival Sabbath)",
+    "hebrew": "ביום הראשון שבתון",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:39",
+    "description": "Observe festival rest at the beginning of Sukkot.",
+    "notes": "Emphasizes first-day sanctity"
+  },
+  {
+    "id": 273,
+    "title": "Rest on the Eighth Day of Assembly",
+    "hebrew": "וביום השמיני שבתון",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:39",
+    "description": "Observe sacred rest on the eighth day closing assembly.",
+    "notes": "Shemini Atzeret rest emphasis"
+  },
+  {
+    "id": 274,
+    "title": "Light the Menorah in the Sanctuary",
+    "hebrew": "להעלת נר תמיד",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 24:2",
+    "description": "Ensure the sanctuary lamp is kindled regularly.",
+    "notes": "Perpetual light service"
+  },
+  {
+    "id": 275,
+    "title": "Set the Showbread Before God",
+    "hebrew": "ולקחת סלת ואפית אתה שתים עשרה חלות",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 24:5",
+    "description": "Arrange the twelve loaves of showbread on the sacred table.",
+    "notes": "Weekly Temple bread service"
+  },
+  {
+    "id": 276,
+    "title": "Do Not Blaspheme the Divine Name",
+    "hebrew": "ונקב שם ה׳ מות יומת",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Leviticus 24:16",
+    "description": "Do not curse or blaspheme God’s Name.",
+    "notes": "Severe prohibition protecting sanctity of speech"
+  },
+  {
+    "id": 277,
+    "title": "Observe the Sabbatical Rest of the Land",
+    "hebrew": "ושבתה הארץ שבת לה׳",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:2",
+    "description": "Let the land rest during the seventh year.",
+    "notes": "Core shemitah commandment"
+  },
+  {
+    "id": 278,
+    "title": "Do Not Perform Agricultural Work in Shemitah",
+    "hebrew": "שדך לא תזרע וכרמך לא תזמר",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:4",
+    "description": "Do not sow fields or prune vineyards in the sabbatical year.",
+    "notes": "Primary labor limits in shemitah"
+  },
+  {
+    "id": 279,
+    "title": "Do Not Reap Shemitah Growth as a Commercial Harvest",
+    "hebrew": "את ספיח קצירך לא תקצור",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:5",
+    "description": "Do not harvest spontaneous growth in the regular commercial manner.",
+    "notes": "Preserves public access and rest ethos"
+  },
+  {
+    "id": 280,
+    "title": "Do Not Gather Shemitah Grapes as a Commercial Harvest",
+    "hebrew": "ואת ענבי נזירך לא תבצר",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:5",
+    "description": "Do not gather sabbatical grapes in the normal owner-exclusive way.",
+    "notes": "Applies shemitah limits to vineyards"
+  },
+  {
+    "id": 281,
+    "title": "Count Seven Cycles of Sabbatical Years",
+    "hebrew": "וספרת לך שבע שבתת שנים",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:8",
+    "description": "Count forty-nine years to determine the jubilee cycle.",
+    "notes": "Foundation for yovel timing"
+  },
+  {
+    "id": 282,
+    "title": "Sanctify the Jubilee Year",
+    "hebrew": "וקדשתם את שנת החמשים שנה",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Consecrate the fiftieth year as Jubilee.",
+    "notes": "Public proclamation of holiness and release"
+  },
+  {
+    "id": 283,
+    "title": "Sound the Shofar on Yom Kippur of Jubilee",
+    "hebrew": "והעברת שופר תרועה בחדש השביעי",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:9",
+    "description": "Proclaim Jubilee with shofar blasts on Yom Kippur.",
+    "notes": "Formal opening signal of yovel"
+  },
+  {
+    "id": 284,
+    "title": "Return Hereditary Lands in Jubilee",
+    "hebrew": "ושבתם איש אל אחזתו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Restore ancestral property to original families in the Jubilee year.",
+    "notes": "Resets long-term land transfers"
+  },
+  {
+    "id": 285,
+    "title": "Release Hebrew Slaves in Jubilee",
+    "hebrew": "ואיש אל משפחתו תשבו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Free Hebrew bondservants in Jubilee.",
+    "notes": "National liberation provision"
+  },
+  {
+    "id": 286,
+    "title": "Do Not Work the Land in Jubilee",
+    "hebrew": "לא תזרעו ולא תקצרו את ספיחיה",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:11",
+    "description": "Do not sow or reap the land in the Jubilee year.",
+    "notes": "Jubilee parallels shemitah restrictions"
+  },
+  {
+    "id": 287,
+    "title": "Do Not Harvest Jubilee Vine Growth Commercially",
+    "hebrew": "ולא תבצרו את נזריה",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:11",
+    "description": "Do not harvest Jubilee vineyard growth in standard commercial fashion.",
+    "notes": "Preserves Jubilee sanctity"
+  },
+  {
+    "id": 288,
+    "title": "Redeem Sold Land According to Jubilee Rules",
+    "hebrew": "במספר שנים אחר היובל תקנה",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:15",
+    "description": "Calculate land sales by remaining harvest years until Jubilee.",
+    "notes": "Protects fairness in land transactions"
+  },
+  {
+    "id": 289,
+    "title": "Do Not Wrong One Another in Commerce",
+    "hebrew": "ולא תונו איש את עמיתו",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:17",
+    "description": "Do not exploit others through dishonest pricing or dealings.",
+    "notes": "Prohibition of onaah in trade"
+  },
+  {
+    "id": 290,
+    "title": "Do Not Sell Land in Perpetuity in Israel",
+    "hebrew": "והארץ לא תמכר לצמיתת",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:23",
+    "description": "Do not sell inherited land permanently in the Land of Israel.",
+    "notes": "Land remains under divine tenure"
+  },
+  {
+    "id": 291,
+    "title": "Redeem Houses in Walled Cities Within a Year",
+    "hebrew": "ואיש כי ימכר בית מושב עיר חומה",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:29",
+    "description": "Allow redemption of a walled-city house within one year of sale.",
+    "notes": "Special timeline for urban homes"
+  },
+  {
+    "id": 292,
+    "title": "Do Not Divest Levitical Cities Permanently",
+    "hebrew": "ושדה מגרש עריהם לא ימכר",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:34",
+    "description": "Do not permanently transfer Levitical field holdings.",
+    "notes": "Protects Levi tribal inheritance"
+  },
+  {
+    "id": 293,
+    "title": "Support a Poor Person Before Collapse",
+    "hebrew": "והחזקת בו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:35",
+    "description": "Sustain one who has fallen into poverty so they can remain self-supporting.",
+    "notes": "Preventative charity principle"
+  },
+  {
+    "id": 294,
+    "title": "Do Not Charge Interest to a Fellow Israelite",
+    "hebrew": "את כספך לא תתן לו בנשך",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:37",
+    "description": "Do not lend with interest to a fellow Israelite in need.",
+    "notes": "Prohibition of ribbit"
+  },
+  {
+    "id": 295,
+    "title": "Do Not Make a Fellow Israelite Serve as a Slave",
+    "hebrew": "לא תעבד בו עבדת עבד",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:39",
+    "description": "Do not impose degrading slave labor upon an Israelite bondservant.",
+    "notes": "Requires dignified treatment"
+  },
+  {
+    "id": 296,
+    "title": "Treat the Hebrew Servant as a Hired Worker",
+    "hebrew": "כשכיר כתושב יהיה עמך",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:40",
+    "description": "Treat a Hebrew servant like a hired laborer rather than chattel.",
+    "notes": "Sets humane labor standard"
+  },
+  {
+    "id": 297,
+    "title": "Do Not Rule Over a Hebrew Servant with Cruelty",
+    "hebrew": "לא תרדה בו בפרך",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:43",
+    "description": "Do not oppress a Hebrew servant with harsh domination.",
+    "notes": "Extends anti-cruelty mandate"
+  },
+  {
+    "id": 298,
+    "title": "Redeem a Relative Sold to a Resident Alien",
+    "hebrew": "אחרי נמכר גאלה תהיה לו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:48",
+    "description": "Assist in redeeming a kinsman sold into servitude to a resident alien.",
+    "notes": "Family redemption duty"
+  },
+  {
+    "id": 299,
+    "title": "Do Not Bow to Idols or Graven Images",
+    "hebrew": "לא תעשו לכם אלילים... ואבן משכית לא תתנו",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Leviticus 26:1",
+    "description": "Do not set up idols or prostrate to idolatrous symbols.",
+    "notes": "Comprehensive idolatry prohibition"
+  },
+  {
+    "id": 300,
+    "title": "Keep My Sabbaths and Revere My Sanctuary",
+    "hebrew": "את שבתתי תשמרו ומקדשי תיראו",
+    "category": "Shabbat",
+    "type": "Positive",
+    "torahSource": "Leviticus 26:2",
+    "description": "Guard the sanctity of Shabbat and show reverence for the sanctuary.",
+    "notes": "Pairs sacred time with sacred space"
   }
 ]
