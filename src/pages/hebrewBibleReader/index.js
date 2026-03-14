@@ -12,6 +12,7 @@ import {
 } from './render.js';
 import { createReaderState } from './state.js';
 import { buildSearchIndex, runSearchQuery } from '../../search/hebrewBible/index.js';
+import { parseReferenceInput } from '../../search/hebrewBible/parseReference.js';
 import { createEnglishBibleDataLayer } from '../../data/englishBible/index.js';
 
 const READER_PREFERENCES_KEY = 'sacred.hebrewBible.preferences';
@@ -31,11 +32,34 @@ function getDeepLinkState() {
   const book = params.get('book');
   const chapter = safeParsePositiveInteger(params.get('chapter'));
   const verse = safeParsePositiveInteger(params.get('verse'));
+  const reference = params.get('reference');
 
   return {
     book,
     chapter,
     verse,
+    reference,
+  };
+}
+
+function resolveDeepLinkState(deepLink, books) {
+  const hasDirectReference = deepLink.book || deepLink.chapter || deepLink.verse;
+
+  if (hasDirectReference || !deepLink.reference) {
+    return deepLink;
+  }
+
+  const parsed = parseReferenceInput(deepLink.reference, books);
+
+  if (!parsed?.book?.slug) {
+    return deepLink;
+  }
+
+  return {
+    ...deepLink,
+    book: parsed.book.slug,
+    chapter: safeParsePositiveInteger(parsed.chapter),
+    verse: safeParsePositiveInteger(parsed.verse),
   };
 }
 
@@ -246,7 +270,7 @@ async function initializeReaderPage() {
   const englishDataLayer = createEnglishBibleDataLayer({
     basePath,
   });
-  const deepLink = getDeepLinkState();
+  let deepLink = getDeepLinkState();
 
   let currentChapterVerses = [];
   let searchIndex = null;
@@ -690,6 +714,7 @@ async function initializeReaderPage() {
       return;
     }
 
+    deepLink = resolveDeepLinkState(deepLink, books);
     const deepLinkedBook = deepLink.book && books.find((book) => book.slug === deepLink.book);
     const initialBook = deepLinkedBook?.slug || books[0].slug;
 
