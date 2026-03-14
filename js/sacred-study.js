@@ -10,7 +10,6 @@ import { findResonantVerses, calculatePhraseGematria } from './tools/resonance-e
 import { analyzePsalm } from './tools/psalm-analyzer.js';
 import { generate72Names } from './tools/72names.js';
 import { generate231Gates } from './tools/231gates.js';
-import { initMessiahExplorer } from './components/messiahExplorer.js';
 import { analyzeVerse } from '../modules/mystical-pipeline.js';
 import { getHebrewLettersFromText, highlightPathsByLetters, highlightSefirot } from '../components/tree-of-life.js';
 
@@ -450,7 +449,6 @@ async function initStudyPage() {
   initDivineNameTool();
   init72NamesTool();
   init231GatesTool();
-  initMessiahExplorer();
 
   document.addEventListener('sacred:sefirahHint', (event) => {
     const word = event.detail?.word || '';

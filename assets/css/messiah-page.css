@@ -1,0 +1,72 @@
+.messiah-page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+  gap: 1rem;
+}
+
+#messiah-explorer .study-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+#messiah-search-input {
+  flex: 1;
+}
+
+.messiah-theme-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.messiah-word {
+  margin-top: 0.9rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.8rem;
+  background: #171717;
+}
+
+.messiah-word h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.messiah-word dl {
+  margin: 0.65rem 0 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.messiah-word dl div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.45rem;
+}
+
+.messiah-word dt {
+  color: #c3c8d0;
+  font-weight: 600;
+}
+
+.messiah-word dd {
+  margin: 0;
+}
+
+.messiah-gematria,
+.messiah-root {
+  font-weight: 700;
+  color: #9fc2e8;
+}
+
+@media (max-width: 900px) {
+  .messiah-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .messiah-word dl div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
