@@ -1,0 +1,23 @@
+<section class="card" aria-label="Verse explorer">
+  <h2>Verse explorer</h2>
+  <form id="verse-viewer-form" class="study-form">
+    <label for="verse-reference-input">Reference</label>
+    <div class="study-row">
+      <input id="verse-reference-input" type="text" value="Psalm 91" placeholder="Psalm 91 or Exodus 20" required />
+      <button class="button" type="submit">Load verse</button>
+    </div>
+  </form>
+  <p id="verse-viewer-status" class="reader-status" aria-live="polite">Ready.</p>
+  <div class="study-grid-two">
+    <article>
+      <h3>Hebrew</h3>
+      <p id="verse-hebrew-text" class="hebrew-text"></p>
+    </article>
+    <article>
+      <h3>English</h3>
+      <p id="verse-english-text"></p>
+    </article>
+  </div>
+  <h3>Commentary links</h3>
+  <ul id="verse-commentary-links" class="study-list"></ul>
+</section>

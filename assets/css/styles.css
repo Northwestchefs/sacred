@@ -372,3 +372,50 @@ kbd {
   border-left: 3px solid var(--line);
   color: var(--text);
 }
+
+.study-form {
+  margin-top: 0.8rem;
+}
+
+.study-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.study-row input {
+  flex: 1;
+  min-width: 12rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  background: #fff;
+}
+
+.study-grid-two {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.study-list {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.study-list-columns {
+  columns: 3 10rem;
+}
+
+.study-highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tree-svg {
+  width: 100%;
+  max-width: 32rem;
+  display: block;
+}
