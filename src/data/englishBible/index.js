@@ -82,8 +82,51 @@ function createEnglishBibleDataLayer(options = {}) {
     return totalChapters <= 3;
   }
 
+  function decodeHtmlEntities(value) {
+    const entityMap = {
+      amp: '&',
+      lt: '<',
+      gt: '>',
+      quot: '"',
+      apos: "'",
+      nbsp: ' ',
+      thinsp: ' ',
+    };
+
+    return value.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (entity, token) => {
+      const normalized = String(token || '').toLowerCase();
+
+      if (Object.prototype.hasOwnProperty.call(entityMap, normalized)) {
+        return entityMap[normalized];
+      }
+
+      if (normalized.startsWith('#x')) {
+        const codePoint = Number.parseInt(normalized.slice(2), 16);
+        return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : entity;
+      }
+
+      if (normalized.startsWith('#')) {
+        const codePoint = Number.parseInt(normalized.slice(1), 10);
+        return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : entity;
+      }
+
+      return entity;
+    });
+  }
+
   function stripMarkup(text) {
-    return String(text ?? '').replace(/<[^>]+>/g, '').trim();
+    const withoutFootnotes = String(text ?? '')
+      .replace(/<sup\b[^>]*>[\s\S]*?<\/sup>/gi, '')
+      .replace(/<i\b[^>]*class=["'][^"']*footnote[^"']*["'][^>]*>[\s\S]*?<\/i>/gi, '');
+
+    const withoutTags = withoutFootnotes.replace(/<[^>]+>/g, '');
+    const decoded = decodeHtmlEntities(withoutTags);
+
+    return decoded
+      .replace(/\{[^}]{1,8}\}/g, ' ')
+      .replace(/\u00a0/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   async function fetchRemoteBookPayload(bookSlug) {
