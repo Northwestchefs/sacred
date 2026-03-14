@@ -1,17 +1,17 @@
 import { breakdownByLetter, calculateGematria } from './gematria.js';
 import { analyzeDivineName } from './divine-names.js';
 import {
-  createSefirotState,
   mapDivineNameToSefirot,
   mapDivineNamesToSefirot,
   mapGematriaToSefirot,
   SEFIROT,
 } from './sefirot-map.js';
-import { initTorahViewer } from './torah-viewer.js';
 import { findResonantVerses, calculatePhraseGematria } from './tools/resonance-engine.js';
 import { analyzePsalm } from './tools/psalm-analyzer.js';
 import { generate72Names } from './tools/72names.js';
 import { generate231Gates } from './tools/231gates.js';
+import { analyzeVerse } from '../modules/mystical-pipeline.js';
+import { highlightSefirot } from '../components/tree-of-life.js';
 
 const NODE_COORDINATES = {
   Keter: [150, 40],
@@ -42,7 +42,7 @@ function renderTreeNodes() {
   group.innerHTML = SEFIROT.map((name) => {
     const [x, y] = NODE_COORDINATES[name];
     return `
-      <g data-sefirah="${name}">
+      <g data-sefirah="${name}" data-state="inactive">
         <circle cx="${x}" cy="${y}" r="18" fill="#f7f6f2" stroke="#2c4a6f" />
         <text x="${x}" y="${y + 4}" text-anchor="middle" font-size="8">${name}</text>
       </g>
@@ -50,24 +50,105 @@ function renderTreeNodes() {
   }).join('');
 }
 
-function highlightSefirot(active = []) {
-  const state = createSefirotState();
-  active.forEach((name) => {
-    if (name in state) state[name] = true;
-  });
+function initVerseMysticalPipeline() {
+  const form = document.getElementById('verse-viewer-form');
+  const refInput = document.getElementById('verse-reference-input');
+  const status = document.getElementById('verse-viewer-status');
+  const hebrew = document.getElementById('verse-hebrew-text');
+  const english = document.getElementById('verse-english-text');
+  const commentaryList = document.getElementById('verse-commentary-links');
 
-  document.querySelectorAll('#tree-sefirot-nodes g[data-sefirah]').forEach((node) => {
-    const isActive = state[node.dataset.sefirah];
-    const circle = node.querySelector('circle');
-    if (!circle) return;
-    circle.setAttribute('fill', isActive ? '#d8e8ff' : '#f7f6f2');
-    circle.setAttribute('stroke-width', isActive ? '3' : '1.5');
-  });
+  const gematriaTotal = document.getElementById('gematria-total');
+  const gematriaBreakdown = document.getElementById('gematria-breakdown');
+  const divineNameOutput = document.getElementById('divine-name-output');
+  const divineNamePermutations = document.getElementById('divine-name-permutations');
 
-  const activeLabel = document.getElementById('tree-active-sefirot');
-  if (activeLabel) {
-    activeLabel.textContent = `Active sefirot: ${active.length ? active.join(', ') : 'none'}`;
+  if (!form || !refInput || !status) return;
+
+  const renderCommentary = (items = []) => {
+    if (!commentaryList) return;
+    commentaryList.innerHTML = items.length
+      ? items
+          .map(
+            (item) =>
+              `<li><strong>${item.commentator}</strong> · ${item.sourceRef}<br /><em>${item.text || 'No excerpt available.'}</em></li>`,
+          )
+          .join('')
+      : '<li>No classical commentary found for this verse.</li>';
+  };
+
+  const renderGematria = (analysis) => {
+    if (gematriaTotal) {
+      gematriaTotal.textContent = `Total: ${analysis.total} · Mispar Katan: ${analysis.reduced} · Mispar Gadol: ${analysis.finalLetterSystem}`;
+    }
+
+    if (gematriaBreakdown) {
+      gematriaBreakdown.innerHTML = analysis.breakdown.length
+        ? analysis.breakdown.map((row) => `<li><strong>${row.letter}</strong> = ${row.value}</li>`).join('')
+        : '<li>No Hebrew letters detected.</li>';
+    }
+  };
+
+  const renderDivineNames = (analysis) => {
+    if (divineNameOutput) {
+      const names = analysis.namesDetected.length ? analysis.namesDetected.join(', ') : 'none';
+      const values = analysis.gematriaValues.map((item) => `${item.name}=${item.value}`).join(' · ') || '—';
+      divineNameOutput.textContent = `Detected: ${names} · Gematria: ${values}`;
+    }
+
+    if (divineNamePermutations) {
+      divineNamePermutations.innerHTML = analysis.permutations.length
+        ? analysis.permutations
+            .slice(0, 24)
+            .map((item) => `<li>${item.name}: ${item.value}</li>`)
+            .join('')
+        : '<li>No divine-name permutations for this verse.</li>';
+    }
+  };
+
+  async function run(reference) {
+    status.textContent = `Analyzing ${reference}…`;
+    try {
+      const result = await analyzeVerse(reference);
+
+      if (hebrew) hebrew.textContent = result.verse.hebrew || 'Hebrew text unavailable.';
+      if (english) english.textContent = result.verse.english || 'English translation unavailable.';
+
+      renderGematria(result.gematria);
+      renderDivineNames(result.divineNames);
+      renderCommentary(result.commentary);
+
+      const sefirahList = [result.sefirot.primarySefirah, ...result.sefirot.secondarySefirot].filter(Boolean);
+      highlightSefirot(sefirahList, { animateFlow: true });
+
+      status.textContent = `Loaded ${result.verse.reference}. Primary sefirah: ${result.sefirot.primarySefirah} (confidence ${result.sefirot.confidenceScore}).`;
+
+      document.dispatchEvent(
+        new CustomEvent('mystical:analysis-complete', {
+          detail: result,
+        }),
+      );
+    } catch (error) {
+      status.textContent = `Unable to analyze ${reference}: ${error.message}`;
+      if (hebrew) hebrew.textContent = '';
+      if (english) english.textContent = '';
+      renderCommentary([]);
+    }
   }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const reference = refInput.value.trim();
+    if (!reference) {
+      status.textContent = 'Enter a valid reference.';
+      return;
+    }
+
+    run(reference);
+  });
+
+  const defaultRef = refInput.value.trim();
+  if (defaultRef) run(defaultRef);
 }
 
 function initGematriaTool() {
@@ -88,7 +169,7 @@ function initGematriaTool() {
       ? rows.map((row) => `<li><strong>${row.letter}</strong> = ${row.value}</li>`).join('')
       : '<li>No Hebrew letters detected.</li>';
 
-    highlightSefirot(mapGematriaToSefirot(gematria));
+    highlightSefirot(mapGematriaToSefirot(gematria), { animateFlow: true });
   };
 
   form.addEventListener('submit', (event) => {
@@ -112,7 +193,7 @@ function initDivineNameTool() {
     output.textContent = `Gematria: ${analysis.gematria} · Sefirah: ${analysis.sefirah}`;
     perms.innerHTML =
       analysis.permutations.slice(0, 24).map((item) => `<li>${item}</li>`).join('') || '<li>No permutations.</li>';
-    highlightSefirot(mapDivineNameToSefirot(input.value));
+    highlightSefirot(mapDivineNameToSefirot(input.value), { animateFlow: true });
   };
 
   form.addEventListener('submit', (event) => {
@@ -155,7 +236,7 @@ function initResonanceTool() {
           )
           .join('');
       }
-      highlightSefirot(mapGematriaToSefirot(gematria));
+      highlightSefirot(mapGematriaToSefirot(gematria), { animateFlow: true });
     } catch (error) {
       results.innerHTML = `<li>Unable to perform resonance search: ${error.message}</li>`;
     }
@@ -197,7 +278,7 @@ function initPsalmAnalyzerTool() {
 
       const divineHighlights = mapDivineNamesToSefirot(rows.flatMap((row) => row.divineNamesDetected));
       const gematriaHighlights = mapGematriaToSefirot(rows[0].gematria);
-      highlightSefirot([...new Set([...divineHighlights, ...gematriaHighlights])]);
+      highlightSefirot([...new Set([...divineHighlights, ...gematriaHighlights])], { animateFlow: true });
     } catch (error) {
       results.innerHTML = `<li>Unable to analyze Psalm: ${error.message}</li>`;
     }
@@ -227,7 +308,7 @@ function init72NamesTool() {
         .join('');
 
       if (names[0]?.sefirotAssociation) {
-        highlightSefirot([names[0].sefirotAssociation]);
+        highlightSefirot([names[0].sefirotAssociation], { animateFlow: true });
       }
     } catch (error) {
       results.innerHTML = `<li>Unable to generate the 72 names: ${error.message}</li>`;
@@ -271,7 +352,7 @@ async function initStudyPage() {
   ]);
 
   renderTreeNodes();
-  initTorahViewer(document);
+  initVerseMysticalPipeline();
   initGematriaTool();
   initResonanceTool();
   initPsalmAnalyzerTool();
@@ -280,7 +361,7 @@ async function initStudyPage() {
   init231GatesTool();
 
   document.addEventListener('verse:loaded', (event) => {
-    highlightSefirot(event.detail?.sefirahHints || []);
+    highlightSefirot(event.detail?.sefirahHints || [], { animateFlow: true });
   });
 }
 
