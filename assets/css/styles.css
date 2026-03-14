@@ -427,6 +427,105 @@ input[type='search'] {
   margin-top: 0.8rem;
 }
 
+.study-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 1rem auto 0;
+  padding: 20px;
+}
+
+.panel {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 16px;
+  color: #f7f6f2;
+}
+
+.panel a {
+  color: #f7f6f2;
+}
+
+.panel .button {
+  background: #2c4a6f;
+}
+
+.panel :is(input[type='text'], input[type='number'], input[type='search'], textarea) {
+  background: #171717;
+  border-color: #333;
+  color: #f7f6f2;
+}
+
+.panel label,
+.panel .reader-status,
+.panel .kicker {
+  color: #c3c8d0;
+}
+
+.panel-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 6px;
+}
+
+.verse-panel {
+  grid-column: 1;
+}
+
+.gematria-panel {
+  grid-column: 2;
+}
+
+.tree-panel {
+  grid-column: span 2;
+}
+
+.divine-panel {
+  grid-column: 1;
+}
+
+.commentary-panel {
+  grid-column: 2;
+}
+
+.gematria-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.gematria-summary,
+.gematria-breakdown {
+  min-width: 0;
+}
+
+.study-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.study-highlight {
+  margin: 0.75rem 0 0;
+  font-weight: 600;
+}
+
+.study-list-columns {
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  padding-left: 1rem;
+}
+
+.hebrew {
+  font-family: 'Noto Serif Hebrew', 'SBL Hebrew', serif;
+  font-size: 28px;
+  direction: rtl;
+  line-height: 1.8;
+}
+
 .study-row {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
@@ -443,7 +542,8 @@ input[type='search'] {
 
 .tree-svg {
   width: 100%;
-  max-width: 22rem;
+  max-width: 100%;
+  min-height: 28rem;
   display: block;
   margin: 0.5rem auto;
 }
@@ -459,6 +559,28 @@ input[type='search'] {
 
 @media (max-width: 760px) {
   .study-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .study-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .tree-panel {
+    grid-column: span 1;
+  }
+
+  .verse-panel,
+  .gematria-panel,
+  .divine-panel,
+  .commentary-panel {
+    grid-column: 1;
+  }
+
+  .gematria-layout,
+  .study-grid-two {
     grid-template-columns: 1fr;
   }
 }

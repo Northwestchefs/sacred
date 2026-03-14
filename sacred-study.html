@@ -30,80 +30,98 @@
         <p>Advanced tools for gematria resonance, Psalm structure study, and combinatorial Kabbalah exploration.</p>
       </section>
 
-      <section id="verse-viewer-slot"></section>
-      <section id="gematria-tool-slot"></section>
+      <div class="study-dashboard">
+        <section class="panel verse-panel" aria-label="Verse explorer panel">
+          <h2 class="panel-title">Verse Explorer</h2>
+          <section id="verse-viewer-slot"></section>
+        </section>
 
-      <section class="card" aria-label="Gematria resonance search">
-        <h2>Gematria resonance search</h2>
-        <form id="resonance-form" class="study-form">
-          <label for="resonance-input">Hebrew phrase</label>
-          <div class="study-row">
-            <input id="resonance-input" type="text" value="חי" placeholder="Enter Hebrew phrase" required />
-            <button class="button" type="submit">Find resonance</button>
-          </div>
-        </form>
-        <p id="resonance-summary" class="study-highlight">Gematria: —</p>
-        <ul id="resonance-results" class="study-list"></ul>
-      </section>
+        <section class="panel gematria-panel" aria-label="Gematria analysis panel">
+          <h2 class="panel-title">Gematria Analysis</h2>
+          <section id="gematria-tool-slot"></section>
+        </section>
 
-      <section class="card" aria-label="Psalm analyzer">
-        <h2>Psalm analyzer</h2>
-        <form id="psalm-analyzer-form" class="study-form">
-          <label for="psalm-reference-input">Psalm reference</label>
-          <div class="study-row">
-            <input id="psalm-reference-input" type="text" value="Psalms 23" placeholder="Psalms 23" required />
-            <button class="button" type="submit">Analyze Psalm</button>
-          </div>
-        </form>
-        <ul id="psalm-analyzer-results" class="study-list"></ul>
-      </section>
+        <section class="panel tree-panel" aria-label="Tree of life panel">
+          <h2 class="panel-title">Tree of Life</h2>
+          <section id="tree-of-life-slot"></section>
+        </section>
 
-      <section class="card" aria-label="Divine name explorer">
-        <h2>Divine name explorer</h2>
-        <form id="divine-name-form" class="study-form">
-          <label for="divine-name-input">Divine name</label>
-          <div class="study-row">
-            <input id="divine-name-input" type="text" value="יהוה" placeholder="Type a divine name" required />
-            <button class="button" type="submit">Analyze</button>
-          </div>
-        </form>
-        <p id="divine-name-output" class="study-highlight">Gematria: — · Sefirah: —</p>
-        <h3>Permutations</h3>
-        <ul id="divine-name-permutations" class="study-list study-list-columns"></ul>
-      </section>
+        <section class="panel divine-panel" aria-label="Divine name analysis panel">
+          <h2 class="panel-title">Divine Name Explorer</h2>
+          <section aria-label="Divine name explorer">
+            <form id="divine-name-form" class="study-form">
+              <label for="divine-name-input">Divine name</label>
+              <div class="study-row">
+                <input id="divine-name-input" type="text" value="יהוה" placeholder="Type a divine name" required />
+                <button class="button" type="submit">Analyze</button>
+              </div>
+            </form>
+            <p id="divine-name-output" class="study-highlight">Gematria: — · Sefirah: —</p>
+            <h3>Permutations</h3>
+            <ul id="divine-name-permutations" class="study-list study-list-columns"></ul>
+          </section>
 
-      <section class="card" aria-label="72 names explorer">
-        <h2>72 names explorer</h2>
-        <form id="names72-form" class="study-form">
-          <div class="study-row">
-            <button class="button" type="submit">Generate 72 names</button>
-          </div>
-        </form>
-        <ul id="names72-results" class="study-list study-list-columns"></ul>
-      </section>
+          <section aria-label="72 names explorer">
+            <h3>72 Names</h3>
+            <form id="names72-form" class="study-form">
+              <div class="study-row">
+                <button class="button" type="submit">Generate 72 names</button>
+              </div>
+            </form>
+            <ul id="names72-results" class="study-list study-list-columns"></ul>
+          </section>
 
-      <section class="card" aria-label="231 gates generator">
-        <h2>231 gates generator</h2>
-        <form id="gates-form" class="study-form">
-          <div class="study-row">
-            <button class="button" type="submit">Generate 231 gates</button>
-          </div>
-        </form>
-        <p id="gates-summary" class="study-highlight">Total gates: —</p>
-        <p id="gates-results" class="hebrew-text"></p>
-      </section>
+          <section aria-label="231 gates generator">
+            <h3>231 Gates</h3>
+            <form id="gates-form" class="study-form">
+              <div class="study-row">
+                <button class="button" type="submit">Generate 231 gates</button>
+              </div>
+            </form>
+            <p id="gates-summary" class="study-highlight">Total gates: —</p>
+            <p id="gates-results" class="hebrew-text hebrew"></p>
+          </section>
+        </section>
 
-      <section class="card" aria-label="Mitzvot explorer link">
-        <h2>Mitzvot (613 Commandments)</h2>
-        <p>
-          Explore the Torah commandments on their own dedicated page with focused filtering, summaries, and verse links.
-        </p>
-        <p>
-          <a class="button" href="mitzvot/">Open Mitzvot page</a>
-        </p>
-      </section>
+        <section class="panel commentary-panel" aria-label="Commentary and links panel">
+          <h2 class="panel-title">Commentary</h2>
 
-      <section id="tree-of-life-slot"></section>
+          <section aria-label="Gematria resonance search">
+            <h3>Gematria resonance search</h3>
+            <form id="resonance-form" class="study-form">
+              <label for="resonance-input">Hebrew phrase</label>
+              <div class="study-row">
+                <input id="resonance-input" type="text" value="חי" placeholder="Enter Hebrew phrase" required />
+                <button class="button" type="submit">Find resonance</button>
+              </div>
+            </form>
+            <p id="resonance-summary" class="study-highlight">Gematria: —</p>
+            <ul id="resonance-results" class="study-list"></ul>
+          </section>
+
+          <section aria-label="Psalm analyzer">
+            <h3>Psalm analyzer</h3>
+            <form id="psalm-analyzer-form" class="study-form">
+              <label for="psalm-reference-input">Psalm reference</label>
+              <div class="study-row">
+                <input id="psalm-reference-input" type="text" value="Psalms 23" placeholder="Psalms 23" required />
+                <button class="button" type="submit">Analyze Psalm</button>
+              </div>
+            </form>
+            <ul id="psalm-analyzer-results" class="study-list"></ul>
+          </section>
+
+          <section aria-label="Mitzvot explorer link">
+            <h3>Mitzvot (613 Commandments)</h3>
+            <p>
+              Explore the Torah commandments on their own dedicated page with focused filtering, summaries, and verse links.
+            </p>
+            <p>
+              <a class="button" href="mitzvot/">Open Mitzvot page</a>
+            </p>
+          </section>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">
