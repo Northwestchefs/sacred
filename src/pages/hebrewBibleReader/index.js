@@ -250,6 +250,7 @@ async function initializeReaderPage() {
 
   let currentChapterVerses = [];
   let searchIndex = null;
+  let searchIndexPromise = null;
   let currentSearchScope = 'all';
 
   function applyPreferences() {
@@ -602,8 +603,35 @@ async function initializeReaderPage() {
     updateDeepLink(state.getState());
   }
 
+  async function ensureSearchIndex() {
+    if (searchIndex) {
+      return searchIndex;
+    }
+
+    if (!searchIndexPromise) {
+      searchIndexPromise = (async () => {
+        const verses = await dataLayer.getAllVerses();
+        const builtIndex = buildSearchIndex(verses);
+        searchIndex = builtIndex;
+        return builtIndex;
+      })().catch((error) => {
+        searchIndexPromise = null;
+        throw error;
+      });
+    }
+
+    return searchIndexPromise;
+  }
+
   async function navigateByQuery(query, options) {
     const activeState = state.getState();
+
+    try {
+      await ensureSearchIndex();
+    } catch (error) {
+      renderStatus(statusElement, `Unable to prepare search index: ${error.message}`, 'error');
+      return;
+    }
     const result = runSearchQuery({
       query,
       books: activeState.books,
@@ -655,8 +683,6 @@ async function initializeReaderPage() {
     renderStatus(statusElement, 'Loading books…');
     const books = await dataLayer.getAllBooks();
     await englishDataLayer.getBooks();
-    const verses = await dataLayer.getAllVerses();
-    searchIndex = buildSearchIndex(verses);
     state.setState({ books });
 
     if (!books.length) {
@@ -671,6 +697,8 @@ async function initializeReaderPage() {
       autoSelectChapter: true,
       verseOverride: deepLink.verse,
     });
+
+    void ensureSearchIndex();
   } catch (error) {
     state.setState({ error });
     renderStatus(statusElement, `Unable to load Hebrew Bible data: ${error.message}`, 'error');
