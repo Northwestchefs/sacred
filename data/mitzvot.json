@@ -5508,5 +5508,135 @@
     "torahSource": "Exodus 20:13",
     "description": "Do not give false testimony against another.",
     "notes": "Foundational prohibition in civil ethics"
+  },
+  {
+    "id": 601,
+    "title": "Investigate Witnesses Thoroughly",
+    "hebrew": "ודרשת וחקרת ושאלת היטב",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 13:15",
+    "description": "Examine testimony carefully before issuing judgment.",
+    "notes": "Due process requirement"
+  },
+  {
+    "id": 602,
+    "title": "Do Not Favor the Poor in Judgment",
+    "hebrew": "ודל לא תהדר בריבו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:3",
+    "description": "Do not skew legal rulings out of sympathy for poverty.",
+    "notes": "Impartiality above status"
+  },
+  {
+    "id": 603,
+    "title": "Do Not Favor the Great in Judgment",
+    "hebrew": "לא תהדר פני גדול",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:15",
+    "description": "Do not privilege influential people in court.",
+    "notes": "Equal justice for all"
+  },
+  {
+    "id": 604,
+    "title": "Judge Righteously",
+    "hebrew": "בצדק תשפט עמיתך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:15",
+    "description": "Issue rulings grounded in righteousness and truth.",
+    "notes": "Core judicial duty"
+  },
+  {
+    "id": 605,
+    "title": "Do Not Follow the Majority for Evil",
+    "hebrew": "לא תהיה אחרי רבים לרעת",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:2",
+    "description": "Do not support an unjust decision merely because many do.",
+    "notes": "Moral courage in judgment"
+  },
+  {
+    "id": 606,
+    "title": "Follow the Majority in Judicial Rulings",
+    "hebrew": "אחרי רבים להטת",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Exodus 23:2",
+    "description": "In duly convened courts, resolve legal questions by majority.",
+    "notes": "Maintains legal order"
+  },
+  {
+    "id": 607,
+    "title": "Do Not Fear Any Person in Judgment",
+    "hebrew": "לא תגורו מפני איש",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 1:17",
+    "description": "Do not let intimidation alter a legal verdict.",
+    "notes": "Judicial independence"
+  },
+  {
+    "id": 608,
+    "title": "Do Not Distort Justice for Converts or Orphans",
+    "hebrew": "לא תטה משפט גר יתום",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:17",
+    "description": "Protect vulnerable litigants from biased treatment.",
+    "notes": "Special warning against exploitation"
+  },
+  {
+    "id": 609,
+    "title": "Do Not Take a Widow's Garment as Collateral",
+    "hebrew": "ולא תחבל בגד אלמנה",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:17",
+    "description": "Do not seize essential property from a widow as pledge.",
+    "notes": "Protects dignity and livelihood"
+  },
+  {
+    "id": 610,
+    "title": "Return a Lost Object",
+    "hebrew": "השב תשיבם",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:1",
+    "description": "Restore lost property to its rightful owner.",
+    "notes": "Active responsibility toward others"
+  },
+  {
+    "id": 611,
+    "title": "Do Not Ignore Lost Property",
+    "hebrew": "לא תוכל להתעלם",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 22:3",
+    "description": "Do not turn away when you can help recover what was lost.",
+    "notes": "Rejects moral indifference"
+  },
+  {
+    "id": 612,
+    "title": "Help Raise a Fallen Animal",
+    "hebrew": "הקם תקים עמו",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:4",
+    "description": "Assist another in lifting an animal that has collapsed under its burden.",
+    "notes": "Compassion in practical action"
+  },
+  {
+    "id": 613,
+    "title": "Do Not Refrain from Helping with a Fallen Load",
+    "hebrew": "לא תראה את חמור אחיך או שורו נפלים בדרך והתעלמת מהם",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 22:4",
+    "description": "Do not avoid assisting when a neighbor's animal or load has fallen.",
+    "notes": "Final mitzvah in this dataset sequence"
   }
 ]
