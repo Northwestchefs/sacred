@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "title": "To Know There Is a God",
+    "hebrew": "אנכי ה׳ אלהיך",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Exodus 20:2",
+    "description": "Recognize and affirm the existence of the Creator.",
+    "notes": "First of the Ten Commandments"
+  },
+  {
+    "id": 2,
+    "title": "Do Not Entertain Other Deities",
+    "hebrew": "לא יהיה לך אלהים אחרים",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Exodus 20:3",
+    "description": "Do not worship or accept any power as divine besides God.",
+    "notes": "Foundational prohibition against idolatry"
+  },
+  {
+    "id": 3,
+    "title": "Proclaim Divine Unity",
+    "hebrew": "שמע ישראל ה׳ אלהינו ה׳ אחד",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:4",
+    "description": "Declare the oneness of God through the Shema.",
+    "notes": "Recited daily in Jewish prayer"
+  },
+  {
+    "id": 4,
+    "title": "Love God",
+    "hebrew": "ואהבת את ה׳ אלהיך",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:5",
+    "description": "Cultivate deep love for God through thought, feeling, and action.",
+    "notes": "Core spiritual commandment"
+  },
+  {
+    "id": 5,
+    "title": "Fear and Revere God",
+    "hebrew": "את ה׳ אלהיך תירא",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:20",
+    "description": "Hold reverence for God and avoid spiritual arrogance.",
+    "notes": "Includes awe and ethical restraint"
+  },
+  {
+    "id": 6,
+    "title": "Sanctify God's Name",
+    "hebrew": "ונקדשתי בתוך בני ישראל",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Leviticus 22:32",
+    "description": "Act in ways that honor and sanctify God's name publicly.",
+    "notes": "Known as Kiddush Hashem"
+  },
+  {
+    "id": 7,
+    "title": "Do Not Profane God's Name",
+    "hebrew": "ולא תחללו את שם קדשי",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:32",
+    "description": "Avoid behavior that dishonors God's name.",
+    "notes": "Known as Chilul Hashem"
+  },
+  {
+    "id": 8,
+    "title": "Pray to God",
+    "hebrew": "ולעבדו בכל לבבכם",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 11:13",
+    "description": "Serve God through heartfelt prayer.",
+    "notes": "Traditional source for daily prayer obligation"
+  },
+  {
+    "id": 9,
+    "title": "Recite the Shema Morning and Night",
+    "hebrew": "בשכבך ובקומך",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:7",
+    "description": "Recite the Shema in the evening and in the morning.",
+    "notes": "Anchors Jewish daily rhythm"
+  },
+  {
+    "id": 10,
+    "title": "Priestly Blessing",
+    "hebrew": "כה תברכו את בני ישראל",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Numbers 6:23",
+    "description": "Kohanim are commanded to bless the people of Israel.",
+    "notes": "Birkat Kohanim"
+  },
+  {
+    "id": 11,
+    "title": "Study Torah",
+    "hebrew": "ושננתם לבניך",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:7",
+    "description": "Engage continually in Torah learning.",
+    "notes": "Central mitzvah for lifelong learning"
+  },
+  {
+    "id": 12,
+    "title": "Teach Torah to Children",
+    "hebrew": "ולמדתם אתם את בניכם",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 11:19",
+    "description": "Parents are commanded to transmit Torah to the next generation.",
+    "notes": "Education as covenantal responsibility"
+  },
+  {
+    "id": 13,
+    "title": "Honor Torah Scholars",
+    "hebrew": "מפני שיבה תקום",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:32",
+    "description": "Show respect for elders and Torah wisdom.",
+    "notes": "Includes standing in honor"
+  },
+  {
+    "id": 14,
+    "title": "Write a Torah Scroll",
+    "hebrew": "ועתה כתבו לכם את השירה הזאת",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 31:19",
+    "description": "Ensure Torah is preserved through written transmission.",
+    "notes": "Traditionally linked to commissioning or writing a scroll"
+  },
+  {
+    "id": 15,
+    "title": "Rest on Shabbat",
+    "hebrew": "וביום השביעי תשבת",
+    "category": "Shabbat",
+    "type": "Positive",
+    "torahSource": "Exodus 23:12",
+    "description": "Cease creative labor on the seventh day.",
+    "notes": "Shabbat sanctifies time"
+  },
+  {
+    "id": 16,
+    "title": "Do Not Perform Forbidden Work on Shabbat",
+    "hebrew": "לא תעשה כל מלאכה",
+    "category": "Shabbat",
+    "type": "Negative",
+    "torahSource": "Exodus 20:10",
+    "description": "Refrain from melakhah on Shabbat.",
+    "notes": "Core Shabbat prohibition"
+  },
+  {
+    "id": 17,
+    "title": "Sanctify Shabbat with Words",
+    "hebrew": "זכור את יום השבת לקדשו",
+    "category": "Shabbat",
+    "type": "Positive",
+    "torahSource": "Exodus 20:8",
+    "description": "Mark Shabbat with verbal sanctification such as Kiddush.",
+    "notes": "Positive remembrance command"
+  },
+  {
+    "id": 18,
+    "title": "Do Not Leave One's Place for Gathering Manna",
+    "hebrew": "אל יצא איש ממקמו ביום השביעי",
+    "category": "Shabbat",
+    "type": "Negative",
+    "torahSource": "Exodus 16:29",
+    "description": "A classic source tied to Shabbat boundaries and restraint.",
+    "notes": "Interpreted within laws of Shabbat movement"
+  },
+  {
+    "id": 19,
+    "title": "Rest on the First Day of Passover",
+    "hebrew": "ביום הראשון מקרא קדש",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:7",
+    "description": "Observe sacred assembly and rest on the opening day of Passover.",
+    "notes": "Yom Tov holiness"
+  },
+  {
+    "id": 20,
+    "title": "Do Not Perform Forbidden Work on Passover's First Day",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:7",
+    "description": "Avoid prohibited labor on the first festival day.",
+    "notes": "Festival labor restrictions"
+  },
+  {
+    "id": 21,
+    "title": "Eat Matzah on Passover Night",
+    "hebrew": "בערב תאכלו מצת",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 12:18",
+    "description": "Eat unleavened bread at the Passover seder.",
+    "notes": "Observed on the first night(s)"
+  },
+  {
+    "id": 22,
+    "title": "Do Not Eat Chametz on Passover",
+    "hebrew": "לא תאכל עליו חמץ",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:3",
+    "description": "Refrain from consuming leaven during Passover.",
+    "notes": "Applies throughout the festival"
+  },
+  {
+    "id": 23,
+    "title": "Remove Chametz Before Passover",
+    "hebrew": "אך ביום הראשון תשביתו שאור",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 12:15",
+    "description": "Eliminate leaven from one's possession before Passover.",
+    "notes": "Basis for bedikat and biur chametz"
+  },
+  {
+    "id": 24,
+    "title": "Hear the Shofar on Rosh Hashanah",
+    "hebrew": "יום תרועה יהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 29:1",
+    "description": "Mark the new year through the sounding of the shofar.",
+    "notes": "Commandment of sacred remembrance"
+  },
+  {
+    "id": 25,
+    "title": "Afflict Oneself on Yom Kippur",
+    "hebrew": "ועניתם את נפשתיכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 16:29",
+    "description": "Practice fasting and self-reflection on the Day of Atonement.",
+    "notes": "Spiritual purification"
+  },
+  {
+    "id": 26,
+    "title": "Do Not Eat or Drink on Yom Kippur",
+    "hebrew": "כי כל הנפש אשר לא תענה",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:29",
+    "description": "Abstain from eating and drinking on Yom Kippur.",
+    "notes": "Central Yom Kippur observance"
+  },
+  {
+    "id": 27,
+    "title": "Dwell in a Sukkah",
+    "hebrew": "בסכת תשבו שבעת ימים",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:42",
+    "description": "Live in a sukkah during the festival of Sukkot.",
+    "notes": "Remembers divine protection in the wilderness"
+  },
+  {
+    "id": 28,
+    "title": "Take the Four Species",
+    "hebrew": "ולקחתם לכם ביום הראשון",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:40",
+    "description": "Take lulav, etrog, hadasim, and aravot on Sukkot.",
+    "notes": "Symbol of unity and joy"
+  },
+  {
+    "id": 29,
+    "title": "Honor Father and Mother",
+    "hebrew": "כבד את אביך ואת אמך",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Exodus 20:12",
+    "description": "Treat parents with honor through speech and action.",
+    "notes": "One of the Ten Commandments"
+  },
+  {
+    "id": 30,
+    "title": "Revere Father and Mother",
+    "hebrew": "איש אמו ואביו תיראו",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:3",
+    "description": "Show reverence and avoid disrespect to parents.",
+    "notes": "Complements honoring parents"
+  },
+  {
+    "id": 31,
+    "title": "Be Fruitful and Multiply",
+    "hebrew": "פרו ורבו",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Genesis 1:28",
+    "description": "Build family life and continue human partnership with creation.",
+    "notes": "First command in Torah"
+  },
+  {
+    "id": 32,
+    "title": "Do Not Murder",
+    "hebrew": "לא תרצח",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Human life is sacred and must not be taken unlawfully.",
+    "notes": "One of the Ten Commandments"
+  },
+  {
+    "id": 33,
+    "title": "Do Not Steal",
+    "hebrew": "לא תגנב",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Respect the property and dignity of others.",
+    "notes": "Ethical foundation for trust"
+  },
+  {
+    "id": 34,
+    "title": "Do Not Bear False Witness",
+    "hebrew": "לא תענה ברעך עד שקר",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Testify truthfully and avoid harmful false testimony.",
+    "notes": "Judicial integrity command"
+  },
+  {
+    "id": 35,
+    "title": "Do Not Covet",
+    "hebrew": "לא תחמד",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 20:14",
+    "description": "Do not scheme to acquire what belongs to another.",
+    "notes": "Addresses inward desire and outward action"
+  },
+  {
+    "id": 36,
+    "title": "Love Your Neighbor as Yourself",
+    "hebrew": "ואהבת לרעך כמוך",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:18",
+    "description": "Act toward others with empathy, dignity, and care.",
+    "notes": "Famous interpersonal principle"
+  },
+  {
+    "id": 37,
+    "title": "Do Not Take Revenge",
+    "hebrew": "לא תקם",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:18",
+    "description": "Refrain from retaliatory behavior.",
+    "notes": "Supports peaceful relationships"
+  },
+  {
+    "id": 38,
+    "title": "Do Not Bear a Grudge",
+    "hebrew": "ולא תטר",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:18",
+    "description": "Let go of ongoing resentment against others.",
+    "notes": "Ethic of inner repair"
+  },
+  {
+    "id": 39,
+    "title": "Leave the Corner of the Field for the Poor",
+    "hebrew": "לא תכלה פאת שדך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:9",
+    "description": "Set aside agricultural produce for those in need.",
+    "notes": "Pe'ah"
+  },
+  {
+    "id": 40,
+    "title": "Leave Gleanings for the Poor",
+    "hebrew": "ולקט קצירך לא תלקט",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:9",
+    "description": "Permit the needy to gather leftover produce.",
+    "notes": "Leket"
+  },
+  {
+    "id": 41,
+    "title": "Give Charity",
+    "hebrew": "פתוח תפתח את ידך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:11",
+    "description": "Open your hand generously to those in need.",
+    "notes": "Core basis for tzedakah"
+  },
+  {
+    "id": 42,
+    "title": "Do Not Harden Your Heart Against the Poor",
+    "hebrew": "לא תאמץ את לבבך",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:7",
+    "description": "Do not ignore or close yourself to poverty around you.",
+    "notes": "Compassionate social ethic"
+  },
+  {
+    "id": 43,
+    "title": "Inspect Signs of Kosher Animals",
+    "hebrew": "זאת החיה אשר תאכלו",
+    "category": "Dietary Laws",
+    "type": "Positive",
+    "torahSource": "Leviticus 11:2-3",
+    "description": "Eat land animals that meet Torah criteria for kashrut.",
+    "notes": "Split hooves and chewing cud"
+  },
+  {
+    "id": 44,
+    "title": "Do Not Eat Non-Kosher Animals",
+    "hebrew": "מבשרם לא תאכלו",
+    "category": "Dietary Laws",
+    "type": "Negative",
+    "torahSource": "Leviticus 11:8",
+    "description": "Refrain from consuming species prohibited by Torah.",
+    "notes": "Maintains dietary sanctity"
+  },
+  {
+    "id": 45,
+    "title": "Do Not Eat Blood",
+    "hebrew": "כל דם לא תאכלו",
+    "category": "Dietary Laws",
+    "type": "Negative",
+    "torahSource": "Leviticus 7:26",
+    "description": "Blood is forbidden for consumption.",
+    "notes": "Applies to domesticated and wild animals"
+  },
+  {
+    "id": 46,
+    "title": "Judge Cases Justly",
+    "hebrew": "בצדק תשפט עמיתך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:15",
+    "description": "Apply law fairly without bias.",
+    "notes": "Judicial equity"
+  },
+  {
+    "id": 47,
+    "title": "Do Not Pervert Justice",
+    "hebrew": "לא תעשו עול במשפט",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:15",
+    "description": "Do not distort legal outcomes.",
+    "notes": "Protects vulnerable litigants"
+  },
+  {
+    "id": 48,
+    "title": "Appoint Judges and Officers",
+    "hebrew": "שפטים ושטרים תתן לך",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:18",
+    "description": "Establish systems of governance and justice.",
+    "notes": "Communal legal framework"
+  },
+  {
+    "id": 49,
+    "title": "Build a Sanctuary",
+    "hebrew": "ועשו לי מקדש",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 25:8",
+    "description": "Create a sacred place dedicated to divine service.",
+    "notes": "Command to construct the Mishkan/Temple"
+  },
+  {
+    "id": 50,
+    "title": "Guard the Sanctuary",
+    "hebrew": "ושמרו את משמרת אהל מועד",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 18:4",
+    "description": "Maintain reverence and protective oversight of holy space.",
+    "notes": "Temple service responsibility"
+  }
+]

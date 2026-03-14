@@ -477,3 +477,70 @@ input[type='search'] {
   fill: var(--accent);
   font-weight: 700;
 }
+
+.mitzvot-controls {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  align-items: end;
+}
+
+.mitzvot-controls label {
+  margin-bottom: 0.2rem;
+}
+
+.mitzvot-grid {
+  margin-top: 0.75rem;
+  max-height: 38rem;
+  overflow: auto;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  padding-right: 0.25rem;
+}
+
+.mitzvah-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 0.9rem;
+}
+
+.mitzvah-number {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mitzvah-hebrew {
+  direction: rtl;
+  text-align: right;
+  font-size: 1.05rem;
+  margin: 0.35rem 0 0.45rem;
+}
+
+.mitzvah-meta {
+  margin: 0;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.mitzvah-meta div {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.mitzvah-meta dt {
+  font-weight: 700;
+}
+
+.mitzvah-meta dd {
+  margin: 0;
+}
+
+.mitzvah-card .button {
+  margin-top: 0.55rem;
+}
