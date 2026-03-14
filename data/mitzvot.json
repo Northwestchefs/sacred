@@ -5008,5 +5008,505 @@
     "torahSource": "Deuteronomy 16:16",
     "description": "Present oneself before God during the three pilgrimage festivals.",
     "notes": "Affirms covenant through gathered worship"
+  },
+  {
+    "id": 551,
+    "title": "Bring the Pilgrimage Appearance Offering",
+    "hebrew": "ולא יראו פני ריקם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 23:15",
+    "description": "Bring an offering when appearing at the sanctuary on pilgrimage festivals.",
+    "notes": "Known as olat re’iyah"
+  },
+  {
+    "id": 552,
+    "title": "Bring the Festival Peace Offering",
+    "hebrew": "וזבחת שלמים ואכלת שם ושמחת",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 27:7",
+    "description": "Offer festival peace offerings in a spirit of rejoicing.",
+    "notes": "Known as shalmei ḥagigah"
+  },
+  {
+    "id": 553,
+    "title": "Do Not Delay Vowed Offerings",
+    "hebrew": "כי תדר נדר ליהוה אלהיך לא תאחר לשלמו",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 23:22",
+    "description": "Fulfill vowed offerings without unnecessary delay.",
+    "notes": "Prompt fulfillment honors sacred speech"
+  },
+  {
+    "id": 554,
+    "title": "Fulfill Verbal Vows",
+    "hebrew": "מוצא שפתיך תשמר ועשית",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:24",
+    "description": "Keep and perform commitments spoken to God.",
+    "notes": "Links speech with accountability"
+  },
+  {
+    "id": 555,
+    "title": "Set Aside Firstborn Kosher Animals for Holiness",
+    "hebrew": "כל הבכור אשר יולד בבקרך ובצאנך הזכר תקדיש",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Sanctify firstborn kosher herd and flock males.",
+    "notes": "Given special sacrificial status"
+  },
+  {
+    "id": 556,
+    "title": "Redeem a Firstborn Donkey",
+    "hebrew": "וכל פטר חמור תפדה בשה",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 13:13",
+    "description": "Redeem a firstborn donkey with a lamb or equivalent value.",
+    "notes": "Distinct law for non-kosher firstborn"
+  },
+  {
+    "id": 557,
+    "title": "Break the Neck of an Unredeemed Firstborn Donkey",
+    "hebrew": "ואם לא תפדה וערפתו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 13:13",
+    "description": "If not redeemed, perform the prescribed procedure for a firstborn donkey.",
+    "notes": "Ensures mitzvah is not ignored"
+  },
+  {
+    "id": 558,
+    "title": "Give the Foreleg, Cheeks, and Stomach to the Priest",
+    "hebrew": "וזה יהיה משפט הכהנים",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:3",
+    "description": "Give designated portions of slaughtered animals to kohanim.",
+    "notes": "Supports priestly service"
+  },
+  {
+    "id": 559,
+    "title": "Set Aside Terumah for the Priest",
+    "hebrew": "ראשית דגנך תירשך ויצהרך",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:4",
+    "description": "Separate a priestly portion from produce.",
+    "notes": "Known as terumah gedolah"
+  },
+  {
+    "id": 560,
+    "title": "Set Aside First Tithe for the Levite",
+    "hebrew": "ולבני לוי הנה נתתי כל מעשר בישראל",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Numbers 18:21",
+    "description": "Give ma'aser rishon to the Levites.",
+    "notes": "Sustains Levitical responsibilities"
+  },
+  {
+    "id": 561,
+    "title": "Set Aside Second Tithe in the Proper Years",
+    "hebrew": "עשר תעשר את כל תבואת זרעך",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 14:22",
+    "description": "Separate second tithe and consume it in holiness.",
+    "notes": "Observed in years one, two, four, and five"
+  },
+  {
+    "id": 562,
+    "title": "Set Aside Poor Tithe in the Proper Years",
+    "hebrew": "מקצה שלש שנים תוציא את כל מעשר תבואתך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 14:28",
+    "description": "Designate tithe for the poor in designated years.",
+    "notes": "Supports vulnerable households"
+  },
+  {
+    "id": 563,
+    "title": "Recite Tithe Declaration in Its Time",
+    "hebrew": "בערתי הקדש מן הבית",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:13",
+    "description": "Declare faithful completion of required tithes.",
+    "notes": "Known as vidui ma’aser"
+  },
+  {
+    "id": 564,
+    "title": "Do Not Eat Untithed Produce",
+    "hebrew": "ולא יחללו את קדשי בני ישראל",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:15",
+    "description": "Do not consume produce before required separations.",
+    "notes": "Tevel remains prohibited"
+  },
+  {
+    "id": 565,
+    "title": "Leave Pe'ah at Field Corners for the Poor",
+    "hebrew": "לא תכלה פאת שדך בקצרך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:9",
+    "description": "Leave the field corner unharvested for those in need.",
+    "notes": "Creates dignified access to food"
+  },
+  {
+    "id": 566,
+    "title": "Leave Gleanings for the Poor",
+    "hebrew": "ולקט קצירך לא תלקט",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:9",
+    "description": "Do not collect dropped stalks during harvest.",
+    "notes": "Known as leket"
+  },
+  {
+    "id": 567,
+    "title": "Leave Forgotten Sheaves for the Poor",
+    "hebrew": "כי תקצור קצירך ושכחת עמר בשדה",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:19",
+    "description": "Do not retrieve forgotten sheaves.",
+    "notes": "Known as shikhḥah"
+  },
+  {
+    "id": 568,
+    "title": "Leave Imperfect Grape Clusters for the Poor",
+    "hebrew": "וכרמך לא תעולל",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:10",
+    "description": "Leave secondary grape growth for the poor.",
+    "notes": "Known as olelot"
+  },
+  {
+    "id": 569,
+    "title": "Leave Fallen Grapes for the Poor",
+    "hebrew": "ופרט כרמך לא תלקט",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:10",
+    "description": "Do not gather individual fallen grapes.",
+    "notes": "Known as peret"
+  },
+  {
+    "id": 570,
+    "title": "Let the Land Rest in the Seventh Year",
+    "hebrew": "ושבתה הארץ שבת ליהוה",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:2",
+    "description": "Observe shemitah by ceasing agricultural labor.",
+    "notes": "Sabbatical ecology and faith"
+  },
+  {
+    "id": 571,
+    "title": "Do Not Work the Land in the Seventh Year",
+    "hebrew": "שדך לא תזרע וכרמך לא תזמר",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:4",
+    "description": "Refrain from planting and pruning in shemitah.",
+    "notes": "Applies throughout the land"
+  },
+  {
+    "id": 572,
+    "title": "Treat Seventh-Year Produce as Ownerless",
+    "hebrew": "והיתה שבת הארץ לכם לאכלה",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:6",
+    "description": "Allow equal access to shemitah produce.",
+    "notes": "Embeds social equity"
+  },
+  {
+    "id": 573,
+    "title": "Count Seven Sabbatical Cycles Toward Jubilee",
+    "hebrew": "וספרת לך שבע שבתת שנים",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:8",
+    "description": "Count the cycles leading to yovel.",
+    "notes": "Creates long sacred rhythm"
+  },
+  {
+    "id": 574,
+    "title": "Sanctify the Jubilee Year",
+    "hebrew": "וקדשתם את שנת החמשים שנה",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Consecrate the fiftieth year as holy.",
+    "notes": "Known as yovel"
+  },
+  {
+    "id": 575,
+    "title": "Sound the Shofar to Announce Jubilee",
+    "hebrew": "והעברת שופר תרועה",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:9",
+    "description": "Proclaim yovel with shofar blasts on Yom Kippur.",
+    "notes": "Public national reset"
+  },
+  {
+    "id": 576,
+    "title": "Return Ancestral Lands in Jubilee",
+    "hebrew": "ושבתם איש אל אחזתו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:13",
+    "description": "Restore hereditary lands in the jubilee cycle.",
+    "notes": "Protects long-term family inheritance"
+  },
+  {
+    "id": 577,
+    "title": "Release Hebrew Slaves in Jubilee",
+    "hebrew": "ואיש אל משפחתו תשבו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Ensure Hebrew servants return home in yovel.",
+    "notes": "Restores personal freedom"
+  },
+  {
+    "id": 578,
+    "title": "Do Not Sell Land Permanently in Israel",
+    "hebrew": "והארץ לא תמכר לצמתת",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:23",
+    "description": "Do not treat inherited land as permanently alienable.",
+    "notes": "Land belongs ultimately to God"
+  },
+  {
+    "id": 579,
+    "title": "Redeem Houses in Walled Cities Within the Allowed Year",
+    "hebrew": "ואיש כי ימכר בית מושב עיר חומה",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:29",
+    "description": "Follow Torah rules for redemption of city homes.",
+    "notes": "Distinct from open-field law"
+  },
+  {
+    "id": 580,
+    "title": "Do Not Charge Interest to a Fellow Israelite",
+    "hebrew": "את כספך לא תתן לו בנשך",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:37",
+    "description": "Lend without interest to fellow covenant members.",
+    "notes": "Promotes compassion in lending"
+  },
+  {
+    "id": 581,
+    "title": "Support the Poor Before They Collapse",
+    "hebrew": "והחזקת בו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:35",
+    "description": "Strengthen a struggling person proactively.",
+    "notes": "Preventive charity ideal"
+  },
+  {
+    "id": 582,
+    "title": "Give Charity Generously",
+    "hebrew": "פתוח תפתח את ידך לו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:8",
+    "description": "Open your hand and provide according to need.",
+    "notes": "Core obligation of tzedakah"
+  },
+  {
+    "id": 583,
+    "title": "Do Not Harden Your Heart Against the Poor",
+    "hebrew": "לא תאמץ את לבבך",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:7",
+    "description": "Reject emotional indifference to poverty.",
+    "notes": "Inner posture is commanded"
+  },
+  {
+    "id": 584,
+    "title": "Do Not Close Your Hand to the Poor",
+    "hebrew": "ולא תקפץ את ידך מאחיך האביון",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:7",
+    "description": "Do not refuse practical aid to those in need.",
+    "notes": "Action must match compassion"
+  },
+  {
+    "id": 585,
+    "title": "Lend to the Poor Even Near Sabbatical Release",
+    "hebrew": "השמר לך פן יהיה דבר עם לבבך בליעל",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:9",
+    "description": "Do not withhold loans due to approaching debt release.",
+    "notes": "Trust over financial fear"
+  },
+  {
+    "id": 586,
+    "title": "Remit Debts in the Sabbatical Year",
+    "hebrew": "שמוט כל בעל משה ידו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:2",
+    "description": "Release qualifying debts at shemitah.",
+    "notes": "Known as shemitat כספים"
+  },
+  {
+    "id": 587,
+    "title": "Do Not Press for Payment After Sabbatical Release",
+    "hebrew": "לא יגש את רעהו",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:2",
+    "description": "Do not demand payment once debt release applies.",
+    "notes": "Protects debtors from coercion"
+  },
+  {
+    "id": 588,
+    "title": "Grant a Freed Hebrew Servant Departure Gifts",
+    "hebrew": "הענק תעניק לו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:14",
+    "description": "Provide material support when a servant goes free.",
+    "notes": "Promotes dignified transition"
+  },
+  {
+    "id": 589,
+    "title": "Do Not Send Away a Freed Servant Empty-Handed",
+    "hebrew": "לא תשלחנו ריקם",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:13",
+    "description": "Do not dismiss a freed servant without provisions.",
+    "notes": "Freedom paired with support"
+  },
+  {
+    "id": 590,
+    "title": "Love the Convert",
+    "hebrew": "ואהבתם את הגר",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:19",
+    "description": "Show active love and care for the convert.",
+    "notes": "Extends covenantal empathy"
+  },
+  {
+    "id": 591,
+    "title": "Do Not Oppress the Convert with Words",
+    "hebrew": "וגר לא תונה",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 22:20",
+    "description": "Do not verbally mistreat or exploit the convert.",
+    "notes": "Words can wound deeply"
+  },
+  {
+    "id": 592,
+    "title": "Do Not Oppress the Convert Financially",
+    "hebrew": "ולא תלחצנו",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 22:20",
+    "description": "Do not take unfair advantage of the convert.",
+    "notes": "Economic justice command"
+  },
+  {
+    "id": 593,
+    "title": "Judge Righteously",
+    "hebrew": "בצדק תשפט עמיתך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:15",
+    "description": "Render fair and impartial judgment.",
+    "notes": "Judicial integrity is sacred"
+  },
+  {
+    "id": 594,
+    "title": "Do Not Show Favoritism in Judgment",
+    "hebrew": "לא תשא פני דל ולא תהדר פני גדול",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:15",
+    "description": "Do not bias rulings toward rich or poor.",
+    "notes": "Equal justice standard"
+  },
+  {
+    "id": 595,
+    "title": "Do Not Accept Bribes",
+    "hebrew": "ושחד לא תקח",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:8",
+    "description": "Refuse gifts that distort justice.",
+    "notes": "Bribery blinds moral vision"
+  },
+  {
+    "id": 596,
+    "title": "Pursue Justice Persistently",
+    "hebrew": "צדק צדק תרדף",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:20",
+    "description": "Actively pursue just institutions and outcomes.",
+    "notes": "Justice requires pursuit"
+  },
+  {
+    "id": 597,
+    "title": "Appoint Judges and Officers",
+    "hebrew": "שפטים ושטרים תתן לך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:18",
+    "description": "Establish systems of governance and law.",
+    "notes": "Communal responsibility"
+  },
+  {
+    "id": 598,
+    "title": "Do Not Pervert Justice",
+    "hebrew": "לא תטה משפט",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:19",
+    "description": "Do not distort legal process.",
+    "notes": "Protects trust in courts"
+  },
+  {
+    "id": 599,
+    "title": "Bear Honest Witness",
+    "hebrew": "ועמדו שני האנשים אשר להם הריב",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:17",
+    "description": "Testify truthfully in legal disputes.",
+    "notes": "Truth sustains justice"
+  },
+  {
+    "id": 600,
+    "title": "Do Not Bear False Witness",
+    "hebrew": "לא תענה ברעך עד שקר",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Do not give false testimony against another.",
+    "notes": "Foundational prohibition in civil ethics"
   }
 ]
