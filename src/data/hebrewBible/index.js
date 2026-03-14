@@ -275,11 +275,7 @@ function createHebrewBibleDataLayer(options = {}) {
       return state.allVersesCache.map((verse) => ({ ...verse }));
     }
 
-    const collected = [];
-    for (const book of state.books) {
-      const verses = await loadBookVerses(book);
-      collected.push(...verses);
-    }
+    const collected = (await Promise.all(state.books.map((book) => loadBookVerses(book)))).flat();
 
     state.allVersesCache = collected;
     return collected.map((verse) => ({ ...verse }));
