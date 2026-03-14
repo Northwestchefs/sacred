@@ -9,6 +9,34 @@ function flattenText(text) {
   return String(text || '').trim();
 }
 
+function decodeHtmlEntities(text = '') {
+  const value = String(text || '');
+  if (!value) return '';
+
+  if (typeof document !== 'undefined') {
+    const parser = document.createElement('textarea');
+    parser.innerHTML = value;
+    return parser.value;
+  }
+
+  return value
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>');
+}
+
+function stripHtml(text = '') {
+  return String(text || '').replace(/<[^>]+>/g, ' ');
+}
+
+function normalizeHebrewVerseText(text) {
+  const flattened = flattenText(text);
+  return decodeHtmlEntities(stripHtml(flattened)).replace(/\s+/g, ' ').trim();
+}
+
 function getCachedValue(key) {
   try {
     const cached = JSON.parse(localStorage.getItem(key) || 'null');
@@ -70,7 +98,7 @@ export async function getVerse(reference) {
   const parsedRef = parseReference(ref, payload);
   const verseData = {
     reference: payload?.ref || ref,
-    hebrew: flattenText(payload?.he || payload?.hebrew),
+    hebrew: normalizeHebrewVerseText(payload?.he || payload?.hebrew),
     english: flattenText(payload?.text || payload?.en),
     ...parsedRef,
   };
