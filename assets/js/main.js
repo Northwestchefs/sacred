@@ -550,6 +550,27 @@
     status.textContent = 'Processed data loaded. Select a book and chapter.';
   }
 
+
+  const cacheBust = () => {
+    const links = document.querySelectorAll('script[src], link[href]');
+    const version = Date.now();
+
+    links.forEach((el) => {
+      if (el.src) el.src = `${el.src.split('?')[0]}?v=${version}`;
+      if (el.href && el.rel === 'stylesheet') el.href = `${el.href.split('?')[0]}?v=${version}`;
+    });
+  };
+
+  function disableServiceWorkers() {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => registration.unregister());
+    });
+  }
+
+  window.addEventListener('load', cacheBust);
+  window.addEventListener('load', disableServiceWorkers);
+
   setActiveNav();
   initReader();
   initHomeSearch();
