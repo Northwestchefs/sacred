@@ -2498,5 +2498,45 @@
     "torahSource": "Leviticus 22:32",
     "description": "Do not desecrate the Divine Name through prohibited conduct.",
     "notes": "Core prohibition of chilul Hashem"
+  },
+  {
+    "id": 251,
+    "title": "Sanctify God Among Israel",
+    "hebrew": "ונקדשתי בתוך בני ישראל",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Leviticus 22:32",
+    "description": "Act publicly in ways that honor God and uphold holiness among the people.",
+    "notes": "Positive counterpart to chilul Hashem"
+  },
+  {
+    "id": 252,
+    "title": "Rest on the First Day of Sukkot",
+    "hebrew": "ביום הראשון מקרא קדש",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:35",
+    "description": "Observe sacred assembly and festival rest on the opening day of Sukkot.",
+    "notes": "Yom Tov observance for Sukkot"
+  },
+  {
+    "id": 253,
+    "title": "Do Not Perform Forbidden Work on the First Day of Sukkot",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:35",
+    "description": "Refrain from prohibited labor on the first day of Sukkot.",
+    "notes": "Festival labor prohibition"
+  },
+  {
+    "id": 254,
+    "title": "Rest on Shemini Atzeret",
+    "hebrew": "ביום השמיני מקרא קדש יהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:36",
+    "description": "Hold a sacred assembly and rest on the eighth-day festival of Shemini Atzeret.",
+    "notes": "Distinct closing festival day"
   }
 ]
