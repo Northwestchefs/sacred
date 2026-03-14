@@ -1,5 +1,4 @@
-<section class="card" aria-label="Gematria calculator">
-  <h2>Gematria calculator</h2>
+<section aria-label="Gematria calculator">
   <form id="gematria-form" class="study-form">
     <label for="gematria-input">Hebrew text</label>
     <div class="study-row">
@@ -7,6 +6,13 @@
       <button class="button" type="submit">Calculate</button>
     </div>
   </form>
-  <p id="gematria-total" class="study-highlight">Total: —</p>
-  <ul id="gematria-breakdown" class="study-list"></ul>
+  <div class="gematria-layout">
+    <div class="gematria-summary">
+      <p id="gematria-total" class="study-highlight">Total: —</p>
+    </div>
+    <div class="gematria-breakdown">
+      <h3>Letter breakdown</h3>
+      <ul id="gematria-breakdown" class="study-list"></ul>
+    </div>
+  </div>
 </section>
