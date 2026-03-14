@@ -34,7 +34,13 @@ function stripHtml(text = '') {
 
 function normalizeHebrewVerseText(text) {
   const flattened = flattenText(text);
-  return decodeHtmlEntities(stripHtml(flattened)).replace(/\s+/g, ' ').trim();
+
+  // Some sources return encoded HTML (e.g. &lt;span ...&gt;), while others return
+  // direct HTML tags. Decode first, strip tags, and decode once more so residual
+  // entities such as &nbsp; are always normalized to readable text.
+  const decoded = decodeHtmlEntities(flattened);
+  const stripped = stripHtml(decoded);
+  return decodeHtmlEntities(stripped).replace(/\s+/g, ' ').trim();
 }
 
 function getCachedValue(key) {
