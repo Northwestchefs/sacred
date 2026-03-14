@@ -498,5 +498,505 @@
     "torahSource": "Numbers 18:4",
     "description": "Maintain reverence and protective oversight of holy space.",
     "notes": "Temple service responsibility"
+  },
+  {
+    "id": 51,
+    "title": "Revere the Sanctuary",
+    "hebrew": "ומקדשי תיראו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:30",
+    "description": "Approach holy spaces with reverence and proper conduct.",
+    "notes": "Applies to the Mishkan and Temple sanctity"
+  },
+  {
+    "id": 52,
+    "title": "Do Not Destroy Sacred Objects",
+    "hebrew": "לא תעשון כן לה׳ אלהיכם",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 12:4",
+    "description": "Do not erase or damage items dedicated to divine service.",
+    "notes": "Includes respectful handling of holy writings"
+  },
+  {
+    "id": 53,
+    "title": "Carry the Ark by Shoulder",
+    "hebrew": "בכתף ישאו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 7:9",
+    "description": "The Ark is to be borne in the prescribed honorable manner.",
+    "notes": "Kehatite service standard"
+  },
+  {
+    "id": 54,
+    "title": "Do Not Remove the Ark Poles",
+    "hebrew": "לא יסרו ממנו",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Exodus 25:15",
+    "description": "The poles of the Ark must remain in place.",
+    "notes": "Symbol of readiness and permanence"
+  },
+  {
+    "id": 55,
+    "title": "Set Showbread Before God",
+    "hebrew": "ונתת על השלחן לחם פנים",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 25:30",
+    "description": "Place the lechem hapanim regularly on the sacred table.",
+    "notes": "Weekly Temple service"
+  },
+  {
+    "id": 56,
+    "title": "Burn Incense on the Golden Altar",
+    "hebrew": "והקטיר עליו אהרן קטרת סמים",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 30:7",
+    "description": "Offer the prescribed incense as part of daily service.",
+    "notes": "Morning and evening ritual"
+  },
+  {
+    "id": 57,
+    "title": "Keep Fire Burning on the Altar",
+    "hebrew": "אש תמיד תוקד על המזבח",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 6:6",
+    "description": "Maintain a continual fire on the altar.",
+    "notes": "Perpetual altar fire"
+  },
+  {
+    "id": 58,
+    "title": "Do Not Extinguish Altar Fire",
+    "hebrew": "לא תכבה",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 6:6",
+    "description": "The altar's sacred fire must not be put out.",
+    "notes": "Direct prohibition"
+  },
+  {
+    "id": 59,
+    "title": "Remove Ashes from the Altar",
+    "hebrew": "והרים את הדשן",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 6:3",
+    "description": "Perform terumat hadeshen as part of altar maintenance.",
+    "notes": "Priestly daily duty"
+  },
+  {
+    "id": 60,
+    "title": "Priests Wash Hands and Feet",
+    "hebrew": "ורחצו אהרן ובניו ממנו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 30:19",
+    "description": "Kohanim must wash before Temple service.",
+    "notes": "Purity requirement"
+  },
+  {
+    "id": 61,
+    "title": "Sanctify the New Month",
+    "hebrew": "החדש הזה לכם ראש חדשים",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Exodus 12:2",
+    "description": "Establish and proclaim the beginning of months.",
+    "notes": "Foundation of Jewish calendar"
+  },
+  {
+    "id": 62,
+    "title": "Rest on Shavuot",
+    "hebrew": "מקרא קדש יהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:21",
+    "description": "Observe Yom Tov sanctity on Shavuot.",
+    "notes": "Festival of weeks"
+  },
+  {
+    "id": 63,
+    "title": "Do Not Perform Forbidden Work on Shavuot",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:21",
+    "description": "Avoid prohibited labor on Shavuot.",
+    "notes": "Yom Tov labor restrictions"
+  },
+  {
+    "id": 64,
+    "title": "Rest on Rosh Hashanah",
+    "hebrew": "שבתון זכרון תרועה",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:24",
+    "description": "Observe sacred rest on the first of Tishrei.",
+    "notes": "Day of remembrance"
+  },
+  {
+    "id": 65,
+    "title": "Do Not Perform Forbidden Work on Rosh Hashanah",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:25",
+    "description": "Refrain from prohibited labor on Rosh Hashanah.",
+    "notes": "Festival labor law"
+  },
+  {
+    "id": 66,
+    "title": "Rest on Yom Kippur",
+    "hebrew": "שבת שבתון הוא לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:32",
+    "description": "Observe complete sacred rest on Yom Kippur.",
+    "notes": "Most solemn holy day"
+  },
+  {
+    "id": 67,
+    "title": "Do Not Perform Forbidden Work on Yom Kippur",
+    "hebrew": "וכל מלאכה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:31",
+    "description": "Avoid prohibited labor on the Day of Atonement.",
+    "notes": "Comprehensive work prohibition"
+  },
+  {
+    "id": 68,
+    "title": "Rest on First Day of Sukkot",
+    "hebrew": "ביום הראשון מקרא קדש",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:35",
+    "description": "Sanctify and rest on Sukkot's opening day.",
+    "notes": "Yom Tov of Sukkot"
+  },
+  {
+    "id": 69,
+    "title": "Do Not Perform Forbidden Work on First Day of Sukkot",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:35",
+    "description": "Refrain from prohibited labor on Sukkot's first day.",
+    "notes": "Festival labor restrictions"
+  },
+  {
+    "id": 70,
+    "title": "Rest on Shemini Atzeret",
+    "hebrew": "ביום השמיני מקרא קדש",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:36",
+    "description": "Observe sacred assembly and rest on the eighth day.",
+    "notes": "Distinct concluding festival"
+  },
+  {
+    "id": 71,
+    "title": "Do Not Perform Forbidden Work on Shemini Atzeret",
+    "hebrew": "כל מלאכת עבדה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:36",
+    "description": "Avoid prohibited labor on Shemini Atzeret.",
+    "notes": "Yom Tov work limits"
+  },
+  {
+    "id": 72,
+    "title": "Appear at the Temple on Pilgrimage Festivals",
+    "hebrew": "יראה כל זכורך",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 23:17",
+    "description": "Pilgrimage festivals include appearing before God at the Temple.",
+    "notes": "Aliyah l'regel"
+  },
+  {
+    "id": 73,
+    "title": "Do Not Appear Empty-Handed",
+    "hebrew": "ולא יראו פני ריקם",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Exodus 23:15",
+    "description": "Bring offerings when appearing for pilgrimage.",
+    "notes": "Festival giving obligation"
+  },
+  {
+    "id": 74,
+    "title": "Rejoice on Festivals",
+    "hebrew": "ושמחת בחגך",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:14",
+    "description": "Cultivate joy and celebration on the pilgrimage festivals.",
+    "notes": "Includes household and community"
+  },
+  {
+    "id": 75,
+    "title": "Slaughter the Passover Offering",
+    "hebrew": "ושחטו אתו כל קהל עדת ישראל",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Exodus 12:6",
+    "description": "Offer the Korban Pesach at its appointed time.",
+    "notes": "Temple-era observance"
+  },
+  {
+    "id": 76,
+    "title": "Eat the Passover Offering with Matzah and Maror",
+    "hebrew": "על מצות ומררים יאכלהו",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 12:8",
+    "description": "Consume the Passover offering in its prescribed manner.",
+    "notes": "Seder-era Temple ritual"
+  },
+  {
+    "id": 77,
+    "title": "Do Not Eat Passover Offering Raw or Boiled",
+    "hebrew": "אל תאכלו ממנו נא ובשל",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Exodus 12:9",
+    "description": "The Passover offering must be roasted, not raw or boiled.",
+    "notes": "Specific preparation law"
+  },
+  {
+    "id": 78,
+    "title": "Do Not Leave Passover Offering Overnight",
+    "hebrew": "ולא תותירו ממנו עד בקר",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Exodus 12:10",
+    "description": "Do not leave leftovers of the offering until morning.",
+    "notes": "Remaining meat is burned"
+  },
+  {
+    "id": 79,
+    "title": "Destroy Leftover Passover Offering",
+    "hebrew": "והנתר ממנו עד בקר באש תשרפו",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 12:10",
+    "description": "Burn what remains from the Passover offering.",
+    "notes": "Completion of the ritual"
+  },
+  {
+    "id": 80,
+    "title": "Do Not Break a Bone of the Passover Offering",
+    "hebrew": "ועצם לא תשברו בו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Exodus 12:46",
+    "description": "Maintain the offering's integrity by not breaking its bones.",
+    "notes": "Applies to Korban Pesach"
+  },
+  {
+    "id": 81,
+    "title": "Do Not Take Passover Meat Outside",
+    "hebrew": "בבית אחד יאכל לא תוציא מן הבית",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Exodus 12:46",
+    "description": "Passover offering must be eaten in one designated place.",
+    "notes": "Unity of the meal setting"
+  },
+  {
+    "id": 82,
+    "title": "Do Not Eat Chametz on Passover Eve After Midday",
+    "hebrew": "לא תאכל עליו חמץ",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:3",
+    "description": "Refrain from chametz beginning the afternoon before Passover.",
+    "notes": "Preparatory prohibition"
+  },
+  {
+    "id": 83,
+    "title": "Do Not Own Chametz on Passover",
+    "hebrew": "ולא יראה לך חמץ",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Exodus 13:7",
+    "description": "Chametz may not be possessed during Passover.",
+    "notes": "Bal yera'eh"
+  },
+  {
+    "id": 84,
+    "title": "Do Not Find Leaven in Your Domain",
+    "hebrew": "ולא ימצא בבתיכם שאור",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Exodus 12:19",
+    "description": "Leaven should not be present in one's property on Passover.",
+    "notes": "Bal yimatze"
+  },
+  {
+    "id": 85,
+    "title": "Tell the Exodus Story on Passover Night",
+    "hebrew": "והגדת לבנך ביום ההוא",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 13:8",
+    "description": "Retell the redemption from Egypt on seder night.",
+    "notes": "Mitzvat sippur yetziat mitzrayim"
+  },
+  {
+    "id": 86,
+    "title": "Redeem the Firstborn Son",
+    "hebrew": "כל בכור בניך תפדה",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Exodus 13:13",
+    "description": "Perform pidyon haben for an eligible firstborn son.",
+    "notes": "Redemption through a kohen"
+  },
+  {
+    "id": 87,
+    "title": "Do Not Oppress the Stranger",
+    "hebrew": "וגר לא תלחץ",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 23:9",
+    "description": "One must not mistreat or oppress a stranger or convert.",
+    "notes": "Emphasizes compassion toward those without social protection."
+  },
+  {
+    "id": 88,
+    "title": "Love the Stranger",
+    "hebrew": "ואהבתם את הגר",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:19",
+    "description": "Extend active love and care to the stranger.",
+    "notes": "Echoes the ethic of empathy from Egypt"
+  },
+  {
+    "id": 89,
+    "title": "Do Not Wrong One Another in Speech",
+    "hebrew": "ולא תונו איש את עמיתו",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:17",
+    "description": "Do not cause harm through verbal abuse or humiliation.",
+    "notes": "Ona'at devarim"
+  },
+  {
+    "id": 90,
+    "title": "Do Not Wrong in Business Dealings",
+    "hebrew": "וכי תמכרו ממכר לעמיתך",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:14",
+    "description": "Avoid dishonest overreaching in commerce.",
+    "notes": "Fair trade requirement"
+  },
+  {
+    "id": 91,
+    "title": "Use Honest Weights and Measures",
+    "hebrew": "מאזני צדק אבני צדק",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:36",
+    "description": "Maintain accurate, honest standards in trade.",
+    "notes": "Integrity in marketplace"
+  },
+  {
+    "id": 92,
+    "title": "Do Not Keep Fraudulent Weights",
+    "hebrew": "לא יהיה לך בכיסך אבן ואבן",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:13",
+    "description": "Do not possess deceptive measurement tools.",
+    "notes": "Prohibits enabling fraud"
+  },
+  {
+    "id": 93,
+    "title": "Do Not Delay Paying a Laborer",
+    "hebrew": "לא תלין פעלת שכיר",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:13",
+    "description": "Pay workers promptly and do not withhold wages.",
+    "notes": "Labor dignity principle"
+  },
+  {
+    "id": 94,
+    "title": "Return Lost Property",
+    "hebrew": "השב תשיבם לאחיך",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:1",
+    "description": "Restore lost items to their rightful owner.",
+    "notes": "Hashavat aveidah"
+  },
+  {
+    "id": 95,
+    "title": "Do Not Ignore Lost Property",
+    "hebrew": "לא תוכל להתעלם",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 22:3",
+    "description": "Do not turn away from helping recover lost belongings.",
+    "notes": "Active responsibility command"
+  },
+  {
+    "id": 96,
+    "title": "Help Unload an Overburdened Animal",
+    "hebrew": "עזב תעזב עמו",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Exodus 23:5",
+    "description": "Assist in relieving an animal's burden, even for an adversary.",
+    "notes": "Compassion and peacemaking"
+  },
+  {
+    "id": 97,
+    "title": "Help Load a Neighbor's Animal",
+    "hebrew": "הקם תקים עמו",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:4",
+    "description": "Aid others in loading and lifting burdens safely.",
+    "notes": "Mutual responsibility"
+  },
+  {
+    "id": 98,
+    "title": "Do Not Place a Stumbling Block Before the Blind",
+    "hebrew": "ולפני עור לא תתן מכשל",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:14",
+    "description": "Do not mislead or exploit those lacking needed awareness.",
+    "notes": "Extends to moral and practical guidance"
+  },
+  {
+    "id": 99,
+    "title": "Rebuke Constructively",
+    "hebrew": "הוכח תוכיח את עמיתך",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:17",
+    "description": "Offer corrective feedback responsibly when wrong is observed.",
+    "notes": "Must be done without shaming"
+  },
+  {
+    "id": 100,
+    "title": "Do Not Hate Another in Your Heart",
+    "hebrew": "לא תשנא את אחיך בלבבך",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:17",
+    "description": "Reject hidden hatred and pursue honest reconciliation.",
+    "notes": "Inner ethical discipline"
   }
 ]

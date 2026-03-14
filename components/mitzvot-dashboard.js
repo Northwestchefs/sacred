@@ -1,6 +1,12 @@
 import { MITZVOT_CATEGORIES, MITZVAH_TYPES } from '../modules/mitzvot-data.js';
 import { loadMitzvot } from '../modules/mitzvot-loader.js';
-import { filterByCategory, filterByType, searchMitzvot, setMitzvotCollection } from '../modules/mitzvot-filter.js';
+import {
+  filterByCategory,
+  filterByType,
+  getMitzvahByNumber,
+  searchMitzvot,
+  setMitzvotCollection,
+} from '../modules/mitzvot-filter.js';
 import { renderMitzvahCard } from './mitzvah-card.js';
 
 export async function initMitzvotDashboard(containerSelector, options = {}) {
@@ -13,7 +19,7 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
   container.innerHTML = `
     <div class="mitzvot-controls" role="group" aria-label="Mitzvot filters">
       <label for="mitzvot-search">Search</label>
-      <input id="mitzvot-search" type="search" placeholder="Search by title, keyword, or source" />
+      <input id="mitzvot-search" type="search" placeholder="Search by keyword or mitzvah number" />
 
       <label for="mitzvot-category-filter">Category</label>
       <select id="mitzvot-category-filter">
@@ -38,16 +44,7 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
   const grid = container.querySelector('#mitzvot-grid');
   const resultsCount = container.querySelector('#mitzvot-results-count');
 
-  function applyFilters() {
-    const keywordMatches = searchMitzvot(searchInput?.value || '');
-    const categoryMatches = filterByCategory(categoryFilter?.value || 'All');
-    const typeMatches = filterByType(typeFilter?.value || 'All');
-
-    const categoryIds = new Set(categoryMatches.map((item) => item.id));
-    const typeIds = new Set(typeMatches.map((item) => item.id));
-
-    const visible = keywordMatches.filter((item) => categoryIds.has(item.id) && typeIds.has(item.id));
-
+  function renderVisibleMitzvot(visible) {
     if (resultsCount) {
       resultsCount.textContent = `Showing ${visible.length} of ${mitzvot.length} mitzvot.`;
     }
@@ -66,6 +63,46 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
     });
 
     grid.appendChild(fragment);
+  }
+
+  function navigateToMitzvah(number) {
+    const mitzvah = getMitzvahByNumber(number);
+    if (!mitzvah) {
+      if (resultsCount) {
+        resultsCount.textContent = 'Mitzvah not yet loaded. Currently available: 1–100.';
+      }
+      return;
+    }
+
+    const card = container.querySelector(`#mitzvah-${mitzvah.id}`);
+    if (!card) return;
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.add('mitzvah-highlight');
+    window.setTimeout(() => {
+      card.classList.remove('mitzvah-highlight');
+    }, 3000);
+  }
+
+  function applyFilters() {
+    const rawSearch = (searchInput?.value || '').trim();
+    const numericSearch = /^\d+$/.test(rawSearch);
+
+    if (numericSearch) {
+      renderVisibleMitzvot([...mitzvot]);
+      navigateToMitzvah(rawSearch);
+      return;
+    }
+
+    const keywordMatches = searchMitzvot(rawSearch);
+    const categoryMatches = filterByCategory(categoryFilter?.value || 'All');
+    const typeMatches = filterByType(typeFilter?.value || 'All');
+
+    const categoryIds = new Set(categoryMatches.map((item) => item.id));
+    const typeIds = new Set(typeMatches.map((item) => item.id));
+
+    const visible = keywordMatches.filter((item) => categoryIds.has(item.id) && typeIds.has(item.id));
+    renderVisibleMitzvot(visible);
   }
 
   [searchInput, categoryFilter, typeFilter].forEach((node) => {

@@ -544,3 +544,19 @@ input[type='search'] {
 .mitzvah-card .button {
   margin-top: 0.55rem;
 }
+
+.mitzvah-highlight {
+  outline: 3px solid gold;
+  background: rgba(255, 215, 0, 0.15);
+  transition: all 0.5s ease;
+  animation: mitzvahHighlightPulse 1s ease-in-out 3;
+}
+
+@keyframes mitzvahHighlightPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 0.8rem rgba(255, 215, 0, 0.45);
+  }
+}

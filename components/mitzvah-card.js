@@ -13,6 +13,8 @@ export function renderMitzvahCard(mitzvah, options = {}) {
     description = 'No description available.',
   } = mitzvah || {};
 
+  card.id = `mitzvah-${id}`;
+
   card.innerHTML = `
     <p class="mitzvah-number">Mitzvah #${id}</p>
     <h3>${title}</h3>

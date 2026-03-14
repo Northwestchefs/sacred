@@ -35,3 +35,9 @@ export function searchMitzvot(keyword) {
     return searchable.includes(normalized);
   });
 }
+
+export function getMitzvahByNumber(number) {
+  const parsed = Number.parseInt(number, 10);
+  if (!Number.isInteger(parsed)) return null;
+  return sourceMitzvot.find((mitzvah) => mitzvah.id === parsed) || null;
+}
