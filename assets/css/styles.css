@@ -422,3 +422,43 @@ input[type='search'] {
   padding: 0.45rem 0.6rem;
   background: #fff;
 }
+
+.study-form {
+  margin-top: 0.8rem;
+}
+
+.study-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.6rem;
+  align-items: end;
+}
+
+.study-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.tree-svg {
+  width: 100%;
+  max-width: 22rem;
+  display: block;
+  margin: 0.5rem auto;
+}
+
+#gematria-heatmap-canvas {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  background: #fff;
+}
+
+@media (max-width: 760px) {
+  .study-row {
+    grid-template-columns: 1fr;
+  }
+}

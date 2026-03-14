@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sacred · Scripture Pattern Explorer</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body data-page="pattern">
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="brand">Sacred</h1>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a data-nav-key="home" href="../">Home</a>
+          <a data-nav-key="read" href="../hebrew-bible/">Read</a>
+          <a data-nav-key="study" href="../sacred-study.html">Study</a>
+          <a data-nav-key="pattern" href="./pattern-explorer.html">Pattern Explorer</a>
+          <a data-nav-key="about" href="../about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="card">
+        <p class="kicker">Scripture Pattern Explorer</p>
+        <h2>Tanakh pattern mapping</h2>
+        <p>Explore gematria distributions, divine name appearances, and sacred number matches across the Tanakh.</p>
+      </section>
+
+      <section id="gematria-heatmap-slot"></section>
+
+      <section class="card" aria-label="Divine name distribution">
+        <h2>Divine Name Distribution</h2>
+        <form id="divine-distribution-form" class="study-form">
+          <label for="divine-distribution-book">Book</label>
+          <div class="study-row">
+            <select id="divine-distribution-book" required></select>
+            <input id="divine-distribution-search" type="search" placeholder="Filter by divine name" />
+            <button class="button" type="submit">Scan</button>
+          </div>
+        </form>
+        <ul id="divine-distribution-results" class="study-list"></ul>
+      </section>
+
+      <section class="card" aria-label="Sacred numbers explorer">
+        <h2>Sacred Numbers Explorer</h2>
+        <form id="sacred-numbers-form" class="study-form">
+          <label for="sacred-numbers-book">Book</label>
+          <div class="study-row">
+            <select id="sacred-numbers-book" required></select>
+            <input id="sacred-numbers-search" type="search" placeholder="Number (7, 12, 26, 42, 72, 144)" />
+            <button class="button" type="submit">Find verses</button>
+          </div>
+        </form>
+        <ul id="sacred-numbers-results" class="study-list"></ul>
+      </section>
+
+      <section id="tree-of-life-slot"></section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>Sacred · Scripture pattern explorer.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script type="module" src="../js/pages/pattern-explorer.js"></script>
+  </body>
+</html>

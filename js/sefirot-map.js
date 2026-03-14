@@ -53,6 +53,30 @@ export function mapDivineNamesToSefirot(names = []) {
   return [...new Set(names.flatMap((name) => mapDivineNameToSefirot(name)))];
 }
 
+export function mapNumberToSefirot(number = 0) {
+  const value = Number(number);
+  if (!Number.isFinite(value) || value <= 0) return [];
+
+  const mapped = [];
+  const directIndex = value % SEFIROT.length;
+  mapped.push(SEFIROT[directIndex]);
+
+  if (value % 3 === 0) mapped.push('Binah');
+  if (value % 7 === 0) mapped.push('Netzach');
+
+  return [...new Set(mapped)];
+}
+
+export function mapPatternResultsToSefirot({ gematria, divineNames, sacredNumber } = {}) {
+  const patternSefirot = [
+    ...mapGematriaToSefirot(gematria),
+    ...mapDivineNamesToSefirot(divineNames),
+    ...mapNumberToSefirot(sacredNumber),
+  ];
+
+  return [...new Set(patternSefirot)];
+}
+
 export function createSefirotState() {
   return SEFIROT.reduce((state, sefirah) => {
     state[sefirah] = false;

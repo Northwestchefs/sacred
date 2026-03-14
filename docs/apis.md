@@ -104,3 +104,40 @@ Design constraints honored:
 - Pure static delivery for GitHub Pages.
 - Fetch API for all remote data access.
 - Clean modular ES module boundaries.
+
+## Scripture Pattern Explorer
+
+The new Scripture Pattern Explorer extends Sacred with reusable pattern-analysis modules and a dedicated UI page (`pages/pattern-explorer.html`).
+
+### Dataset generation
+
+`js/tools/tanakh-gematria-map.js` builds and caches per-book Tanakh verse datasets from Sefaria:
+
+- `buildGematriaDataset(book)` fetches Hebrew chapter text via `getText(book)` and returns rows such as `{ verse: "Genesis 1:1", gematria: 2701 }` (internally with `ref` and source text).
+- `getGematriaDistribution(book)` computes a book-level gematria histogram.
+- `findVersesByGematria(value)` resolves loaded cached entries matching exact gematria values.
+
+### Heatmap visualization
+
+Gematria heatmaps are rendered in Canvas through:
+
+- `components/gematria-heatmap.html` (UI shell and controls)
+- `js/visualization/gematria-heatmap.js` (tile-based color encoding)
+
+Higher gematria values are drawn with darker opacity over a verse grid, with book filtering wired from the Pattern Explorer page.
+
+### Divine name scanning
+
+`js/tools/divine-name-distribution.js` scans scripture for key names:
+
+- `יהוה`
+- `אלהים`
+- `שדי`
+- `אהיה`
+
+`scanBookForDivineNames(book)` returns entries shaped as `{ verse: "Psalm 91:1", name: "שדי" }`.
+
+### Sacred numbers and Tree of Life integration
+
+- `js/tools/sacred-numbers.js` adds `findVersesByNumber(number)` for key values (`7, 12, 26, 42, 72, 144`).
+- `js/sefirot-map.js` now includes `mapNumberToSefirot` and `mapPatternResultsToSefirot` so Pattern Explorer results can highlight Tree of Life nodes.
