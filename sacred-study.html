@@ -29,6 +29,31 @@
       <section id="verse-viewer-slot"></section>
       <section id="gematria-tool-slot"></section>
 
+      <section class="card" aria-label="Gematria resonance search">
+        <h2>Gematria resonance search</h2>
+        <form id="resonance-form" class="study-form">
+          <label for="resonance-input">Hebrew phrase</label>
+          <div class="study-row">
+            <input id="resonance-input" type="text" value="חי" placeholder="Enter Hebrew phrase" required />
+            <button class="button" type="submit">Find resonance</button>
+          </div>
+        </form>
+        <p id="resonance-summary" class="study-highlight">Gematria: —</p>
+        <ul id="resonance-results" class="study-list"></ul>
+      </section>
+
+      <section class="card" aria-label="Psalm analyzer">
+        <h2>Psalm analyzer</h2>
+        <form id="psalm-analyzer-form" class="study-form">
+          <label for="psalm-reference-input">Psalm reference</label>
+          <div class="study-row">
+            <input id="psalm-reference-input" type="text" value="Psalms 23" placeholder="Psalms 23" required />
+            <button class="button" type="submit">Analyze Psalm</button>
+          </div>
+        </form>
+        <ul id="psalm-analyzer-results" class="study-list"></ul>
+      </section>
+
       <section class="card" aria-label="Divine name explorer">
         <h2>Divine name explorer</h2>
         <form id="divine-name-form" class="study-form">
@@ -41,6 +66,27 @@
         <p id="divine-name-output" class="study-highlight">Gematria: — · Sefirah: —</p>
         <h3>Permutations</h3>
         <ul id="divine-name-permutations" class="study-list study-list-columns"></ul>
+      </section>
+
+      <section class="card" aria-label="72 names explorer">
+        <h2>72 names explorer</h2>
+        <form id="names72-form" class="study-form">
+          <div class="study-row">
+            <button class="button" type="submit">Generate 72 names</button>
+          </div>
+        </form>
+        <ul id="names72-results" class="study-list study-list-columns"></ul>
+      </section>
+
+      <section class="card" aria-label="231 gates generator">
+        <h2>231 gates generator</h2>
+        <form id="gates-form" class="study-form">
+          <div class="study-row">
+            <button class="button" type="submit">Generate 231 gates</button>
+          </div>
+        </form>
+        <p id="gates-summary" class="study-highlight">Total gates: —</p>
+        <p id="gates-results" class="hebrew-text"></p>
       </section>
 
       <section id="tree-of-life-slot"></section>
