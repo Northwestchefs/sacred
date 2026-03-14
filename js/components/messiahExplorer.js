@@ -138,13 +138,16 @@ function wireVerseExpanders(scope) {
   });
 }
 
-function wireSearch(scope) {
+function wireSearch(scope, searchState) {
   const input = scope.querySelector('#messiah-search');
   const results = scope.querySelector('#messiah-results-status');
   if (!input || !results) return;
 
+  input.value = searchState.query;
+
   const applySearch = () => {
     const query = input.value.trim().toLowerCase();
+    searchState.query = input.value;
     const cards = [...scope.querySelectorAll('.term-card')];
     let visibleCount = 0;
 
@@ -162,6 +165,18 @@ function wireSearch(scope) {
 
   input.addEventListener('input', applySearch);
   applySearch();
+}
+
+function wireLoadVisible(scope) {
+  const loadButton = scope.querySelector('#messiah-load-visible');
+  if (!loadButton) return;
+
+  loadButton.addEventListener('click', async () => {
+    const visibleButtons = [...scope.querySelectorAll('.term-card:not([hidden]) .verse-expand')];
+    for (const button of visibleButtons) {
+      button.click();
+    }
+  });
 }
 
 function wireDetailsToggles(scope) {
@@ -222,6 +237,9 @@ function initMessiahExplorer() {
   }
 
   let activeFilter = 'all';
+  const searchState = {
+    query: 'mashiach',
+  };
 
   const render = () => {
     const showTerms = activeFilter !== 'prophecy';
@@ -251,6 +269,7 @@ function initMessiahExplorer() {
         <input id="messiah-search" type="search" placeholder="Search term, root, or reference" aria-label="Search terms" />
         <button type="button" class="button" id="messiah-expand-all">Expand all</button>
         <button type="button" class="button" id="messiah-collapse-all">Collapse all</button>
+        <button type="button" class="button" id="messiah-load-visible">Load visible verses</button>
         <button type="button" class="button" id="messiah-prev">Previous</button>
         <button type="button" class="button" id="messiah-next">Next</button>
       </section>
@@ -278,7 +297,8 @@ function initMessiahExplorer() {
     wireVerseExpanders(container);
     wireDetailsToggles(container);
     wireNavigation(container);
-    wireSearch(container);
+    wireLoadVisible(container);
+    wireSearch(container, searchState);
 
     const firstVisibleTerm = allTermCards.find((term) => {
       if (activeFilter === 'all') return true;
