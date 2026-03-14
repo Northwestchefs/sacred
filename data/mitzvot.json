@@ -2998,5 +2998,505 @@
     "torahSource": "Leviticus 26:2",
     "description": "Guard the sanctity of Shabbat and show reverence for the sanctuary.",
     "notes": "Pairs sacred time with sacred space"
+  },
+  {
+    "id": 301,
+    "title": "Consecrate Values Pledged by Vow",
+    "hebrew": "ערכך נפשות לה׳",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:2",
+    "description": "Honor vow-valuations by assigning pledged persons according to Torah scales.",
+    "notes": "Framework for neder valuation payments"
+  },
+  {
+    "id": 302,
+    "title": "Do Not Substitute Consecrated Animals",
+    "hebrew": "לא יחליפנו ולא ימיר אותו",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 27:10",
+    "description": "Do not exchange an animal sanctified for an offering with another animal.",
+    "notes": "Temurah prohibition"
+  },
+  {
+    "id": 303,
+    "title": "Sanctify the Replacement if Substitution Was Attempted",
+    "hebrew": "והיה הוא ותמורתו יהיה קדש",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:10",
+    "description": "If substitution is attempted, treat both original and replacement as holy.",
+    "notes": "Prevents strategic swapping of offerings"
+  },
+  {
+    "id": 304,
+    "title": "Redeem Consecrated Houses by Adding a Fifth",
+    "hebrew": "ויסף חמישית כסף ערכך עליו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:15",
+    "description": "When redeeming a dedicated house, add one-fifth to the valuation.",
+    "notes": "Applies to hekdesh property redemption"
+  },
+  {
+    "id": 305,
+    "title": "Do Not Sell Ancestral Land Permanently",
+    "hebrew": "והארץ לא תמכר לצמתת",
+    "category": "Agriculture",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:23",
+    "description": "Do not sever ancestral land holdings through irreversible sale.",
+    "notes": "Land ultimately belongs to God"
+  },
+  {
+    "id": 306,
+    "title": "Count Every Israelite Male Eligible for Service",
+    "hebrew": "שאו את ראש כל עדת בני ישראל",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Numbers 1:2",
+    "description": "Conduct communal census in the prescribed manner for national organization.",
+    "notes": "Structured tribal counting mandate"
+  },
+  {
+    "id": 307,
+    "title": "Arrange Camping by Tribal Standards",
+    "hebrew": "איש על דגלו באתת לבית אבתם יחנו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Numbers 2:2",
+    "description": "Encamp by tribes under distinct banners around the sanctuary.",
+    "notes": "Creates sacred national order"
+  },
+  {
+    "id": 308,
+    "title": "Guard the Sanctuary Through Levitical Watches",
+    "hebrew": "ושמרו משמרתו ומשמרת כל האהל",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 3:7",
+    "description": "Assign Levites to protect and maintain guard duty for the Tabernacle.",
+    "notes": "Mishkan security obligation"
+  },
+  {
+    "id": 309,
+    "title": "Redeem Firstborn Israelites Above the Levite Count",
+    "hebrew": "ולקחת חמשת חמשת שקלים לגלגלת",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 3:47",
+    "description": "Redeem firstborn sons with fixed silver payment where required.",
+    "notes": "Pidyon offset in wilderness census"
+  },
+  {
+    "id": 310,
+    "title": "Do Not Allow Unauthorized Service in the Sanctuary",
+    "hebrew": "והזר הקרב יומת",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Numbers 3:10",
+    "description": "Prevent non-authorized persons from performing priestly functions.",
+    "notes": "Safeguards sanctity and safety"
+  },
+  {
+    "id": 311,
+    "title": "Sanctify the Levites for Sacred Service",
+    "hebrew": "והבדלת את הלוים מתוך בני ישראל",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 8:14",
+    "description": "Set apart Levites through the commanded rites for Mishkan work.",
+    "notes": "Formal separation for holy labor"
+  },
+  {
+    "id": 312,
+    "title": "Purify the Levites Before Service",
+    "hebrew": "והתחטאת אתם",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Numbers 8:7",
+    "description": "Perform mandated purification procedures for Levites before duty.",
+    "notes": "Ritual preparation requirement"
+  },
+  {
+    "id": 313,
+    "title": "Dispatch the Ritually Impure from the Camp",
+    "hebrew": "וישלחו מן המחנה כל צרוע וכל זב",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Numbers 5:2",
+    "description": "Remove persons with specified impurity from the camp zones as directed.",
+    "notes": "Preserves communal sanctity"
+  },
+  {
+    "id": 314,
+    "title": "Restore Stolen Property with Added Fifth",
+    "hebrew": "והשיב את אשמו בראשו וחמישתו יסף עליו",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Numbers 5:7",
+    "description": "A thief-confessor must return principal theft plus one-fifth compensation.",
+    "notes": "Repentance through restitution"
+  },
+  {
+    "id": 315,
+    "title": "Test a Sotah by the Prescribed Temple Procedure",
+    "hebrew": "ועשה לה הכהן את כל התורה הזאת",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Numbers 5:30",
+    "description": "Where applicable, administer the ordeal process according to Torah law.",
+    "notes": "Jealousy-case procedure"
+  },
+  {
+    "id": 316,
+    "title": "Keep Nazirite Abstinence from Wine and Grapes",
+    "hebrew": "מיין ושכר יזיר",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Numbers 6:3",
+    "description": "A nazir must refrain from wine and all grape derivatives during term.",
+    "notes": "Core nazirite abstention"
+  },
+  {
+    "id": 317,
+    "title": "Do Not Cut Nazirite Hair During the Vow",
+    "hebrew": "תער לא יעבר על ראשו",
+    "category": "Purity",
+    "type": "Negative",
+    "torahSource": "Numbers 6:5",
+    "description": "A nazir may not shave hair throughout the vowed period.",
+    "notes": "Visible sign of consecration"
+  },
+  {
+    "id": 318,
+    "title": "Do Not Defile a Nazirite Through Contact with the Dead",
+    "hebrew": "על נפש מת לא יבא",
+    "category": "Purity",
+    "type": "Negative",
+    "torahSource": "Numbers 6:6",
+    "description": "A nazir must avoid corpse impurity, even for close relatives.",
+    "notes": "Heightened purity standard"
+  },
+  {
+    "id": 319,
+    "title": "Bless Israel with the Priestly Benediction",
+    "hebrew": "כה תברכו את בני ישראל",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Numbers 6:23",
+    "description": "Kohanim are commanded to bless the people with the appointed formula.",
+    "notes": "Birkat Kohanim obligation"
+  },
+  {
+    "id": 320,
+    "title": "Offer the Daily Tamid Sacrifice",
+    "hebrew": "את הכבש אחד תעשה בבקר",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 28:4",
+    "description": "Bring the continual burnt-offering each morning and afternoon.",
+    "notes": "Foundational daily korban schedule"
+  },
+  {
+    "id": 321,
+    "title": "Offer Additional Musaf on Shabbat",
+    "hebrew": "וביום השבת שני כבשים בני שנה",
+    "category": "Shabbat",
+    "type": "Positive",
+    "torahSource": "Numbers 28:9",
+    "description": "Bring added Sabbath offerings in addition to the daily tamid.",
+    "notes": "Shabbat musaf requirement"
+  },
+  {
+    "id": 322,
+    "title": "Sanctify the New Moon with Musaf Offerings",
+    "hebrew": "ובראשי חדשיכם תקריבו עלה לה׳",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Numbers 28:11",
+    "description": "Bring prescribed Rosh Chodesh offerings to mark monthly renewal.",
+    "notes": "New-month communal service"
+  },
+  {
+    "id": 323,
+    "title": "Bring Passover Festival Offerings",
+    "hebrew": "והקרבתם אשה עלה לה׳ שבעת ימים",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 28:19",
+    "description": "Offer daily festival sacrifices during Pesach according to command.",
+    "notes": "Pilgrimage festival korbanot"
+  },
+  {
+    "id": 324,
+    "title": "Bring the Omer Day Offering",
+    "hebrew": "והקרבתם מנחה חדשה",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:16",
+    "description": "Offer special korbanot with the grain-season transition service.",
+    "notes": "Linked to counting period"
+  },
+  {
+    "id": 325,
+    "title": "Bring Shavuot Musaf Offerings",
+    "hebrew": "וביום הבכורים בהקריבכם מנחה חדשה",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 28:26",
+    "description": "Offer the appointed communal sacrifices on Shavuot.",
+    "notes": "Festival elevation service"
+  },
+  {
+    "id": 326,
+    "title": "Observe Rosh Hashanah with Sacred Offerings",
+    "hebrew": "ובחדש השביעי באחד לחדש מקרא קדש יהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 29:1",
+    "description": "Mark the seventh-month first day with holy assembly and korbanot.",
+    "notes": "Day of remembrance service"
+  },
+  {
+    "id": 327,
+    "title": "Observe Yom Kippur with Affliction and Offerings",
+    "hebrew": "ועניתם את נפשתיכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 29:7",
+    "description": "Keep Yom Kippur through fasting, restraint, and the commanded offerings.",
+    "notes": "Atonement-day obligations"
+  },
+  {
+    "id": 328,
+    "title": "Observe Sukkot Offerings for Seven Days",
+    "hebrew": "וחגתם אתו חג לה׳ שבעת ימים",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 29:12",
+    "description": "Bring the full Sukkot offering sequence across all seven days.",
+    "notes": "Unique descending bull schedule"
+  },
+  {
+    "id": 329,
+    "title": "Observe Shemini Atzeret Offerings",
+    "hebrew": "ביום השמיני עצרת תהיה לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Numbers 29:35",
+    "description": "Keep the eighth-day assembly with its distinct sacrificial order.",
+    "notes": "Concluding pilgrimage festival day"
+  },
+  {
+    "id": 330,
+    "title": "Do Not Kindle Unauthorized Fire on the Altar",
+    "hebrew": "ונתנו בני אהרן הכהן אש על המזבח",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 1:7",
+    "description": "Use altar fire according to command and avoid foreign, unauthorized fire.",
+    "notes": "Contrasts with strange-fire transgression"
+  },
+  {
+    "id": 331,
+    "title": "Sound Trumpets Over Communal Offerings",
+    "hebrew": "ותקעתם בחצצרת",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Numbers 10:10",
+    "description": "Blow silver trumpets over offerings on festivals and new moons.",
+    "notes": "Public sacred signaling"
+  },
+  {
+    "id": 332,
+    "title": "Sound Trumpets in Times of National Distress",
+    "hebrew": "והרעתם בחצצרת",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Numbers 10:9",
+    "description": "Cry out with trumpet blasts when communal danger arises.",
+    "notes": "Liturgical response to crisis"
+  },
+  {
+    "id": 333,
+    "title": "Do Not Withhold the Levites’ Due Support",
+    "hebrew": "כי שכר הוא להם חלף עבדתם",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Numbers 18:31",
+    "description": "Ensure Levites receive their livelihood allocations for sacred service.",
+    "notes": "Protects religious labor economy"
+  },
+  {
+    "id": 334,
+    "title": "Give Terumah from Grain, Wine, and Oil",
+    "hebrew": "ראשית דגנך תירשך ויצהרך",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Numbers 18:12",
+    "description": "Separate first priestly heave-offerings from produce and yield.",
+    "notes": "Primary agricultural sanctification gift"
+  },
+  {
+    "id": 335,
+    "title": "Give the First Shearing to the Priest",
+    "hebrew": "ראשית גז צאנך תתן לו",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:4",
+    "description": "Set aside initial wool shearing from flocks for priestly support.",
+    "notes": "Agricultural-priestly due"
+  },
+  {
+    "id": 336,
+    "title": "Give Tithes to the Levites",
+    "hebrew": "ולבני לוי הנה נתתי כל מעשר בישראל",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Numbers 18:21",
+    "description": "Provide the first tithe to Levites from Israelite produce.",
+    "notes": "Maaser rishon commandment"
+  },
+  {
+    "id": 337,
+    "title": "Levites Must Separate Terumat Maaser",
+    "hebrew": "כן תרימו גם אתם תרומת ה׳ מכל מעשרתיכם",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Numbers 18:26",
+    "description": "Levites must tithe from received tithes and give to priests.",
+    "notes": "Secondary transfer sanctifies levitical income"
+  },
+  {
+    "id": 338,
+    "title": "Do Not Profane Sacred Gifts Through Neglect",
+    "hebrew": "ולא תשאו עליו חטא בהרימכם את חלבו ממנו",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Numbers 18:32",
+    "description": "Do not misuse or neglect proper separation of sacred agricultural portions.",
+    "notes": "Protects consecrated provisions"
+  },
+  {
+    "id": 339,
+    "title": "Prepare the Red Heifer for Purification Waters",
+    "hebrew": "ויקחו אליך פרה אדמה תמימה",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Numbers 19:2",
+    "description": "Prepare parah adumah ashes according to Torah for impurity cleansing.",
+    "notes": "Foundational corpse-impurity remedy"
+  },
+  {
+    "id": 340,
+    "title": "Sprinkle Purification Water on Third and Seventh Days",
+    "hebrew": "והזה הטהר על הטמא ביום השלישי וביום השביעי",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Numbers 19:19",
+    "description": "Apply purification waters on scheduled days to remove corpse impurity.",
+    "notes": "Timing is legally essential"
+  },
+  {
+    "id": 341,
+    "title": "Do Not Enter the Sanctuary While Impure",
+    "hebrew": "ולא יטמאו את מחניהם",
+    "category": "Purity",
+    "type": "Negative",
+    "torahSource": "Numbers 5:3",
+    "description": "Do not intrude upon holy precincts while in ritual impurity.",
+    "notes": "Boundary between purity and sancta"
+  },
+  {
+    "id": 342,
+    "title": "Speak Truthful Vows and Fulfill Them",
+    "hebrew": "ככל היוצא מפיו יעשה",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Numbers 30:3",
+    "description": "One who vows must honor their spoken commitment in full.",
+    "notes": "Integrity of sacred speech"
+  },
+  {
+    "id": 343,
+    "title": "Do Not Break a Binding Vow",
+    "hebrew": "לא יחל דברו",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Numbers 30:3",
+    "description": "Do not desecrate one’s word by violating a valid vow.",
+    "notes": "Speech carries covenantal weight"
+  },
+  {
+    "id": 344,
+    "title": "Annullment of Certain Vows by Proper Authority",
+    "hebrew": "והפר את נדרה",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Numbers 30:9",
+    "description": "Permit vow annulment only through Torah-designated legal relationships.",
+    "notes": "Structured release process"
+  },
+  {
+    "id": 345,
+    "title": "Wage Just War Against Midianite Aggression by Command",
+    "hebrew": "נקום נקמת בני ישראל מאת המדינים",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Numbers 31:2",
+    "description": "Execute commanded national defense actions through lawful leadership.",
+    "notes": "Context-specific war directive"
+  },
+  {
+    "id": 346,
+    "title": "Kasher Metal Vessels Acquired from Non-Kosher Use",
+    "hebrew": "כל דבר אשר יבא באש תעבירו באש",
+    "category": "Dietary Laws",
+    "type": "Positive",
+    "torahSource": "Numbers 31:23",
+    "description": "Purge absorbed flavor from vessels through prescribed koshering methods.",
+    "notes": "Basis for hagalah/libun practice"
+  },
+  {
+    "id": 347,
+    "title": "Take and Guard Oaths in Judicial Matters Carefully",
+    "hebrew": "ונקרב בעל הבית אל האלהים",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Exodus 22:7",
+    "description": "Administer legal oaths within Torah process to establish accountability.",
+    "notes": "Judicial integrity mechanism"
+  },
+  {
+    "id": 348,
+    "title": "Do Not Move a Neighbor’s Boundary Marker",
+    "hebrew": "לא תסיג גבול רעך",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 19:14",
+    "description": "Do not encroach on another’s inherited land by shifting boundaries.",
+    "notes": "Protects property rights and social trust"
+  },
+  {
+    "id": 349,
+    "title": "Establish Cities of Refuge for Unintentional Manslayers",
+    "hebrew": "תכין לך הדרך ושלשת את גבול ארצך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:3",
+    "description": "Designate and maintain refuge cities with accessible routes.",
+    "notes": "Due-process protection for accidental homicide"
+  },
+  {
+    "id": 350,
+    "title": "Do Not Accept Ransom for a Murderer Liable to Death",
+    "hebrew": "ולא תקחו כפר לנפש רצח",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Numbers 35:31",
+    "description": "Do not commute capital murder liability through financial payment.",
+    "notes": "Affirms gravity of bloodshed in law"
   }
 ]
