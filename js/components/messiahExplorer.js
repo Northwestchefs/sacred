@@ -47,6 +47,7 @@ async function getVerseData(reference) {
 }
 
 function renderFilters(container, onSelect, activeFilter) {
+  if (!container) return;
   container.innerHTML = FILTERS.map(
     (filter) => `<button class="button filter-button${filter.key === activeFilter ? ' active' : ''}" data-filter="${filter.key}" type="button">${filter.label}</button>`,
   ).join('');
@@ -77,7 +78,7 @@ function termCardMarkup(term) {
     .join('');
 
   return `
-    <article class="term-card" data-category="${term.category}">
+    <article class="term-card" data-category="${term.category}" data-search="${`${term.word} ${term.transliteration} ${term.meaning} ${term.root}`.toLowerCase()}">
       <h4 class="hebrew-term">${term.word}</h4>
       <p class="transliteration">${term.transliteration}</p>
       <dl>
@@ -97,7 +98,7 @@ function termCardMarkup(term) {
 function prophecyMarkup(item) {
   const links = item.commentaryLinks.map((link) => `<li>${link}</li>`).join('');
   return `
-    <article class="term-card prophecy-card" data-category="prophecy">
+    <article class="term-card prophecy-card" data-category="prophecy" data-search="${`${item.title} ${item.reference} ${item.commentaryLinks.join(' ')}`.toLowerCase()}">
       <h4>${item.title}</h4>
       <details>
         <summary>Open Hebrew text & commentary links</summary>
@@ -121,7 +122,7 @@ function wireVerseExpanders(scope) {
     button.addEventListener('click', async () => {
       const reference = button.dataset.reference;
       const panel = findPanelForButton(button);
-      if (!panel) return;
+      if (!panel || !reference) return;
       panel.innerHTML = '<p>Loading Hebrew text…</p>';
       try {
         const data = await getVerseData(reference);
@@ -130,15 +131,95 @@ function wireVerseExpanders(scope) {
           <p class="commentary-count">Commentary links: ${data.linksCount}</p>
         `;
       } catch (error) {
+        console.error('[messiah] Verse data failed to load', reference, error);
         panel.innerHTML = `<p>Unable to load verse data: ${error.message}</p>`;
       }
     });
   });
 }
 
+function wireSearch(scope) {
+  const input = scope.querySelector('#messiah-search');
+  const results = scope.querySelector('#messiah-results-status');
+  if (!input || !results) return;
+
+  const applySearch = () => {
+    const query = input.value.trim().toLowerCase();
+    const cards = [...scope.querySelectorAll('.term-card')];
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const searchable = card.dataset.search || card.textContent?.toLowerCase() || '';
+      const matches = !query || searchable.includes(query);
+      card.hidden = !matches;
+      if (matches) visibleCount += 1;
+    });
+
+    results.textContent = query
+      ? `${visibleCount} result${visibleCount === 1 ? '' : 's'} for “${input.value.trim()}”.`
+      : `${visibleCount} cards visible.`;
+  };
+
+  input.addEventListener('input', applySearch);
+  applySearch();
+}
+
+function wireDetailsToggles(scope) {
+  const expand = scope.querySelector('#messiah-expand-all');
+  const collapse = scope.querySelector('#messiah-collapse-all');
+  if (!expand || !collapse) return;
+
+  expand.addEventListener('click', () => {
+    scope.querySelectorAll('.term-card details').forEach((details) => {
+      details.open = true;
+    });
+  });
+
+  collapse.addEventListener('click', () => {
+    scope.querySelectorAll('.term-card details').forEach((details) => {
+      details.open = false;
+    });
+  });
+}
+
+function wireNavigation(scope) {
+  const previousButton = scope.querySelector('#messiah-prev');
+  const nextButton = scope.querySelector('#messiah-next');
+  if (!previousButton || !nextButton) return;
+
+  const focusCardAt = (targetIndex) => {
+    const visibleCards = [...scope.querySelectorAll('.term-card:not([hidden])')];
+    if (!visibleCards.length) return;
+
+    const activeElement = document.activeElement;
+    const currentIndex = visibleCards.findIndex((card) => card.contains(activeElement));
+    const wrappedIndex = (targetIndex + visibleCards.length) % visibleCards.length;
+    const nextCard = visibleCards[wrappedIndex];
+    nextCard.setAttribute('tabindex', '-1');
+    nextCard.focus();
+  };
+
+  previousButton.addEventListener('click', () => {
+    const visibleCards = [...scope.querySelectorAll('.term-card:not([hidden])')];
+    const activeElement = document.activeElement;
+    const currentIndex = visibleCards.findIndex((card) => card.contains(activeElement));
+    focusCardAt((currentIndex < 0 ? 0 : currentIndex) - 1);
+  });
+
+  nextButton.addEventListener('click', () => {
+    const visibleCards = [...scope.querySelectorAll('.term-card:not([hidden])')];
+    const activeElement = document.activeElement;
+    const currentIndex = visibleCards.findIndex((card) => card.contains(activeElement));
+    focusCardAt((currentIndex < 0 ? -1 : currentIndex) + 1);
+  });
+}
+
 function initMessiahExplorer() {
   const container = document.getElementById('messiah-explorer');
-  if (!container) return;
+  if (!container) {
+    console.error('[messiah] #messiah-explorer container not found');
+    return;
+  }
 
   let activeFilter = 'all';
 
@@ -166,6 +247,14 @@ function initMessiahExplorer() {
 
     container.innerHTML = `
       <section class="filter-row" id="messiah-filters" aria-label="Word study filters"></section>
+      <section class="messiah-controls" aria-label="Messiah explorer controls">
+        <input id="messiah-search" type="search" placeholder="Search term, root, or reference" aria-label="Search terms" />
+        <button type="button" class="button" id="messiah-expand-all">Expand all</button>
+        <button type="button" class="button" id="messiah-collapse-all">Collapse all</button>
+        <button type="button" class="button" id="messiah-prev">Previous</button>
+        <button type="button" class="button" id="messiah-next">Next</button>
+      </section>
+      <p id="messiah-results-status" class="muted" aria-live="polite"></p>
 
       ${showTerms && coreCards ? `${renderSectionTitle('Core Messianic Titles', 'Key royal and symbolic names in messianic study.')}
       <section class="term-grid">${coreCards}</section>` : ''}
@@ -177,12 +266,19 @@ function initMessiahExplorer() {
       <section class="term-grid">${prophecyCards}</section>` : ''}
     `;
 
-    renderFilters(container.querySelector('#messiah-filters'), (filter) => {
-      activeFilter = filter;
-      render();
-    }, activeFilter);
+    renderFilters(
+      container.querySelector('#messiah-filters'),
+      (filter) => {
+        activeFilter = filter;
+        render();
+      },
+      activeFilter,
+    );
 
     wireVerseExpanders(container);
+    wireDetailsToggles(container);
+    wireNavigation(container);
+    wireSearch(container);
 
     const firstVisibleTerm = allTermCards.find((term) => {
       if (activeFilter === 'all') return true;
@@ -191,6 +287,7 @@ function initMessiahExplorer() {
     });
 
     if (firstVisibleTerm) dispatchEventHint(firstVisibleTerm.word);
+    console.log(`[messiah] Explorer rendered with filter: ${activeFilter}`);
   };
 
   render();
