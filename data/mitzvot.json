@@ -998,5 +998,505 @@
     "torahSource": "Leviticus 19:17",
     "description": "Reject hidden hatred and pursue honest reconciliation.",
     "notes": "Inner ethical discipline"
+  },
+  {
+    "id": 101,
+    "title": "Love Your Fellow as Yourself",
+    "hebrew": "ואהבת לרעך כמוך",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:18",
+    "description": "Act toward others with the same care and dignity you seek for yourself.",
+    "notes": "Foundational interpersonal mitzvah"
+  },
+  {
+    "id": 102,
+    "title": "Do Not Take Revenge",
+    "hebrew": "לא תקם",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:18",
+    "description": "Do not retaliate when wronged.",
+    "notes": "Channels hurt into restraint"
+  },
+  {
+    "id": 103,
+    "title": "Do Not Bear a Grudge",
+    "hebrew": "ולא תטר",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:18",
+    "description": "Do not preserve resentment after a conflict.",
+    "notes": "Calls for emotional release and repair"
+  },
+  {
+    "id": 104,
+    "title": "Rise Before the Aged",
+    "hebrew": "מפני שיבה תקום",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:32",
+    "description": "Stand in respect before elderly people.",
+    "notes": "Cultivates honor in community"
+  },
+  {
+    "id": 105,
+    "title": "Honor Torah Sages",
+    "hebrew": "והדרת פני זקן",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:32",
+    "description": "Show deference to elders of wisdom.",
+    "notes": "Respect for learned leadership"
+  },
+  {
+    "id": 106,
+    "title": "Do Not Oppress the Convert with Words",
+    "hebrew": "וגר לא תונה",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 22:20",
+    "description": "Do not hurt a convert through speech or social pressure.",
+    "notes": "Verbal sensitivity command"
+  },
+  {
+    "id": 107,
+    "title": "Love the Convert",
+    "hebrew": "ואהבתם את הגר",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:19",
+    "description": "Extend active care and inclusion to the convert.",
+    "notes": "Special command of social love"
+  },
+  {
+    "id": 108,
+    "title": "Use Honest Weights and Measures",
+    "hebrew": "מאזני צדק אבני צדק",
+    "category": "Business Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:36",
+    "description": "Maintain accurate standards in trade.",
+    "notes": "Marketplace integrity"
+  },
+  {
+    "id": 109,
+    "title": "Do Not Commit Fraud in Commerce",
+    "hebrew": "לא תעשו עול במשפט במדה במשקל ובמשורה",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:35",
+    "description": "Do not cheat in quantity, quality, or valuation.",
+    "notes": "Prohibits deceptive transactions"
+  },
+  {
+    "id": 110,
+    "title": "Do Not Possess False Weights",
+    "hebrew": "לא יהיה לך בכיסך אבן ואבן",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:13",
+    "description": "Do not keep dishonest measuring tools.",
+    "notes": "Bans intent to deceive"
+  },
+  {
+    "id": 111,
+    "title": "Do Not Possess False Measures",
+    "hebrew": "לא יהיה לך בביתך איפה ואיפה",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:14",
+    "description": "Do not keep inaccurate dry or liquid measures.",
+    "notes": "Applies even if unused"
+  },
+  {
+    "id": 112,
+    "title": "Appoint Judges and Officers",
+    "hebrew": "שפטים ושטרים תתן לך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:18",
+    "description": "Establish courts and legal authority in every community.",
+    "notes": "Institutional justice obligation"
+  },
+  {
+    "id": 113,
+    "title": "Do Not Pervert Justice",
+    "hebrew": "לא תטה משפט",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:19",
+    "description": "Do not distort legal judgment.",
+    "notes": "Core court ethic"
+  },
+  {
+    "id": 114,
+    "title": "Do Not Show Favoritism in Judgment",
+    "hebrew": "לא תכיר פנים",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:19",
+    "description": "Do not favor litigants because of status.",
+    "notes": "Equal treatment in court"
+  },
+  {
+    "id": 115,
+    "title": "Judge Righteously",
+    "hebrew": "בצדק תשפט עמיתך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:15",
+    "description": "Render verdicts with fairness and diligence.",
+    "notes": "Judicial integrity"
+  },
+  {
+    "id": 116,
+    "title": "Do Not Accept Bribes",
+    "hebrew": "ושחד לא תקח",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:8",
+    "description": "Judges must reject gifts that bias judgment.",
+    "notes": "Protects impartiality"
+  },
+  {
+    "id": 117,
+    "title": "Do Not Fear a Violent Litigant",
+    "hebrew": "לא תגורו מפני איש",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 1:17",
+    "description": "A judge must not shrink from truth due to intimidation.",
+    "notes": "Courage in adjudication"
+  },
+  {
+    "id": 118,
+    "title": "Do Not Testify Falsely",
+    "hebrew": "לא תענה ברעך עד שקר",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Do not give false testimony.",
+    "notes": "One of the Ten Commandments"
+  },
+  {
+    "id": 119,
+    "title": "Do Not Accept False Reports",
+    "hebrew": "לא תשא שמע שוא",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:1",
+    "description": "Do not receive or advance baseless claims.",
+    "notes": "Includes judicial and social contexts"
+  },
+  {
+    "id": 120,
+    "title": "Investigate Witnesses Thoroughly",
+    "hebrew": "ודרשת וחקרת ושאלת היטב",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 13:15",
+    "description": "Examine testimony carefully before ruling.",
+    "notes": "Due process principle"
+  },
+  {
+    "id": 121,
+    "title": "Do Not Execute on Circumstantial Evidence Alone",
+    "hebrew": "ונקי וצדיק אל תהרג",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:7",
+    "description": "Capital cases require proper testimony.",
+    "notes": "Safeguard against wrongful punishment"
+  },
+  {
+    "id": 122,
+    "title": "Do Not Show Mercy to a Murderer in Sentencing",
+    "hebrew": "ולא תחוס עינך",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 19:13",
+    "description": "Do not commute punishment when guilt is judicially established.",
+    "notes": "Upholds accountability"
+  },
+  {
+    "id": 123,
+    "title": "Separate Cities of Refuge",
+    "hebrew": "תכין לך הדרך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:3",
+    "description": "Prepare refuge cities for accidental killers.",
+    "notes": "Balances justice and protection"
+  },
+  {
+    "id": 124,
+    "title": "Do Not Take Ransom from a Murderer",
+    "hebrew": "ולא תקחו כפר לנפש רצח",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Numbers 35:31",
+    "description": "Do not substitute payment for deserved legal penalty.",
+    "notes": "Justice not for sale"
+  },
+  {
+    "id": 125,
+    "title": "Do Not Take Ransom from One Fleeing to Refuge",
+    "hebrew": "ולא תקחו כפר לנוס אל עיר מקלטו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Numbers 35:32",
+    "description": "Do not permit payment in place of exile to refuge.",
+    "notes": "Maintains legal structure"
+  },
+  {
+    "id": 126,
+    "title": "Break the Neck of an Unsold Firstborn Donkey or Redeem It",
+    "hebrew": "וערפתו",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Exodus 13:13",
+    "description": "Redeem a firstborn donkey with a lamb; if not, perform arifah.",
+    "notes": "Unique firstborn animal law"
+  },
+  {
+    "id": 127,
+    "title": "Redeem the Firstborn Son",
+    "hebrew": "פדה תפדה את בכור האדם",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Numbers 18:15",
+    "description": "Redeem a firstborn son from priestly service.",
+    "notes": "Pidyon haben obligation"
+  },
+  {
+    "id": 128,
+    "title": "Do Not Delay Redemption of the Firstborn Son",
+    "hebrew": "ופדויו מבן חדש תפדה",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Numbers 18:16",
+    "description": "Do not postpone pidyon haben beyond its proper time.",
+    "notes": "Time-bound mitzvah"
+  },
+  {
+    "id": 129,
+    "title": "Give the Priestly Gifts from Slaughtered Animals",
+    "hebrew": "וזה יהיה משפט הכהנים",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:3",
+    "description": "Give foreleg, cheeks, and maw to a kohen.",
+    "notes": "Supports priestly service"
+  },
+  {
+    "id": 130,
+    "title": "Set Aside First Shearing for the Kohen",
+    "hebrew": "וראשית גז צאנך תתן לו",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:4",
+    "description": "Give first wool shearing gifts to a kohen.",
+    "notes": "Agricultural priestly due"
+  },
+  {
+    "id": 131,
+    "title": "Do Not Work a Firstborn Kosher Animal",
+    "hebrew": "לא תעבד בבכור שורך",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Do not use a consecrated firstborn animal for labor.",
+    "notes": "Protects sacred status"
+  },
+  {
+    "id": 132,
+    "title": "Do Not Shear a Firstborn Kosher Animal",
+    "hebrew": "ולא תגז בכור צאנך",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Do not shear a consecrated firstborn animal.",
+    "notes": "Preserves sanctity of offering"
+  },
+  {
+    "id": 133,
+    "title": "Bring Offerings on Pilgrimage Festivals",
+    "hebrew": "ולא יראו פני ריקם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Exodus 23:15",
+    "description": "Appear at the Temple with fitting offerings.",
+    "notes": "Aliyah la-regel requirement"
+  },
+  {
+    "id": 134,
+    "title": "Rejoice on Festivals",
+    "hebrew": "ושמחת בחגך",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:14",
+    "description": "Celebrate sacred days with joy and shared meals.",
+    "notes": "Includes family and vulnerable community members"
+  },
+  {
+    "id": 135,
+    "title": "Do Not Neglect Levite Joy on Festivals",
+    "hebrew": "והלוי אשר בשעריך לא תעזבנו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 12:19",
+    "description": "Include Levites in festival support and celebration.",
+    "notes": "Communal inclusion command"
+  },
+  {
+    "id": 136,
+    "title": "Assemble for Hakhel in the Sabbatical Year",
+    "hebrew": "הקהל את העם",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 31:12",
+    "description": "Gather the nation to hear Torah publicly after shemitah.",
+    "notes": "National covenant renewal"
+  },
+  {
+    "id": 137,
+    "title": "Write and Preserve a Sefer Torah for the King",
+    "hebrew": "וכתב לו את משנה התורה הזאת",
+    "category": "Leadership",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:18",
+    "description": "A king must keep a Torah scroll with him.",
+    "notes": "Royal accountability to Torah"
+  },
+  {
+    "id": 138,
+    "title": "A King Must Not Acquire Excess Horses",
+    "hebrew": "לא ירבה לו סוסים",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:16",
+    "description": "Royal power must not rely on military excess.",
+    "notes": "Limits on monarchy"
+  },
+  {
+    "id": 139,
+    "title": "A King Must Not Take Excess Wives",
+    "hebrew": "ולא ירבה לו נשים",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:17",
+    "description": "A king may not multiply wives in ways that corrupt judgment.",
+    "notes": "Ethical boundaries on rule"
+  },
+  {
+    "id": 140,
+    "title": "A King Must Not Hoard Excess Silver and Gold",
+    "hebrew": "וכסף וזהב לא ירבה לו מאד",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:17",
+    "description": "A king must avoid extreme accumulation of wealth.",
+    "notes": "Restrains royal exploitation"
+  },
+  {
+    "id": 141,
+    "title": "Destroy Idolatrous Altars in the Land",
+    "hebrew": "ונתצתם את מזבחתם",
+    "category": "Idolatry",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 12:3",
+    "description": "Remove established structures of idolatrous worship.",
+    "notes": "Command of spiritual cleansing"
+  },
+  {
+    "id": 142,
+    "title": "Do Not Benefit from Idolatry",
+    "hebrew": "ולא ידבק בידך מאומה מן החרם",
+    "category": "Idolatry",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:18",
+    "description": "Do not derive gain from items dedicated to idolatrous destruction.",
+    "notes": "Separates Israel from avodah zarah"
+  },
+  {
+    "id": 143,
+    "title": "Do Not Covet What Belongs to Another",
+    "hebrew": "לא תחמד",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Exodus 20:14",
+    "description": "Do not scheme to acquire what belongs to someone else.",
+    "notes": "Inner and behavioral boundary"
+  },
+  {
+    "id": 144,
+    "title": "Do Not Desire Another's Property",
+    "hebrew": "ולא תתאוה",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 5:18",
+    "description": "Do not nurture acquisitive desire toward another's possessions.",
+    "notes": "Guards the heart from misconduct"
+  },
+  {
+    "id": 145,
+    "title": "Release Loans in the Sabbatical Year",
+    "hebrew": "שמוט כל בעל משה ידו",
+    "category": "Agriculture & Economy",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:2",
+    "description": "Cancel private debts at the end of shemitah.",
+    "notes": "Economic reset command"
+  },
+  {
+    "id": 146,
+    "title": "Do Not Refuse a Loan Because Shemitah Is Near",
+    "hebrew": "השמר לך פן יהיה דבר עם לבבך בליעל",
+    "category": "Agriculture & Economy",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:9",
+    "description": "Do not withhold lending due to impending debt release.",
+    "notes": "Protects access to credit for the poor"
+  },
+  {
+    "id": 147,
+    "title": "Give Charity to the Poor",
+    "hebrew": "פתוח תפתח את ידך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:11",
+    "description": "Provide financial support to those in need.",
+    "notes": "Tzedakah obligation"
+  },
+  {
+    "id": 148,
+    "title": "Do Not Harden Your Heart Against the Poor",
+    "hebrew": "לא תאמץ את לבבך",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:7",
+    "description": "Do not become emotionally closed to poverty around you.",
+    "notes": "Calls for compassion"
+  },
+  {
+    "id": 149,
+    "title": "Do Not Close Your Hand from the Poor",
+    "hebrew": "ולא תקפץ את ידך מאחיך האביון",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:7",
+    "description": "Do not refuse material help when able to assist.",
+    "notes": "Practical generosity requirement"
+  },
+  {
+    "id": 150,
+    "title": "Support a Fellow Before They Fall into Poverty",
+    "hebrew": "והחזקת בו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:35",
+    "description": "Strengthen a vulnerable person with timely support before collapse.",
+    "notes": "Preventive model of tzedakah"
   }
 ]
