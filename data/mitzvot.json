@@ -1998,5 +1998,505 @@
     "torahSource": "Deuteronomy 15:19",
     "description": "Do not shear wool from a firstborn animal dedicated to holiness.",
     "notes": "Companion prohibition to working the bechor"
+  },
+  {
+    "id": 201,
+    "title": "Inspect Blemishes in Firstborn Animals",
+    "hebrew": "לבקר מום בבכור",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:21",
+    "description": "Examine a firstborn offering for physical blemishes before determining its status.",
+    "notes": "Ensures only eligible offerings approach sacred use"
+  },
+  {
+    "id": 202,
+    "title": "Do Not Offer a Blemished Firstborn",
+    "hebrew": "לא תזבח לה׳ אלהיך שור ושה אשר יהיה בו מום",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:1",
+    "description": "Do not bring a firstborn animal with a blemish as an offering.",
+    "notes": "Protects the dignity of sacrificial service"
+  },
+  {
+    "id": 203,
+    "title": "Redeem Unfit Consecrated Animals",
+    "hebrew": "ופדה בערכך",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:11-12",
+    "description": "Redeem consecrated animals that are unfit for altar service according to valuation.",
+    "notes": "Transfers sanctity through authorized redemption"
+  },
+  {
+    "id": 204,
+    "title": "Add a Fifth When Redeeming Dedicated Property",
+    "hebrew": "ויסף חמישתו עליו",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:13",
+    "description": "When the owner redeems dedicated property, add one-fifth to the valuation.",
+    "notes": "Standard rule for owner-led redemption"
+  },
+  {
+    "id": 205,
+    "title": "Do Not Exchange a Consecrated Animal",
+    "hebrew": "לא יחליפנו ולא ימיר אתו",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Leviticus 27:10",
+    "description": "Do not substitute one consecrated animal for another.",
+    "notes": "Prohibits temurah substitution"
+  },
+  {
+    "id": 206,
+    "title": "Both Original and Substitute Become Holy in Forbidden Exchange",
+    "hebrew": "והיה הוא ותמורתו יהיה קדש",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:10",
+    "description": "If one attempts a forbidden exchange, treat both animals as consecrated.",
+    "notes": "Consequence rule reinforcing anti-exchange law"
+  },
+  {
+    "id": 207,
+    "title": "Value Persons Dedicated by Vow According to Torah Scale",
+    "hebrew": "כערכך נפשת לה׳",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 27:2",
+    "description": "Assess dedicated persons by the Torah valuation table tied to age and sex.",
+    "notes": "Used for erekh vows"
+  },
+  {
+    "id": 208,
+    "title": "Do Not Alter Sanctuary Valuations Arbitrarily",
+    "hebrew": "כערכך הכהן כן יהיה",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Leviticus 27:12",
+    "description": "Do not deviate from priestly valuation standards set by Torah law.",
+    "notes": "Maintains consistent sacred valuation"
+  },
+  {
+    "id": 209,
+    "title": "Sanctify the Jubilee Year",
+    "hebrew": "וקדשתם את שנת החמשים שנה",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Consecrate the fiftieth year as a Jubilee with special legal status.",
+    "notes": "Yovel cycle centerpiece"
+  },
+  {
+    "id": 210,
+    "title": "Sound the Shofar on Yom Kippur of Jubilee",
+    "hebrew": "והעברת שופר תרועה בחדש השבעי",
+    "category": "Calendar",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:9",
+    "description": "Proclaim Jubilee by shofar blast on Yom Kippur.",
+    "notes": "Public declaration of Yovel release"
+  },
+  {
+    "id": 211,
+    "title": "Return Ancestral Lands in Jubilee",
+    "hebrew": "ושבתם איש אל אחזתו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Restore hereditary fields to original family ownership during Jubilee.",
+    "notes": "Prevents permanent alienation of tribal holdings"
+  },
+  {
+    "id": 212,
+    "title": "Release Hebrew Slaves in Jubilee",
+    "hebrew": "ואיש אל משפחתו תשבו",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:10",
+    "description": "Ensure Hebrew bondservants return to their families in Jubilee.",
+    "notes": "National reset of freedom and household integrity"
+  },
+  {
+    "id": 213,
+    "title": "Do Not Sell Land Permanently in Israel",
+    "hebrew": "והארץ לא תמכר לצמיתת",
+    "category": "Agriculture & Economy",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:23",
+    "description": "Do not execute irreversible sale of ancestral land in the Land of Israel.",
+    "notes": "Land remains God’s and families are stewards"
+  },
+  {
+    "id": 214,
+    "title": "Grant Redemption Rights to Relatives for Sold Property",
+    "hebrew": "ובא גאלו הקרב אליו וגאל את ממכר אחיו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:25",
+    "description": "Permit close kin to redeem family land sold under hardship.",
+    "notes": "Core function of the goel"
+  },
+  {
+    "id": 215,
+    "title": "Calculate Fair Price by Years Until Jubilee",
+    "hebrew": "במספר שנים אחר היובל תקנה",
+    "category": "Business Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:15",
+    "description": "Set property price according to productive years remaining until Jubilee.",
+    "notes": "Prevents exploitative land pricing"
+  },
+  {
+    "id": 216,
+    "title": "Do Not Wrong One Another in Land Transactions",
+    "hebrew": "ולא תונו איש את עמיתו",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:14",
+    "description": "Do not defraud in buying or selling property.",
+    "notes": "Explicit anti-fraud rule in commerce"
+  },
+  {
+    "id": 217,
+    "title": "Support a Brother Who Has Become Poor",
+    "hebrew": "והחזקת בו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:35",
+    "description": "Strengthen and sustain one who has fallen into poverty before collapse worsens.",
+    "notes": "Early intervention charity principle"
+  },
+  {
+    "id": 218,
+    "title": "Do Not Charge Interest to a Fellow Israelite",
+    "hebrew": "אל תקח מאתו נשך ותרבית",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:36",
+    "description": "Do not take interest or increase from loans to a fellow Israelite.",
+    "notes": "Protects vulnerable borrowers"
+  },
+  {
+    "id": 219,
+    "title": "Let Your Brother Live With You",
+    "hebrew": "וחי אחיך עמך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:36",
+    "description": "Structure economic conduct so your fellow can continue to live with dignity.",
+    "notes": "Ethic accompanying the interest ban"
+  },
+  {
+    "id": 220,
+    "title": "Do Not Lend on Interest Terms",
+    "hebrew": "את כספך לא תתן לו בנשך",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:37",
+    "description": "Do not structure monetary loans to fellow Israelites as interest-bearing.",
+    "notes": "Expands prohibition beyond collection"
+  },
+  {
+    "id": 221,
+    "title": "Do Not Give Food Loans for Profit",
+    "hebrew": "ובמרבית לא תתן אכלך",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:37",
+    "description": "Do not profit from food advances through increase.",
+    "notes": "Applies ribit to produce and staples"
+  },
+  {
+    "id": 222,
+    "title": "Treat a Hebrew Servant With Dignity",
+    "hebrew": "כשכיר כתושב יהיה עמך",
+    "category": "Labor Ethics",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:40",
+    "description": "When employing a Hebrew servant, treat him as a hired worker, not a chattel slave.",
+    "notes": "Sets humane labor baseline"
+  },
+  {
+    "id": 223,
+    "title": "Do Not Subject a Hebrew Servant to Crushing Labor",
+    "hebrew": "לא תרדה בו בפרך",
+    "category": "Labor Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:43",
+    "description": "Do not impose degrading or crushing servitude on a Hebrew servant.",
+    "notes": "Rejects oppressive mastership"
+  },
+  {
+    "id": 224,
+    "title": "Do Not Sell a Hebrew Servant in Slave-Market Fashion",
+    "hebrew": "לא ימכרו ממכרת עבד",
+    "category": "Labor Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:42",
+    "description": "Do not sell a Hebrew servant as one sells ordinary slaves.",
+    "notes": "Preserves covenantal dignity"
+  },
+  {
+    "id": 225,
+    "title": "Redeem a Hebrew Relative Sold to a Foreigner",
+    "hebrew": "אחרי נמכר גאלה תהיה לו",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:48",
+    "description": "Provide redemption pathways for a Hebrew sold to a resident foreigner.",
+    "notes": "Family and community redemption duty"
+  },
+  {
+    "id": 226,
+    "title": "Calculate Redemption of a Hebrew Servant by Remaining Years",
+    "hebrew": "וחשב עם קנהו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Leviticus 25:50",
+    "description": "Compute redemption payment proportionally by years until Jubilee.",
+    "notes": "Ensures fair and transparent release price"
+  },
+  {
+    "id": 227,
+    "title": "Do Not Rule Ruthlessly Over a Hebrew in Public Sight",
+    "hebrew": "לא ירדנו בפרך לעיניך",
+    "category": "Labor Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 25:53",
+    "description": "Do not permit ruthless domination over a Hebrew servant.",
+    "notes": "Community responsibility to prevent abuse"
+  },
+  {
+    "id": 228,
+    "title": "Do Not Make Idols",
+    "hebrew": "אל תפנו אל האלילים",
+    "category": "Idolatry",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:4",
+    "description": "Do not fashion or adopt idols.",
+    "notes": "Foundational ban on manufactured worship objects"
+  },
+  {
+    "id": 229,
+    "title": "Do Not Set Up Carved Images for Worship",
+    "hebrew": "ופסל ומצבה לא תקימו לכם",
+    "category": "Idolatry",
+    "type": "Negative",
+    "torahSource": "Leviticus 26:1",
+    "description": "Do not establish sculpted figures or pillars for worship.",
+    "notes": "Prohibits cultic visual substitutes"
+  },
+  {
+    "id": 230,
+    "title": "Do Not Place Figured Stone for Prostration",
+    "hebrew": "ואבן משכית לא תתנו בארצכם להשתחות עליה",
+    "category": "Idolatry",
+    "type": "Negative",
+    "torahSource": "Leviticus 26:1",
+    "description": "Do not install figured pavement or stones for idolatrous bowing.",
+    "notes": "Restricts ritual architecture linked to idolatry"
+  },
+  {
+    "id": 231,
+    "title": "Revere the Sanctuary",
+    "hebrew": "ומקדשי תיראו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:30",
+    "description": "Show awe and reverence toward the holy sanctuary.",
+    "notes": "Mandates sacred comportment"
+  },
+  {
+    "id": 232,
+    "title": "Guard the Sanctuary",
+    "hebrew": "ושמרו את משמרת אהל מועד",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 18:4",
+    "description": "Maintain protective service and oversight of sanctuary duties.",
+    "notes": "Temple guarding as active command"
+  },
+  {
+    "id": 233,
+    "title": "Levites Must Serve in Assigned Sanctuary Roles",
+    "hebrew": "ועבד הלוי הוא",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Numbers 18:23",
+    "description": "Levitical families should perform their designated Temple service tasks.",
+    "notes": "Role-based service order"
+  },
+  {
+    "id": 234,
+    "title": "Priests Must Keep Themselves Ritually Fit for Service",
+    "hebrew": "וקדשתו",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 21:8",
+    "description": "Sanctify priests and preserve their ritual readiness for holy service.",
+    "notes": "Supports integrity of priestly function"
+  },
+  {
+    "id": 235,
+    "title": "Do Not Defile a Priest Through Prohibited Corpse Contact",
+    "hebrew": "לנפש לא יטמא בעמיו",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 21:1",
+    "description": "A priest must avoid corpse impurity except for Torah-defined close relatives.",
+    "notes": "Priestly purity baseline"
+  },
+  {
+    "id": 236,
+    "title": "A High Priest Must Not Become Impure Even for Relatives",
+    "hebrew": "ועל כל נפשת מת לא יבא",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 21:11",
+    "description": "The High Priest may not incur corpse impurity, including for family funerals.",
+    "notes": "Stricter holiness obligations"
+  },
+  {
+    "id": 237,
+    "title": "A High Priest Must Marry an Eligible Virgin",
+    "hebrew": "והוא אשה בבתוליה יקח",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Leviticus 21:13",
+    "description": "The High Priest should marry according to Torah marital eligibility rules.",
+    "notes": "Marriage restrictions tied to office sanctity"
+  },
+  {
+    "id": 238,
+    "title": "A Priest Must Not Marry a Divorcee or Certain Disqualified Women",
+    "hebrew": "אשה גרושה מאישה לא יקחו",
+    "category": "Family Life",
+    "type": "Negative",
+    "torahSource": "Leviticus 21:7",
+    "description": "Priests may not marry women disqualified for priestly marriage.",
+    "notes": "Preserves priestly lineage standards"
+  },
+  {
+    "id": 239,
+    "title": "Do Not Profane Priestly Offspring",
+    "hebrew": "ולא יחלל זרעו בעמיו",
+    "category": "Family Life",
+    "type": "Negative",
+    "torahSource": "Leviticus 21:15",
+    "description": "Do not create unions that profane priestly descendants.",
+    "notes": "Lineage holiness protection"
+  },
+  {
+    "id": 240,
+    "title": "Do Not Allow a Blemished Priest to Serve at the Altar",
+    "hebrew": "כל איש אשר בו מום לא יקרב",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 21:17",
+    "description": "A priest with a disqualifying blemish may not perform altar service.",
+    "notes": "Service eligibility based on Torah criteria"
+  },
+  {
+    "id": 241,
+    "title": "Allow a Blemished Priest to Eat Holy Portions",
+    "hebrew": "לחם אלהיו מקדשי הקדשים ומן הקדשים יאכל",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Leviticus 21:22",
+    "description": "A blemished priest still receives and may eat designated holy foods.",
+    "notes": "Distinguishes service eligibility from priestly entitlement"
+  },
+  {
+    "id": 242,
+    "title": "A Priest in Impurity Must Not Eat Sacred Food",
+    "hebrew": "ונפש אשר תגע בו וטמאה עד הערב ולא יאכל מן הקדשים",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:6",
+    "description": "A priest who is impure must refrain from sacred foods until purified.",
+    "notes": "Links consumption rights to purity status"
+  },
+  {
+    "id": 243,
+    "title": "A Non-Priest Must Not Eat Terumah",
+    "hebrew": "וכל זר לא יאכל קדש",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:10",
+    "description": "A non-priest is forbidden from eating priestly terumah portions.",
+    "notes": "Preserves sanctity of priestly dues"
+  },
+  {
+    "id": 244,
+    "title": "A Hired Worker of a Priest Must Not Eat Terumah",
+    "hebrew": "תושב כהן ושכיר לא יאכל קדש",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:10",
+    "description": "Temporary workers attached to a priest may not eat terumah.",
+    "notes": "Defines household eligibility boundaries"
+  },
+  {
+    "id": 245,
+    "title": "A Priest’s Purchased Slave May Eat Terumah",
+    "hebrew": "וקנין כספו הוא יאכל בו",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 22:11",
+    "description": "A permanently acquired servant in a priestly household may eat terumah.",
+    "notes": "Household status rule for sacred portions"
+  },
+  {
+    "id": 246,
+    "title": "A Priest’s Daughter Married to a Non-Priest Must Not Eat Terumah",
+    "hebrew": "ובת כהן כי תהיה לאיש זר היא בתרומת הקדשים לא תאכל",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:12",
+    "description": "A priest’s daughter married outside priestly status cannot eat terumah.",
+    "notes": "Marriage status affects food entitlement"
+  },
+  {
+    "id": 247,
+    "title": "Return Terumah Plus a Fifth if Eaten in Error",
+    "hebrew": "ואיש כי יאכל קדש בשגגה ויסף חמישתו עליו",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 22:14",
+    "description": "One who mistakenly eats sacred terumah must repay principal plus one-fifth.",
+    "notes": "Restitution for inadvertent sacrilege"
+  },
+  {
+    "id": 248,
+    "title": "Do Not Slaughter an Animal and Its Offspring on the Same Day",
+    "hebrew": "ושור או שה אתו ואת בנו לא תשחטו ביום אחד",
+    "category": "Animal Welfare",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:28",
+    "description": "Do not slaughter a mother animal and its offspring on one day.",
+    "notes": "Compassion norm within slaughter law"
+  },
+  {
+    "id": 249,
+    "title": "Leave a Thanksgiving Offering Until the Appointed Time",
+    "hebrew": "ביום ההוא יאכל לא תותירו ממנו עד בקר",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Leviticus 22:30",
+    "description": "Consume thanksgiving offerings within prescribed time limits.",
+    "notes": "Time-bound sancta consumption rule"
+  },
+  {
+    "id": 250,
+    "title": "Do Not Profane God’s Holy Name",
+    "hebrew": "ולא תחללו את שם קדשי",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:32",
+    "description": "Do not desecrate the Divine Name through prohibited conduct.",
+    "notes": "Core prohibition of chilul Hashem"
   }
 ]
