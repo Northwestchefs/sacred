@@ -57,10 +57,12 @@ export async function fetchCommentary(reference = '') {
       const commentator = resolveCommentator(link);
       if (!commentator) return null;
 
+      const sourceRef = link?.ref || link?.sourceRef || link?.anchorRef || 'Unknown source';
       return {
         commentator,
         text: extractCommentaryText(link) || 'Commentary excerpt unavailable from API response.',
-        sourceRef: link?.ref || link?.sourceRef || link?.anchorRef || 'Unknown source',
+        sourceRef,
+        url: `https://www.sefaria.org/${encodeURIComponent(String(sourceRef).replace(/\s+/g, '_'))}`,
       };
     })
     .filter(Boolean)
