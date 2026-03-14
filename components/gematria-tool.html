@@ -5,10 +5,16 @@
       <input id="gematria-input" type="text" value="שמע ישראל" placeholder="Type Hebrew text" required />
       <button class="button" type="submit">Calculate</button>
     </div>
+    <label for="gematria-system">Gematria System</label>
+    <select id="gematria-system">
+      <option value="standard">Standard (1–400)</option>
+      <option value="ordinal">Ordinal (1–22)</option>
+    </select>
   </form>
   <div class="gematria-layout">
     <div class="gematria-summary">
       <p id="gematria-total" class="study-highlight">Total: —</p>
+      <p id="gematria-expression" class="study-highlight">—</p>
     </div>
     <div class="gematria-breakdown">
       <h3>Letter breakdown</h3>

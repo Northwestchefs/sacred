@@ -1,4 +1,4 @@
-import { breakdownByLetter, calculateGematria } from './gematria.js';
+import { breakdownByLetter, calculateOrdinalGematria, calculateStandardGematria, GEMATRIA_SYSTEMS } from './gematria.js';
 import { analyzeDivineName } from './divine-names.js';
 import {
   mapDivineNameToSefirot,
@@ -238,17 +238,31 @@ function initVerseMysticalPipeline() {
 function initGematriaTool() {
   const form = document.getElementById('gematria-form');
   const input = document.getElementById('gematria-input');
+  const system = document.getElementById('gematria-system');
   const total = document.getElementById('gematria-total');
+  const expression = document.getElementById('gematria-expression');
   const breakdown = document.getElementById('gematria-breakdown');
 
-  if (!form || !input || !total || !breakdown) return;
+  if (!form || !input || !system || !total || !expression || !breakdown) return;
+
+  const calculators = {
+    standard: calculateStandardGematria,
+    ordinal: calculateOrdinalGematria,
+  };
 
   const calculate = () => {
     const text = input.value;
-    const gematria = calculateGematria(text);
+    const selectedSystem = GEMATRIA_SYSTEMS[system.value] ? system.value : 'standard';
+    const calculateWithSystem = calculators[selectedSystem] || calculateStandardGematria;
+    const gematria = calculateWithSystem(text);
 
     total.textContent = `Total: ${gematria}`;
-    const rows = breakdownByLetter(text);
+
+    const rows = breakdownByLetter(text, selectedSystem);
+    expression.textContent = rows.length
+      ? `${rows.map((row) => `${row.letter} (${row.value})`).join(' + ')}`
+      : '—';
+
     breakdown.innerHTML = rows.length
       ? rows.map((row) => `<li><strong>${row.letter}</strong> = ${row.value}</li>`).join('')
       : '<li>No Hebrew letters detected.</li>';
@@ -261,6 +275,9 @@ function initGematriaTool() {
     event.preventDefault();
     calculate();
   });
+
+  input.addEventListener('input', calculate);
+  system.addEventListener('change', calculate);
 
   calculate();
 }
@@ -453,7 +470,7 @@ async function initStudyPage() {
   document.addEventListener('sacred:sefirahHint', (event) => {
     const word = event.detail?.word || '';
     if (!word) return;
-    const sefirahHints = mapGematriaToSefirot(calculateGematria(word));
+    const sefirahHints = mapGematriaToSefirot(calculateStandardGematria(word));
     highlightSefirot(sefirahHints, { animateFlow: true });
     highlightPathsByLetters(getHebrewLettersFromText(word));
   });
