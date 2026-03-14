@@ -1,8 +1,13 @@
 const FLOW_COLOR = '#5f8dd3';
 const INACTIVE_COLOR = '#9aa7b6';
 
+function normalizeToArray(value) {
+  if (!value) return [];
+  return Array.isArray(value) ? value : [value];
+}
+
 export function highlightSefirot(sefirah = [], options = {}) {
-  const active = Array.isArray(sefirah) ? sefirah : [sefirah];
+  const active = normalizeToArray(sefirah);
   const activeSet = new Set(active.filter(Boolean));
   const shouldAnimate = options.animateFlow !== false;
 
@@ -16,7 +21,7 @@ export function highlightSefirot(sefirah = [], options = {}) {
     circle.setAttribute('stroke-width', isActive ? '3' : '1.5');
   });
 
-  document.querySelectorAll('.tree-lines path').forEach((path) => {
+  document.querySelectorAll('#tree-paths line[data-path-id]').forEach((path) => {
     if (shouldAnimate && activeSet.size) {
       path.dataset.state = 'flowing';
       path.setAttribute('stroke', FLOW_COLOR);
@@ -34,4 +39,26 @@ export function highlightSefirot(sefirah = [], options = {}) {
   if (activeLabel) {
     activeLabel.textContent = `Active sefirot: ${active.length ? active.join(', ') : 'none'}`;
   }
+}
+
+export function highlightPathsByLetters(letters = []) {
+  const activeLetters = new Set(normalizeToArray(letters).filter(Boolean));
+  const activePathRows = [];
+
+  document.querySelectorAll('#tree-paths line[data-letter]').forEach((line) => {
+    const isMatch = activeLetters.has(line.dataset.letter);
+    line.dataset.highlight = isMatch ? 'word-match' : 'none';
+    if (isMatch) {
+      activePathRows.push(`${line.dataset.letter} (${line.dataset.from}→${line.dataset.to})`);
+    }
+  });
+
+  const activePathsLabel = document.getElementById('tree-active-paths');
+  if (activePathsLabel) {
+    activePathsLabel.textContent = `Active paths: ${activePathRows.length ? activePathRows.join(', ') : 'none'}`;
+  }
+}
+
+export function getHebrewLettersFromText(text = '') {
+  return [...new Set((text.match(/[\u0590-\u05FF]/g) || []).filter(Boolean))];
 }

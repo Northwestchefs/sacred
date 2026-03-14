@@ -540,6 +540,42 @@ input[type='search'] {
   gap: 0.4rem;
 }
 
+
+
+#tree-paths .tree-path {
+  stroke: #9aa7b6;
+  stroke-width: 2;
+  fill: none;
+  transition: stroke 140ms ease, stroke-width 140ms ease, opacity 140ms ease;
+  cursor: pointer;
+}
+
+#tree-paths .tree-path[data-state='hover'],
+#tree-paths .tree-path[data-highlight='word-match'] {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+#tree-path-labels .tree-path-letter {
+  fill: #34506f;
+  font-size: 12px;
+  font-family: 'Noto Serif Hebrew', 'SBL Hebrew', serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.tree-tooltip {
+  margin-top: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  background: #fff;
+  font-size: 0.9rem;
+}
 .tree-svg {
   width: 100%;
   max-width: 100%;
