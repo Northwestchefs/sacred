@@ -12,7 +12,6 @@ import { generate72Names } from './tools/72names.js';
 import { generate231Gates } from './tools/231gates.js';
 import { analyzeVerse } from '../modules/mystical-pipeline.js';
 import { highlightSefirot } from '../components/tree-of-life.js';
-import { initMitzvotDashboard } from '../components/mitzvot-dashboard.js';
 
 const NODE_COORDINATES = {
   Keter: [150, 40],
@@ -369,11 +368,6 @@ async function initStudyPage() {
   init72NamesTool();
   init231GatesTool();
 
-  await initMitzvotDashboard('#mitzvot-dashboard-slot', {
-    onViewVerse: (reference) => {
-      document.dispatchEvent(new CustomEvent('study:view-verse', { detail: { reference } }));
-    },
-  });
 
   document.addEventListener('verse:loaded', (event) => {
     highlightSefirot(event.detail?.sefirahHints || [], { animateFlow: true });
