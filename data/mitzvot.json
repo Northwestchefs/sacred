@@ -4498,5 +4498,515 @@
     "torahSource": "Deuteronomy 22:1",
     "description": "Restore lost items when their owner can be identified.",
     "notes": "Builds trust and mutual responsibility"
+  },
+  {
+    "id": 500,
+    "title": "Do Not Pervert Justice for the Stranger or Orphan",
+    "hebrew": "לא תטה משפט גר יתום",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:17",
+    "description": "Do not distort court rulings against vulnerable people.",
+    "notes": "Protects those with less social power"
+  },
+  {
+    "id": 501,
+    "title": "Do Not Take a Widow’s Garment as Collateral",
+    "hebrew": "ולא תחבל בגד אלמנה",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:17",
+    "description": "Do not seize a widow’s essential clothing as a pledge.",
+    "notes": "Prevents exploitative lending practices"
+  },
+  {
+    "id": 502,
+    "title": "Leave Forgotten Sheaves for the Poor",
+    "hebrew": "ושכחת עמר בשדה",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:19",
+    "description": "Do not retrieve forgotten harvest bundles; leave them for the needy.",
+    "notes": "Turns oversight into generosity"
+  },
+  {
+    "id": 503,
+    "title": "Leave Olive Gleanings for the Poor",
+    "hebrew": "כי תחבט זיתך לא תפאר אחריך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:20",
+    "description": "Do not strip every olive; leave remaining produce for vulnerable people.",
+    "notes": "Builds dignity through access to food"
+  },
+  {
+    "id": 504,
+    "title": "Leave Grape Gleanings for the Poor",
+    "hebrew": "כי תבצר כרמך לא תעולל אחריך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:21",
+    "description": "Do not take every grape cluster; leave portions for the poor.",
+    "notes": "Establishes regular agricultural giving"
+  },
+  {
+    "id": 505,
+    "title": "Administer Flogging Only by Judicial Sentence",
+    "hebrew": "והכהו לפניו כדי רשעתו",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:2",
+    "description": "Corporal penalties may only follow proper court process.",
+    "notes": "Restrains punishment within law"
+  },
+  {
+    "id": 506,
+    "title": "Do Not Exceed the Maximum Judicial Stripes",
+    "hebrew": "לא יוסיף פן יסיף להכתו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:3",
+    "description": "Do not inflict more lashes than the Torah permits.",
+    "notes": "Safeguards human dignity in penalty"
+  },
+  {
+    "id": 507,
+    "title": "Do Not Muzzle an Ox While It Treads Grain",
+    "hebrew": "לא תחסם שור בדישו",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:4",
+    "description": "Allow a working animal to eat while laboring.",
+    "notes": "Teaches compassion in productivity"
+  },
+  {
+    "id": 508,
+    "title": "Perform Levirate Marriage When Applicable",
+    "hebrew": "יבמה יבוא עליה",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:5",
+    "description": "A surviving brother should marry the widow in yibbum circumstances.",
+    "notes": "Preserves family continuity and care"
+  },
+  {
+    "id": 509,
+    "title": "Conduct Chalitzah if Levirate Marriage Is Declined",
+    "hebrew": "וחלצה נעלו מעל רגלו",
+    "category": "Family Life",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:9",
+    "description": "Complete chalitzah ritual when yibbum is not pursued.",
+    "notes": "Provides lawful and dignified release"
+  },
+  {
+    "id": 510,
+    "title": "Do Not Humiliate Others in Public Conflict",
+    "hebrew": "לא תהיה אשת המת החוצה",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:11",
+    "description": "Avoid degrading interventions that shame another person.",
+    "notes": "Protects bodily dignity and boundaries"
+  },
+  {
+    "id": 511,
+    "title": "Use Honest and Accurate Weights",
+    "hebrew": "אבן שלמה וצדק יהיה לך",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:15",
+    "description": "Maintain accurate business weights and measures.",
+    "notes": "Builds trust in commerce"
+  },
+  {
+    "id": 512,
+    "title": "Do Not Keep Fraudulent Weights and Measures",
+    "hebrew": "לא יהיה לך בכיסך אבן ואבן",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:13",
+    "description": "Do not possess deceptive measurement tools.",
+    "notes": "Outlaws structural commercial dishonesty"
+  },
+  {
+    "id": 513,
+    "title": "Remember the Attack of Amalek",
+    "hebrew": "זכור את אשר עשה לך עמלק",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:17",
+    "description": "Retain national memory of Amalek’s cruelty.",
+    "notes": "Memory shapes moral vigilance"
+  },
+  {
+    "id": 514,
+    "title": "Do Not Forget Amalek’s Hostility",
+    "hebrew": "לא תשכח",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:19",
+    "description": "Do not allow Amalek’s attack to be forgotten.",
+    "notes": "Prevents moral amnesia"
+  },
+  {
+    "id": 515,
+    "title": "Bring First Fruits to the Sanctuary",
+    "hebrew": "ולקחת מראשית כל פרי האדמה",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:2",
+    "description": "Bring bikkurim from first produce to the sacred center.",
+    "notes": "Sanctifies gratitude for the land"
+  },
+  {
+    "id": 516,
+    "title": "Recite the First Fruits Declaration",
+    "hebrew": "וענית ואמרת לפני יהוה אלהיך",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:5",
+    "description": "Publicly declare the historical gratitude liturgy with first fruits.",
+    "notes": "Links worship to collective memory"
+  },
+  {
+    "id": 517,
+    "title": "Set Aside Tithes in the Proper Years",
+    "hebrew": "עשר תעשר",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:12",
+    "description": "Distribute agricultural tithes according to the Torah cycle.",
+    "notes": "Creates stable social support systems"
+  },
+  {
+    "id": 518,
+    "title": "Recite the Tithe Confession in Its Season",
+    "hebrew": "ואמרת לפני יהוה אלהיך בערתי הקדש מן הבית",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:13",
+    "description": "Declare faithful completion of mandated tithing.",
+    "notes": "Turns compliance into accountable worship"
+  },
+  {
+    "id": 519,
+    "title": "Walk in God’s Ways",
+    "hebrew": "והלכת בדרכיו",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 28:9",
+    "description": "Model conduct after divine attributes of justice and compassion.",
+    "notes": "Frames ethics as imitation of God"
+  },
+  {
+    "id": 520,
+    "title": "Do Not Make Covenants with Idolatrous Nations",
+    "hebrew": "לא תכרת להם ברית",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 7:2",
+    "description": "Do not form binding pacts that entrench idolatrous influence.",
+    "notes": "Protects covenantal identity"
+  },
+  {
+    "id": 521,
+    "title": "Destroy Public Idolatry from the Land",
+    "hebrew": "ואבדתם את כל המקומות",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 12:2",
+    "description": "Remove idolatrous worship sites from communal life.",
+    "notes": "Purifies public sacred space"
+  },
+  {
+    "id": 522,
+    "title": "Do Not Add to Torah Commandments",
+    "hebrew": "לא תספו על הדבר",
+    "category": "Torah Study",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:1",
+    "description": "Do not present innovations as new divine commandments.",
+    "notes": "Preserves integrity of revelation"
+  },
+  {
+    "id": 523,
+    "title": "Do Not Subtract from Torah Commandments",
+    "hebrew": "ולא תגרעו ממנו",
+    "category": "Torah Study",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:1",
+    "description": "Do not diminish what Torah obligates.",
+    "notes": "Prevents selective covenant erosion"
+  },
+  {
+    "id": 524,
+    "title": "Do Not Heed a False Prophet",
+    "hebrew": "לא תשמע אל דברי הנביא ההוא",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:4",
+    "description": "Reject prophetic claims that contradict Torah.",
+    "notes": "Tests inspiration by covenant fidelity"
+  },
+  {
+    "id": 525,
+    "title": "Love the Convert",
+    "hebrew": "ואהבתם את הגר",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:19",
+    "description": "Actively care for and include the convert.",
+    "notes": "Centers empathy for the outsider"
+  },
+  {
+    "id": 526,
+    "title": "Fear and Revere God",
+    "hebrew": "את יהוה אלהיך תירא",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:20",
+    "description": "Cultivate awe that shapes choices and speech.",
+    "notes": "Root disposition of covenant life"
+  },
+  {
+    "id": 527,
+    "title": "Serve God Through Prayer and Obedience",
+    "hebrew": "ואתו תעבד",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:20",
+    "description": "Serve God through worship, devotion, and mitzvah practice.",
+    "notes": "Unifies ritual and daily conduct"
+  },
+  {
+    "id": 528,
+    "title": "Cling to Godly Conduct",
+    "hebrew": "ובו תדבק",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:20",
+    "description": "Attach life direction to divine values.",
+    "notes": "Expressed through wise communal bonds"
+  },
+  {
+    "id": 529,
+    "title": "Swear Only in God’s Name When Required",
+    "hebrew": "ובשמו תשבע",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 10:20",
+    "description": "When oath-taking is mandated, invoke only God’s name truthfully.",
+    "notes": "Protects seriousness of testimony"
+  },
+  {
+    "id": 530,
+    "title": "Do Not Test God",
+    "hebrew": "לא תנסו את יהוה אלהיכם",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 6:16",
+    "description": "Do not demand signs in defiant disbelief.",
+    "notes": "Calls for trustful obedience"
+  },
+  {
+    "id": 531,
+    "title": "Teach Torah to Your Children",
+    "hebrew": "ושננתם לבניך",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:7",
+    "description": "Transmit Torah diligently within the home.",
+    "notes": "Intergenerational covenant continuity"
+  },
+  {
+    "id": 532,
+    "title": "Speak Words of Torah Throughout Daily Life",
+    "hebrew": "ודברת בם",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:7",
+    "description": "Integrate Torah learning into ordinary routines.",
+    "notes": "Sanctifies time and conversation"
+  },
+  {
+    "id": 533,
+    "title": "Bind Tefillin on the Arm",
+    "hebrew": "וקשרתם לאות על ידך",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:8",
+    "description": "Wear arm tefillin as covenantal sign.",
+    "notes": "Embodies commitment in action"
+  },
+  {
+    "id": 534,
+    "title": "Place Tefillin Between the Eyes",
+    "hebrew": "והיו לטטפת בין עיניך",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:8",
+    "description": "Wear head tefillin as sign of mindful devotion.",
+    "notes": "Consecrates thought and intention"
+  },
+  {
+    "id": 535,
+    "title": "Affix Mezuzah on Doorposts",
+    "hebrew": "וכתבתם על מזוזות ביתך ובשעריך",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:9",
+    "description": "Place mezuzah on doorways of homes and gates.",
+    "notes": "Marks daily thresholds with Torah"
+  },
+  {
+    "id": 536,
+    "title": "Recite the Shema Daily",
+    "hebrew": "שמע ישראל יהוה אלהינו יהוה אחד",
+    "category": "Prayer",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:4",
+    "description": "Affirm God’s unity morning and evening.",
+    "notes": "Core declaration of Jewish faith"
+  },
+  {
+    "id": 537,
+    "title": "Love God with Whole Heart Soul and Might",
+    "hebrew": "ואהבת את יהוה אלהיך",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 6:5",
+    "description": "Channel emotion, life, and resources toward God.",
+    "notes": "Transforms devotion into total orientation"
+  },
+  {
+    "id": 538,
+    "title": "Do Not Follow After the Heart and Eyes in Sin",
+    "hebrew": "ולא תתורו אחרי לבבכם ואחרי עיניכם",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Numbers 15:39",
+    "description": "Restrain impulses that lead to moral and spiritual straying.",
+    "notes": "Calls for disciplined inner life"
+  },
+  {
+    "id": 539,
+    "title": "Remember All Commandments and Perform Them",
+    "hebrew": "למען תזכרו ועשיתם את כל מצותי",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Numbers 15:40",
+    "description": "Keep mitzvot in conscious memory and practice.",
+    "notes": "Memory becomes action"
+  },
+  {
+    "id": 540,
+    "title": "Wear Tzitzit on Four-Cornered Garments",
+    "hebrew": "ועשו להם ציצת על כנפי בגדיהם",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Numbers 15:38",
+    "description": "Attach fringes to qualifying garments.",
+    "notes": "Visual reminder of mitzvot"
+  },
+  {
+    "id": 541,
+    "title": "Include a Thread of Tekhelet in Tzitzit Where Possible",
+    "hebrew": "ונתנו על ציצת הכנף פתיל תכלת",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Numbers 15:38",
+    "description": "Add the blue thread component in tzitzit according to halakhah.",
+    "notes": "Symbolizes heaven-oriented awareness"
+  },
+  {
+    "id": 542,
+    "title": "Sanctify God’s Name in Public Conduct",
+    "hebrew": "ונקדשתי בתוך בני ישראל",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Leviticus 22:32",
+    "description": "Act in ways that honor God before others.",
+    "notes": "Known as kiddush Hashem"
+  },
+  {
+    "id": 543,
+    "title": "Do Not Profane God’s Name",
+    "hebrew": "ולא תחללו את שם קדשי",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Leviticus 22:32",
+    "description": "Avoid actions that desecrate divine honor.",
+    "notes": "Known as chillul Hashem"
+  },
+  {
+    "id": 544,
+    "title": "Rest on Yom Kippur from Melakhah",
+    "hebrew": "שבת שבתון הוא לכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:32",
+    "description": "Cease prohibited labor on Yom Kippur.",
+    "notes": "Sacred rest for atonement day"
+  },
+  {
+    "id": 545,
+    "title": "Afflict the Soul on Yom Kippur",
+    "hebrew": "ועניתם את נפשתיכם",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:27",
+    "description": "Observe Yom Kippur self-denial as commanded.",
+    "notes": "Centers repentance and humility"
+  },
+  {
+    "id": 546,
+    "title": "Do Not Perform Prohibited Labor on Yom Kippur",
+    "hebrew": "כל מלאכה לא תעשו",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Leviticus 23:31",
+    "description": "Refrain from forbidden work on the Day of Atonement.",
+    "notes": "Protects sanctity of the day"
+  },
+  {
+    "id": 547,
+    "title": "Dwell in a Sukkah During Sukkot",
+    "hebrew": "בסכת תשבו שבעת ימים",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:42",
+    "description": "Live in a sukkah throughout the festival period.",
+    "notes": "Rehearses dependence on divine shelter"
+  },
+  {
+    "id": 548,
+    "title": "Take the Four Species on Sukkot",
+    "hebrew": "ולקחתם לכם ביום הראשון",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Leviticus 23:40",
+    "description": "Take lulav and etrog set in fulfillment of the mitzvah.",
+    "notes": "Celebrates joy before God"
+  },
+  {
+    "id": 549,
+    "title": "Rejoice on the Pilgrimage Festivals",
+    "hebrew": "ושמחת בחגך",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:14",
+    "description": "Cultivate communal joy on festival days.",
+    "notes": "Spiritual celebration as obligation"
+  },
+  {
+    "id": 550,
+    "title": "Appear at the Sanctuary on Pilgrimage Festivals",
+    "hebrew": "יראה כל זכורך את פני יהוה אלהיך",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:16",
+    "description": "Present oneself before God during the three pilgrimage festivals.",
+    "notes": "Affirms covenant through gathered worship"
   }
 ]
