@@ -53,9 +53,6 @@ async function loadPageScripts() {
     await import(versioned('../js/sacred-study.js'));
   }
 
-  if (document.body?.dataset?.page === 'messiah') {
-    await import(versioned('../js/messiah-page.js'));
-  }
 }
 
 (async function bootstrap() {
