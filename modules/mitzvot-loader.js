@@ -1,5 +1,5 @@
-const LOCAL_STORAGE_KEY = 'sacred.mitzvot.cache.v2';
-const MIN_EXPECTED_MITZVOT = 100;
+const LOCAL_STORAGE_KEY = 'sacred.mitzvot.cache.v3';
+const MIN_EXPECTED_MITZVOT = 250;
 let mitzvotCache = null;
 
 export async function loadMitzvot() {
