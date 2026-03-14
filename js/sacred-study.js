@@ -65,13 +65,29 @@ function initVerseMysticalPipeline() {
 
   if (!form || !refInput || !status) return;
 
+  const renderEnglishVerse = (target, content) => {
+    if (!target) return;
+
+    const html = String(content || '').trim();
+    if (!html) {
+      target.textContent = 'English translation unavailable.';
+      return;
+    }
+
+    target.innerHTML = html;
+  };
+
   const renderCommentary = (items = []) => {
     if (!commentaryList) return;
     commentaryList.innerHTML = items.length
       ? items
           .map(
-            (item) =>
-              `<li><strong>${item.commentator}</strong> · ${item.sourceRef}<br /><em>${item.text || 'No excerpt available.'}</em></li>`,
+            (item) => {
+              const sourceRef = item.sourceRef || 'Unknown source';
+              const url =
+                item.url || `https://www.sefaria.org/${encodeURIComponent(String(sourceRef).replace(/\s+/g, '_'))}`;
+              return `<li><strong>${item.commentator}</strong> · <a href="${url}" target="_blank" rel="noopener noreferrer">${sourceRef}</a><br /><em>${item.text || 'No excerpt available.'}</em></li>`;
+            },
           )
           .join('')
       : '<li>No classical commentary found for this verse.</li>';
@@ -112,7 +128,7 @@ function initVerseMysticalPipeline() {
       const result = await analyzeVerse(reference);
 
       if (hebrew) hebrew.textContent = result.verse.hebrew || 'Hebrew text unavailable.';
-      if (english) english.textContent = result.verse.english || 'English translation unavailable.';
+      renderEnglishVerse(english, result.verse.english);
 
       renderGematria(result.gematria);
       renderDivineNames(result.divineNames);
