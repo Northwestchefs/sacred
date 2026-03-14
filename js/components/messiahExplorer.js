@@ -1,18 +1,15 @@
 import { getLinks, getText } from '../sefaria-api.js';
-import { messiahTerms } from '../data/messiahTerms.js';
+import { allTermCards, messiahWordStudy } from '../data/messiahTerms.js';
 
-const WORD_REFERENCES = {
-  משיח: ['Leviticus 4:3', 'Psalms 2:2', 'Daniel 9:25'],
-  'בן דוד': ['2 Samuel 7:12', 'Jeremiah 23:5'],
-  שילה: ['Genesis 49:10'],
-  צמח: ['Jeremiah 23:5', 'Zechariah 3:8'],
-  עמנואל: ['Isaiah 7:14', 'Isaiah 8:8'],
-  ישועה: ['Isaiah 12:2', 'Psalms 3:8'],
-  מושיע: ['Judges 3:9', 'Isaiah 43:11'],
-  גואל: ['Isaiah 41:14', 'Ruth 4:14'],
-  ינון: ['Psalms 72:17'],
-  מנחם: ['Lamentations 1:16', 'Nahum 1:7'],
-};
+const FILTERS = [
+  { key: 'all', label: 'All' },
+  { key: 'titles', label: 'Titles' },
+  { key: 'salvation', label: 'Salvation' },
+  { key: 'prophecy', label: 'Prophecy' },
+  { key: 'gematria', label: 'Gematria' },
+];
+
+const verseCache = new Map();
 
 function dispatchEventHint(word) {
   document.dispatchEvent(
@@ -22,140 +19,175 @@ function dispatchEventHint(word) {
   );
 }
 
-function matchTerm(query) {
-  if (!query) return messiahTerms[0];
-  const normalized = query.trim().toLowerCase();
-  return (
-    messiahTerms.find((entry) => entry.word.includes(query) || entry.transliteration.toLowerCase().includes(normalized)) ||
-    null
-  );
-}
-
-function renderWordData(target, term) {
-  if (!target || !term) return;
-
-  target.innerHTML = `
-    <article class="messiah-word" aria-live="polite">
-      <h3>${term.word} · ${term.transliteration}</h3>
-      <dl>
-        <div><dt>Meaning</dt><dd>${term.meaning}</dd></div>
-        <div><dt>Gematria</dt><dd class="messiah-gematria">${term.gematria}</dd></div>
-        <div><dt>Root</dt><dd class="messiah-root">${term.root}</dd></div>
-        <div><dt>Notes</dt><dd>${term.notes}</dd></div>
-      </dl>
-    </article>
-  `;
-}
-
 function pickHebrewText(payload) {
   if (Array.isArray(payload?.versions)) {
     const hebrewVersion = payload.versions.find((version) => version.language === 'he');
     const text = hebrewVersion?.text;
-    if (Array.isArray(text)) {
-      return text.flat().filter(Boolean).join(' ');
-    }
+    if (Array.isArray(text)) return text.flat().filter(Boolean).join(' ');
     if (typeof text === 'string') return text;
   }
 
-  if (Array.isArray(payload?.he)) {
-    return payload.he.flat().filter(Boolean).join(' ');
-  }
-
+  if (Array.isArray(payload?.he)) return payload.he.flat().filter(Boolean).join(' ');
   if (typeof payload?.he === 'string') return payload.he;
   return '';
 }
 
-function pickEnglishText(payload) {
-  if (Array.isArray(payload?.versions)) {
-    const englishVersion = payload.versions.find((version) => version.language === 'en');
-    const text = englishVersion?.text;
-    if (Array.isArray(text)) {
-      return text.flat().filter(Boolean).join(' ');
-    }
-    if (typeof text === 'string') return text;
-  }
-
-  if (Array.isArray(payload?.text)) {
-    return payload.text.flat().filter(Boolean).join(' ');
-  }
-
-  if (typeof payload?.text === 'string') return payload.text;
-  return '';
-}
-
-async function renderVerses(verseTarget, term) {
-  if (!verseTarget || !term) return;
-
-  const references = WORD_REFERENCES[term.word] || [];
-  if (!references.length) {
-    verseTarget.innerHTML = '<li>No verse mapping configured for this term yet.</li>';
-    return;
-  }
-
-  verseTarget.innerHTML = '<li>Loading verse data…</li>';
-
-  try {
-    const rows = await Promise.all(
-      references.map(async (reference) => {
-        const [textPayload, linksPayload] = await Promise.all([getText(reference), getLinks(reference)]);
-        return {
-          reference,
-          hebrew: pickHebrewText(textPayload),
-          english: pickEnglishText(textPayload),
-          linksCount: Array.isArray(linksPayload) ? linksPayload.length : 0,
-        };
-      }),
+async function getVerseData(reference) {
+  if (!verseCache.has(reference)) {
+    verseCache.set(
+      reference,
+      Promise.all([getText(reference), getLinks(reference)]).then(([textPayload, linksPayload]) => ({
+        reference,
+        hebrew: pickHebrewText(textPayload),
+        linksCount: Array.isArray(linksPayload) ? linksPayload.length : 0,
+      })),
     );
-
-    verseTarget.innerHTML = rows
-      .map(
-        (row) => `
-          <li>
-            <strong>${row.reference}</strong><br />
-            <span class="hebrew-text">${row.hebrew || 'Hebrew text unavailable.'}</span><br />
-            <span>${row.english || 'English text unavailable.'}</span><br />
-            <span>Commentary links: ${row.linksCount}</span>
-          </li>
-        `,
-      )
-      .join('');
-  } catch (error) {
-    verseTarget.innerHTML = `<li>Unable to load verses: ${error.message}</li>`;
   }
+  return verseCache.get(reference);
 }
 
-export function initMessiahExplorer() {
-  const section = document.getElementById('messiah-explorer');
-  const form = document.getElementById('messiah-search-form');
-  const input = document.getElementById('messiah-search-input');
-  const result = document.getElementById('messiah-word-result');
-  const verses = document.getElementById('messiah-verses');
+function renderFilters(container, onSelect, activeFilter) {
+  container.innerHTML = FILTERS.map(
+    (filter) => `<button class="button filter-button${filter.key === activeFilter ? ' active' : ''}" data-filter="${filter.key}" type="button">${filter.label}</button>`,
+  ).join('');
 
-  if (!section || !form || !input || !result || !verses) return;
-
-  async function runLookup() {
-    const term = matchTerm(input.value);
-    if (!term) {
-      result.innerHTML = '<p>No matching messianic term found.</p>';
-      verses.innerHTML = '<li>Try another Hebrew word or transliteration.</li>';
-      return;
-    }
-
-    renderWordData(result, term);
-    dispatchEventHint(term.word);
-    await renderVerses(verses, term);
-  }
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    runLookup();
+  container.querySelectorAll('button[data-filter]').forEach((button) => {
+    button.addEventListener('click', () => onSelect(button.dataset.filter));
   });
-
-  input.addEventListener('input', () => {
-    const term = matchTerm(input.value);
-    if (!term) return;
-    renderWordData(result, term);
-  });
-
-  runLookup();
 }
+
+function renderSectionTitle(title, description) {
+  return `
+    <header class="messiah-section-header">
+      <h3>${title}</h3>
+      <p>${description}</p>
+    </header>
+  `;
+}
+
+function termCardMarkup(term) {
+  const verseItems = term.verses
+    .map(
+      (reference) => `
+      <li>
+        <button type="button" class="verse-expand" data-reference="${reference}">${reference}</button>
+        <div class="verse-panel" data-verse-panel="${reference}"></div>
+      </li>`,
+    )
+    .join('');
+
+  return `
+    <article class="term-card" data-category="${term.category}">
+      <h4 class="hebrew-term">${term.word}</h4>
+      <p class="transliteration">${term.transliteration}</p>
+      <dl>
+        <div><dt>Gematria</dt><dd>${term.gematria}</dd></div>
+        <div><dt>Root</dt><dd>${term.root}</dd></div>
+        <div><dt>Meaning</dt><dd>${term.meaning}</dd></div>
+      </dl>
+      <details>
+        <summary>Verse references & notes</summary>
+        <p>${term.description}</p>
+        <ul class="verse-list">${verseItems}</ul>
+      </details>
+    </article>
+  `;
+}
+
+function prophecyMarkup(item) {
+  const links = item.commentaryLinks.map((link) => `<li>${link}</li>`).join('');
+  return `
+    <article class="term-card prophecy-card" data-category="prophecy">
+      <h4>${item.title}</h4>
+      <details>
+        <summary>Open Hebrew text & commentary links</summary>
+        <button type="button" class="verse-expand" data-reference="${item.reference}">${item.reference}</button>
+        <div class="verse-panel" data-verse-panel="${item.reference}"></div>
+        <h5>Commentary pathways</h5>
+        <ul>${links}</ul>
+      </details>
+    </article>
+  `;
+}
+
+function wireVerseExpanders(scope) {
+  scope.querySelectorAll('.verse-expand').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const reference = button.dataset.reference;
+      const panel = scope.querySelector(`[data-verse-panel="${reference}"]`);
+      if (!panel) return;
+      panel.innerHTML = '<p>Loading Hebrew text…</p>';
+      try {
+        const data = await getVerseData(reference);
+        panel.innerHTML = `
+          <p class="hebrew-text">${data.hebrew || 'Hebrew text unavailable.'}</p>
+          <p class="commentary-count">Commentary links: ${data.linksCount}</p>
+        `;
+      } catch (error) {
+        panel.innerHTML = `<p>Unable to load verse data: ${error.message}</p>`;
+      }
+    });
+  });
+}
+
+function initMessiahExplorer() {
+  const container = document.getElementById('messiah-explorer');
+  if (!container) return;
+
+  let activeFilter = 'all';
+
+  const render = () => {
+    const showTerms = activeFilter !== 'prophecy';
+    const showProphecy = activeFilter === 'all' || activeFilter === 'prophecy';
+
+    const coreCards =
+      activeFilter === 'salvation'
+        ? ''
+        : messiahWordStudy.coreTitles
+            .filter((term) => activeFilter !== 'gematria' || term.gematria >= 180)
+            .map(termCardMarkup)
+            .join('');
+
+    const salvationCards =
+      activeFilter === 'titles'
+        ? ''
+        : messiahWordStudy.salvationLanguage
+            .filter((term) => activeFilter !== 'gematria' || term.gematria >= 180)
+            .map(termCardMarkup)
+            .join('');
+
+    const prophecyCards = messiahWordStudy.messianicProphecies.map(prophecyMarkup).join('');
+
+    container.innerHTML = `
+      <section class="filter-row" id="messiah-filters" aria-label="Word study filters"></section>
+
+      ${showTerms && coreCards ? `${renderSectionTitle('Core Messianic Titles', 'Key royal and symbolic names in messianic study.')}
+      <section class="term-grid">${coreCards}</section>` : ''}
+
+      ${showTerms && salvationCards ? `${renderSectionTitle('Salvation Language', 'Terms of rescue, redemption, atonement, and deliverance.')}
+      <section class="term-grid">${salvationCards}</section>` : ''}
+
+      ${showProphecy ? `${renderSectionTitle('Messianic Prophecies', 'Index of pivotal passages with expandable Hebrew text.')}
+      <section class="term-grid">${prophecyCards}</section>` : ''}
+    `;
+
+    renderFilters(container.querySelector('#messiah-filters'), (filter) => {
+      activeFilter = filter;
+      render();
+    }, activeFilter);
+
+    wireVerseExpanders(container);
+
+    const firstVisibleTerm = allTermCards.find((term) => {
+      if (activeFilter === 'all') return true;
+      if (activeFilter === 'gematria') return term.gematria >= 180;
+      return term.category === activeFilter;
+    });
+
+    if (firstVisibleTerm) dispatchEventHint(firstVisibleTerm.word);
+  };
+
+  render();
+}
+
+export { initMessiahExplorer };
