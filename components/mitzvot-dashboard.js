@@ -10,6 +10,7 @@ import {
 import { renderMitzvahCard } from './mitzvah-card.js';
 
 export async function initMitzvotDashboard(containerSelector, options = {}) {
+  const pageSize = 50;
   const container = document.querySelector(containerSelector);
   if (!container) return;
 
@@ -35,6 +36,7 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
     </div>
 
     <p id="mitzvot-results-count" class="reader-status"></p>
+    <div id="mitzvot-page-tabs" class="mitzvot-page-tabs" role="tablist" aria-label="Mitzvot page ranges"></div>
     <div id="mitzvot-grid" class="mitzvot-grid" role="list" aria-label="Mitzvot list"></div>
   `;
 
@@ -43,29 +45,88 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
   const typeFilter = container.querySelector('#mitzvot-type-filter');
   const grid = container.querySelector('#mitzvot-grid');
   const resultsCount = container.querySelector('#mitzvot-results-count');
+  const pageTabs = container.querySelector('#mitzvot-page-tabs');
+  let activePageIndex = 0;
+
+  function getVisiblePage(visible) {
+    if (!visible.length) return [];
+
+    const pageCount = Math.max(1, Math.ceil(visible.length / pageSize));
+    const safePageIndex = Math.min(activePageIndex, pageCount - 1);
+
+    if (safePageIndex !== activePageIndex) {
+      activePageIndex = safePageIndex;
+    }
+
+    const pageStart = safePageIndex * pageSize;
+    return visible.slice(pageStart, pageStart + pageSize);
+  }
+
+  function renderPageTabs(visible) {
+    if (!pageTabs) return;
+    pageTabs.innerHTML = '';
+
+    if (visible.length <= pageSize) {
+      pageTabs.hidden = true;
+      return;
+    }
+
+    pageTabs.hidden = false;
+    const pageCount = Math.ceil(visible.length / pageSize);
+
+    for (let pageIndex = 0; pageIndex < pageCount; pageIndex += 1) {
+      const pageStart = pageIndex * pageSize;
+      const pageEnd = Math.min((pageIndex + 1) * pageSize, visible.length) - 1;
+      const startMitzvah = visible[pageStart]?.id ?? pageStart + 1;
+      const endMitzvah = visible[pageEnd]?.id ?? pageEnd + 1;
+      const tab = document.createElement('button');
+
+      tab.type = 'button';
+      tab.className = `mitzvot-page-tab${pageIndex === activePageIndex ? ' is-active' : ''}`;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', pageIndex === activePageIndex ? 'true' : 'false');
+      tab.setAttribute('aria-controls', 'mitzvot-grid');
+      tab.id = `mitzvot-page-tab-${pageIndex}`;
+      tab.textContent = `${startMitzvah}-${endMitzvah}`;
+      tab.addEventListener('click', () => {
+        activePageIndex = pageIndex;
+        applyFilters({ preservePage: true });
+      });
+
+      pageTabs.appendChild(tab);
+    }
+  }
 
   function renderVisibleMitzvot(visible) {
+    const currentPage = getVisiblePage(visible);
+    renderPageTabs(visible);
+
+    const pageStart = activePageIndex * pageSize;
+    const pageEnd = Math.min(pageStart + currentPage.length, visible.length);
+
     if (resultsCount) {
-      resultsCount.textContent = `Showing ${visible.length} of ${mitzvot.length} mitzvot.`;
+      resultsCount.textContent = visible.length
+        ? `Showing ${pageStart + 1}-${pageEnd} of ${visible.length} filtered mitzvot (${mitzvot.length} total).`
+        : `Showing 0 of ${mitzvot.length} mitzvot.`;
     }
 
     if (!grid) return;
     grid.innerHTML = '';
 
-    if (!visible.length) {
+    if (!currentPage.length) {
       grid.innerHTML = '<p class="reader-status">No mitzvot match the current filters.</p>';
       return;
     }
 
     const fragment = document.createDocumentFragment();
-    visible.forEach((mitzvah) => {
+    currentPage.forEach((mitzvah) => {
       fragment.appendChild(renderMitzvahCard(mitzvah, { onViewVerse: options.onViewVerse }));
     });
 
     grid.appendChild(fragment);
   }
 
-  function navigateToMitzvah(number) {
+  function navigateToMitzvah(number, collection = mitzvot) {
     const mitzvah = getMitzvahByNumber(number);
     if (!mitzvah) {
       if (resultsCount) {
@@ -73,6 +134,17 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
       }
       return;
     }
+
+    const matchIndex = collection.findIndex((item) => item.id === mitzvah.id);
+    if (matchIndex === -1) {
+      if (resultsCount) {
+        resultsCount.textContent = `Mitzvah #${mitzvah.id} is outside the current filters.`;
+      }
+      return;
+    }
+
+    activePageIndex = Math.floor(matchIndex / pageSize);
+    renderVisibleMitzvot(collection);
 
     const card = container.querySelector(`#mitzvah-${mitzvah.id}`);
     if (!card) return;
@@ -84,13 +156,24 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
     }, 3000);
   }
 
-  function applyFilters() {
+  function applyFilters({ preservePage = false } = {}) {
     const rawSearch = (searchInput?.value || '').trim();
     const numericSearch = /^\d+$/.test(rawSearch);
 
+    if (!preservePage) {
+      activePageIndex = 0;
+    }
+
     if (numericSearch) {
-      renderVisibleMitzvot([...mitzvot]);
-      navigateToMitzvah(rawSearch);
+      const keywordMatches = searchMitzvot('');
+      const categoryMatches = filterByCategory(categoryFilter?.value || 'All');
+      const typeMatches = filterByType(typeFilter?.value || 'All');
+
+      const categoryIds = new Set(categoryMatches.map((item) => item.id));
+      const typeIds = new Set(typeMatches.map((item) => item.id));
+      const filtered = keywordMatches.filter((item) => categoryIds.has(item.id) && typeIds.has(item.id));
+
+      navigateToMitzvah(rawSearch, filtered);
       return;
     }
 
