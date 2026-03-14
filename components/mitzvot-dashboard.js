@@ -15,6 +15,8 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
   if (!container) return;
 
   const mitzvot = await loadMitzvot();
+  const firstLoadedMitzvah = mitzvot[0]?.id ?? 0;
+  const lastLoadedMitzvah = mitzvot[mitzvot.length - 1]?.id ?? 0;
   setMitzvotCollection(mitzvot);
 
   container.innerHTML = `
@@ -130,7 +132,7 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
     const mitzvah = getMitzvahByNumber(number);
     if (!mitzvah) {
       if (resultsCount) {
-        resultsCount.textContent = 'Mitzvah not yet loaded. Currently available: 1–100.';
+        resultsCount.textContent = `Mitzvah not yet loaded. Currently available: ${firstLoadedMitzvah}–${lastLoadedMitzvah}.`;
       }
       return;
     }
