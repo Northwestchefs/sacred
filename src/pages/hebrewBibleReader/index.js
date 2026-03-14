@@ -5,6 +5,7 @@ import {
   renderChapterOptions,
   renderSearchResults,
   renderSearchSummary,
+  renderSearchPagination,
   renderStatus,
   renderVerses,
   updateChapterNav,
@@ -16,6 +17,7 @@ import { parseReferenceInput } from '../../search/hebrewBible/parseReference.js'
 import { createEnglishBibleDataLayer } from '../../data/englishBible/index.js';
 
 const READER_PREFERENCES_KEY = 'sacred.hebrewBible.preferences';
+const SEARCH_RESULTS_PAGE_SIZE = 25;
 
 function safeParsePositiveInteger(value) {
   const numeric = Number(value);
@@ -257,6 +259,10 @@ async function initializeReaderPage() {
   const zenModeInput = document.querySelector('#toggle-zen-mode');
   const zenModeExitButton = document.querySelector('#zen-mode-exit');
   const searchScopeSelect = document.querySelector('#search-scope');
+  const searchPaginationElement = document.querySelector('#search-pagination');
+  const searchPagePreviousButton = document.querySelector('#search-page-previous');
+  const searchPageNextButton = document.querySelector('#search-page-next');
+  const searchPageStatusElement = document.querySelector('#search-page-status');
   const previousChapterButton = document.querySelector('#previous-chapter');
   const nextChapterButton = document.querySelector('#next-chapter');
   const displayModeSelect = document.querySelector('#display-mode-select');
@@ -276,6 +282,8 @@ async function initializeReaderPage() {
   let searchIndex = null;
   let searchIndexPromise = null;
   let currentSearchScope = 'all';
+  let currentSearchResults = [];
+  let currentSearchPage = 1;
 
   function applyPreferences() {
     document.documentElement.style.setProperty('--verse-size', `${readerPreferences.fontScale / 100}rem`);
@@ -291,6 +299,54 @@ async function initializeReaderPage() {
     if (displayModeSelect) {
       displayModeSelect.value = state.getState().displayMode || 'parallel';
     }
+  }
+
+  function getSearchScopeLabel(searchedBookSlug) {
+    return searchedBookSlug ? 'the current book' : 'all books';
+  }
+
+  function updateSearchResultsPage() {
+    const totalResults = currentSearchResults.length;
+    const totalPages = Math.max(1, Math.ceil(totalResults / SEARCH_RESULTS_PAGE_SIZE));
+    const safePage = Math.min(Math.max(1, currentSearchPage), totalPages);
+    const start = (safePage - 1) * SEARCH_RESULTS_PAGE_SIZE;
+    const end = start + SEARCH_RESULTS_PAGE_SIZE;
+
+    currentSearchPage = safePage;
+    renderSearchResults(searchResultsList, currentSearchResults.slice(start, end));
+    renderSearchPagination(
+      {
+        container: searchPaginationElement,
+        previousButton: searchPagePreviousButton,
+        nextButton: searchPageNextButton,
+        statusElement: searchPageStatusElement,
+      },
+      {
+        totalResults,
+        pageSize: SEARCH_RESULTS_PAGE_SIZE,
+        currentPage: safePage,
+      }
+    );
+  }
+
+  function clearSearchResults() {
+    currentSearchResults = [];
+    currentSearchPage = 1;
+    renderSearchResults(searchResultsList, []);
+    renderSearchSummary(searchSummaryElement, { query: '', totalResults: 0 });
+    renderSearchPagination(
+      {
+        container: searchPaginationElement,
+        previousButton: searchPagePreviousButton,
+        nextButton: searchPageNextButton,
+        statusElement: searchPageStatusElement,
+      },
+      {
+        totalResults: 0,
+        pageSize: SEARCH_RESULTS_PAGE_SIZE,
+        currentPage: 1,
+      }
+    );
   }
 
   function updateHeader(nextState) {
@@ -326,6 +382,8 @@ async function initializeReaderPage() {
     searchForm,
     searchInput,
     searchScopeSelect,
+    searchPagePreviousButton,
+    searchPageNextButton,
     previousChapterButton,
     nextChapterButton,
     displayModeSelect,
@@ -349,6 +407,24 @@ async function initializeReaderPage() {
     onSearchScopeChange: (scope) => {
       currentSearchScope = scope === 'current' ? 'current' : 'all';
     },
+    onSearchPreviousPage: () => {
+      if (currentSearchPage <= 1) {
+        return;
+      }
+
+      currentSearchPage -= 1;
+      updateSearchResultsPage();
+    },
+    onSearchNextPage: () => {
+      const totalPages = Math.ceil(currentSearchResults.length / SEARCH_RESULTS_PAGE_SIZE);
+
+      if (currentSearchPage >= totalPages) {
+        return;
+      }
+
+      currentSearchPage += 1;
+      updateSearchResultsPage();
+    },
     onPreviousChapter: async () => {
       await navigateRelativeChapter(-1);
     },
@@ -366,6 +442,8 @@ async function initializeReaderPage() {
       });
     },
   });
+
+  clearSearchResults();
 
   fontScaleInput.addEventListener('input', () => {
     readerPreferences.fontScale = Number(fontScaleInput.value);
@@ -663,16 +741,19 @@ async function initializeReaderPage() {
       options: {
         searchScope: currentSearchScope,
         selectedBookSlug: activeState.selectedBookSlug,
+        maxResults: Number.POSITIVE_INFINITY,
       },
     });
 
     if (result.referenceResult?.type === 'error') {
       renderStatus(statusElement, result.referenceResult.message, 'warning');
-      renderSearchResults(searchResultsList, result.textResults);
+      currentSearchResults = result.textResults;
+      currentSearchPage = 1;
+      updateSearchResultsPage();
       renderSearchSummary(searchSummaryElement, {
         query,
         totalResults: result.textResults.length,
-        scopeLabel: result.searchedBookSlug ? 'the current book' : 'all books',
+        scopeLabel: getSearchScopeLabel(result.searchedBookSlug),
       });
       return;
     }
@@ -685,17 +766,18 @@ async function initializeReaderPage() {
       });
 
       if (options.preferReferenceOnly) {
-        renderSearchResults(searchResultsList, []);
-        renderSearchSummary(searchSummaryElement, { query: '', totalResults: 0 });
+        clearSearchResults();
         return;
       }
     }
 
-    renderSearchResults(searchResultsList, result.textResults);
+    currentSearchResults = result.textResults;
+    currentSearchPage = 1;
+    updateSearchResultsPage();
     renderSearchSummary(searchSummaryElement, {
       query,
       totalResults: result.textResults.length,
-      scopeLabel: result.searchedBookSlug ? 'the current book' : 'all books',
+      scopeLabel: getSearchScopeLabel(result.searchedBookSlug),
     });
 
     if (result.message) {

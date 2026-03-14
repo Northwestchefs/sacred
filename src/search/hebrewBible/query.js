@@ -19,6 +19,7 @@ function runSearchQuery({ query, books, searchIndex, options = {} }) {
   const {
     searchScope = 'all',
     selectedBookSlug = null,
+    maxResults = Number.POSITIVE_INFINITY,
   } = options;
   const trimmed = String(query ?? '').trim();
 
@@ -61,6 +62,7 @@ function runSearchQuery({ query, books, searchIndex, options = {} }) {
 
   const textResults = searchHebrewText(searchIndex, trimmed, {
     bookSlug: scopedBookSlug,
+    maxResults,
   });
 
   return {

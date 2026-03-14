@@ -53,7 +53,7 @@ function hasVerse(index, bookSlug, chapter, verse) {
 
 function searchHebrewText(index, query, options = {}) {
   const {
-    maxResults = 40,
+    maxResults = Number.POSITIVE_INFINITY,
     bookSlug = null,
   } = options;
   const trimmed = String(query ?? '').trim();
@@ -88,7 +88,7 @@ function searchHebrewText(index, query, options = {}) {
       text,
     });
 
-    if (matches.length >= maxResults) {
+    if (Number.isFinite(maxResults) && matches.length >= maxResults) {
       break;
     }
   }
