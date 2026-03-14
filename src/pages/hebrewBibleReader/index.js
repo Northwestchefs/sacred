@@ -475,20 +475,6 @@ async function initializeReaderPage() {
     saveReaderPreferences(readerPreferences);
   });
 
-  searchResultsList.addEventListener('click', async (event) => {
-    const button = event.target.closest('button[data-book][data-chapter]');
-
-    if (!button) {
-      return;
-    }
-
-    await applyBookSelection(button.dataset.book, {
-      autoSelectChapter: false,
-      chapterOverride: safeParsePositiveInteger(button.dataset.chapter),
-      verseOverride: safeParsePositiveInteger(button.dataset.verse),
-    });
-  });
-
 
   function getAdjacentChapterOffset(offset) {
     const activeState = state.getState();

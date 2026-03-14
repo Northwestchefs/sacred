@@ -153,12 +153,17 @@ function renderSearchResults(listElement, results) {
 
   for (const result of results) {
     const item = document.createElement('li');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'result-button';
-    button.dataset.book = result.bookSlug;
-    button.dataset.chapter = String(result.chapter);
-    button.dataset.verse = String(result.verse || '');
+    const link = document.createElement('a');
+    const params = new URLSearchParams({
+      book: String(result.bookSlug || ''),
+      chapter: String(result.chapter || ''),
+      verse: String(result.verse || ''),
+    });
+
+    link.className = 'result-button';
+    link.href = `./?${params.toString()}`;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
 
     const ref = document.createElement('span');
     ref.className = 'result-reference';
@@ -170,7 +175,7 @@ function renderSearchResults(listElement, results) {
     text.lang = 'he';
     text.textContent = result.text;
 
-    button.append(ref, text);
+    link.append(ref, text);
 
     const englishText = getEnglishText(result);
     if (englishText) {
@@ -179,9 +184,9 @@ function renderSearchResults(listElement, results) {
       translation.dir = 'ltr';
       translation.lang = 'en';
       translation.textContent = englishText;
-      button.append(translation);
+      link.append(translation);
     }
-    item.appendChild(button);
+    item.appendChild(link);
     listElement.appendChild(item);
   }
 }

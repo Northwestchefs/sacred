@@ -255,6 +255,8 @@ button:focus-visible,
   background: #fff;
   display: grid;
   gap: 0.24rem;
+  text-decoration: none;
+  color: inherit;
 }
 
 .result-reference {
