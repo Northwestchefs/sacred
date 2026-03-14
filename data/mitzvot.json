@@ -3498,5 +3498,505 @@
     "torahSource": "Numbers 35:31",
     "description": "Do not commute capital murder liability through financial payment.",
     "notes": "Affirms gravity of bloodshed in law"
+  },
+  {
+    "id": 351,
+    "title": "Do Not Accept Ransom to Spare Exile for a Manslayer",
+    "hebrew": "ולא תקחו כפר לנוס אל עיר מקלטו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Numbers 35:32",
+    "description": "Do not substitute payment for the exile requirement in accidental homicide cases.",
+    "notes": "Preserves integrity of refuge-city law"
+  },
+  {
+    "id": 352,
+    "title": "Appoint Judges and Officers in Every Community",
+    "hebrew": "שפטים ושטרים תתן לך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:18",
+    "description": "Establish local courts and enforcement officers to uphold Torah law.",
+    "notes": "Foundational judicial infrastructure"
+  },
+  {
+    "id": 353,
+    "title": "Do Not Plant an Asherah Near the Altar",
+    "hebrew": "לא תטע לך אשרה",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:21",
+    "description": "Do not plant idolatrous trees or symbols in sacred service areas.",
+    "notes": "Separates worship from pagan practice"
+  },
+  {
+    "id": 354,
+    "title": "Do Not Erect a Forbidden Idolatrous Pillar",
+    "hebrew": "ולא תקים לך מצבה",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:22",
+    "description": "Do not establish stone monuments associated with idolatrous worship modes.",
+    "notes": "Prevents imitation of idol cult forms"
+  },
+  {
+    "id": 355,
+    "title": "Do Not Offer a Blemished Animal",
+    "hebrew": "לא תזבח לה׳ אלהיך שור ושה אשר יהיה בו מום",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:1",
+    "description": "Do not sacrifice animals with disqualifying defects.",
+    "notes": "Sanctity standard for offerings"
+  },
+  {
+    "id": 356,
+    "title": "Eliminate Idolatry from the Community Through Due Process",
+    "hebrew": "והוצאת את האיש ההוא או את האשה ההיא",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:5",
+    "description": "After valid testimony and trial, remove confirmed public idolatry from Israel.",
+    "notes": "Requires court procedure and evidence"
+  },
+  {
+    "id": 357,
+    "title": "Heed the Rulings of the Supreme Court",
+    "hebrew": "על פי התורה אשר יורוך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:11",
+    "description": "Follow authoritative legal decisions issued by the highest Torah court.",
+    "notes": "Maintains national legal unity"
+  },
+  {
+    "id": 358,
+    "title": "Do Not Deviate from Authoritative Torah Rulings",
+    "hebrew": "לא תסור מן הדבר",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:11",
+    "description": "Do not turn aside from binding court rulings right or left.",
+    "notes": "Companion to obeying the court"
+  },
+  {
+    "id": 359,
+    "title": "Do Not Appoint an Unqualified or Foreign King",
+    "hebrew": "לא תוכל לתת עליך איש נכרי",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:15",
+    "description": "National leadership must meet Torah criteria and covenantal identity.",
+    "notes": "Limits royal appointment"
+  },
+  {
+    "id": 360,
+    "title": "A King Must Write and Keep a Torah Scroll",
+    "hebrew": "וכתב לו את משנה התורה הזאת",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:18",
+    "description": "The king is commanded to maintain a Torah copy for continual guidance.",
+    "notes": "Royal humility and accountability"
+  },
+  {
+    "id": 361,
+    "title": "Do Not Multiply Horses Excessively for the King",
+    "hebrew": "לא ירבה לו סוסים",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:16",
+    "description": "A king must avoid military overreliance and pride through horse accumulation.",
+    "notes": "Restrains political excess"
+  },
+  {
+    "id": 362,
+    "title": "Do Not Multiply Wives Excessively for the King",
+    "hebrew": "ולא ירבה לו נשים",
+    "category": "Family Life",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:17",
+    "description": "The king must not take many wives lest his heart turn away.",
+    "notes": "Ethical limit on monarchy"
+  },
+  {
+    "id": 363,
+    "title": "Do Not Accumulate Excessive Silver and Gold for the King",
+    "hebrew": "וכסף וזהב לא ירבה לו מאד",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:17",
+    "description": "The king may not hoard wealth beyond proper bounds.",
+    "notes": "Guards against exploitative rule"
+  },
+  {
+    "id": 364,
+    "title": "Provide Priestly Portions from Certain Slaughtered Animals",
+    "hebrew": "ונתן לכהן הזרוע והלחיים והקבה",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:3",
+    "description": "Give designated portions to priests from eligible domestic slaughter.",
+    "notes": "Supports priestly service"
+  },
+  {
+    "id": 365,
+    "title": "Give First Shearing of Sheep to the Priest",
+    "hebrew": "ראשית גז צאנך תתן לו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:4",
+    "description": "Set aside first wool shearing for the priest.",
+    "notes": "Agricultural gift obligation"
+  },
+  {
+    "id": 366,
+    "title": "Do Not Practice Divination",
+    "hebrew": "לא ימצא בך... קסם קסמים",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 18:10",
+    "description": "Do not seek hidden knowledge through divinatory practices.",
+    "notes": "Rejects occult forms"
+  },
+  {
+    "id": 367,
+    "title": "Do Not Practice Sorcery or Witchcraft",
+    "hebrew": "לא ימצא בך... מכשף",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 18:10",
+    "description": "Do not employ magical rites contrary to Torah worship.",
+    "notes": "Prohibits manipulative occult power"
+  },
+  {
+    "id": 368,
+    "title": "Do Not Consult Mediums or Necromancers",
+    "hebrew": "ושאל אוב וידעני",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 18:11",
+    "description": "Do not seek guidance from spirit-medium practices.",
+    "notes": "Exclusive trust in God"
+  },
+  {
+    "id": 369,
+    "title": "Be Wholehearted with God",
+    "hebrew": "תמים תהיה עם ה׳ אלהיך",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:13",
+    "description": "Walk with simple faithfulness and integrity before God.",
+    "notes": "Spiritual counterpoint to divination"
+  },
+  {
+    "id": 370,
+    "title": "Listen to a True Prophet",
+    "hebrew": "אליו תשמעון",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 18:15",
+    "description": "Heed the words of an authenticated prophet sent by God.",
+    "notes": "Prophetic authority within Torah bounds"
+  },
+  {
+    "id": 371,
+    "title": "Do Not Withhold Testimony When You Know Evidence",
+    "hebrew": "והוא עד או ראה או ידע אם לוא יגיד",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Leviticus 5:1",
+    "description": "One who witnessed relevant facts must testify when required.",
+    "notes": "Ensures judicial truth"
+  },
+  {
+    "id": 372,
+    "title": "Do Not Fear to Execute Justice Against Violent Wrongdoers",
+    "hebrew": "לא תחוס עינך",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 19:13",
+    "description": "Do not let misplaced pity obstruct lawful punishment in severe cases.",
+    "notes": "Affirms deterrence and justice"
+  },
+  {
+    "id": 373,
+    "title": "Investigate Witnesses Thoroughly",
+    "hebrew": "ודרשו השפטים היטב",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:18",
+    "description": "Courts must examine testimony carefully before judgment.",
+    "notes": "Due diligence in legal process"
+  },
+  {
+    "id": 374,
+    "title": "Punish False Witnesses with Their Intended Penalty",
+    "hebrew": "ועשיתם לו כאשר זמם",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:19",
+    "description": "Apply reciprocal penalty to conspiring false witnesses.",
+    "notes": "Protects courts from perjury"
+  },
+  {
+    "id": 375,
+    "title": "Do Not Add to Torah Commandments",
+    "hebrew": "לא תספו על הדבר",
+    "category": "Torah Study",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:1",
+    "description": "Do not present innovations as additional divine commandments.",
+    "notes": "Preserves integrity of revealed law"
+  },
+  {
+    "id": 376,
+    "title": "Do Not Subtract from Torah Commandments",
+    "hebrew": "ולא תגרעו ממנו",
+    "category": "Torah Study",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:1",
+    "description": "Do not remove binding elements of Torah law.",
+    "notes": "Companion to prohibition on adding"
+  },
+  {
+    "id": 377,
+    "title": "Destroy Idolatrous Objects and Their Names",
+    "hebrew": "ואבדתם את שמם מן המקום ההוא",
+    "category": "Faith",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 12:3",
+    "description": "Eradicate idolatrous worship artifacts from the land.",
+    "notes": "Active removal of idol influence"
+  },
+  {
+    "id": 378,
+    "title": "Do Not Erase or Destroy God’s Holy Name",
+    "hebrew": "לא תעשון כן לה׳ אלהיכם",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 12:4",
+    "description": "Do not treat sacred names with destructive disrespect.",
+    "notes": "Basis for reverence in writing"
+  },
+  {
+    "id": 379,
+    "title": "Bring Firstborn Kosher Animals for Sacred Offering",
+    "hebrew": "כל הבכור אשר יולד בבקרך ובצאנך",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Consecrate and bring firstborn herd/flock males according to law.",
+    "notes": "Firstborn sanctity requirement"
+  },
+  {
+    "id": 380,
+    "title": "Do Not Work a Sanctified Firstborn Ox",
+    "hebrew": "לא תעבד בבכר שורך",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Do not use a consecrated firstborn ox for labor.",
+    "notes": "Protects dedicated status"
+  },
+  {
+    "id": 381,
+    "title": "Do Not Shear a Sanctified Firstborn Sheep",
+    "hebrew": "ולא תגז בכר צאנך",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Do not shear wool from a consecrated firstborn sheep.",
+    "notes": "Prevents profane benefit"
+  },
+  {
+    "id": 382,
+    "title": "Eat Tithes in Purity and Proper Place",
+    "hebrew": "ואכלת לפני ה׳ אלהיך מעשר דגנך",
+    "category": "Temple",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 14:23",
+    "description": "Consume designated sacred produce under required conditions.",
+    "notes": "Tithe practice tied to Jerusalem"
+  },
+  {
+    "id": 383,
+    "title": "Do Not Consume Tithe Grain While in Ritual Impurity",
+    "hebrew": "לא בערתי ממנו בטמא",
+    "category": "Purity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 26:14",
+    "description": "Do not eat sacred tithe produce when impure.",
+    "notes": "Purity safeguard for holy food"
+  },
+  {
+    "id": 384,
+    "title": "Do Not Eat Firstborn Offerings Outside Jerusalem",
+    "hebrew": "לא תוכל לאכל בשעריך... ובכרת בקרך וצאנך",
+    "category": "Temple",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 12:17",
+    "description": "Do not consume firstborn sacrificial meat outside the chosen place.",
+    "notes": "Centralization of sacred eating"
+  },
+  {
+    "id": 385,
+    "title": "Separate a Second Tithe from Produce",
+    "hebrew": "עשר תעשר",
+    "category": "Agriculture",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 14:22",
+    "description": "Set aside annual second tithe from agricultural increase.",
+    "notes": "Structured holiness in harvest economy"
+  },
+  {
+    "id": 386,
+    "title": "Set Aside Tithe for the Poor in the Third and Sixth Years",
+    "hebrew": "מקצה שלש שנים תוציא את כל מעשר תבואתך",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 14:28",
+    "description": "In designated years, allocate tithe share for vulnerable members.",
+    "notes": "Maaser ani cycle"
+  },
+  {
+    "id": 387,
+    "title": "Do Not Demand Payment from a Debtor During Shemitah Release",
+    "hebrew": "לא יגש את רעהו",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:2",
+    "description": "Suspend collection pressure on qualifying debts in the release year.",
+    "notes": "Economic reset and compassion"
+  },
+  {
+    "id": 388,
+    "title": "Release Debts in the Sabbatical Year",
+    "hebrew": "שמוט כל בעל משה ידו",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:2",
+    "description": "Observe debt remission at the close of the shemitah cycle.",
+    "notes": "Financial justice rhythm"
+  },
+  {
+    "id": 389,
+    "title": "Do Not Refuse a Loan Because Shemitah Approaches",
+    "hebrew": "השמר לך פן יהיה דבר עם לבבך בליעל",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:9",
+    "description": "Do not harden your heart against lending before debt release.",
+    "notes": "Protects needy borrowers"
+  },
+  {
+    "id": 390,
+    "title": "Give Generously to the Poor",
+    "hebrew": "פתוח תפתח את ידך לו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:8",
+    "description": "Provide sufficient support to those in financial need.",
+    "notes": "Core obligation of tzedakah"
+  },
+  {
+    "id": 391,
+    "title": "Grant Severance Gifts to a Freed Hebrew Servant",
+    "hebrew": "הענק תעניק לו",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:14",
+    "description": "Provide meaningful resources when releasing a Hebrew servant.",
+    "notes": "Restorative transition command"
+  },
+  {
+    "id": 392,
+    "title": "Do Not Send a Freed Hebrew Servant Away Empty",
+    "hebrew": "לא תשלחנו ריקם",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:13",
+    "description": "Upon release, do not dismiss a servant without support.",
+    "notes": "Companion to severance obligation"
+  },
+  {
+    "id": 393,
+    "title": "Rejoice on Pilgrimage Festivals",
+    "hebrew": "ושמחת בחגך",
+    "category": "Festivals",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:14",
+    "description": "Celebrate before God with household, Levite, and vulnerable members.",
+    "notes": "Joy as commanded worship"
+  },
+  {
+    "id": 394,
+    "title": "Do Not Appear in the Temple Empty-Handed on Pilgrimage",
+    "hebrew": "ולא יראה את פני ה׳ ריקם",
+    "category": "Festivals",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:16",
+    "description": "Bring an offering appropriate to blessing received on festival pilgrimage.",
+    "notes": "Pilgrimage gift requirement"
+  },
+  {
+    "id": 395,
+    "title": "Set Aside a Place for Human Waste Outside the Camp",
+    "hebrew": "ויד תהיה לך מחוץ למחנה",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:13",
+    "description": "Designate sanitary areas beyond the camp perimeter.",
+    "notes": "Holiness includes camp hygiene"
+  },
+  {
+    "id": 396,
+    "title": "Carry and Use a Tool to Cover Waste",
+    "hebrew": "ויתד תהיה לך על אזנך",
+    "category": "Purity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:14",
+    "description": "Use proper tools to bury waste and preserve camp sanctity.",
+    "notes": "Practical dignity command"
+  },
+  {
+    "id": 397,
+    "title": "Do Not Return an Escaped Slave to a Cruel Master",
+    "hebrew": "לא תסגיר עבד אל אדניו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 23:16",
+    "description": "Do not extradite a fleeing slave seeking refuge.",
+    "notes": "Protection for vulnerable escapees"
+  },
+  {
+    "id": 398,
+    "title": "Do Not Charge Interest on Loans to a Fellow Jew",
+    "hebrew": "לא תשיך לאחיך",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 23:20",
+    "description": "Do not impose interest on qualifying loans to fellow Israelites.",
+    "notes": "Preserves communal solidarity"
+  },
+  {
+    "id": 399,
+    "title": "Fulfill Verbal Vows Promptly",
+    "hebrew": "מוצא שפתיך תשמר ועשית",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:24",
+    "description": "Keep and perform commitments made by speech.",
+    "notes": "Reliability in sacred language"
+  },
+  {
+    "id": 400,
+    "title": "Allow a Hired Worker to Eat While Working in Produce",
+    "hebrew": "ואכלת ענבים כנפשך שבעך",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:25",
+    "description": "Permit laborers to eat produce by hand during active field work.",
+    "notes": "Worker dignity and immediate sustenance"
   }
 ]
