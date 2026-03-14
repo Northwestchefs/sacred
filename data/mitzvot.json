@@ -1498,5 +1498,505 @@
     "torahSource": "Leviticus 25:35",
     "description": "Strengthen a vulnerable person with timely support before collapse.",
     "notes": "Preventive model of tzedakah"
+  },
+  {
+    "id": 151,
+    "title": "Give an Interest-Free Loan to the Poor",
+    "hebrew": "אם כסף תלוה את עמי",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Exodus 22:24",
+    "description": "Lend money to those in need without exploitation.",
+    "notes": "Priority form of financial support"
+  },
+  {
+    "id": 152,
+    "title": "Do Not Charge Interest to a Fellow Jew",
+    "hebrew": "לא תשיך לאחיך",
+    "category": "Agriculture & Economy",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 23:20",
+    "description": "Do not impose usury on loans made within the covenant community.",
+    "notes": "Prohibition of ribit"
+  },
+  {
+    "id": 153,
+    "title": "Do Not Cause a Borrower to Pay Interest",
+    "hebrew": "לא תשימון עליו נשך",
+    "category": "Agriculture & Economy",
+    "type": "Negative",
+    "torahSource": "Exodus 22:24",
+    "description": "Do not structure or facilitate lending terms that extract interest.",
+    "notes": "Includes all parties assisting prohibited interest"
+  },
+  {
+    "id": 154,
+    "title": "Return a Pledge to Its Owner When Needed",
+    "hebrew": "השב תשיב לו את העבוט",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Exodus 22:25",
+    "description": "Return collateral at times when the debtor needs it for daily life.",
+    "notes": "Protects dignity of the poor"
+  },
+  {
+    "id": 155,
+    "title": "Do Not Seize Essential Collateral by Force",
+    "hebrew": "לא תחבל בגד אלמנה",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:17",
+    "description": "Do not take critical garments or tools as coercive security.",
+    "notes": "Especially protects vulnerable debtors"
+  },
+  {
+    "id": 156,
+    "title": "Pay a Day Laborer on Time",
+    "hebrew": "ביומו תתן שכרו",
+    "category": "Labor Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:15",
+    "description": "Provide wages promptly at the end of the work period.",
+    "notes": "Timely compensation command"
+  },
+  {
+    "id": 157,
+    "title": "Do Not Delay a Worker's Wages",
+    "hebrew": "לא תלין פעולת שכיר אתך עד בקר",
+    "category": "Labor Ethics",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:13",
+    "description": "Do not withhold earned pay beyond its due time.",
+    "notes": "Linked to economic justice"
+  },
+  {
+    "id": 158,
+    "title": "Allow a Worker to Eat from Produce While Working",
+    "hebrew": "ואכלת ענבים כנפשך שבעך",
+    "category": "Labor Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:25",
+    "description": "Permit agricultural workers to eat produce during harvest labor.",
+    "notes": "Worker dignity and sustenance"
+  },
+  {
+    "id": 159,
+    "title": "Do Not Muzzle an Ox While It Treads Grain",
+    "hebrew": "לא תחסם שור בדישו",
+    "category": "Animal Welfare",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:4",
+    "description": "Do not prevent an animal from eating while it performs threshing work.",
+    "notes": "Source for compassion in labor"
+  },
+  {
+    "id": 160,
+    "title": "Help Unload an Overburdened Animal",
+    "hebrew": "עזב תעזב עמו",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Exodus 23:5",
+    "description": "Assist in relieving the burden of a struggling animal.",
+    "notes": "Combines kindness and responsibility"
+  },
+  {
+    "id": 161,
+    "title": "Help Raise a Fallen Animal of Another",
+    "hebrew": "הקם תקים עמו",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:4",
+    "description": "Help restore a fallen beast and its load to stability.",
+    "notes": "Mutual aid in public life"
+  },
+  {
+    "id": 162,
+    "title": "Return Lost Property",
+    "hebrew": "השב תשיבם לאחיך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:1",
+    "description": "Actively return identifiable lost items to their owner.",
+    "notes": "Hashavat aveidah"
+  },
+  {
+    "id": 163,
+    "title": "Do Not Ignore Lost Property",
+    "hebrew": "לא תוכל להתעלם",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 22:3",
+    "description": "Do not turn away when you can assist in restoring a loss.",
+    "notes": "Prohibits moral indifference"
+  },
+  {
+    "id": 164,
+    "title": "Use Honest Weights and Measures",
+    "hebrew": "אבן שלמה וצדק יהיה לך",
+    "category": "Business Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:15",
+    "description": "Maintain accurate standards in trade and commerce.",
+    "notes": "Integrity in marketplace dealings"
+  },
+  {
+    "id": 165,
+    "title": "Do Not Keep False Weights",
+    "hebrew": "לא יהיה לך בכיסך אבן ואבן",
+    "category": "Business Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:13",
+    "description": "Do not possess deceptive tools for cheating buyers or sellers.",
+    "notes": "Prohibits fraud infrastructure"
+  },
+  {
+    "id": 166,
+    "title": "Judge Cases with Righteous Justice",
+    "hebrew": "בצדק תשפט עמיתך",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:15",
+    "description": "Apply fair legal judgment without bias.",
+    "notes": "Foundation of Jewish civil law"
+  },
+  {
+    "id": 167,
+    "title": "Do Not Pervert Justice",
+    "hebrew": "לא תטה משפט",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 16:19",
+    "description": "Do not distort legal outcomes from truth and fairness.",
+    "notes": "Protects trust in courts"
+  },
+  {
+    "id": 168,
+    "title": "Do Not Favor the Poor in Judgment",
+    "hebrew": "ודל לא תהדר בריבו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:3",
+    "description": "Compassion must not override factual and legal accuracy in court.",
+    "notes": "Impartiality applies to all sides"
+  },
+  {
+    "id": 169,
+    "title": "Do Not Show Partiality to the Great",
+    "hebrew": "ולא תהדר פני גדול",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Leviticus 19:15",
+    "description": "Status and power must not influence legal rulings.",
+    "notes": "Equal justice principle"
+  },
+  {
+    "id": 170,
+    "title": "Do Not Take Bribes",
+    "hebrew": "ושחד לא תקח",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:8",
+    "description": "Reject gifts that bias judgment.",
+    "notes": "Bribery blinds discernment"
+  },
+  {
+    "id": 171,
+    "title": "Do Not Accept False Testimony",
+    "hebrew": "לא תשא שמע שוא",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 23:1",
+    "description": "Do not receive or act on baseless testimony in legal matters.",
+    "notes": "Safeguard against fabricated claims"
+  },
+  {
+    "id": 172,
+    "title": "Do Not Bear False Witness",
+    "hebrew": "לא תענה ברעך עד שקר",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Do not testify dishonestly against another person.",
+    "notes": "Part of the Ten Commandments"
+  },
+  {
+    "id": 173,
+    "title": "Investigate Witnesses Diligently",
+    "hebrew": "ודרשת וחקרת ושאלת היטב",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 13:15",
+    "description": "Carefully examine evidence and testimony before ruling.",
+    "notes": "Due process requirement"
+  },
+  {
+    "id": 174,
+    "title": "Follow the Majority in Judicial Decisions",
+    "hebrew": "אחרי רבים להטת",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Exodus 23:2",
+    "description": "In formal court deliberations, legal ruling follows the majority.",
+    "notes": "Basis for judicial procedure"
+  },
+  {
+    "id": 175,
+    "title": "Appoint Judges and Officers",
+    "hebrew": "שפטים ושטרים תתן לך",
+    "category": "Leadership",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 16:18",
+    "description": "Establish a system of courts and enforcement throughout the land.",
+    "notes": "Public legal infrastructure"
+  },
+  {
+    "id": 176,
+    "title": "Honor and Obey the Great Court's Rulings",
+    "hebrew": "לא תסור מן הדבר אשר יגידו לך",
+    "category": "Leadership",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:11",
+    "description": "Follow authoritative legal decisions issued by the central court.",
+    "notes": "Preserves national legal unity"
+  },
+  {
+    "id": 177,
+    "title": "Do Not Deviate from Authoritative Torah Rulings",
+    "hebrew": "לא תסור ימין ושמאל",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:11",
+    "description": "Do not intentionally depart from binding legal guidance.",
+    "notes": "Complements obedience to the court"
+  },
+  {
+    "id": 178,
+    "title": "Do Not Curse a Judge",
+    "hebrew": "אלהים לא תקלל",
+    "category": "Respect",
+    "type": "Negative",
+    "torahSource": "Exodus 22:27",
+    "description": "Do not verbally denigrate those serving in judicial authority.",
+    "notes": "Protects legitimacy of justice"
+  },
+  {
+    "id": 179,
+    "title": "Do Not Curse a Leader of the People",
+    "hebrew": "ונשיא בעמך לא תאור",
+    "category": "Respect",
+    "type": "Negative",
+    "torahSource": "Exodus 22:27",
+    "description": "Do not curse recognized communal leadership.",
+    "notes": "Civic speech boundary"
+  },
+  {
+    "id": 180,
+    "title": "Honor Father and Mother",
+    "hebrew": "כבד את אביך ואת אמך",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Exodus 20:12",
+    "description": "Treat parents with tangible honor in speech and action.",
+    "notes": "Foundational intergenerational mitzvah"
+  },
+  {
+    "id": 181,
+    "title": "Revere Father and Mother",
+    "hebrew": "איש אמו ואביו תיראו",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Leviticus 19:3",
+    "description": "Maintain respectful boundaries and reverence toward parents.",
+    "notes": "Distinct from honoring"
+  },
+  {
+    "id": 182,
+    "title": "Do Not Strike a Parent",
+    "hebrew": "ומכה אביו ואמו מות יומת",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Exodus 21:15",
+    "description": "Physical violence toward parents is strictly forbidden.",
+    "notes": "Severe family ethics prohibition"
+  },
+  {
+    "id": 183,
+    "title": "Do Not Curse a Parent",
+    "hebrew": "ומקלל אביו ואמו מות יומת",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Exodus 21:17",
+    "description": "Do not verbally curse one's father or mother.",
+    "notes": "Guards speech within family life"
+  },
+  {
+    "id": 184,
+    "title": "Be Fruitful and Multiply",
+    "hebrew": "פרו ורבו",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Genesis 1:28",
+    "description": "Build family life and continue human partnership in creation.",
+    "notes": "First command in Torah"
+  },
+  {
+    "id": 185,
+    "title": "Do Not Commit Adultery",
+    "hebrew": "לא תנאף",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Exodus 20:13",
+    "description": "Do not violate marital sanctity through adultery.",
+    "notes": "Part of the Ten Commandments"
+  },
+  {
+    "id": 186,
+    "title": "Do Not Engage in Incestuous Relations",
+    "hebrew": "ערות ... לא תגלה",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Leviticus 18",
+    "description": "Observe Torah boundaries on prohibited intimate relationships.",
+    "notes": "Detailed throughout Leviticus 18"
+  },
+  {
+    "id": 187,
+    "title": "Do Not Have Relations During Niddah",
+    "hebrew": "ואל אשה בנדת טמאתה לא תקרב",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Leviticus 18:19",
+    "description": "Refrain from intimacy during menstruation until halakhic purification.",
+    "notes": "Core family purity law"
+  },
+  {
+    "id": 188,
+    "title": "Sanctify Marriage with Kiddushin",
+    "hebrew": "כי יקח איש אשה",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:1",
+    "description": "Establish marriage through recognized covenantal procedure.",
+    "notes": "Basis for Jewish marriage law"
+  },
+  {
+    "id": 189,
+    "title": "A Divorcing Husband Must Give a Bill of Divorce",
+    "hebrew": "וכתב לה ספר כריתת",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:1",
+    "description": "When divorce occurs, it must be enacted through a valid get.",
+    "notes": "Formal dissolution requirement"
+  },
+  {
+    "id": 190,
+    "title": "Do Not Remarry a Former Spouse After Her Intervening Marriage",
+    "hebrew": "לא יוכל בעלה הראשון ... לשוב לקחתה",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:4",
+    "description": "A first husband may not remarry a divorced wife after she married another.",
+    "notes": "Specific post-divorce restriction"
+  },
+  {
+    "id": 191,
+    "title": "A Groom Is Exempt for One Year to Gladden His Wife",
+    "hebrew": "ושמח את אשתו אשר לקח",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:5",
+    "description": "A newly married man devotes his first year to the wellbeing of his wife.",
+    "notes": "Protects household formation"
+  },
+  {
+    "id": 192,
+    "title": "Perform Yibbum with a Childless Brother's Widow",
+    "hebrew": "יבמה יבא עליה",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:5",
+    "description": "A brother is commanded to marry the widow when applicable.",
+    "notes": "Levirate marriage obligation"
+  },
+  {
+    "id": 193,
+    "title": "Perform Chalitzah if Yibbum Is Not Done",
+    "hebrew": "וחלצה נעלו מעל רגלו",
+    "category": "Family",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:9",
+    "description": "When levirate marriage is declined, release is done via chalitzah.",
+    "notes": "Formal legal ceremony"
+  },
+  {
+    "id": 194,
+    "title": "Do Not Muzzle the Process of Chalitzah",
+    "hebrew": "ככה יעשה לאיש אשר לא יבנה את בית אחיו",
+    "category": "Family",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:9",
+    "description": "Do not bypass required release procedure when yibbum is refused.",
+    "notes": "Ensures lawful family resolution"
+  },
+  {
+    "id": 195,
+    "title": "Circumcise Male Children on the Eighth Day",
+    "hebrew": "וביום השמיני ימול בשר ערלתו",
+    "category": "Covenant",
+    "type": "Positive",
+    "torahSource": "Leviticus 12:3",
+    "description": "Bring sons into the covenant through brit milah at its proper time.",
+    "notes": "Sign of Abrahamic covenant"
+  },
+  {
+    "id": 196,
+    "title": "Redeem the Firstborn Son",
+    "hebrew": "כל בכור בניך תפדה",
+    "category": "Covenant",
+    "type": "Positive",
+    "torahSource": "Exodus 13:13",
+    "description": "Perform pidyon haben for a firstborn son when required.",
+    "notes": "Commemorates Exodus deliverance"
+  },
+  {
+    "id": 197,
+    "title": "Do Not Delay Redemption of the Firstborn Son",
+    "hebrew": "ופדויו מבן חדש תפדה",
+    "category": "Covenant",
+    "type": "Negative",
+    "torahSource": "Numbers 18:16",
+    "description": "Do not postpone the firstborn redemption beyond its proper time.",
+    "notes": "Timeliness in covenant obligations"
+  },
+  {
+    "id": 198,
+    "title": "Sanctify the Firstborn of Kosher Animals",
+    "hebrew": "כל הבכור ... תזכר לה׳ אלהיך",
+    "category": "Temple & Offerings",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Recognize firstborn kosher livestock as sacred to God.",
+    "notes": "Bechor sanctity law"
+  },
+  {
+    "id": 199,
+    "title": "Do Not Work a Sanctified Firstborn Animal",
+    "hebrew": "לא תעבד בבכר שורך",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Do not use a firstborn consecrated animal for labor.",
+    "notes": "Maintains status of sanctified property"
+  },
+  {
+    "id": 200,
+    "title": "Do Not Shear a Sanctified Firstborn Animal",
+    "hebrew": "ולא תגז בכר צאנך",
+    "category": "Temple & Offerings",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 15:19",
+    "description": "Do not shear wool from a firstborn animal dedicated to holiness.",
+    "notes": "Companion prohibition to working the bechor"
   }
 ]
