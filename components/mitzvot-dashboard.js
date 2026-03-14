@@ -50,18 +50,39 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
   const pageTabs = container.querySelector('#mitzvot-page-tabs');
   let activePageIndex = 0;
 
+  function buildPages(visible) {
+    const pages = [];
+
+    for (let start = 0; start < visible.length; start += pageSize) {
+      pages.push({ start, end: Math.min(start + pageSize, visible.length) });
+    }
+
+    if (pages.length > 1) {
+      const lastPage = pages[pages.length - 1];
+      const lastPageLength = lastPage.end - lastPage.start;
+
+      if (lastPageLength === 1) {
+        pages[pages.length - 2].end = lastPage.end;
+        pages.pop();
+      }
+    }
+
+    return pages;
+  }
+
   function getVisiblePage(visible) {
     if (!visible.length) return [];
 
-    const pageCount = Math.max(1, Math.ceil(visible.length / pageSize));
+    const pages = buildPages(visible);
+    const pageCount = Math.max(1, pages.length);
     const safePageIndex = Math.min(activePageIndex, pageCount - 1);
 
     if (safePageIndex !== activePageIndex) {
       activePageIndex = safePageIndex;
     }
 
-    const pageStart = safePageIndex * pageSize;
-    return visible.slice(pageStart, pageStart + pageSize);
+    const page = pages[safePageIndex];
+    return visible.slice(page.start, page.end);
   }
 
   function renderPageTabs(visible) {
@@ -74,11 +95,12 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
     }
 
     pageTabs.hidden = false;
-    const pageCount = Math.ceil(visible.length / pageSize);
+    const pages = buildPages(visible);
+    const pageCount = pages.length;
 
     for (let pageIndex = 0; pageIndex < pageCount; pageIndex += 1) {
-      const pageStart = pageIndex * pageSize;
-      const pageEnd = Math.min((pageIndex + 1) * pageSize, visible.length) - 1;
+      const pageStart = pages[pageIndex].start;
+      const pageEnd = pages[pageIndex].end - 1;
       const startMitzvah = visible[pageStart]?.id ?? pageStart + 1;
       const endMitzvah = visible[pageEnd]?.id ?? pageEnd + 1;
       const tab = document.createElement('button');
@@ -100,11 +122,13 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
   }
 
   function renderVisibleMitzvot(visible) {
+    const pages = buildPages(visible);
     const currentPage = getVisiblePage(visible);
     renderPageTabs(visible);
 
-    const pageStart = activePageIndex * pageSize;
-    const pageEnd = Math.min(pageStart + currentPage.length, visible.length);
+    const page = pages[activePageIndex] ?? { start: 0, end: 0 };
+    const pageStart = page.start;
+    const pageEnd = page.end;
 
     if (resultsCount) {
       resultsCount.textContent = visible.length
@@ -145,7 +169,9 @@ export async function initMitzvotDashboard(containerSelector, options = {}) {
       return;
     }
 
-    activePageIndex = Math.floor(matchIndex / pageSize);
+    const pages = buildPages(collection);
+    const matchPageIndex = pages.findIndex((page) => matchIndex >= page.start && matchIndex < page.end);
+    activePageIndex = Math.max(0, matchPageIndex);
     renderVisibleMitzvot(collection);
 
     const card = container.querySelector(`#mitzvah-${mitzvah.id}`);
