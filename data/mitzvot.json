@@ -3998,5 +3998,505 @@
     "torahSource": "Deuteronomy 23:25",
     "description": "Permit laborers to eat produce by hand during active field work.",
     "notes": "Worker dignity and immediate sustenance"
+  },
+  {
+    "id": 401,
+    "title": "Do Not Place a Worker’s Harvest into a Personal Vessel",
+    "hebrew": "לא תתן בכליך",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 23:25",
+    "description": "A laborer may eat while working but may not collect produce in a personal container.",
+    "notes": "Balances worker rights with owner property rights"
+  },
+  {
+    "id": 402,
+    "title": "Allow a Worker to Eat Standing Grain by Hand",
+    "hebrew": "וקטפת מלילות בידך",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 23:26",
+    "description": "Permit a worker to pluck grain manually for immediate eating during labor.",
+    "notes": "Extends food access in field labor"
+  },
+  {
+    "id": 403,
+    "title": "Do Not Cut a Fellow’s Standing Grain with a Sickle for Personal Taking",
+    "hebrew": "וחרמש לא תניף על קמת רעך",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 23:26",
+    "description": "Do not harvest another person’s crop as if it were your own.",
+    "notes": "Prevents unauthorized taking"
+  },
+  {
+    "id": 404,
+    "title": "Write and Give a Bill of Divorce When Divorcing",
+    "hebrew": "וכתב לה ספר כריתת",
+    "category": "Family Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:1",
+    "description": "A divorce must be formalized through a proper writ given to the wife.",
+    "notes": "Creates clear legal status change"
+  },
+  {
+    "id": 405,
+    "title": "Do Not Remarry a Former Spouse After She Married Another",
+    "hebrew": "לא יוכל בעלה הראשון... לשוב לקחתה",
+    "category": "Family Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:4",
+    "description": "A first husband may not remarry his divorced wife after she married someone else.",
+    "notes": "Protects sanctity of marital transitions"
+  },
+  {
+    "id": 406,
+    "title": "Let a Newly Married Husband Rejoice with His Wife for One Year",
+    "hebrew": "ושמח את אשתו אשר לקח",
+    "category": "Family Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:5",
+    "description": "A newlywed husband should devote his first year to building his marriage.",
+    "notes": "Prioritizes household stability"
+  },
+  {
+    "id": 407,
+    "title": "Do Not Draft a Newlywed Husband for Military or Public Burdens",
+    "hebrew": "לא יצא בצבא ולא יעבר עליו לכל דבר",
+    "category": "Family Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:5",
+    "description": "Do not conscript or burden a newlywed husband during his first year.",
+    "notes": "Protects the formative year of marriage"
+  },
+  {
+    "id": 408,
+    "title": "Do Not Take Millstones as Collateral",
+    "hebrew": "לא יחבל רחים ורכב",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:6",
+    "description": "Do not seize essential food-preparation tools as a pledge.",
+    "notes": "Safeguards a debtor’s basic livelihood"
+  },
+  {
+    "id": 409,
+    "title": "Do Not Kidnap an Israelite",
+    "hebrew": "לא תגנב נפש מאחיו",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:7",
+    "description": "Do not abduct a fellow Israelite for enslavement or sale.",
+    "notes": "Human liberty is inviolable"
+  },
+  {
+    "id": 410,
+    "title": "Leave Forgotten Sheaves for the Poor",
+    "hebrew": "לגר ליתום ולאלמנה יהיה",
+    "category": "Charity",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 24:19",
+    "description": "When a sheaf is forgotten in the field, leave it for vulnerable people.",
+    "notes": "Agricultural social support"
+  },
+  {
+    "id": 411,
+    "title": "Do Not Return to Retrieve a Forgotten Sheaf",
+    "hebrew": "לא תשוב לקחתו",
+    "category": "Charity",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 24:19",
+    "description": "Do not go back to reclaim produce left for the poor.",
+    "notes": "Ensures gifts remain available"
+  },
+  {
+    "id": 412,
+    "title": "Administer Court-Imposed Lashes Where Required",
+    "hebrew": "והכהו לפניו",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:2",
+    "description": "A court must carry out corporal punishment in applicable legal cases.",
+    "notes": "Judicial enforcement under due process"
+  },
+  {
+    "id": 413,
+    "title": "Do Not Exceed the Authorized Number of Lashes",
+    "hebrew": "לא יוסיף",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:3",
+    "description": "Do not administer more lashes than the Torah allows.",
+    "notes": "Protects human dignity in punishment"
+  },
+  {
+    "id": 414,
+    "title": "Do Not Muzzle an Ox While It Threshes",
+    "hebrew": "לא תחסם שור בדישו",
+    "category": "Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:4",
+    "description": "Do not prevent a working animal from eating while it labors.",
+    "notes": "Compassion for laboring creatures"
+  },
+  {
+    "id": 415,
+    "title": "Perform Levirate Marriage When Applicable",
+    "hebrew": "יבמה יבא עליה",
+    "category": "Family Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:5",
+    "description": "A surviving brother should marry his childless brother’s widow when conditions apply.",
+    "notes": "Preserves family continuity"
+  },
+  {
+    "id": 416,
+    "title": "Perform Chalitzah When Levirate Marriage Is Not Done",
+    "hebrew": "וחלצה נעלו מעל רגלו",
+    "category": "Family Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:9",
+    "description": "If levirate marriage is declined, complete formal release through chalitzah.",
+    "notes": "Provides legal closure for the widow"
+  },
+  {
+    "id": 417,
+    "title": "A Levirate Widow Must Not Marry Outside Before Release",
+    "hebrew": "לא תהיה אשת המת החוצה",
+    "category": "Family Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:5",
+    "description": "Before yibbum or chalitzah, the widow may not marry outside the family.",
+    "notes": "Maintains required legal sequence"
+  },
+  {
+    "id": 418,
+    "title": "Maintain Honest Weights and Measures",
+    "hebrew": "אבן שלמה וצדק",
+    "category": "Civil Law",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:15",
+    "description": "Use accurate standards in all commerce.",
+    "notes": "Promotes trust in marketplace dealings"
+  },
+  {
+    "id": 419,
+    "title": "Do Not Keep Fraudulent Weights",
+    "hebrew": "לא יהיה לך בכיסך אבן ואבן",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:13",
+    "description": "Do not possess deceptive heavy and light weights for cheating.",
+    "notes": "Forbids hidden commercial fraud"
+  },
+  {
+    "id": 420,
+    "title": "Do Not Keep Fraudulent Measures",
+    "hebrew": "לא יהיה לך בביתך איפה ואיפה",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:14",
+    "description": "Do not keep inconsistent volume measures for dishonest trade.",
+    "notes": "Forbids manipulation in sales"
+  },
+  {
+    "id": 421,
+    "title": "Remember What Amalek Did",
+    "hebrew": "זכור את אשר עשה לך עמלק",
+    "category": "Memory",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:17",
+    "description": "Recall Amalek’s unprovoked attack on the weak.",
+    "notes": "Moral memory against predatory evil"
+  },
+  {
+    "id": 422,
+    "title": "Do Not Forget Amalek’s Evil",
+    "hebrew": "לא תשכח",
+    "category": "Memory",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 25:19",
+    "description": "Do not allow the memory of Amalek’s cruelty to fade.",
+    "notes": "Sustains historical vigilance"
+  },
+  {
+    "id": 423,
+    "title": "Eradicate the Legacy of Amalek",
+    "hebrew": "תמחה את זכר עמלק",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 25:19",
+    "description": "Eliminate Amalek’s enduring threat when empowered to do so.",
+    "notes": "National defense against genocidal hostility"
+  },
+  {
+    "id": 424,
+    "title": "Bring First Fruits to the Temple",
+    "hebrew": "ולקחת מראשית כל פרי האדמה",
+    "category": "Temple Service",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:2",
+    "description": "Bring first-ripened produce to the Temple in gratitude.",
+    "notes": "Consecrates agricultural beginnings"
+  },
+  {
+    "id": 425,
+    "title": "Recite the Declaration Over First Fruits",
+    "hebrew": "וענית ואמרת",
+    "category": "Temple Service",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:5",
+    "description": "Proclaim the historical confession while presenting first fruits.",
+    "notes": "Links gratitude with national story"
+  },
+  {
+    "id": 426,
+    "title": "Rejoice with Sacred Gifts Before God",
+    "hebrew": "ושמחת בכל הטוב",
+    "category": "Festival",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:11",
+    "description": "Celebrate divine bounty together with Levites and resident strangers.",
+    "notes": "Joy as a commanded spiritual response"
+  },
+  {
+    "id": 427,
+    "title": "Declare the Tithe Confession in Its Proper Time",
+    "hebrew": "ואמרת לפני ה׳ אלהיך בערתי הקדש מן הבית",
+    "category": "Temple Service",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 26:13",
+    "description": "State that required tithes and gifts were separated and distributed correctly.",
+    "notes": "Public accountability in sacred giving"
+  },
+  {
+    "id": 428,
+    "title": "Walk in God’s Ways",
+    "hebrew": "והלכת בדרכיו",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 28:9",
+    "description": "Emulate divine attributes through righteous conduct.",
+    "notes": "Core principle of character refinement"
+  },
+  {
+    "id": 429,
+    "title": "Do Not Add to the Commandments",
+    "hebrew": "לא תוסף עליו",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:1",
+    "description": "Do not present additions as if they were part of Torah law.",
+    "notes": "Preserves integrity of revelation"
+  },
+  {
+    "id": 430,
+    "title": "Do Not Subtract from the Commandments",
+    "hebrew": "ולא תגרע ממנו",
+    "category": "Faith",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 13:1",
+    "description": "Do not remove obligations from Torah law.",
+    "notes": "Prevents erosion of covenant practice"
+  },
+  {
+    "id": 431,
+    "title": "Assemble the Nation for Hakhel in the Sabbatical Year",
+    "hebrew": "הקהל את העם",
+    "category": "Festival",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 31:12",
+    "description": "Gather all Israel to hear Torah publicly after the Sabbatical year.",
+    "notes": "National renewal through shared learning"
+  },
+  {
+    "id": 432,
+    "title": "Each Person Must Write a Torah Scroll",
+    "hebrew": "ועתה כתבו לכם את השירה הזאת",
+    "category": "Torah Study",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 31:19",
+    "description": "Every Jew should participate in writing or acquiring a Torah scroll.",
+    "notes": "Embeds personal bond with Torah text"
+  },
+  {
+    "id": 433,
+    "title": "Appoint a King Over Israel When Nationally Established",
+    "hebrew": "שום תשים עליך מלך",
+    "category": "Leadership",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:15",
+    "description": "Establish covenantal monarchy under Torah conditions when appropriate.",
+    "notes": "Political order under divine law"
+  },
+  {
+    "id": 434,
+    "title": "A King Must Not Acquire Excess Horses",
+    "hebrew": "לא ירבה לו סוסים",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:16",
+    "description": "The king may not multiply horses beyond proper need.",
+    "notes": "Limits militaristic dependence and arrogance"
+  },
+  {
+    "id": 435,
+    "title": "A King Must Not Return the Nation to Egypt for Horses",
+    "hebrew": "ולא ישיב את העם מצרימה",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:16",
+    "description": "Do not create policies that send Israel back toward Egyptian dependence.",
+    "notes": "Rejects reversal of redemption"
+  },
+  {
+    "id": 436,
+    "title": "A King Must Not Take Excess Wives",
+    "hebrew": "ולא ירבה לו נשים",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:17",
+    "description": "The king must not multiply wives in a way that corrupts his heart.",
+    "notes": "Guards moral clarity in leadership"
+  },
+  {
+    "id": 437,
+    "title": "A King Must Not Hoard Excess Silver and Gold",
+    "hebrew": "וכסף וזהב לא ירבה לו מאד",
+    "category": "Leadership",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 17:17",
+    "description": "The king may not accumulate extreme wealth for himself.",
+    "notes": "Restrains royal greed"
+  },
+  {
+    "id": 438,
+    "title": "A King Must Write and Keep a Torah Scroll",
+    "hebrew": "וכתב לו את משנה התורה הזאת",
+    "category": "Leadership",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 17:18",
+    "description": "The king must maintain a personal Torah scroll and study it constantly.",
+    "notes": "Subjects leadership to Torah accountability"
+  },
+  {
+    "id": 439,
+    "title": "Do Not Move Ancient Boundary Markers",
+    "hebrew": "לא תסיג גבול רעך",
+    "category": "Civil Law",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 19:14",
+    "description": "Do not shift property boundaries to steal land.",
+    "notes": "Protects inherited holdings"
+  },
+  {
+    "id": 440,
+    "title": "Do Not Accept One Witness for Capital Cases",
+    "hebrew": "לא יקום עד אחד באיש",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 19:15",
+    "description": "A single witness cannot establish capital liability.",
+    "notes": "Safeguards evidentiary fairness"
+  },
+  {
+    "id": 441,
+    "title": "Investigate Witnesses Carefully in Court",
+    "hebrew": "ודרשו השפטים היטב",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:18",
+    "description": "Judges must scrutinize testimony thoroughly.",
+    "notes": "Prevents miscarriages of justice"
+  },
+  {
+    "id": 442,
+    "title": "Punish False Witnesses with the Penalty They Sought",
+    "hebrew": "ועשיתם לו כאשר זמם",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:19",
+    "description": "Impose on conspiratorial witnesses the punishment they intended for others.",
+    "notes": "Deters judicial manipulation"
+  },
+  {
+    "id": 443,
+    "title": "Do Not Show Pity to False Witnesses in Sentencing",
+    "hebrew": "לא תחוס עינך",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 19:21",
+    "description": "Do not reduce the due penalty of convicted false witnesses.",
+    "notes": "Upholds integrity of legal deterrence"
+  },
+  {
+    "id": 444,
+    "title": "Set Aside Cities of Refuge",
+    "hebrew": "תבדיל לך שלש ערים",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 19:2",
+    "description": "Designate refuge cities for accidental killers.",
+    "notes": "Combines accountability with protection"
+  },
+  {
+    "id": 445,
+    "title": "Do Not Destroy Fruit Trees in a Siege",
+    "hebrew": "לא תשחית את עצה",
+    "category": "War Ethics",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 20:19",
+    "description": "Do not cut down food-producing trees in wartime siege.",
+    "notes": "Limits ecological destruction in war"
+  },
+  {
+    "id": 446,
+    "title": "Offer Peace Terms Before Waging War on a City",
+    "hebrew": "וקראת אליה לשלום",
+    "category": "War Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 20:10",
+    "description": "Propose peace before initiating battle against a city.",
+    "notes": "War constrained by moral procedure"
+  },
+  {
+    "id": 447,
+    "title": "Prepare a Special Heifer Ritual for Unsolved Murder",
+    "hebrew": "וערפו שם את העגלה בנחל",
+    "category": "Justice",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 21:4",
+    "description": "When a slain person is found and killer unknown, perform eglah arufah.",
+    "notes": "Communal responsibility for bloodshed"
+  },
+  {
+    "id": 448,
+    "title": "Do Not Ignore a Corpse Requiring Burial",
+    "hebrew": "לא תלין נבלתו על העץ",
+    "category": "Justice",
+    "type": "Negative",
+    "torahSource": "Deuteronomy 21:23",
+    "description": "Do not leave the executed body unburied overnight.",
+    "notes": "Preserves dignity even after judgment"
+  },
+  {
+    "id": 449,
+    "title": "Bury the Dead Promptly",
+    "hebrew": "כי קבור תקברנו ביום ההוא",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 21:23",
+    "description": "Ensure timely burial of the deceased.",
+    "notes": "Honors the image of God in humanity"
+  },
+  {
+    "id": 450,
+    "title": "Return Lost Property to Its Owner",
+    "hebrew": "השב תשיבם לאחיך",
+    "category": "Ethics",
+    "type": "Positive",
+    "torahSource": "Deuteronomy 22:1",
+    "description": "Restore lost items when their owner can be identified.",
+    "notes": "Builds trust and mutual responsibility"
   }
 ]
