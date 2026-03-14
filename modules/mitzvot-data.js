@@ -9,6 +9,7 @@ export const MITZVOT_CATEGORIES = [
   'Charity',
   'Dietary Laws',
   'Temple',
+  'Calendar',
   'Civil Law',
   'Justice',
   'Agriculture',

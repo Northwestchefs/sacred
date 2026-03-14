@@ -1,4 +1,5 @@
-const LOCAL_STORAGE_KEY = 'sacred.mitzvot.cache.v1';
+const LOCAL_STORAGE_KEY = 'sacred.mitzvot.cache.v2';
+const MIN_EXPECTED_MITZVOT = 100;
 let mitzvotCache = null;
 
 export async function loadMitzvot() {
@@ -8,10 +9,11 @@ export async function loadMitzvot() {
   if (cachedJson) {
     try {
       const parsed = JSON.parse(cachedJson);
-      if (Array.isArray(parsed)) {
+      if (Array.isArray(parsed) && parsed.length >= MIN_EXPECTED_MITZVOT) {
         mitzvotCache = parsed;
         return mitzvotCache;
       }
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
     } catch {
       localStorage.removeItem(LOCAL_STORAGE_KEY);
     }
