@@ -7,6 +7,8 @@ function bindControls({
   searchForm,
   searchInput,
   searchScopeSelect,
+  searchPagePreviousButton,
+  searchPageNextButton,
   previousChapterButton,
   nextChapterButton,
   displayModeSelect,
@@ -16,6 +18,8 @@ function bindControls({
   onReferenceSubmit,
   onSearchSubmit,
   onSearchScopeChange,
+  onSearchPreviousPage,
+  onSearchNextPage,
   onPreviousChapter,
   onNextChapter,
   onDisplayModeChange,
@@ -51,6 +55,19 @@ function bindControls({
   if (searchScopeSelect && onSearchScopeChange) {
     searchScopeSelect.addEventListener('change', () => {
       onSearchScopeChange(searchScopeSelect.value);
+    });
+  }
+
+
+  if (searchPagePreviousButton && onSearchPreviousPage) {
+    searchPagePreviousButton.addEventListener('click', () => {
+      onSearchPreviousPage();
+    });
+  }
+
+  if (searchPageNextButton && onSearchNextPage) {
+    searchPageNextButton.addEventListener('click', () => {
+      onSearchNextPage();
     });
   }
 

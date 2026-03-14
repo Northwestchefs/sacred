@@ -186,6 +186,46 @@ function renderSearchResults(listElement, results) {
   }
 }
 
+
+function renderSearchPagination(elements, payload = {}) {
+  if (!elements) {
+    return;
+  }
+
+  const {
+    container,
+    previousButton,
+    nextButton,
+    statusElement,
+  } = elements;
+
+  if (!container || !previousButton || !nextButton || !statusElement) {
+    return;
+  }
+
+  const {
+    totalResults = 0,
+    pageSize = 25,
+    currentPage = 1,
+  } = payload;
+
+  if (!totalResults || totalResults <= pageSize) {
+    container.hidden = true;
+    statusElement.textContent = '';
+    previousButton.disabled = true;
+    nextButton.disabled = true;
+    return;
+  }
+
+  const totalPages = Math.max(1, Math.ceil(totalResults / pageSize));
+  const safePage = Math.min(Math.max(1, currentPage), totalPages);
+
+  container.hidden = false;
+  statusElement.textContent = `Page ${safePage} of ${totalPages}`;
+  previousButton.disabled = safePage <= 1;
+  nextButton.disabled = safePage >= totalPages;
+}
+
 function renderSearchSummary(summaryElement, payload = {}) {
   if (!summaryElement) {
     return;
@@ -265,6 +305,7 @@ export {
   renderVerses,
   renderSearchResults,
   renderSearchSummary,
+  renderSearchPagination,
   renderStatus,
   updateHeaderMeta,
   updateChapterNav,
