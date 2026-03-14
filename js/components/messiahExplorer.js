@@ -111,10 +111,16 @@ function prophecyMarkup(item) {
 }
 
 function wireVerseExpanders(scope) {
+  const findPanelForButton = (button) => {
+    const listItemPanel = button.closest('li')?.querySelector('.verse-panel');
+    if (listItemPanel) return listItemPanel;
+    return button.parentElement?.querySelector('.verse-panel') || null;
+  };
+
   scope.querySelectorAll('.verse-expand').forEach((button) => {
     button.addEventListener('click', async () => {
       const reference = button.dataset.reference;
-      const panel = scope.querySelector(`[data-verse-panel="${reference}"]`);
+      const panel = findPanelForButton(button);
       if (!panel) return;
       panel.innerHTML = '<p>Loading Hebrew text…</p>';
       try {
