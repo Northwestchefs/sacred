@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sacred · Study Dashboard</title>
+    <title>Sacred · Mystical Analysis Engine</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body data-page="study">
@@ -21,38 +21,61 @@
 
     <main class="page-main">
       <section class="card">
-        <p class="kicker">Sacred Study Dashboard</p>
-        <h2>Mystical study tools in one place</h2>
-        <p id="study-page-status" class="reader-status">Loading study modules…</p>
+        <p class="kicker">Dashboard</p>
+        <h2>Mystical Analysis Engine</h2>
+        <p>Advanced tools for gematria resonance, Psalm structure study, and combinatorial Kabbalah exploration.</p>
       </section>
 
-      <section id="verse-viewer-slot"></section>
-      <section id="gematria-tool-slot"></section>
-
-      <section class="card" aria-label="Divine name explorer">
-        <h2>Divine name explorer</h2>
-        <form id="divine-name-form" class="study-form">
-          <label for="divine-name-input">Divine name</label>
-          <div class="study-row">
-            <input id="divine-name-input" type="text" value="יהוה" placeholder="Type a divine name" required />
-            <button class="button" type="submit">Analyze</button>
-          </div>
-        </form>
-        <p id="divine-name-output" class="study-highlight">Gematria: — · Sefirah: —</p>
-        <h3>Permutations</h3>
-        <ul id="divine-name-permutations" class="study-list study-list-columns"></ul>
+      <section class="card" aria-live="polite">
+        <h3>Tree of Life visualization</h3>
+        <p>Active Sefirah: <strong id="tree-active-sefirah">Tiferet</strong></p>
+        <ol id="tree-of-life" class="tree-of-life"></ol>
       </section>
 
-      <section id="tree-of-life-slot"></section>
+      <section class="card" id="gematria-verse-search">
+        <h3>Gematria Verse Search</h3>
+        <label for="gematria-hebrew-input">Hebrew text</label>
+        <textarea id="gematria-hebrew-input" rows="3" placeholder="Type Hebrew text for gematria matching"></textarea>
+        <p>Gematria value: <strong id="gematria-value-output">0</strong></p>
+        <div class="home-search-row">
+          <input id="gematria-ref-input" type="text" placeholder="Optional verse ref, e.g. Genesis 1:1" />
+          <button id="gematria-ref-calc" class="button button-secondary" type="button">Calculate verse gematria</button>
+        </div>
+        <div id="gematria-match-results" class="grid"></div>
+      </section>
+
+      <section class="card" id="psalm-analyzer">
+        <h3>Psalm Analyzer</h3>
+        <label for="psalm-number-input">Psalm number</label>
+        <div class="home-search-row">
+          <input id="psalm-number-input" type="number" min="1" max="150" value="23" />
+          <button id="psalm-analyze-button" class="button" type="button">Analyze Psalm</button>
+        </div>
+        <div id="psalm-analysis-output"></div>
+      </section>
+
+      <section class="card" id="names-72-explorer">
+        <h3>72 Names Explorer</h3>
+        <p>Generate the 72 triplets from Exodus 14:19–21 with gematria and sefirotic mapping.</p>
+        <button id="generate-72names-button" class="button" type="button">Generate 72 Names</button>
+        <div id="names72-output"></div>
+      </section>
+
+      <section class="card" id="gates-231-generator">
+        <h3>231 Gates Generator</h3>
+        <p>Generate all unique Hebrew letter pairs (22 choose 2 = 231).</p>
+        <button id="generate-231gates-button" class="button" type="button">Generate 231 Gates</button>
+        <div id="gates231-output"></div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <p>Sacred · Mystical study tools built for static GitHub Pages.</p>
+        <p>Sacred · Mystical analysis dashboard.</p>
       </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
-    <script type="module" src="js/sacred-study.js"></script>
+    <script type="module" src="js/pages/sacred-study.js"></script>
   </body>
 </html>

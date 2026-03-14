@@ -1,43 +1,56 @@
-# Sacred APIs and Study Architecture
+# Sacred Mystical Analysis APIs
 
-## Sefaria API usage
+## `js/tools/resonance-engine.js`
+Gematria resonance tools for Hebrew text and verse matching.
 
-Sacred integrates with public Sefaria endpoints directly from the browser using `fetch`:
+### Exports
+- `calculateVerseGematria(ref)`
+  - Fetches Hebrew text for a verse reference from Sefaria and returns gematria, cleaned text, and mapped sefirah.
+- `findMatchingGematria(value)`
+  - Searches indexed Hebrew Bible verses for identical gematria values and returns verse metadata with Sefaria links.
+- `initResonanceEngine({ onSefirahChange })`
+  - Binds UI controls for Hebrew text input, gematria calculation, and verse match rendering.
 
-- `GET https://www.sefaria.org/api/v3/texts/{ref}` for bilingual text payloads.
-- `GET https://www.sefaria.org/api/links/{ref}` for commentary and related links.
-- `GET https://www.sefaria.org/api/topics` for topic metadata.
+## `js/tools/psalm-analyzer.js`
+Psalm-level structural and symbolic analysis.
 
-The wrapper module (`js/sefaria-api.js`) exports:
+### Exports
+- `analyzePsalm(psalmNumber)`
+  - Loads Psalm verses from indexed dataset and computes:
+    - structural summary
+    - per-verse gematria
+    - divine-name detection
+    - sefirotic mapping
+- `detectDivineNames(text)`
+  - Returns detected divine names from a predefined set.
+- `initPsalmAnalyzer({ onSefirahChange })`
+  - Connects analyzer controls to dashboard output.
 
-- `getText(ref)`
-- `getLinks(ref)`
-- `getTopics()`
+## `js/tools/72names.js`
+72 Names generator based on Exodus 14:19–21.
 
-All requests are executed client-side to remain compatible with static GitHub Pages hosting.
+### Exports
+- `generate72Triplets()`
+  - Fetches the three verses from Sefaria, applies the traditional 72-letter extraction pattern, and returns 72 triplets with gematria and sefirot mapping.
+- `init72NamesExplorer({ onSefirahChange })`
+  - Wires generation action to dashboard rendering.
 
-## Gematria module
+## `js/tools/231gates.js`
+Combinatorial Hebrew pair generator.
 
-`js/gematria.js` provides a standard Hebrew gematria engine with final letter handling:
+### Exports
+- `generate231Gates()`
+  - Produces all 231 unique letter pairs from the 22 Hebrew letters with gematria and sefirot mapping.
+- `init231GatesGenerator({ onSefirahChange })`
+  - Wires generation action to dashboard rendering.
 
-- `calculateGematria(text)` returns the full numeric value.
-- `breakdownByLetter(text)` returns letter-by-letter value entries.
+## Shared utilities
+`js/tools/hebrew-utils.js` provides:
+- Hebrew letter values and alphabet constants
+- gematria calculation helpers
+- text normalization helpers
+- divine name constants
+- value-to-sefirah mapping
 
-This module is reused by the dashboard gematria calculator and divine name analysis tools.
-
-## Sacred tools architecture
-
-The study dashboard (`sacred-study.html`) is assembled from modular components and ES modules:
-
-- `components/verse-viewer.html` + `js/torah-viewer.js`: verse input, Hebrew/English rendering, commentary links.
-- `components/gematria-tool.html` + `js/gematria.js`: interactive gematria calculator.
-- `js/divine-names.js`: divine name gematria, permutation generation, and sefirah mapping.
-- `components/tree-of-life.html` + `js/sefirot-map.js`: SVG Tree of Life with verse/name-to-sefirot highlighting.
-- `js/sacred-study.js`: orchestrates component loading and cross-tool interactions.
-
-Design constraints honored:
-
-- No backend server.
-- Pure static delivery for GitHub Pages.
-- Fetch API for all remote data access.
-- Clean modular ES module boundaries.
+## UI integration
+The `sacred-study.html` dashboard initializes modules through `js/pages/sacred-study.js`, which keeps the Tree of Life visualization synchronized with the active module result.

@@ -373,20 +373,11 @@ kbd {
   color: var(--text);
 }
 
-.study-form {
-  margin-top: 0.8rem;
-}
-
-.study-row {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.study-row input {
-  flex: 1;
-  min-width: 12rem;
+textarea,
+input[type='text'],
+input[type='number'],
+input[type='search'] {
+  width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
   font: inherit;
@@ -394,28 +385,40 @@ kbd {
   background: #fff;
 }
 
-.study-grid-two {
+.tree-of-life {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
 }
 
-.study-list {
-  margin: 0.6rem 0 0;
-  padding-left: 1.1rem;
+.tree-node {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+  text-align: center;
 }
 
-.study-list-columns {
-  columns: 3 10rem;
-}
-
-.study-highlight {
+.tree-node.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
   color: var(--accent);
   font-weight: 600;
 }
 
-.tree-svg {
-  width: 100%;
-  max-width: 32rem;
-  display: block;
+.triplet-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+}
+
+.triplet-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
 }
