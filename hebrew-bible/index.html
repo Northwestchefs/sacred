@@ -4,9 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sacred · Hebrew Bible Reader</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
     <link rel="stylesheet" href="../src/pages/hebrewBibleReader/styles.css" />
   </head>
-  <body>
+  <body data-page="read">
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="brand">Sacred</h1>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a data-nav-key="home" href="../">Home</a>
+          <a data-nav-key="read" href="./">Read</a>
+          <a data-nav-key="study" href="../sacred-study.html">Study</a>
+          <a data-nav-key="mitzvot" href="../mitzvot/">Mitzvot (מצוות)</a>
+          <a data-nav-key="about" href="../about/">About</a>
+        </nav>
+      </div>
+    </header>
     <main class="reader-page">
       <header class="reader-header surface-card">
         <button id="zen-mode-exit" class="zen-mode-exit" type="button" hidden aria-label="Exit zen mode">Exit zen mode</button>
@@ -110,6 +123,7 @@
       </section>
     </main>
 
+    <script src="../assets/js/main.js"></script>
     <script type="module" src="../src/pages/hebrewBibleReader/index.js"></script>
   </body>
 </html>

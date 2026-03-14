@@ -19,7 +19,8 @@ export async function loadMitzvot() {
     }
   }
 
-  const response = await fetch('./data/mitzvot.json');
+  const dataUrl = new URL('../data/mitzvot.json', import.meta.url);
+  const response = await fetch(dataUrl);
   if (!response.ok) throw new Error('Unable to load mitzvot data.');
 
   const mitzvot = await response.json();

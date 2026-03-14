@@ -3,15 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sacred · Reader moved</title>
-    <meta http-equiv="refresh" content="0; url=../hebrew-bible/" />
-    <link rel="canonical" href="../hebrew-bible/" />
+    <title>Sacred · Mitzvot</title>
     <link rel="stylesheet" href="../assets/css/styles.css" />
-    <script>
-      window.location.replace('../hebrew-bible/');
-    </script>
   </head>
-  <body data-page="read">
+  <body data-page="mitzvot">
     <header class="site-header">
       <div class="header-inner">
         <h1 class="brand">Sacred</h1>
@@ -19,31 +14,33 @@
           <a data-nav-key="home" href="../">Home</a>
           <a data-nav-key="read" href="../hebrew-bible/">Read</a>
           <a data-nav-key="study" href="../sacred-study.html">Study</a>
-          <a data-nav-key="mitzvot" href="../mitzvot/">Mitzvot (מצוות)</a>
+          <a data-nav-key="mitzvot" href="./">Mitzvot (מצוות)</a>
           <a data-nav-key="about" href="../about/">About</a>
         </nav>
       </div>
     </header>
 
     <main class="page-main">
-      <section class="card" aria-live="polite">
-        <p class="kicker">Legacy path</p>
-        <h2>The reader has moved</h2>
+      <section class="card" aria-label="Mitzvot explorer introduction">
+        <p class="kicker">Mitzvot Explorer</p>
+        <h2>Mitzvot (613 Commandments)</h2>
         <p>
-          The canonical Hebrew Bible reader is now at <strong>/hebrew-bible/</strong>. You are being redirected automatically.
+          Browse and search mitzvot on a dedicated page with category and commandment-type filters, pagination, and quick verse lookup.
         </p>
-        <p>
-          If redirection does not happen, use this link: <a class="button" href="../hebrew-bible/">Open Hebrew Bible Reader</a>
-        </p>
+      </section>
+
+      <section class="card" aria-label="Mitzvot explorer">
+        <div id="mitzvot-dashboard-slot"></div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <p>Sacred · Minimal tools for careful Hebrew Bible study.</p>
+        <p>Sacred · Dedicated mitzvot explorer.</p>
       </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script type="module" src="../js/mitzvot-page.js"></script>
   </body>
 </html>
