@@ -1,6 +1,16 @@
-const LOCAL_STORAGE_KEY = 'sacred.mitzvot.cache.v8';
+const LOCAL_STORAGE_KEY = 'sacred.mitzvot.cache.v9';
 const MIN_EXPECTED_MITZVOT = 550;
+const REQUIRED_MITZVAH_IDS = [1, 600, 613];
 let mitzvotCache = null;
+
+function isValidMitzvotDataset(value) {
+  if (!Array.isArray(value) || value.length < MIN_EXPECTED_MITZVOT) {
+    return false;
+  }
+
+  const ids = new Set(value.map((entry) => Number(entry?.id)));
+  return REQUIRED_MITZVAH_IDS.every((id) => ids.has(id));
+}
 
 export async function loadMitzvot() {
   if (Array.isArray(mitzvotCache)) return mitzvotCache;
@@ -9,7 +19,7 @@ export async function loadMitzvot() {
   if (cachedJson) {
     try {
       const parsed = JSON.parse(cachedJson);
-      if (Array.isArray(parsed) && parsed.length >= MIN_EXPECTED_MITZVOT) {
+      if (isValidMitzvotDataset(parsed)) {
         mitzvotCache = parsed;
         return mitzvotCache;
       }
@@ -24,7 +34,7 @@ export async function loadMitzvot() {
   if (!response.ok) throw new Error('Unable to load mitzvot data.');
 
   const mitzvot = await response.json();
-  mitzvotCache = Array.isArray(mitzvot) ? mitzvot : [];
+  mitzvotCache = isValidMitzvotDataset(mitzvot) ? mitzvot : [];
 
   try {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mitzvotCache));
