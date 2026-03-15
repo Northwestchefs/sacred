@@ -1,4 +1,12 @@
 (function () {
+  function trackEvent(name, params = {}) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params);
+    }
+  }
+
+  window.trackEvent = trackEvent;
+
   function setActiveNav() {
     const currentPage = document.body.dataset.page;
     if (!currentPage) return;

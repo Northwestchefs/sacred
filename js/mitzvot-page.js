@@ -1,8 +1,15 @@
 import { initMitzvotDashboard } from '../components/mitzvot-dashboard.js';
 
 initMitzvotDashboard('#mitzvot-dashboard-slot', {
-  onViewVerse: (reference) => {
+  onViewVerse: (reference, mitzvah) => {
     if (!reference) return;
+
+    if (typeof window.trackEvent === 'function') {
+      window.trackEvent('mitzvah_view', {
+        mitzvah_number: mitzvah?.id ?? null,
+      });
+    }
+
     const params = new URLSearchParams({ reference });
     window.location.href = `../hebrew-bible/?${params.toString()}`;
   },

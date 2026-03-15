@@ -92,6 +92,20 @@ function renderTreeNodes() {
     `;
   }).join('');
 
+  nodeGroup.querySelectorAll('g[data-sefirah]').forEach((node) => {
+    node.addEventListener('click', () => {
+      const sefirahName = node.dataset.sefirah;
+      if (!sefirahName) return;
+
+      highlightSefirot([sefirahName], { animateFlow: true });
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('sefirah_click', {
+          sefirah: sefirahName,
+        });
+      }
+    });
+  });
+
   pathGroup.querySelectorAll('line[data-path-id]').forEach((line) => {
     line.addEventListener('mouseenter', () => {
       line.dataset.state = 'hover';
@@ -199,6 +213,12 @@ function initVerseMysticalPipeline() {
 
       status.textContent = `Loaded ${result.verse.reference}. Primary sefirah: ${result.sefirot.primarySefirah} (confidence ${result.sefirot.confidenceScore}).`;
 
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('verse_search', {
+          reference: result.verse.reference,
+        });
+      }
+
       document.dispatchEvent(
         new CustomEvent('mystical:analysis-complete', {
           detail: result,
@@ -269,11 +289,20 @@ function initGematriaTool() {
 
     highlightSefirot(mapGematriaToSefirot(gematria), { animateFlow: true });
     highlightPathsByLetters(getHebrewLettersFromText(text));
+
+    return { text, gematria };
   };
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    calculate();
+    const result = calculate();
+
+    if (result && typeof window.trackEvent === 'function') {
+      window.trackEvent('gematria_lookup', {
+        word: result.text,
+        value: result.gematria,
+      });
+    }
   });
 
   input.addEventListener('input', calculate);
