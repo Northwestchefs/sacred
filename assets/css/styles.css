@@ -27,6 +27,10 @@ a {
   color: inherit;
 }
 
+img.is-broken-image {
+  display: none !important;
+}
+
 .site-header,
 .site-footer {
   background: var(--surface);
