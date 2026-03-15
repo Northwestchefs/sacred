@@ -52,6 +52,20 @@ function renderTreeNodes() {
       </g>
     `;
   }).join('');
+
+  group.querySelectorAll('g[data-sefirah]').forEach((node) => {
+    node.addEventListener('click', () => {
+      const sefirahName = node.dataset.sefirah;
+      if (!sefirahName) return;
+
+      highlightSefirot([sefirahName]);
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('sefirah_click', {
+          sefirah: sefirahName,
+        });
+      }
+    });
+  });
 }
 
 function highlightSefirot(active = []) {
