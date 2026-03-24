@@ -89,6 +89,60 @@
     return String(value || '').toLowerCase();
   }
 
+  function splitSearchTerms(query) {
+    return normalizeText(query)
+      .split(/[^a-z0-9\u0590-\u05ff]+/i)
+      .map((term) => term.trim())
+      .filter(Boolean);
+  }
+
+  function createSearchIndex(verses) {
+    const normalizedTexts = new Array(verses.length);
+    const tokenToVerseIndexes = new Map();
+
+    for (let index = 0; index < verses.length; index += 1) {
+      const normalizedText = normalizeText(verses[index]?.text);
+      normalizedTexts[index] = normalizedText;
+
+      const uniqueTokens = new Set(splitSearchTerms(normalizedText).filter((token) => token.length > 1));
+      uniqueTokens.forEach((token) => {
+        const indexedVerses = tokenToVerseIndexes.get(token);
+        if (indexedVerses) {
+          indexedVerses.push(index);
+        } else {
+          tokenToVerseIndexes.set(token, [index]);
+        }
+      });
+    }
+
+    return {
+      normalizedTexts,
+      tokenToVerseIndexes,
+    };
+  }
+
+  function intersectOrderedIndexes(a, b) {
+    let i = 0;
+    let j = 0;
+    const intersection = [];
+
+    while (i < a.length && j < b.length) {
+      const aValue = a[i];
+      const bValue = b[j];
+      if (aValue === bValue) {
+        intersection.push(aValue);
+        i += 1;
+        j += 1;
+      } else if (aValue < bValue) {
+        i += 1;
+      } else {
+        j += 1;
+      }
+    }
+
+    return intersection;
+  }
+
   function getBookLabel(verse) {
     return verse.bookEnglish || verse.book || verse.bookSlug || 'Unknown';
   }
@@ -154,6 +208,7 @@
     ];
     let readingVerses = [];
     let searchVerses = [];
+    let searchIndex = null;
 
     status.textContent = 'Loading searchable text…';
     try {
@@ -164,6 +219,7 @@
 
       readingVerses = readingData.data;
       searchVerses = searchData.data;
+      searchIndex = createSearchIndex(searchVerses);
       status.textContent = 'Search is ready.';
 
       if (statVerseCount) {
@@ -425,10 +481,33 @@
       }
 
       const normalizedQuery = normalizeText(query);
-      matches = searchVerses.filter((verse) => {
-        const searchable = normalizeText(verse.text);
-        return searchable.includes(normalizedQuery);
-      });
+      const queryTerms = splitSearchTerms(normalizedQuery).filter((term) => term.length > 1);
+      let candidateIndexes = null;
+
+      if (searchIndex && queryTerms.length) {
+        queryTerms.forEach((term) => {
+          const indexes = searchIndex.tokenToVerseIndexes.get(term);
+          if (!indexes) {
+            candidateIndexes = [];
+            return;
+          }
+
+          if (candidateIndexes === null) {
+            candidateIndexes = indexes;
+          } else {
+            candidateIndexes = intersectOrderedIndexes(candidateIndexes, indexes);
+          }
+        });
+      }
+
+      if (!searchIndex) {
+        matches = searchVerses.filter((verse) => normalizeText(verse.text).includes(normalizedQuery));
+      } else {
+        const indexesToScan = candidateIndexes === null ? searchVerses.map((_, index) => index) : candidateIndexes;
+        matches = indexesToScan
+          .filter((index) => searchIndex.normalizedTexts[index].includes(normalizedQuery))
+          .map((index) => searchVerses[index]);
+      }
 
       if (!matches.length) {
         status.textContent = `No results for “${query}”.`;
