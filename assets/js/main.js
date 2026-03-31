@@ -19,6 +19,25 @@
     });
   }
 
+  function suppressBrokenImages() {
+    const images = document.querySelectorAll('img');
+    if (!images.length) return;
+
+    images.forEach((image) => {
+      const source = image.getAttribute('src');
+      if (!source || !source.trim()) {
+        image.classList.add('is-broken-image');
+        image.setAttribute('aria-hidden', 'true');
+        return;
+      }
+
+      image.addEventListener('error', () => {
+        image.classList.add('is-broken-image');
+        image.setAttribute('aria-hidden', 'true');
+      });
+    });
+  }
+
   function createOption(value, label, disabled) {
     const option = document.createElement('option');
     option.value = value;
@@ -659,6 +678,7 @@
   window.addEventListener('load', disableServiceWorkers);
 
   setActiveNav();
+  suppressBrokenImages();
   initReader();
   initHomeSearch();
 })();
